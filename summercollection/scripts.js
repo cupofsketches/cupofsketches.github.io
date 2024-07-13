@@ -54,12 +54,12 @@ function generateRedditFormat() {
     // Generate Reddit format output
     let redditFormat = '**Cards Needed**:\n\n';
     for (const collection in neededCards) {
-        redditFormat += `- ${collection}: ${neededCards[collection].join(', ')}\n`;
+        redditFormat += `- ${collection} ➜ ${neededCards[collection].join(', ')}\n`;
     }
 
     redditFormat += '\n\n**Cards Duplicated**:\n\n';
     for (const collection in duplicateCards) {
-        redditFormat += `- ${collection}: ${duplicateCards[collection].join(', ')}\n`;
+        redditFormat += `- ${collection} ➜ ${duplicateCards[collection].join(', ')}\n`;
     }
 
     // Display the generated Reddit format in the pre element

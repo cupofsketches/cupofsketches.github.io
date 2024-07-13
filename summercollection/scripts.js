@@ -66,6 +66,26 @@ function generateRedditFormat() {
     document.getElementById('reddit-format').textContent = redditFormat;
 }
 
+// Helper function to split text into chunks of a specified size without breaking words
+function splitIntoChunks(text, chunkSize) {
+    const chunks = [];
+    let startIndex = 0;
+    while (startIndex < text.length) {
+        let endIndex = startIndex + chunkSize;
+        if (endIndex < text.length) {
+            endIndex = text.lastIndexOf(' ', endIndex);
+            if (endIndex <= startIndex) {
+                endIndex = startIndex + chunkSize;
+            }
+        }
+        chunks.push(text.slice(startIndex, endIndex).trim());
+        startIndex = endIndex + 1;
+    }
+    return chunks;
+}
+
+
+// Function to handle form submission and generate In-Game format
 // Function to handle form submission and generate In-Game format
 function generateInGameFormat() {
     const neededCards = {};
@@ -96,29 +116,46 @@ function generateInGameFormat() {
     let needed = 'NEEDED: ';
     let duplicate = 'DUPLICATE: ';
 
-    const neededArray = [];
-    const duplicateArray = [];
-
+    let firstNeeded = true;
     for (const collection in neededCards) {
-        neededCards[collection].forEach(card => {
-            neededArray.push(`${card} (${collection})`);
-        });
+        if (!firstNeeded) {
+            needed += ' ** ';
+        }
+        needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
+        firstNeeded = false;
     }
 
+    let firstDuplicate = true;
     for (const collection in duplicateCards) {
-        duplicateCards[collection].forEach(card => {
-            duplicateArray.push(`${card} (${collection})`);
-        });
+        if (!firstDuplicate) {
+            duplicate += ' ** ';
+        }
+        duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
+        firstDuplicate = false;
     }
-
-    needed += neededArray.join(', ');
-    duplicate += duplicateArray.join(', ');
 
     let inGameFormat = `${needed} || ${duplicate}`;
 
+    // Split the inGameFormat into chunks of 500 characters without breaking words
+    const chunks = splitIntoChunks(inGameFormat, 500);
+
     // Display the generated In-Game format in the pre element
-    document.getElementById('in-game-format').textContent = inGameFormat;
+    const inGameFormatContainer = document.getElementById('in-game-format');
+    inGameFormatContainer.innerHTML = '';
+    chunks.forEach((chunk, index) => {
+        const paragraph = document.createElement('p');
+        paragraph.textContent = chunk;
+        inGameFormatContainer.appendChild(paragraph);
+        
+        // Add a line between paragraphs if it's not the last chunk
+        if (index < chunks.length - 1) {
+            const line = document.createElement('hr');
+            inGameFormatContainer.appendChild(line);
+        }
+    });
 }
+
+
 
 // Function to show the Reddit format
 function showRedditFormat() {

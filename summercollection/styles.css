@@ -200,3 +200,8 @@ pre {
 input[type="radio"].disabled {
     accent-color: gray;
 }
+
+#in-game-user-message, #user-message{
+    padding-top:20px;
+}
+

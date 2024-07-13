@@ -113,7 +113,7 @@ function generateInGameFormat() {
     });
 
     // Generate In-Game format output
-    let needed = 'NEEDED: ';
+    let needed = 'NEED: ';
     let duplicate = 'DUPLICATE: ';
 
     let firstNeeded = true;

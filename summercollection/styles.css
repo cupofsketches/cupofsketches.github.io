@@ -11,7 +11,7 @@ h1 {
 .subtitle {
     margin-bottom: 2px;
     font-size: 0.8em;
-    color: #4A5768;
+    color: #818181;
     text-align: center;
 }
 
@@ -35,7 +35,7 @@ button {
 legend {
     font-size: 1.2em;
     font-weight: 600;
-    color: #4629a5;
+    color: #3a9cc6;
     text-align: center;
 }
 
@@ -103,7 +103,8 @@ pre {
 }
 
 #show-reddit-format.reddit {
-    background-color: #71d6e8;
+    background-color: #3a9cc6;
+    color:white;
     border-bottom: 2px solid #cfd9db;
     /* Example color for Reddit */
 }

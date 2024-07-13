@@ -93,8 +93,8 @@ function generateInGameFormat() {
     });
 
     // Generate In-Game format output
-    let needed = 'Needed: ';
-    let duplicate = 'Duplicate: ';
+    let needed = 'NEEDED: ';
+    let duplicate = 'DUPLICATE: ';
 
     const neededArray = [];
     const duplicateArray = [];

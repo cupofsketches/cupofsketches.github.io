@@ -52,14 +52,24 @@ function generateRedditFormat() {
     });
 
     // Generate Reddit format output
-    let redditFormat = '**Cards Needed**:\n\n';
-    for (const collection in neededCards) {
-        redditFormat += `- ${collection} ➜ ${neededCards[collection].join(', ')}\n`;
+    let redditFormat = '';
+    let needCards = false;
+    if (Object.keys(neededCards).length > 0) {
+        redditFormat += '**Cards Needed**:\n\n';
+        for (const collection in neededCards) {
+            redditFormat += `- ${collection} ➜ ${neededCards[collection].join(', ')}\n`;
+        }
+        needCards = true;
     }
 
-    redditFormat += '\n\n**Cards Duplicated**:\n\n';
-    for (const collection in duplicateCards) {
-        redditFormat += `- ${collection} ➜ ${duplicateCards[collection].join(', ')}\n`;
+    if (Object.keys(duplicateCards).length > 0) {
+        if (needCards) {
+            redditFormat += '\n\n';
+        }
+        redditFormat += '**Cards Duplicated**:\n\n';
+        for (const collection in duplicateCards) {
+            redditFormat += `- ${collection} ➜ ${duplicateCards[collection].join(', ')}\n`;
+        }
     }
 
     // Display the generated Reddit format in the pre element
@@ -85,7 +95,6 @@ function splitIntoChunks(text, chunkSize) {
 }
 
 
-// Function to handle form submission and generate In-Game format
 // Function to handle form submission and generate In-Game format
 function generateInGameFormat() {
     const neededCards = {};
@@ -113,28 +122,38 @@ function generateInGameFormat() {
     });
 
     // Generate In-Game format output
-    let needed = 'NEEDED: ';
-    let duplicate = 'DUPLICATE: ';
+    let needed = '';
+    let duplicate = '';
 
-    let firstNeeded = true;
-    for (const collection in neededCards) {
-        if (!firstNeeded) {
-            needed += '  /  ';
+    if (Object.keys(neededCards).length > 0) {
+        needed = 'NEED: ';
+        let firstNeeded = true;
+        for (const collection in neededCards) {
+            if (!firstNeeded) {
+                needed += '  /  ';
+            }
+            needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
+            firstNeeded = false;
         }
-        needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
-        firstNeeded = false;
     }
 
-    let firstDuplicate = true;
-    for (const collection in duplicateCards) {
-        if (!firstDuplicate) {
-            duplicate += '  /  ';
+    if (Object.keys(duplicateCards).length > 0) {
+        if (needed !== '') {
+            duplicate = ' || DUPLICATE: ';
+        } else {
+            duplicate = 'DUPLICATE: ';
         }
-        duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
-        firstDuplicate = false;
+        let firstDuplicate = true;
+        for (const collection in duplicateCards) {
+            if (!firstDuplicate) {
+                duplicate += '  /  ';
+            }
+            duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
+            firstDuplicate = false;
+        }
     }
 
-    let inGameFormat = `${needed} || ${duplicate}`;
+    let inGameFormat = `${needed} ${duplicate}`;
 
     // Split the inGameFormat into chunks of 500 characters without breaking words
     const chunks = splitIntoChunks(inGameFormat, 500);
@@ -169,6 +188,12 @@ function showInGameFormat() {
     document.getElementById('in-game-format-container').style.display = 'block';
 }
 
+// Function to hide the user message
+function hideUserMessage() {
+    document.getElementById('user-message').style.display = 'none';
+    document.getElementById('in-game-user-message').style.display = 'none';
+}
+
 // Automatically generate formats on form input change
 document.addEventListener('DOMContentLoaded', function () {
     // Show the initial tab content (Park) on page load
@@ -187,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const formInputs = document.querySelectorAll('.collection-form input[type="radio"], .collection-form input[type="checkbox"]');
     formInputs.forEach(input => {
         input.addEventListener('change', () => {
+            hideUserMessage();
             generateRedditFormat();
             generateInGameFormat();
         });

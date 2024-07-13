@@ -1,7 +1,6 @@
-# Royal Match Card Status Copy and Paste
+# Royal Match Card Status
 
-Royal Match Card Status Copy and Paste is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. 
-Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly.
+Royal Match Card Status is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly. Copy the generated text and paste it wherever you need.
 
 ## Features
 
@@ -11,7 +10,7 @@ Users can easily select whether each card is needed or a duplicate using radio b
 
 ## Usage
 
-1. **Select Card Status**:
+1. **Select Packs & Card Status**:
    - Use the radio buttons next to each card to indicate whether it is needed or a duplicate.
 
 2. **Generate Format**:
@@ -23,6 +22,6 @@ Users can easily select whether each card is needed or a duplicate using radio b
 
 ## Credits
 
-- Summer Collection by Fenix - ID:2N96AFNK
+- Royal Match Card Status by Fenix - ID:2N96AFNK
 - Visite our subreddit: r/RoyalMatch
 - Contact: cupofsketches@gmail.com

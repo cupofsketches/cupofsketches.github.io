@@ -21,7 +21,8 @@ Users can easily select whether each card is needed or a duplicate using radio b
    - Copy the generated text and paste it into the desired platform (Reddit, in-game chat, etc.).
 
 
-### Credits
+## Credits
 
 - Summer Collection by Fenix - ID:2N96AFNK
+- Visite our subreddit: r/RoyalMatch
 - Contact: cupofsketches@gmail.com

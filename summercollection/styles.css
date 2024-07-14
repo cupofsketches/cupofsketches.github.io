@@ -221,6 +221,34 @@ input[type="radio"].disabled {
 }
 
 .credits {
-    color: #91989e;
+    font-size: 0.9em;
+    color: #91989e;    
+    text-align: center;
+    margin-top: 20px;
 }
+
+/* Style for the link inside the credits */
+a.credit-link {
+    color: #399cc6;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+a.credit-link:visited {
+    color: #399cc6; /* Same color as the text for visited links */
+}
+
+a.credit-link:hover {
+    color: #333; /* Change color on hover */
+}
+
+a.credit-link:active {
+    color: #399cc6; /* Same color as the text for active links */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+a.credit-link:focus {
+    color: #4A5768; /* Same color as the text for focused links */
+
+}
+
 

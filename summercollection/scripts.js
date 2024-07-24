@@ -120,14 +120,14 @@ function generateInGameFormat() {
             if (!firstNeeded) {
                 needed += '  /  ';
             }
-            needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
+            needed += `[${collection}] --> ${neededCards[collection].join(', ')}`;
             firstNeeded = false;
         }
     }
 
     if (Object.keys(duplicateCards).length > 0) {
         if (needed !== '') {
-            duplicate = ' || DUPLICATE: ';
+            duplicate = ' ||  DUPLICATE: ';
         } else {
             duplicate = 'DUPLICATE: ';
         }
@@ -136,7 +136,7 @@ function generateInGameFormat() {
             if (!firstDuplicate) {
                 duplicate += '  /  ';
             }
-            duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
+            duplicate += `[${collection}] --> ${duplicateCards[collection].join(', ')}`;
             firstDuplicate = false;
         }
     }
@@ -178,15 +178,102 @@ function hideUserMessage() {
 }
 
 // Save options to a file
- // Function to save options to a file
-function saveOptions() {
-    // Check if a file name is provided
-    const fileName = document.getElementById('fileNameInput').value.trim();
-    if (!fileName) {
-        alert('Please enter a file name.');
-        return;
-    }
+// Function to show the warning popup
+function showWarningPopup(message) {
+    const popupWarning = document.getElementById('warningPopup');
+       // Handle clicking outside the popup
+       window.onclick = (event) => {
+        if (event.target === popupWarning) {
+            popupWarning.style.display = 'none';
+        }
+    };
+   
+    document.getElementById('warningMessage').textContent = message;
+    document.getElementById('warningPopup').style.display = 'flex';
+}
 
+// Function to hide the warning popup
+function hideWarningPopup() {
+    document.getElementById('warningPopup').style.display = 'none';
+}
+
+// Add event listener to the OK button in the warning popup
+document.getElementById('closeWarningBtn').addEventListener('click', hideWarningPopup);
+
+// Function to show the file name validation popup
+function showFileNameValidationPopup(message) {
+   
+    const popupValidation = document.getElementById('fileNameValidationPopup');
+    const popup = document.getElementById('fileNamePopup');
+
+       // Handle clicking outside the popup
+    window.onclick = (event) => {
+        if (event.target === popupValidation) {
+            popupValidation.style.display = 'none';
+        }else if(event.target === popup){
+            popup.style.display = 'none';
+        }
+    };
+
+    document.getElementById('fileNameValidationMessage').textContent = message;
+    document.getElementById('fileNameValidationPopup').style.display = 'flex';
+    
+}
+
+// Function to show the custom popup for file name input
+function showFileNamePopup(callback) {
+    const popup = document.getElementById('fileNamePopup');
+    const closeBtn = document.getElementById('closePopup');
+    const confirmBtn = document.getElementById('confirmSaveBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const fileNameInput = document.getElementById('fileNameInput');
+
+    popup.style.display = 'flex';
+
+    // Close popup when clicking the close button
+    closeBtn.onclick = () => {
+        popup.style.display = 'none';
+    };
+
+    // Handle file name confirmation
+    confirmBtn.onclick = () => {
+        const fileName = fileNameInput.value.trim();
+        if (fileName) {
+            popup.style.display = 'none';
+            callback(fileName);
+        } else {
+            showFileNameValidationPopup('Please enter a file name to save your file.');
+        }
+    };
+
+    // Handle file name cancellation
+    cancelBtn.onclick = () => {
+        popup.style.display = 'none';
+    };
+
+    // Handle clicking outside the popup
+    window.onclick = (event) => {
+        const popupValidation = document.getElementById('fileNameValidationPopup');
+
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        } else if (event.target === popupValidation) {
+            popupValidation.style.display = 'none';
+        }
+    };
+}
+
+// Function to hide the file name validation popup
+function hideFileNameValidationPopup() {
+    document.getElementById('fileNameValidationPopup').style.display = 'none';
+}
+
+// Add event listener to the OK button in the file name validation popup
+document.getElementById('okFileNameValidationBtn').addEventListener('click', hideFileNameValidationPopup);
+
+
+// Function to save options to a file
+function saveOptions() {
     // Check if any 'needed' or 'duplicate' options are selected
     const forms = document.querySelectorAll('.collection-form');
     let optionsSelected = false;
@@ -200,42 +287,48 @@ function saveOptions() {
     });
 
     if (!optionsSelected) {
-        alert('Please select at least one "needed" or "duplicate" option before saving.');
+        showWarningPopup('Select at least one "needed" or "duplicate" option before saving.');
         return;
     }
 
-    // Proceed with saving the options
-    const neededCards = {};
-    const duplicateCards = {};
+    // Show the custom popup to get the file name
+    showFileNamePopup((fileName) => {
+        // Proceed with saving the options
+        const neededCards = {};
+        const duplicateCards = {};
 
-    function processFormData(form, collectionName) {
-        const formData = new FormData(form);
-        formData.forEach((value, key) => {
-            if (value === 'needed') {
-                if (!neededCards[collectionName]) neededCards[collectionName] = [];
-                neededCards[collectionName].push(key);
-            } else if (value === 'duplicate') {
-                if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
-                duplicateCards[collectionName].push(key);
-            }
+        function processFormData(form, collectionName) {
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                if (value === 'needed') {
+                    if (!neededCards[collectionName]) neededCards[collectionName] = [];
+                    neededCards[collectionName].push(key);
+                } else if (value === 'duplicate') {
+                    if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
+                    duplicateCards[collectionName].push(key);
+                }
+            });
+        }
+
+        forms.forEach(form => {
+            const collectionName = form.getAttribute('data-collection');
+            processFormData(form, collectionName);
         });
-    }
 
-    forms.forEach(form => {
-        const collectionName = form.getAttribute('data-collection');
-        processFormData(form, collectionName);
+        const optionsData = { neededCards, duplicateCards };
+
+        const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(url);
     });
-
-    const optionsData = { neededCards, duplicateCards };
-
-    const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    a.click();
-    URL.revokeObjectURL(url);
 }
+
+// Add event listener to the save button
+document.getElementById('saveOptionsBtn').addEventListener('click', saveOptions);
 
 
 

@@ -5,38 +5,50 @@ body {
 
 h1 {
     font-size: 1.5em;
+    color: #C6643A;;
     text-align: center;
+    padding: 7px 0 7px 0;
 }
 
 .subtitle {
     margin-bottom: 2px;
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: #818181;
     text-align: center;
 }
 
-.credits {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px solid #4A5768;
-    font-size: 0.9em;
-    text-align: center;
-}
-
-
 button {
     margin-top: 10px;
-    background-color: #D5DDE5;
+    background-color: #d5dde5;
     border-radius: 3px;
-    color:black;
+    color: black;
 }
-
 
 legend {
     font-size: 1.2em;
     font-weight: 600;
-    color: #3a9cc6;
+    color: #5c936f;
     text-align: center;
+}
+
+.gray-color{
+    color: #6e7a8a;
+}
+
+.orange-color{
+    color: #C6643A;
+}
+
+.orange-color button{
+    color: white;
+}
+
+.blue-color{
+    color: #3a9cc6;
+}
+
+.green-color{
+    color: #5c936f;
 }
 
 fieldset {
@@ -49,34 +61,31 @@ fieldset {
     text-align: center;
 }
 
-
-
 #reddit-format-container {
     margin: 10px auto;
     padding: 20px;
-    border: 1px dotted #4A5768;
+    border: 1px dotted #4a5768;
     border-radius: 3px;
     text-align: left;
 }
 
 #reddit-format {
     font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
 }
 
 #in-game-format-container {
     margin: 10px auto;
     padding: 20px;
-    border: 1px dotted #4A5768;
+    border: 1px dotted #4a5768;
     border-radius: 3px;
     text-align: left;
 }
 
 #in-game-format {
     font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
 }
-
 
 pre {
     white-space: pre-wrap;
@@ -87,41 +96,39 @@ pre {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    max-width: 480px;
     height: 50px;
+    margin: 0px auto;
     border-radius: 3px;
-    max-width: 550px;
-    margin: 30px auto 10px auto;
+}
+
+.smaller {
+    max-width: 350px;
 }
 
 .content button {
+    flex-grow: 0.3;
+    flex-basis: 20%;
+    margin: 0 10px 0 10px;
     padding: 10px;
     border: none;
     font-size: 15px;
-    flex-basis: 20%;
-    flex-grow: 0.3;
-    margin: 0 10px 0 10px;
 }
+
 
 #show-reddit-format.reddit {
     background-color: #3a9cc6;
-    color:white;
     border-bottom: 2px solid #cfd9db;
-    /* Example color for Reddit */
+    color: white;
 }
 
-button:hover#show-reddit-format {
-    transform: translateY(-2px);
-}
 
 #show-in-game-format {
-    background-color: #FFC324;
-    border-bottom: 2px solid #ffe8a7;
-    /* Example color for Reddit */
+    color: white;
+    background-color: #C6643A;
+    border-bottom: 2px solid #fe834d;
 }
 
-button:hover#show-in-game-format {
-    transform: translateY(-2px);
-}
 
 .tabs {
     display: grid;
@@ -130,16 +137,13 @@ button:hover#show-in-game-format {
     grid-auto-rows: auto;
     max-width: 800px;
     margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0 10px 30px 10px;
 }
 
 .tabcontent {
     display: none;
-    margin: 10px auto 20px auto;
+    margin: 10px auto 10px auto;
     padding: 5px;
-    border-top: 1px dotted #4A5768;
-    border-bottom: 1px dotted #4A5768;
 }
 
 .tablink {
@@ -150,24 +154,24 @@ button:hover#show-in-game-format {
     cursor: pointer;
     border: 1px solid #dfdfdf;
     font-size: 15px;
+    color: black;
     text-align: center;
     white-space: nowrap;
-    color:black;
 }
 
 .tablink.active {
-    background-color: #6E7A8A;
+    background-color: #6e7a8a;
     border-bottom: 2px solid #c2c2c2;
     color: white;
 }
 
 .tablink:active {
-    background-color: #6E7A8A;
+    background-color: #6e7a8a;
     color: white;
 }
 
 .tablink:focus {
-    background-color: #6E7A8A;
+    background-color: #6e7a8a;
     color: white;
 }
 
@@ -188,67 +192,177 @@ button:hover#show-in-game-format {
     flex-basis: 20%;
     min-width: 20%;
     padding: 10px;
-    background-color: #F8F9FA;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border: 1px solid #c7c7c7;
     border-radius: 8px;
     text-align: center;
 }
 
 .gold {
-    background-color: #fffce8;
-    border: 1px solid #FFC324;
+    background-color: #fffef7;
+    border: 1px solid #fec324;
 }
 
 .cardName {
     padding-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
+    color: #6e7a8a;
 }
 
 .option {
     padding-top: 5px;
+    border-top: 1px solid #4a5768;
     font-size: 13px;
     text-align: left;
-    border-top: 1px solid #4A5768;
 }
 
 input[type="radio"].disabled {
     accent-color: gray;
 }
 
-#in-game-user-message, #user-message{
-    padding-top:20px;
+#in-game-user-message,
+#user-message {
+    padding-top: 20px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+#fileNameInput {
+    margin: 0 10px 10px 10px;
+    padding: 5px;
+    font-size: 15px;
+    flex-grow: 0.5;
+}
+
+.content button#saveOptionsBtn {
+    flex-grow: 0.3;
+    flex-basis: 20%;
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    border: none;
+    background-color:#2a7949d0;
+    border-bottom: 2px solid #437f58;
+    color:white;
+    font-size: 15px;
+}
+
+.content button#loadOptionsBtn {
+    flex-grow: 0.3;
+    flex-basis: 20%;
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    border: none;
+    background-color: #fec324;
+    border-bottom: 2px solid #d4b35a;
+    font-size: 15px;
+}
+
+.content button#confirmSaveBtn {
+    flex-grow: 0.3;
+    flex-basis: 20%;
+    margin: 0 10px 0 10px;
+    padding: 10px;
+    border: none;
+    background-color:#2a7949d0;
+    border-bottom: 2px solid #437f58;
+    color:white;
+    font-size: 15px;
+}
+
+.content button#closeWarningBtn {
+    background-color: #C6643A;
+    color: white;
+}
+
+.content button#okFileNameValidationBtn {
+    background-color: #C6643A;
+    color: white;
+}
+
+.divider {
+    border-top: 1px dotted #4a5768;
+}
+
+.add-space {
+    margin-top: 10px;
+}
+
+/* Popup overlay */
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Popup content */
+.popup-content {
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    display: none;
+    /*position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;*/
+}
+
+/* Buttons container */
+.popup-buttons {
+    margin-top: 20px;
+}
+
+.popup-buttons button {
+    margin: 0 10px;
 }
 
 .credits {
-    font-size: 0.9em;
-    color: #91989e;    
-    text-align: center;
     margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-top: 1px solid #4a5768;
+    font-size: 0.9em;
+    color: #91989e;
+    text-align: center;
 }
 
 /* Style for the link inside the credits */
 a.credit-link {
+    transition: color 0.3s ease; /* Smooth color transition */;
     color: #399cc6;
-    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 a.credit-link:visited {
-    color: #399cc6; /* Same color as the text for visited links */
+    color: #399cc6; /* Same color as the text for visited links */;
 }
 
 a.credit-link:hover {
-    color: #333; /* Change color on hover */
+    color: #333; /* Change color on hover */;
 }
 
 a.credit-link:active {
-    color: #399cc6; /* Same color as the text for active links */
-    text-decoration: underline; /* Add underline on hover */
+    color: #399cc6; /* Same color as the text for active links */;
+    text-decoration: underline; /* Add underline on hover */;
 }
 
 a.credit-link:focus {
-    color: #4A5768; /* Same color as the text for focused links */
-
+    color: #4a5768; /* Same color as the text for focused links */;
 }
-
-

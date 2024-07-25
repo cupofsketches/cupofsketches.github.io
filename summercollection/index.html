@@ -4,76 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Match Card Status Tool</title>
+    <title>Royal Match Card Status (Copy & Paste)</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
-
-    <!-- Save and Load -->
-    <fieldset class="divider add-space">
-        <legend class="gray-color">Save & Import Card Status<legend>
-    </fieldset>
-
-    <div class="content smaller">
-        <button id="saveOptionsBtn">Save</button>
-        <button id="loadOptionsBtn">Import</button>
-        <input type="file" id="loadInput" style="display: none;">
-    </div>
-
-    <!-- Popup for warning message -->
-    <div id="warningPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeWarningPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Whoops!<legend>
-            </fieldset>
-            <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
-            <div class="content">
-                <button id="closeWarningBtn">OK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup for file name input -->
-    <div id="fileNamePopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="green-color">Save Card Status<legend>
-            </fieldset>            
-            <div class="input-container">
-                <label for="fileNameInput"></label>
-                <input type="text" id="fileNameInput" placeholder="Name Your File Here">
-            </div>
-            <div class="content">
-                <button id="confirmSaveBtn">Save</button>
-                <button id="cancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup for file name validation -->
-    <div id="fileNameValidationPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeFileNameValidationPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Missing File Name</legend>
-            </fieldset>
-            <p id="fileNameValidationMessage"></p>
-            <div class="content">
-                <button id="okFileNameValidationBtn">OK</button>
-            </div>
-        </div>
-    </div>
-
-
+    <h1>Royal Match Card Status<br><span class="subtitle">(Easy Copy & Paste)</span></h1>
 
     <!-- Tabs -->
+
     <div id="park" class="tabcontent">
         <form id="park-form" class="collection-form" data-collection="park">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Park Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -169,7 +111,7 @@
 
     <div id="entertainment" class="tabcontent">
         <form id="entertainment-form" class="collection-form" data-collection="entertainment">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Entertainment Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -261,7 +203,7 @@
 
     <div id="waterfall" class="tabcontent">
         <form id="waterfall-form" class="collection-form" data-collection="waterfall">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Waterfall Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -353,7 +295,7 @@
 
     <div id="amusement" class="tabcontent">
         <form id="amusement-form" class="collection-form" data-collection="amusement">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Amusement Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -445,7 +387,7 @@
 
     <div id="cinema" class="tabcontent">
         <form id="cinema-form" class="collection-form" data-collection="cinema">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Cinema Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -537,7 +479,7 @@
 
     <div id="sports" class="tabcontent">
         <form id="sports-form" class="collection-form" data-collection="sports">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Sports Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -628,7 +570,7 @@
 
     <div id="backyard" class="tabcontent">
         <form id="backyard-form" class="collection-form" data-collection="backyard">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Backyard Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -717,7 +659,7 @@
 
     <div id="summer" class="tabcontent">
         <form id="summer-form" class="collection-form" data-collection="summer">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Summer Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -807,7 +749,7 @@
 
     <div id="spring" class="tabcontent">
         <form id="spring-form" class="collection-form" data-collection="spring">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Spring Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -896,7 +838,7 @@
 
     <div id="picnic" class="tabcontent">
         <form id="picnic-form" class="collection-form" data-collection="picnic">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Picnic Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -983,7 +925,7 @@
 
     <div id="beach" class="tabcontent">
         <form id="beach-form" class="collection-form" data-collection="beach">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Beach Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -1070,7 +1012,7 @@
 
     <div id="terrace" class="tabcontent">
         <form id="terrace-form" class="collection-form" data-collection="terrace">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Terrace Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -1157,7 +1099,7 @@
 
     <div id="party" class="tabcontent">
         <form id="party-form" class="collection-form" data-collection="party">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Party Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -1242,7 +1184,7 @@
 
     <div id="fishing" class="tabcontent">
         <form id="fishing-form" class="collection-form" data-collection="fishing">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Fishing Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -1327,7 +1269,7 @@
 
     <div id="holiday" class="tabcontent">
         <form id="holiday-form" class="collection-form" data-collection="holiday">
-            <fieldset class="fieldset divider">
+            <fieldset class="fieldset">
                 <legend>Holiday Cards</legend>
                 <div class="card-container">
                     <div class="card">
@@ -1410,8 +1352,8 @@
         </form>
     </div>
 
-    <fieldset class="divider">
-        <legend>Choose Decks:<legend>
+    <fieldset>
+        <legend>Select Packs:<legend>
     </fieldset>
     <div class="tabs">
         <button class="tablink active" data-collection="park" onclick="openCollection('park')">Park</button>
@@ -1431,40 +1373,36 @@
         <button class="tablink" data-collection="fishing" onclick="openCollection('fishing')">Fishing</button>
         <button class="tablink" data-collection="holiday" onclick="openCollection('holiday')">Holiday</button>
     </div>
-
-    <fieldset class="divider">
-        <legend class="gray-color">Generate Text<legend>
-    </fieldset>
             
     <div class="content">
-        <button id="show-reddit-format" class="reddit">Show Reddit<br>Format</button>
-        <button id="show-in-game-format">Show In-Game<br>Format</button>
+        <button id="show-reddit-format" class="reddit">Show Reddit Format</button>
+        <button id="show-in-game-format">Show In-Game Format</button>
     </div>
 
-    <fieldset class="add-space">
+    <fieldset>
         <div id="reddit-format-container" style="display:none;">
-            <legend class="blue-color">Reddit Format</legend>
+            <legend>Reddit Format</legend>
             <div id="user-message" style="display: block; color: gray;">Start selecting your card status...</div>
             <pre id="reddit-format"></pre>
         </div>
         <div id="in-game-format-container" style="display:none;">
-            <legend class="orange-color">In-Game Chat Format<br><span class="subtitle">(1 paragraph, 500-character limit)</span></legend>
+            <legend>In-Game Chat Format<br><span class="subtitle">(1 paragraph, 500-character limit)</span></legend>
             <div id="in-game-user-message" style="display: block; color: gray;">Start selecting your card status...<br>Splitting text after 500 characters</div>
             <pre id="in-game-format"></pre>
-        </div>       
+        </div>
     </fieldset>
 
     <script src="scripts.js"></script>
-
+            
     <!-- Credits: u/Potential_Save | cupofsketches@gmail.com | ID:2N96AFNK -->
     <!-- Who lost a lot of sleep to make your life a bit easier xD -->
-
     <div class="credits credit-link"> Card Status Tool by <a href="https://www.reddit.com/user/Potential_Save" class="credit-link">u/Potential_Save</a>
         <br>Visit our subreddit: <a href="https://www.reddit.com/r/RoyalMatch" class="credit-link">r/RoyalMatch</a>
         <br>cupofsketches@gmail.com
         <br>ID:2N96AFNK
     </div>
             
-
 </body>
 </html>
+
+            

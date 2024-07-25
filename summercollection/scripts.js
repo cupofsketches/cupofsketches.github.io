@@ -280,7 +280,7 @@ function saveOptions() {
 
     forms.forEach(form => {
         const radioButtons = form.querySelectorAll('input[type="radio"]');
-        const selectedOptions = Array.from(radioButtons).some(radio => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate'));
+        const selectedOptions = Array.from(radioButtons).some(radio => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate' || radio.value === 'owed'));
         if (selectedOptions) {
             optionsSelected = true;
         }
@@ -296,6 +296,7 @@ function saveOptions() {
         // Proceed with saving the options
         const neededCards = {};
         const duplicateCards = {};
+        const owedCards = {};
 
         function processFormData(form, collectionName) {
             const formData = new FormData(form);
@@ -306,6 +307,9 @@ function saveOptions() {
                 } else if (value === 'duplicate') {
                     if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
                     duplicateCards[collectionName].push(key);
+                } else if (value === 'owed') {
+                    if (!owedCards[collectionName]) owedCards[collectionName] = [];
+                    owedCards[collectionName].push(key);
                 }
             });
         }
@@ -315,7 +319,7 @@ function saveOptions() {
             processFormData(form, collectionName);
         });
 
-        const optionsData = { neededCards, duplicateCards };
+        const optionsData = { neededCards, duplicateCards, owedCards };
 
         const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -354,6 +358,11 @@ function loadOptions(event) {
                 if (optionsData.duplicateCards[collectionName]) {
                     optionsData.duplicateCards[collectionName].forEach(card => {
                         form.querySelector(`input[name="${card}"][value="duplicate"]`).checked = true;
+                    });
+                }
+                if (optionsData.owedCards[collectionName]) {
+                    optionsData.owedCards[collectionName].forEach(card => {
+                        form.querySelector(`input[name="${card}"][value="owed"]`).checked = true;
                     });
                 }
             });

@@ -55,7 +55,7 @@ fieldset {
     display: flex;
     flex-wrap: wrap;
     gap: 1px;
-    max-width: 550px;
+    max-width: 480px;
     margin: 0 auto;
     border: none;
     text-align: center;
@@ -135,7 +135,7 @@ pre {
     gap: 1px;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-auto-rows: auto;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 10px 30px 10px;
 }
@@ -220,6 +220,10 @@ pre {
 input[type="radio"].disabled {
     accent-color: gray;
 }
+
+input[type="radio"] {
+    vertical-align: baseline;
+  }
 
 #in-game-user-message,
 #user-message {
@@ -365,4 +369,10 @@ a.credit-link:active {
 
 a.credit-link:focus {
     color: #4a5768; /* Same color as the text for focused links */;
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 70%;
+    }
 }

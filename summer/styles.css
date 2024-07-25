@@ -221,6 +221,11 @@ input[type="radio"].disabled {
     accent-color: gray;
 }
 
+input[type="radio"] {
+    vertical-align: bottom;
+    margin-top: 5px;
+}
+
 #in-game-user-message,
 #user-message {
     padding-top: 20px;

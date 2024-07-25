@@ -280,7 +280,7 @@ function saveOptions() {
 
     forms.forEach(form => {
         const radioButtons = form.querySelectorAll('input[type="radio"]');
-        const selectedOptions = Array.from(radioButtons).some(radio => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate' || radio.value === 'owed'));
+        const selectedOptions = Array.from(radioButtons).some(radio => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate'));
         if (selectedOptions) {
             optionsSelected = true;
         }

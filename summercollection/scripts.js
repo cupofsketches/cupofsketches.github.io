@@ -120,7 +120,7 @@ function generateInGameFormat() {
             if (!firstNeeded) {
                 needed += '  /  ';
             }
-            needed += `[${collection}] --> ${neededCards[collection].join(', ')}`;
+            needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
             firstNeeded = false;
         }
     }
@@ -136,7 +136,7 @@ function generateInGameFormat() {
             if (!firstDuplicate) {
                 duplicate += '  /  ';
             }
-            duplicate += `[${collection}] --> ${duplicateCards[collection].join(', ')}`;
+            duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
             firstDuplicate = false;
         }
     }

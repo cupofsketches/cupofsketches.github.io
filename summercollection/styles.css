@@ -188,15 +188,15 @@ button:hover#show-in-game-format {
     flex-basis: 20%;
     min-width: 20%;
     padding: 10px;
-    background-color: #F8F9FA;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border: 1px solid #c7c7c7;
     border-radius: 8px;
     text-align: center;
 }
 
 .gold {
-    background-color: #fffce8;
-    border: 1px solid #FFC324;
+    background-color: #fffef7;
+    border: 1px solid #fec324;
 }
 
 .cardName {

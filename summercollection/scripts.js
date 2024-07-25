@@ -118,7 +118,7 @@ function generateInGameFormat() {
         let firstNeeded = true;
         for (const collection in neededCards) {
             if (!firstNeeded) {
-                needed += '  /  ';
+                needed += ' / ';
             }
             needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
             firstNeeded = false;
@@ -134,7 +134,7 @@ function generateInGameFormat() {
         let firstDuplicate = true;
         for (const collection in duplicateCards) {
             if (!firstDuplicate) {
-                duplicate += '  /  ';
+                duplicate += ' / ';
             }
             duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
             firstDuplicate = false;

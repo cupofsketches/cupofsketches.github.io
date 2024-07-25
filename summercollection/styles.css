@@ -222,8 +222,9 @@ input[type="radio"].disabled {
 }
 
 input[type="radio"] {
-    vertical-align: baseline;
-  }
+    vertical-align: bottom;
+    margin: 6px 3px 0px 3px;
+}
 
 #in-game-user-message,
 #user-message {

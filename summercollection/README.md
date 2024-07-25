@@ -1,4 +1,4 @@
-# Royal Match Card Status
+# Royal Match Card Status Tool
 
 Royal Match Card Status is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly. Copy the generated text and paste it wherever you need.
 

@@ -55,7 +55,7 @@ fieldset {
     display: flex;
     flex-wrap: wrap;
     gap: 1px;
-    max-width: 550px;
+    max-width: 440px;
     margin: 0 auto;
     border: none;
     text-align: center;

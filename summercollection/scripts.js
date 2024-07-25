@@ -132,14 +132,14 @@ function generateInGameFormat() {
             if (!firstNeeded) {
                 needed += '  /  ';
             }
-            needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
+            needed += `[${collection}] --> ${neededCards[collection].join(', ')}`;
             firstNeeded = false;
         }
     }
 
     if (Object.keys(duplicateCards).length > 0) {
         if (needed !== '') {
-            duplicate = ' || DUPLICATE: ';
+            duplicate = ' ||  DUPLICATE: ';
         } else {
             duplicate = 'DUPLICATE: ';
         }
@@ -148,7 +148,7 @@ function generateInGameFormat() {
             if (!firstDuplicate) {
                 duplicate += '  /  ';
             }
-            duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
+            duplicate += `[${collection}] --> ${duplicateCards[collection].join(', ')}`;
             firstDuplicate = false;
         }
     }

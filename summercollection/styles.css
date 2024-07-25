@@ -115,18 +115,17 @@ pre {
     font-size: 15px;
 }
 
-
 #show-reddit-format.reddit {
-    background-color: #3a9cc6;
-    border-bottom: 2px solid #cfd9db;
+    background-color: #C6643A;
+    border-bottom: 2px solid #fe834d;
     color: white;
 }
 
 
 #show-in-game-format {
+    background-color: #3a9cc6;
+    border-bottom: 2px solid #cfd9db;
     color: white;
-    background-color: #C6643A;
-    border-bottom: 2px solid #fe834d;
 }
 
 

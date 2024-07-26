@@ -7,8 +7,8 @@ Royal Match Card Status is a tool designed to simplify sharing the status of car
 ## Features
 
 - Save card status selections and load from an existing file.
-- Select card status (needed/duplicate) for each card using intuitive radio buttons.
-- Generate formatted output for Reddit and in-game chat formats with a click of a button.
+- Select card status (needed/duplicate) for each card [in PT-BR] using intuitive radio buttons.
+- Generate formatted output [in EN-US] for Reddit and in-game chat formats with a click of a button.
 - Copy and paste the generated text directly into Reddit posts or in-game chats.
 
 **Note:** In-game chat has a limit of 500 characters and does not allow paragraphs.

@@ -296,7 +296,7 @@ function saveOptions() {
         // Proceed with saving the options
         const neededCards = {};
         const duplicateCards = {};
-        const owedCards = {};
+        const ownedCards = {};
 
         function processFormData(form, collectionName) {
             const formData = new FormData(form);
@@ -307,9 +307,9 @@ function saveOptions() {
                 } else if (value === 'duplicate') {
                     if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
                     duplicateCards[collectionName].push(key);
-                } else if (value === 'owed') {
-                    if (!owedCards[collectionName]) owedCards[collectionName] = [];
-                    owedCards[collectionName].push(key);
+                } else if (value === 'owned') {
+                    if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
+                    ownedCards[collectionName].push(key);
                 }
             });
         }
@@ -319,7 +319,7 @@ function saveOptions() {
             processFormData(form, collectionName);
         });
 
-        const optionsData = { neededCards, duplicateCards, owedCards };
+        const optionsData = { neededCards, duplicateCards, ownedCards };
 
         const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
@@ -360,9 +360,9 @@ function loadOptions(event) {
                         form.querySelector(`input[name="${card}"][value="duplicate"]`).checked = true;
                     });
                 }
-                if (optionsData.owedCards[collectionName]) {
-                    optionsData.owedCards[collectionName].forEach(card => {
-                        form.querySelector(`input[name="${card}"][value="owed"]`).checked = true;
+                if (optionsData.ownedCards[collectionName]) {
+                    optionsData.ownedCards[collectionName].forEach(card => {
+                        form.querySelector(`input[name="${card}"][value="owned"]`).checked = true;
                     });
                 }
             });

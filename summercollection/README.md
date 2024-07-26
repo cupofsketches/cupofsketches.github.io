@@ -2,7 +2,7 @@
 
 Royal Match Card Status is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly. Copy the generated text and paste it wherever you need.
 
-**Note:** Gold cards cannot be shared, so no options are available for them. Owed cards are also not applicable for this purpose.
+**Note:** Gold cards cannot be shared, so no options are available for them. Owned cards are also not applicable for this purpose.
 
 ## Features
 

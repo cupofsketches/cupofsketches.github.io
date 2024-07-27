@@ -319,12 +319,7 @@ function saveOptions() {
             processFormData(form, collectionName);
         });
 
-        const optionsData = { 
-            message: "-------NOTE: PLEASE LOAD THIS FILE TO RESTORE YOUR CARD SELECTIONS AND GENERATE THE TEXT. DO NOT COPY AND PASTE THIS CONTENT!-------",
-            neededCards, 
-            duplicateCards, 
-            ownedCards
-        };
+        const optionsData = { neededCards, duplicateCards, ownedCards };
 
         const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
         const url = URL.createObjectURL(blob);

@@ -335,29 +335,37 @@ function saveOptions() {
 document.getElementById('saveOptionsBtn').addEventListener('click', saveOptions);
 
 
-
 // Load options from a file
 function loadOptions(event) {
     function hideUserMessage() {
         document.getElementById('user-message').style.display = 'none';
         document.getElementById('in-game-user-message').style.display = 'none';
     }
+    
     const file = event.target.files[0];
     if (file) {
         hideUserMessage();
+
         const reader = new FileReader();
         reader.onload = function () {
             const optionsData = JSON.parse(reader.result);
+
             document.querySelectorAll('.collection-form').forEach(form => {
                 const collectionName = form.getAttribute('data-collection');
+
+
                 if (optionsData.neededCards[collectionName]) {
                     optionsData.neededCards[collectionName].forEach(card => {
                         form.querySelector(`input[name="${card}"][value="needed"]`).checked = true;
+                        console.log(`NEEDED ---> ${card}`);
+                        console.log(form.querySelector(`input[name="${card}"][value="needed"]`).checked);
                     });
                 }
                 if (optionsData.duplicateCards[collectionName]) {
                     optionsData.duplicateCards[collectionName].forEach(card => {
                         form.querySelector(`input[name="${card}"][value="duplicate"]`).checked = true;
+                        console.log(`DUPLICATE ---> ${card}`);
+                        console.log(form.querySelector(`input[name="${card}"][value="duplicate"]`).checked);
                     });
                 }
                 if (optionsData.ownedCards[collectionName]) {
@@ -365,14 +373,18 @@ function loadOptions(event) {
                         form.querySelector(`input[name="${card}"][value="owned"]`).checked = true;
                     });
                 }
+
             });
 
             generateRedditFormat();
             generateInGameFormat();
         };
         reader.readAsText(file);
-
     }
+
+    // Reset the file input value to trigger the change event if the same file is selected
+    const fileInput = document.getElementById('loadInput');
+    fileInput.value = ''; // Clear the file input value
 }
 
 // Automatically generate formats on form input change

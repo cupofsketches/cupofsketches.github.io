@@ -1,7 +1,10 @@
 # Royal Match Tools
 
 Welcome to the Royal Match Tools repository!
+
 This project includes two helpful tools for managing your Royal Match collections and engaging with the community.
+
+**Disclaimer**: We are not affiliated with Dream Games!
 
 ## Card Status Tool
 

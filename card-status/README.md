@@ -1,39 +1,39 @@
-# Royal Match Tools
+# Royal Match Card Status Tool
 
-Welcome to the Royal Match Tools repository!
+Royal Match Card Status is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly. Copy the generated text and paste it wherever you need.
 
-This project includes two helpful tools for managing your Royal Match collections and engaging with the community.
+**Note:** Gold cards cannot be shared, so no options are available for them. Owned cards are also not applicable for this purpose.
 
-**Disclaimer**: We are not affiliated with Dream Games!
+## Features
 
-## Card Status Tool
+- Save card status selections and load from an existing file.
+- Select card status (needed/duplicate) for each card using intuitive radio buttons.
+- Generate formatted output for Reddit and in-game chat formats with a click of a button.
+- Copy and paste the generated text directly into Reddit posts or in-game chats.
 
-Easily copy and paste card status for Royal Match collections with the Card Status Tool.
+**Note:** In-game chat has a limit of 500 characters and does not allow paragraphs.
 
-### Features:
+## Usage
 
-- **Save and Load:** Save your card status selections to a .json file and load from an existing file.
-- **Intuitive Interface:** Select card status (needed/duplicate) for each card using intuitive radio buttons.
-- **Formatted Output:** Generate formatted text for Reddit and in-game chat formats with a click of a button.
-- **Direct Copy-Paste:** Copy and paste the generated text directly into Reddit posts or in-game chats.
+1. **Select Packs & Card Status**:
+   - Use the radio buttons next to each card to indicate whether it is needed or a duplicate.
 
-## Card Tracker Tool
+2. **Generate Format**:
+   - Click the "Generate Reddit Format" or "Generate In-Game Format" button to create the formatted text.
 
-Keep track of and trade your cards with the Card Tracker Tool for Royal Match collections.
+3. **Copy and Paste**:
+   - Copy the generated text and paste it into the desired platform (Reddit, in-game chat, etc.).
 
-### Features:
+### Feedback
 
-- **Card Status Tracking:** Manage card statuses such as owned, needed, and duplicates with ease.
-- **Automatic Assignment:** The last column automatically indicates who should send cards to whom.
-- **Flexible Friend Management:** Add or remove friends without affecting the automatic assignment formula.
-- **Easy Access:** Filter columns to quickly find the information you need.
-
-## Reddit
-
-Explore the Royal Match community on Reddit for discussions and updates.
+If you have any feedback or questions, please feel free to reach out to us at cupofsketches@gmail.com. We'd love to hear from you!
 
 ## Credits
 
 - Card Status Tool by [u/Potential_Save](https://www.reddit.com/user/Potential_Save/)
-- Royal Match In-Game Name & Friend ID: Fenix - 2N96AFNK
-- Visit our subreddits: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch) & [r/RoyalMatchGame](https://www.reddit.com/r/RoyalMatchGame)
+- Royal Match Card Status by Fenix - ID:2N96AFNK
+- Visit our subreddit: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch)
+
+## Disclaimer
+
+- We are not affiliated with Dream Games!

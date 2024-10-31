@@ -1,438 +1,96 @@
-/*
-------------------------
--------- BODY ----------
-------------------------
-*/
-
 body {
-  font-size: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/*
-------------------------
------- HEADINGS --------
-------------------------
-*/
-
-h1 {
-  font-size: 1.5em;
-  color: #c6643a;
-  text-align: center;
-  padding: 7px 0 7px 0;
-}
-
-.subtitle {
-  margin-bottom: 2px;
-  font-size: 0.8em;
-  color: #3a9cc6;
-  text-align: center;
-}
-
-/*
-------------------------
------- BUTTONS ---------
-------------------------
-*/
-
-button {
-  margin-top: 10px;
-  background-color: #d5dde5;
-  border-radius: 3px;
-  color: black;
-}
-
-/*
-------------------------
--------- LEGEND --------
-------------------------
-*/
-
-legend {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #5c936f;
-  text-align: center;
-}
-
-/*
-------------------------
------- COLOR CLASSES ----
-------------------------
-*/
-
-.gray-color {
-  color: #6e7a8a;
-}
-
-.orange-color {
-  color: #c6643a;
-}
-
-.orange-color button {
-  color: white;
-}
-
-.blue-color {
-  color: #3a9cc6;
-}
-
-.green-color {
-  color: #5c936f;
-}
-
-/*
-------------------------
------- FIELDSET --------
-------------------------
-*/
-
-fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1px;
-  max-width: 480px;
-  margin: 0 auto;
-  border: none;
-  text-align: center;
-}
-
-/*
-------------------------
--- REDDIT FORMAT BOX ----
-------------------------
-*/
-
-#reddit-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
-}
-
-#reddit-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
--- IN-GAME FORMAT BOX ---
-------------------------
-*/
-
-#in-game-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
-}
-
-#in-game-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
------ BOX WRAPPING -----
-------------------------
-*/
-
-pre {
-  white-space: pre-wrap;
-}
-
-/*
-------------------------
-------- CONTENT --------
-------------------------
-*/
-
-.content {
-  display: flex;
-  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: grid;
   justify-content: center;
   align-items: center;
-  max-width: 480px;
-  height: 50px;
-  margin: 0px auto;
-  border-radius: 3px;
+  margin: 0;
+  min-height: 100vh;
 }
 
-.smaller {
-  max-width: 350px;
-}
-
-/*
-------------------------
------ BUTTON STYLES -----
-------------------------
-*/
-
-.content button {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  font-size: 15px;
-}
-
-#show-reddit-format.reddit {
-  background-color: #c6643a;
-  border-bottom: 2px solid #fe834d;
-  color: white;
-}
-
-#show-in-game-format {
-  background-color: #3a9cc6;
-  border-bottom: 2px solid #cfd9db;
-  color: white;
-}
-
-/*
-------------------------
---------- TABS ----------
-------------------------
-*/
-
-.tabs {
-  display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-auto-rows: auto;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px 30px 10px;
-}
-
-.tabcontent {
-  display: none;
-  margin: 10px auto 10px auto;
-  padding: 5px;
-}
-
-.tablink {
-  overflow: hidden;
+.container {
+  width: 100%;
+  max-width: 1200px; /* Adjust maximum width as needed */
+  /*display: flex;
+  flex-wrap: wrap;*/
+  justify-content: center; /* Center cards horizontally */
+  align-items: center; /* Center cards vertically */
+  gap: 20px;
+  padding: 20px;
   box-sizing: border-box;
-  margin: 2px;
-  padding: 10px 10px;
-  cursor: pointer;
-  border: 1px solid #dfdfdf;
-  font-size: 15px;
-  color: black;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.tablink.active,
-.tablink:focus {
-  background-color: #6e7a8a;
-  color: white;
-}
-
-.tabs .tablink {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/*
-------------------------
---- CARD CONTAINERS -----
-------------------------
-*/
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
-  margin-top: 10px;
 }
 
 .card {
-  flex-grow: 1;
-  flex-basis: 20%;
-  min-width: 20%;
-  padding: 10px;
-  background-color: #ffffff;
-  border: 1px solid #c7c7c7;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.gold {
-  background-color: #fffef7;
-  border: 1px solid #fec324;
-}
-
-.cardName {
-  padding-bottom: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #6e7a8a;
-}
-
-.option {
-  padding-top: 5px;
-  border-top: 1px solid #4a5768;
-  font-size: 13px;
-  text-align: left;
-}
-
-/*
-------------------------
--- RADIO BUTTONS STYLE --
-------------------------
-*/
-
-input[type='radio'].disabled {
-  accent-color: gray;
-}
-
-input[type='radio'] {
-  vertical-align: bottom;
-  margin: 6px 3px 0px 3px;
-}
-
-/*
-------------------------
------ MESSAGES ---------
-------------------------
-*/
-
-#in-game-user-message,
-#user-message {
-  padding-top: 20px;
-}
-
-/*
-------------------------
--- INPUT CONTAINER ------
-------------------------
-*/
-
-.input-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-#fileNameInput {
-  margin: 0 10px 10px 10px;
-  padding: 5px;
-  font-size: 15px;
-  flex-grow: 0.5;
-}
-
-/*
-------------------------
--- SAVE & LOAD BUTTONS --
-------------------------
-*/
-
-.content button#saveOptionsBtn,
-.content button#confirmSaveBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #2a7949d0;
-  border-bottom: 2px solid #437f58;
-  color: white;
-  font-size: 15px;
-}
-
-.content button#loadOptionsBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #fec324;
-  border-bottom: 2px solid #d4b35a;
-  font-size: 15px;
-}
-
-.content button#closeWarningBtn,
-.content button#okFileNameValidationBtn {
-  background-color: #c6643a;
-  color: white;
-}
-
-/*
-------------------------
------- DIVIDERS --------
-------------------------
-*/
-
-.divider {
-  border-top: 1px dotted #4a5768;
-}
-
-.add-space {
-  margin-top: 10px;
-}
-
-/*
-------------------------
------ POPUP STYLES -----
-------------------------
-*/
-
-.popup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup-content {
-  position: relative;
-  width: 300px;
-  padding: 20px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
   text-align: center;
+  flex: 1 1 250px; /* Equal width for all cards */
+  height: 300px; /* Equal height for all cards */
+  margin: 10px; /* Adjust margin as needed */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/*
-------------------------
---- POPUP CLOSE BTN -----
-------------------------
-*/
-
-.close {
-  display: none;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-/*
-------------------------
----- POPUP BUTTONS -----
-------------------------
-*/
-
-.popup-buttons {
-  margin-top: 20px;
+.card-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.popup-buttons button {
-  margin: 0 10px;
+.card-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
-/*
-------------------------
------- CREDITS ---------
-------------------------
-*/
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  background-color: #ffc324;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-reddit {
+  background-color: #3a9cc6; /* Updated Reddit button color */
+  color: white;
+}
+
+.button:hover {
+  background-color: #ffb700;
+}
+
+.button-reddit:hover {
+  background-color: #2c7da0; /* Darker hover color for Reddit button */
+}
+
+.fa-regular,
+.far {
+  color: #fec324; /* Example color */
+  /* Add more styles as needed */
+}
+
+.fa-exchange-alt:before,
+.fa-right-left:before {
+  color: #fec324; /* Example color */
+}
+
+.fa-reddit:before {
+  color: #3a9cc6; /* Example color */
+}
 
 .credits {
   margin-top: 20px;
@@ -444,24 +102,38 @@ input[type='radio'] {
   text-align: center;
 }
 
+/* Style for the link inside the credits */
 a.credit-link {
-  transition: color 0.3s ease;
+  transition: color 0.3s ease; /* Smooth color transition */
   color: #399cc6;
 }
 
 a.credit-link:visited {
-  color: #399cc6;
+  color: #399cc6; /* Same color as the text for visited links */
 }
 
 a.credit-link:hover {
-  color: #333;
+  color: #333; /* Change color on hover */
 }
 
 a.credit-link:active {
-  color: #399cc6;
-  text-decoration: underline;
+  color: #399cc6; /* Same color as the text for active links */
+  text-decoration: underline; /* Add underline on hover */
 }
 
 a.credit-link:focus {
-  color: #4a5768;
+  color: #4a5768; /* Same color as the text for focused links */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    align-items: center; /* Center cards vertically on smaller screens */
+  }
+
+  .card {
+    flex-basis: calc(100% - 20px); /* Take full width minus gap on smaller screens */
+    height: auto; /* Auto height to accommodate content */
+    margin-bottom: 20px; /* Add space between stacked cards */
+  }
 }

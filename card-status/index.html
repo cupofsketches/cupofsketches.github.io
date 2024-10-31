@@ -4,158 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Match Card Status Tool</title>
+    <title>Royal Match Tools</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/84caf21cc2.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-    <h1 span class="">Royal Match<br>Card Status Tool<br><span class="subtitle">- Fall Collection -</span></h1>
-
-    <!-- Save and Load -->
-    <fieldset class="divider add-space">
-        <legend class="gray-color">Save & Load Card Status</legend>
-    </fieldset>
-
-    <div class="content smaller">
-        <button id="saveOptionsBtn">Save</button>
-        <button id="loadOptionsBtn">Load</button>
-        <input type="file" id="loadInput" style="display: none;">
-    </div>
-
-    <!-- Popup for warning message -->
-    <div id="warningPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeWarningPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Whoops!<legend>
-            </fieldset>
-            <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
-            <div class="content">
-                <button id="closeWarningBtn">OK</button>
-            </div>
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title">Card Status Tool</h2>
+            <i class="fa-2x fa-regular fa-paste"></i>
+            <p class="card-description">The Card Status Tool</br>for the New Collection</br>will be updated soon!
+            </p>
+            <p>Check back in a few days!</p>
+            <a href="#" class="button button-yellow">
+                - Being Updated -</a>
         </div>
     </div>
-
-    <!-- Popup for file name input -->
-    <div id="fileNamePopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="green-color">Save Card Status<legend>
-            </fieldset>
-            <div class="input-container">
-                <label for="fileNameInput"></label>
-                <input type="text" id="fileNameInput" placeholder="Name Your File Here">
-            </div>
-            <div class="content">
-                <button id="confirmSaveBtn">Save</button>
-                <button id="cancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup for file name validation -->
-    <div id="fileNameValidationPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeFileNameValidationPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Missing File Name</legend>
-            </fieldset>
-            <p id="fileNameValidationMessage"></p>
-            <div class="content">
-                <button id="okFileNameValidationBtn">OK</button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Tabs Content PLACEHOLDER - CARDS: DYNAMIC HTML -->
-    <div id="cards-container"></div>
-
-
-    <!-- Tabs Legend -->
-    <fieldset class="divider">
-        <legend>Choose Decks:<legend>
-    </fieldset>
-
-    <!-- Tabs PLACEHOLDER - DECKS: DYNAMIC HTML -->
-    <div id="decks-container" class="tabs">
-    </div>
-
-
-    <fieldset class="divider">
-        <legend class="gray-color">Generate Text<legend>
-    </fieldset>
-
-    <div class="content">
-        <button id="show-reddit-format" class="reddit">Show Reddit<br>Format</button>
-        <button id="show-in-game-format">Show In-Game<br>Format</button>
-    </div>
-
-    <fieldset class="add-space">
-        <div id="reddit-format-container" style="display:none;">
-            <legend class="orange-color">Reddit Format</legend>
-            <div id="user-message" style="display: block; color: gray;">Start selecting your card status...</div>
-            <pre id="reddit-format"></pre>
-        </div>
-        <div id="in-game-format-container" style="display:none;">
-            <legend class="blue-color">In-Game Chat Format<br><span class="subtitle">(1 paragraph, 500-character
-                    limit)</span></legend>
-            <div id="in-game-user-message" style="display: block; color: gray;">Start selecting your card
-                status...<br>Splitting text after 500 characters</div>
-            <pre id="in-game-format"></pre>
-        </div>
-    </fieldset>
 
     <!-- Credits: u/Potential_Save | cupofsketches@gmail.com | ID:2N96AFNK -->
     <!-- Who lost a lot of sleep to make your life a bit easier xD -->
-
-    <div class="credits credit-link">Royal Match Card Status Tool by <a
-            href="https://www.reddit.com/user/Potential_Save" class="credit-link">u/Potential_Save</a>
-        <br>For General Discussion: <a href="https://www.reddit.com/r/RoyalMatch" class="credit-link">r/RoyalMatch</a>
-        <br>Card Trading: <a href="https://www.reddit.com/r/RoyalMatchGame" class="credit-link">r/RoyalMatchGame</a>
-        <br>cupofsketches@gmail.com
-        <br>ID:2N96AFNK
+    <div class="container">
+        <div class="credits credit-link">Royal Match Card Status Tool by <a
+                href="https://www.reddit.com/user/Potential_Save" class="credit-link">u/Potential_Save</a>
+            <br>For General Discussion: <a href="https://www.reddit.com/r/RoyalMatch"
+                class="credit-link">r/RoyalMatch</a>
+            <br>Card Trading: <a href="https://www.reddit.com/r/RoyalMatchGame" class="credit-link">r/RoyalMatchGame</a>
+            <br>cupofsketches@gmail.com
+            <br>ID:2N96AFNK
+        </div>
     </div>
-
-    <script>
-        function openCollection(collectionDeck) {
-            const tabcontents = document.querySelectorAll('.tabcontent');
-            tabcontents.forEach(tabcontent => {
-                tabcontent.style.display = 'none';
-            });
-
-            const tablinks = document.querySelectorAll('.tablink');
-            tablinks.forEach(tablink => {
-                tablink.classList.remove('active');
-            });
-
-            const currentTabcontent = document.getElementById(collectionDeck);
-            if (currentTabcontent) {
-                currentTabcontent.style.display = 'block';
-            }
-
-            const clickedTablink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
-            if (clickedTablink) {
-                clickedTablink.classList.add('active');
-            }
-        }
-    </script>
-
-    <!-- Data and generator scripts -->
-    <script type="module" src="cardsData.js"></script>
-    <script type="module" src="htmlGenerator.js"></script>
-
-    <!-- Utility scripts -->
-    <script type="module" src="popupHandler.js"></script>
-    <script type="module" src="fileOperations.js"></script>
-    <script type="module" src="formatGenerators.js"></script>
-    <script type="module" src="formatView.js"></script>
-
-    <!-- Main script -->
-    <script type="module" src="main.js"></script>
-
 </body>
 
 </html>

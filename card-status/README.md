@@ -32,7 +32,7 @@ If you have any feedback or questions, please feel free to reach out to us at cu
 
 - Card Status Tool by [u/Potential_Save](https://www.reddit.com/user/Potential_Save/)
 - Royal Match Card Status by Fenix - ID:2N96AFNK
-- Visit our subreddit: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch)
+- Visit our subreddits: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch) & [r/RoyalMatchGame](https://www.reddit.com/r/RoyalMatchGame)
 
 ## Disclaimer
 

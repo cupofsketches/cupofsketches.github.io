@@ -2,7 +2,10 @@
 // -------- IMPORTING FILES --------
 // ---------------------------------
 
-import { currentCollection } from './cardsData.js';
+import { loadCollection } from './cardsData.js';
+
+// ---- INITIATING CurrentCollection FROM CardsData.js
+const currentCollection = loadCollection();
 
 // ---------------------------------
 // -- GENERATING HTML DYNAMICALLY --
@@ -10,6 +13,7 @@ import { currentCollection } from './cardsData.js';
 
 // ---- BUILDING (TAB CONTENT) DYNAMICALLY - ALL CARDS
 export function generateCardsHTML(collection) {
+
     const formId = `${collection.id}-form`;
 
     const cardsHTML = collection.cards

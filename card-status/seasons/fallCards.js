@@ -1,4 +1,4 @@
-export const currentCollection = [
+export const currentCollectionFall = [
     {
         id: 'treats',
         name: 'Treats',

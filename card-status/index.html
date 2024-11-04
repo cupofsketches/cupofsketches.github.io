@@ -3,23 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Match Tools</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Redirecting...</title>
+    <link rel="stylesheet" href="under-construction/styles.css">
     <script src="https://kit.fontawesome.com/84caf21cc2.js" crossorigin="anonymous"></script>
+    <script>
+        // Example condition: check if a maintenance flag is set
+        const underConstruction = false; // Change this value as needed
 
+        window.onload = function () {
+            if (underConstruction) {
+                // Redirect to "under construction" page
+                window.location.href = 'under-construction/index.html';
+            } else {
+                // Redirect to the "card status tool" page
+                window.location.href = 'updated/index.html';
+            }
+        };
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="card">
-            <h2 class="card-title">Card Status Tool</h2>
-            <i class="fa-2x fa-regular fa-paste"></i>
-            <p class="card-description">The Card Status Tool</br>for the New Collection</br>will be updated soon!
+            <h2 class="card-title">Redirecting...</h2>
+            <i class="fa-5x fa-solid fa-diamond-turn-right"></i>
+            <p class="card-description">Please be patient <br />while we redirect you <br />to the right page!
             </p>
-            <p>Check back in a few days!</p>
-            <a href="#" class="button button-yellow">
-                - Being Updated -</a>
+
         </div>
     </div>
 

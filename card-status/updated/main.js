@@ -2,13 +2,17 @@
 // -------- IMPORTING FILES --------
 // ---------------------------------
 
-import { currentCollection } from './cardsData.js';
+//import { currentCollection } from './cardsData.js';
+import { loadCollection, season } from './cardsData.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
 import { hideWarningPopup, hideFileNameValidationPopup } from './popupHandler.js';
 
 import { saveOptions, loadOptions } from './fileOperations.js';
+
+// ---- INITIATING CurrentCollection FROM CardsData.js
+const currentCollection = loadCollection();
 
 // ---------------------------------
 // -------- EVENT LISTENER ---------
@@ -18,6 +22,13 @@ import { saveOptions, loadOptions } from './fileOperations.js';
 document.addEventListener('DOMContentLoaded', function () {
   // -------- HTML GENERATOR ---------
 
+  const titleElement = document.querySelector('h1 span.subtitle');
+
+  if (titleElement) {
+    // Update the subtitle with the current season
+    titleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
+  }
+
   // showing in browser (decks & cards) dynamically with render functions
   renderCards(); //
   renderDecks(); //
@@ -25,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // --- DISPLAYING TABS (DECKS) ----
 
   // First tab is active
+
   document.getElementById(currentCollection[0].id).style.display = 'block';
   document.querySelector('.tablink').classList.add('active');
 

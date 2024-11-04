@@ -54,7 +54,7 @@ export const currentCollectionWinter = [
         cards: [
             { name: 'Hip Flask', isGold: false },
             { name: 'Chalet', isGold: false },
-            { name: 'Chimmney', isGold: false },
+            { name: 'Chimney', isGold: false },
             { name: 'Fire Bellow', isGold: false },
             { name: 'Double Bed', isGold: false },
             { name: 'Luggage', isGold: false },

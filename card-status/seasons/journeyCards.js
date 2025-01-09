@@ -164,7 +164,7 @@ export const currentCollectionJourney = [
         name: 'Ancient',
         legend: 'Ancient Cards',
         cards: [
-            { name: 'Pyramide', isGold: false },
+            { name: 'Pyramids', isGold: false },
             { name: 'Sphinx', isGold: false },
             { name: 'Brooch', isGold: false },
             { name: 'Feather Fan', isGold: false },

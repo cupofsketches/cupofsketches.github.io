@@ -129,8 +129,8 @@ export const currentCollectionJourney = [
     },
     {
         id: 'bazaar',
-        name: 'Bazzar',
-        legend: 'Bazzar Cards',
+        name: 'Bazaar',
+        legend: 'Bazaar Cards',
         cards: [
             { name: 'Spices', isGold: false },
             { name: 'Porcelain Plate', isGold: false },

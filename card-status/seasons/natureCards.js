@@ -121,7 +121,7 @@ export const currentCollectionNature = [
             { name: 'Love Letter', isGold: false },
             { name: 'Origami Heart', isGold: false },
             { name: 'Teddy Bear', isGold: false },
-            { name: 'Love Songs Casetto', isGold: false },
+            { name: 'Love Songs Casette', isGold: false },
             { name: 'Heart Shaped Candle', isGold: false },
             { name: 'Heart Balloons', isGold: false },
             { name: 'Unboxing', isGold: true }, // Gold card

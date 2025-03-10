@@ -235,7 +235,7 @@ export const currentCollectionNature = [
             { name: 'Carnival Mask', isGold: false },
             { name: 'Walk of Fame', isGold: false },
             { name: 'Pack up!', isGold: true }, // Gold card
-            { name: 'Loge', isGold: ftrue }, // Gold card
+            { name: 'Loge', isGold: true }, // Gold card
             { name: 'Road Trip!', isGold: true }, // Gold card
         ],
     },

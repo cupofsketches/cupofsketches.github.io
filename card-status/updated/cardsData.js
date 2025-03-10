@@ -12,13 +12,14 @@ export function loadCollection() {
     if (season === 'fall') {
         currentCollection = currentCollectionFall; // Import fall cards
     } else if (season === 'winter') {
-        currentCollection = currentCollectionWinter; // Import fall cards
+        currentCollection = currentCollectionWinter; // Import winter cards
     } else if (season === 'journey') {
-        currentCollection = currentCollectionJourney; // Import fall cards
+        currentCollection = currentCollectionJourney; // Import journey cards
     } else if (season === 'nature') {
-        currentCollection = currentCollectionNature; // Import fall cards
+        currentCollection = currentCollectionNature; // Import nature cards
     }
-
+    console.log(currentCollection);
     return currentCollection; // Or handle the case when season doesn't match
+
 }
 

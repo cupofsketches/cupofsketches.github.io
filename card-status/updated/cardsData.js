@@ -1,4 +1,4 @@
-export const season = 'journey'; // Set this dynamically based on your logic, e.g., using the current date.
+export const season = 'nature'; // Set this dynamically based on your logic, e.g., using the current date.
 
 import { currentCollectionFall } from '../seasons/fallCards.js';
 import { currentCollectionWinter } from '../seasons/winterCards.js';

@@ -3,6 +3,7 @@ export const season = 'journey'; // Set this dynamically based on your logic, e.
 import { currentCollectionFall } from '../seasons/fallCards.js';
 import { currentCollectionWinter } from '../seasons/winterCards.js';
 import { currentCollectionJourney } from '../seasons/journeyCards.js';
+import { currentCollectionNature } from '../seasons/natureCards.js';
 
 let currentCollection;
 
@@ -14,6 +15,8 @@ export function loadCollection() {
         currentCollection = currentCollectionWinter; // Import fall cards
     } else if (season === 'journey') {
         currentCollection = currentCollectionJourney; // Import fall cards
+    } else if (season === 'nature') {
+        currentCollection = currentCollectionNature; // Import fall cards
     }
 
     return currentCollection; // Or handle the case when season doesn't match

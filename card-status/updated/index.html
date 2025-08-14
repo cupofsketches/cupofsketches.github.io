@@ -10,7 +10,10 @@
 
 <body>
 
-    <!-- Simple language selector -->
+    <!-- ================================ -->
+    <!-- LANGUAGE SELECTOR -->
+    <!-- ================================ -->
+    <!-- Purpose: Allow users to switch between different languages for the interface -->
     <div class="content smaller" style="gap: 8px; align-items: center;">
         <label for="langSel" style="font-size: 0.9rem;">Language</label>
         <select id="langSel">
@@ -20,10 +23,16 @@
         </select>
     </div>
 
+    <!-- ================================ -->
+    <!-- MAIN HEADER -->
+    <!-- ================================ -->
+    <!-- Purpose: Display the main title and subtitle of the application -->
+    <h1>Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
 
-    <h1 span class="">Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
-
-    <!-- Save and Load -->
+    <!-- ================================ -->
+    <!-- SAVE AND LOAD SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Provide buttons for saving and loading card status data -->
     <fieldset class="divider add-space">
         <legend class="gray-color" id="saveLoadSection">Save & Load Card Status</legend>
     </fieldset>
@@ -34,7 +43,12 @@
         <input type="file" id="loadInput" style="display: none;">
     </div>
 
-    <!-- Popup for warning message -->
+    <!-- ================================ -->
+    <!-- POPUP COMPONENTS -->
+    <!-- ================================ -->
+    <!-- Purpose: Various popup dialogs for user interaction and feedback -->
+
+    <!-- Warning popup for incomplete selections -->
     <div id="warningPopup" class="popup" style="display: none;">
         <div class="popup-content">
             <span id="closeWarningPopup" class="close">&times;</span>
@@ -48,7 +62,7 @@
         </div>
     </div>
 
-    <!-- Popup for file name input -->
+    <!-- File name input popup for saving -->
     <div id="fileNamePopup" class="popup" style="display: none;">
         <div class="popup-content">
             <span id="closePopup" class="close">&times;</span>
@@ -56,7 +70,7 @@
                 <legend id="fileNamePopupTitle" class="green-color">Save Card Status</legend>
             </fieldset>
             <div class="input-container">
-                <label for="fileNameInput"></label>
+                <label for="fileNameInput">File Name:</label>
                 <input id="fileNameInput" type="text" placeholder="Name Your File Here">
             </div>
             <div class="content">
@@ -66,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Popup for file name validation -->
+    <!-- File name validation popup for missing names -->
     <div id="fileNameValidationPopup" class="popup" style="display: none;">
         <div class="popup-content">
             <span id="closeFileNameValidationPopup" class="close">&times;</span>
@@ -80,7 +94,7 @@
         </div>
     </div>
 
-    <!-- Popup for invalid file -->
+    <!-- Invalid file popup for file loading errors -->
     <div id="invalidFilePopup" class="popup" style="display: none;">
         <div class="popup-content">
             <span id="closeInvalidFilePopup" class="close">&times;</span>
@@ -94,23 +108,29 @@
         </div>
     </div>
 
-
-
-
-    <!-- Tabs Content PLACEHOLDER - CARDS: DYNAMIC HTML -->
+    <!-- ================================ -->
+    <!-- CARDS CONTAINER -->
+    <!-- ================================ -->
+    <!-- Purpose: Dynamic HTML container for displaying card information -->
+    <!-- This section is populated by JavaScript based on user selections -->
     <div id="cards-container"></div>
 
-
-    <!-- Tabs Legend -->
+    <!-- ================================ -->
+    <!-- DECKS SELECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Allow users to choose which card decks to display -->
     <fieldset class="divider">
         <legend id="chooseDecksSection">Choose Decks:</legend>
     </fieldset>
 
-    <!-- Tabs PLACEHOLDER - DECKS: DYNAMIC HTML -->
+    <!-- Dynamic HTML container for deck tabs -->
     <div id="decks-container" class="tabs">
     </div>
 
-
+    <!-- ================================ -->
+    <!-- TEXT GENERATION SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Generate formatted text for Reddit posts and in-game chat -->
     <fieldset class="divider">
         <legend id="generateTextSection" class="gray-color">Generate Text</legend>
     </fieldset>
@@ -120,26 +140,34 @@
         <button id="show-in-game-format">Show In-Game<br>Format</button>
     </div>
 
+    <!-- Format display containers -->
     <fieldset class="add-space">
+        <!-- Reddit format display -->
         <div id="reddit-format-container" style="display:none;">
             <legend class="orange-color">Reddit Format</legend>
             <div id="user-message" style="display: block; color: gray;">Start selecting your card status...</div>
             <pre id="reddit-format"></pre>
         </div>
+
+        <!-- In-game format display -->
         <div id="in-game-format-container" style="display:none;">
-            <legend class="blue-color">In-Game Chat Format<br><span class="subtitle">(1 paragraph, 500-character
-                    limit)</span></legend>
+            <legend class="blue-color">In-Game Chat Format</legend>
+            <div class="subtitle" style="color: #666; font-size: 0.9em; margin-bottom: 10px;">(1 paragraph,
+                500-character limit)</div>
             <div id="in-game-user-message" style="display: block; color: gray;">Start selecting your card
                 status...<br>Splitting text after 500 characters</div>
             <pre id="in-game-format"></pre>
         </div>
     </fieldset>
 
-    <!-- Credits: u/Potential_Save | cupofsketches@gmail.com | ID:2N96AFNK -->
+    <!-- ================================ -->
+    <!-- CREDITS AND ATTRIBUTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Display credits and links to creators and communities -->
     <!-- Who lost a lot of sleep to make your life a bit easier xD -->
-
-    <div class="credits credit-link">Royal Match Card Status Tool by <a
-            href="https://www.reddit.com/user/Potential_Save" class="credit-link">u/Potential_Save</a>
+    <div class="credits credit-link">
+        Royal Match Card Status Tool by <a href="https://www.reddit.com/user/Potential_Save"
+            class="credit-link">u/Potential_Save</a>
         <br>Hobby collection co-created by: <a href="https://www.reddit.com/user/carloslaso"
             class="credit-link">u/carloslaso</a>
         <br>For General Discussion: <a href="https://www.reddit.com/r/RoyalMatch" class="credit-link">r/RoyalMatch</a>
@@ -147,6 +175,10 @@
         <!-- <br>cupofsketches@gmail.com -->
     </div>
 
+    <!-- ================================ -->
+    <!-- UTILITY FUNCTIONS -->
+    <!-- ================================ -->
+    <!-- Purpose: Helper functions for tab functionality -->
     <script>
         function openCollection(collectionDeck) {
             const tabcontents = document.querySelectorAll('.tabcontent');
@@ -171,6 +203,11 @@
         }
     </script>
 
+    <!-- ================================ -->
+    <!-- SCRIPT IMPORTS -->
+    <!-- ================================ -->
+    <!-- Purpose: Load all necessary JavaScript modules for the application -->
+
     <!-- Data and generator scripts -->
     <script type="module" src="cardsData.js"></script>
     <script type="module" src="htmlGenerator.js"></script>
@@ -181,7 +218,7 @@
     <script type="module" src="formatGenerators.js"></script>
     <script type="module" src="formatView.js"></script>
 
-    <!-- Main script -->
+    <!-- Main application script -->
     <script type="module" src="main.js"></script>
 
 </body>

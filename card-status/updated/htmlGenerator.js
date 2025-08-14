@@ -1,23 +1,51 @@
 // ---------------------------------
-// -------- IMPORTING FILES --------
+// -------- HTML GENERATOR ---------
 // ---------------------------------
+// This file handles the dynamic generation of HTML content for the card status tool.
+// It creates the card display forms and deck navigation tabs based on the current collection data.
+
+// ================================
+// IMPORT STATEMENTS
+// ================================
+// Purpose: Import necessary data and functions from other modules
 
 import { loadCollection } from './cardsData.js';
 
-// ---- INITIATING CurrentCollection FROM CardsData.js
+// ================================
+// GLOBAL VARIABLES
+// ================================
+// Purpose: Initialize and store the current collection data
+
+// Load the current collection from cards data
 const currentCollection = loadCollection();
 
-// ---------------------------------
-// -- GENERATING HTML DYNAMICALLY --
-// ---------------------------------
+// ================================
+// CARD HTML GENERATION
+// ================================
+// Purpose: Generate HTML for individual cards and collection forms
 
-// ---- BUILDING (TAB CONTENT) DYNAMICALLY - ALL CARDS
+/**
+ * Generates HTML for a complete collection of cards
+ * Creates a form with radio button options for each card's status
+ * @param {Object} collection - The collection object containing cards and metadata
+ * @returns {string} HTML string for the collection form
+ */
 export function generateCardsHTML(collection) {
+    // ================================
+    // FORM ID GENERATION
+    // ================================
+    // Purpose: Create unique identifiers for each collection form
 
     const formId = `${collection.id}-form`;
 
+    // ================================
+    // CARD HTML GENERATION
+    // ================================
+    // Purpose: Generate HTML for each individual card in the collection
+
     const cardsHTML = collection.cards
         .map((card) => {
+            // Handle gold (non-tradeable) cards differently
             if (card.isGold) {
                 return `
                 <div class="card gold">
@@ -29,6 +57,7 @@ export function generateCardsHTML(collection) {
                 </div>
             `;
             } else {
+                // Regular cards with full status options
                 return `
                 <div class="card">
                     <label class="cardName">${card.name}</label><br>
@@ -44,6 +73,11 @@ export function generateCardsHTML(collection) {
         })
         .join('');
 
+    // ================================
+    // COMPLETE FORM ASSEMBLY
+    // ================================
+    // Purpose: Combine all elements into a complete collection form
+
     return `
         <div id="${collection.id}" class="tabcontent">
             <form id="${formId}" class="collection-form" data-collection="${collection.id}">
@@ -58,17 +92,31 @@ export function generateCardsHTML(collection) {
     `;
 }
 
-// ---- RENDERING (TAB CONTENT) DYNAMICALLY - ALL CARDS
+/**
+ * Renders all card collections to the main cards container
+ * This function populates the cards-container div with all collection forms
+ */
 export function renderCards() {
-    const container = document.getElementById('cards-container'); // Placeholder DIV
+    const container = document.getElementById('cards-container'); // Main container div
     container.innerHTML = currentCollection.map(generateCardsHTML).join('');
 }
 
-// ---- BUILDING (DECKS) DYNAMICALLY - ALL DECKS
+// ================================
+// DECK HTML GENERATION
+// ================================
+// Purpose: Generate HTML for deck navigation tabs
+
+/**
+ * Generates HTML for a single deck navigation tab
+ * Creates a button that can be clicked to switch between different card collections
+ * @param {Object} collection - The collection object containing deck information
+ * @returns {string} HTML string for the deck tab button
+ */
 export function generateDeckHTML(collection) {
     const deckId = collection.id;
     const deckName = collection.name;
 
+    // First deck is active by default
     if (deckId === currentCollection[0].id) {
         return `
         <button class="tablink active" data-collection="${deckId}" onclick="openCollection('${deckId}')">
@@ -76,6 +124,7 @@ export function generateDeckHTML(collection) {
         </button>
         `;
     } else {
+        // Other decks start as inactive
         return `
         <button class="tablink" data-collection="${deckId}" onclick="openCollection('${deckId}')">
             ${deckName}
@@ -84,8 +133,11 @@ export function generateDeckHTML(collection) {
     }
 }
 
-// ---- RENDERING (DECKS) DYNAMICALLY - ALL DECKS
+/**
+ * Renders all deck tabs to the decks container
+ * This function populates the decks-container div with navigation buttons
+ */
 export function renderDecks() {
-    const container = document.getElementById('decks-container'); // Placeholder DIV
+    const container = document.getElementById('decks-container'); // Main container div
     container.innerHTML = currentCollection.map(generateDeckHTML).join('');
 }

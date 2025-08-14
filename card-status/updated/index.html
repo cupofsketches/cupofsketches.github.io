@@ -9,11 +9,23 @@
 </head>
 
 <body>
+
+    <!-- Simple language selector -->
+    <div class="content smaller" style="gap: 8px; align-items: center;">
+        <label for="langSel" style="font-size: 0.9rem;">Language</label>
+        <select id="langSel">
+            <option value="en">English</option>
+            <option value="pt-BR">Português (Brasil)</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+
+
     <h1 span class="">Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
 
     <!-- Save and Load -->
     <fieldset class="divider add-space">
-        <legend class="gray-color">Save & Load Card Status</legend>
+        <legend class="gray-color" id="saveLoadSection">Save & Load Card Status</legend>
     </fieldset>
 
     <div class="content smaller">
@@ -27,7 +39,7 @@
         <div class="popup-content">
             <span id="closeWarningPopup" class="close">&times;</span>
             <fieldset class="divider">
-                <legend class="orange-color">Whoops!<legend>
+                <legend class="orange-color">Whoops!</legend>
             </fieldset>
             <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
             <div class="content">
@@ -41,11 +53,11 @@
         <div class="popup-content">
             <span id="closePopup" class="close">&times;</span>
             <fieldset class="divider">
-                <legend class="green-color">Save Card Status<legend>
+                <legend id="fileNamePopupTitle" class="green-color">Save Card Status</legend>
             </fieldset>
             <div class="input-container">
                 <label for="fileNameInput"></label>
-                <input type="text" id="fileNameInput" placeholder="Name Your File Here">
+                <input id="fileNameInput" type="text" placeholder="Name Your File Here">
             </div>
             <div class="content">
                 <button id="confirmSaveBtn">Save</button>
@@ -59,14 +71,29 @@
         <div class="popup-content">
             <span id="closeFileNameValidationPopup" class="close">&times;</span>
             <fieldset class="divider">
-                <legend class="orange-color">Missing File Name</legend>
+                <legend class="orange-color" id="fileNameValidationTitle">Missing File Name</legend>
             </fieldset>
-            <p id="fileNameValidationMessage"></p>
+            <p id="fileNameValidationMessage">Please enter a file name to save your file</p>
             <div class="content">
                 <button id="okFileNameValidationBtn">OK</button>
             </div>
         </div>
     </div>
+
+    <!-- Popup for invalid file -->
+    <div id="invalidFilePopup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span id="closeInvalidFilePopup" class="close">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color">Oops!</legend>
+            </fieldset>
+            <p id="invalidFileMessage">Please select a valid .json file!</p>
+            <div class="content">
+                <button id="closeInvalidFileBtn">OK</button>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -76,7 +103,7 @@
 
     <!-- Tabs Legend -->
     <fieldset class="divider">
-        <legend>Choose Decks:<legend>
+        <legend id="chooseDecksSection">Choose Decks:</legend>
     </fieldset>
 
     <!-- Tabs PLACEHOLDER - DECKS: DYNAMIC HTML -->
@@ -85,7 +112,7 @@
 
 
     <fieldset class="divider">
-        <legend class="gray-color">Generate Text<legend>
+        <legend id="generateTextSection" class="gray-color">Generate Text</legend>
     </fieldset>
 
     <div class="content">

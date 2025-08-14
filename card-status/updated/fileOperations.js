@@ -3,7 +3,9 @@
 // ---------------------------------
 
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
-import { showWarningPopup, showFileNamePopup } from './popupHandler.js';
+import { showWarningPopup, showFileNamePopup, showInvalidFilePopup } from './popupHandler.js';
+import { translate } from './i18n.js';
+
 
 // ---------------------------------
 // --------- SAVE BUTTON -----------
@@ -28,7 +30,9 @@ export function saveOptions() {
   });
 
   if (!optionsSelected) {
-    showWarningPopup('Select at least one "needed" or "duplicate" option before saving.');
+
+    //showWarningPopup('Select at least one "needed" or "duplicate" option before saving.');
+    showWarningPopup(translate("ids.warningMessage"));
     return;
   }
 
@@ -117,7 +121,9 @@ export function loadOptions(event) {
     };
     reader.readAsText(file);
   } else {
-    showWarningPopup('Please select a valid .json file!'); // Show warning popup
+
+    showInvalidFilePopup(translate("ids.invalidFileMessage"));
+
   }
 
   // Reset the file input value to trigger the change event if the same file is selected

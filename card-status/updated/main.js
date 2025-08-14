@@ -35,7 +35,7 @@ const currentCollection = loadCollection();
  * This function updates text content throughout the interface based on the selected language
  */
 function applyLabels() {
-    console.log("Translation test:", translate("ids.warningMessage"));
+    // Apply translations to UI elements
 
     // ================================
     // SECTION HEADERS
@@ -100,22 +100,22 @@ function applyLabels() {
     if (cancelBtn) cancelBtn.textContent = translate("ids.cancelBtn");
 
     // File name validation popup elements
-    const fnTitle = document.getElementById("fileNameValidationTitle");
-    if (fnTitle) fnTitle.textContent = translate("ids.fileNameValidationTitle");
+    const fileNameValidationTitle = document.getElementById("fileNameValidationTitle");
+    if (fileNameValidationTitle) fileNameValidationTitle.textContent = translate("ids.fileNameValidationTitle");
 
-    const fnMsg = document.getElementById("fileNameValidationMessage");
-    if (fnMsg) fnMsg.textContent = translate("ids.fileNameValidationMessage");
+    const fileNameValidationMessage = document.getElementById("fileNameValidationMessage");
+    if (fileNameValidationMessage) fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
 
-    const okFileNameBtn = document.getElementById("okFileNameValidationBtn");
-    if (okFileNameBtn) okFileNameBtn.textContent = translate("ids.okFileNameValidationBtn");
+    const okFileNameValidationButton = document.getElementById("okFileNameValidationBtn");
+    if (okFileNameValidationButton) okFileNameValidationButton.textContent = translate("ids.okFileNameValidationBtn");
 
     // ================================
     // INPUT PLACEHOLDERS
     // ================================
     // Purpose: Update input field placeholders with translated text
 
-    const nameInput = document.getElementById("fileNameInput");
-    if (nameInput) nameInput.placeholder = translate("placeholders.fileNameInput");
+    const fileNameInput = document.getElementById("fileNameInput");
+    if (fileNameInput) fileNameInput.placeholder = translate("placeholders.fileNameInput");
 }
 
 // ================================
@@ -129,11 +129,11 @@ function applyLabels() {
  */
 async function bootI18n() {
     // Get initial language from dropdown or default to English
-    const sel = document.getElementById("langSel");
-    const initial = sel ? sel.value : "en";
+    const languageSelector = document.getElementById("langSel");
+    const initialLanguage = languageSelector ? languageSelector.value : "en";
 
     // Load the language dictionary
-    await setLocale(initial);
+    await setLocale(initialLanguage);
 
     // Apply translated labels to the UI
     applyLabels();
@@ -144,12 +144,12 @@ async function bootI18n() {
  * Handles language changes and re-applies labels when language is switched
  */
 function initLanguageSelector() {
-    const sel = document.getElementById("langSel");
-    if (!sel) return;
+    const languageSelector = document.getElementById("langSel");
+    if (!languageSelector) return;
 
     // When user changes language, reload it and re-label the UI
-    sel.addEventListener("change", async () => {
-        await setLocale(sel.value);
+    languageSelector.addEventListener("change", async () => {
+        await setLocale(languageSelector.value);
         applyLabels();
         // Note: If you later localize dynamic decks/cards, re-render here:
         // renderCards();
@@ -200,10 +200,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.querySelector('.tablink').classList.add('active');
 
     // Add event listeners for collection tabs
-    const tablinks = document.querySelectorAll('.tablink');
-    tablinks.forEach((tablink) => {
-        tablink.addEventListener('click', function () {
-            openCollection(tablink.getAttribute('data-collection'));
+    const deckTabLinks = document.querySelectorAll('.tablink');
+    deckTabLinks.forEach((deckTabLink) => {
+        deckTabLink.addEventListener('click', function () {
+            openCollection(deckTabLink.getAttribute('data-collection'));
         });
     });
 
@@ -213,12 +213,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Purpose: Handle form input changes and format generation
 
     // Add event listeners for form inputs (radio buttons and checkboxes)
-    const formInputs = document.querySelectorAll(
+    const cardStatusInputs = document.querySelectorAll(
         '.collection-form input[type="radio"], .collection-form input[type="checkbox"]'
     );
 
-    formInputs.forEach((input) => {
-        input.addEventListener('change', () => {
+    cardStatusInputs.forEach((cardStatusInput) => {
+        cardStatusInput.addEventListener('change', () => {
             hideUserMessage();
             generateRedditFormat();
             generateInGameFormat();

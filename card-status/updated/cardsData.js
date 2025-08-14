@@ -70,8 +70,7 @@ export function loadCollection() {
     // ================================
     // Purpose: Log the loaded collection and return it for use
 
-    // Log the loaded collection for debugging purposes
-    console.log(currentCollection);
+    // Note: Collection loaded successfully
 
     // Return the current collection for use in other parts of the application
     return currentCollection;

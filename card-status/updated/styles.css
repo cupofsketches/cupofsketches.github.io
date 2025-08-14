@@ -1,19 +1,24 @@
-/*
-------------------------
--------- BODY ----------
-------------------------
+/* ---------------------------------
+   ------------ STYLES.CSS ------------
+   ---------------------------------
+   This file contains all the CSS styling for the Royal Match Card Status Tool.
+   It provides a clean, organized design with consistent spacing, colors, and layout.
 */
+
+/* ================================
+   BASE STYLES
+   ================================
+   Purpose: Define fundamental styling for the document body and basic elements */
 
 body {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-------------------------
------- HEADINGS --------
-------------------------
-*/
+/* ================================
+   TYPOGRAPHY
+   ================================
+   Purpose: Style headings and text elements */
 
 h1 {
   font-size: 1.5em;
@@ -29,37 +34,10 @@ h1 {
   text-align: center;
 }
 
-/*
-------------------------
------- BUTTONS ---------
-------------------------
-*/
-
-button {
-  margin-top: 10px;
-  background-color: #d5dde5;
-  border-radius: 3px;
-  color: black;
-}
-
-/*
-------------------------
--------- LEGEND --------
-------------------------
-*/
-
-legend {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #5c936f;
-  text-align: center;
-}
-
-/*
-------------------------
------- COLOR CLASSES ----
-------------------------
-*/
+/* ================================
+   COLOR UTILITIES
+   ================================
+   Purpose: Define consistent color schemes used throughout the interface */
 
 .gray-color {
   color: #6e7a8a;
@@ -67,10 +45,6 @@ legend {
 
 .orange-color {
   color: #c6643a;
-}
-
-.orange-color button {
-  color: white;
 }
 
 .blue-color {
@@ -81,11 +55,10 @@ legend {
   color: #5c936f;
 }
 
-/*
-------------------------
------- FIELDSET --------
-------------------------
-*/
+/* ================================
+   LAYOUT CONTAINERS
+   ================================
+   Purpose: Style fieldset containers and content wrappers */
 
 fieldset {
   display: flex;
@@ -96,60 +69,6 @@ fieldset {
   border: none;
   text-align: center;
 }
-
-/*
-------------------------
--- REDDIT FORMAT BOX ----
-------------------------
-*/
-
-#reddit-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
-}
-
-#reddit-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
--- IN-GAME FORMAT BOX ---
-------------------------
-*/
-
-#in-game-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
-}
-
-#in-game-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
------ BOX WRAPPING -----
-------------------------
-*/
-
-pre {
-  white-space: pre-wrap;
-}
-
-/*
-------------------------
-------- CONTENT --------
-------------------------
-*/
 
 .content {
   display: flex;
@@ -166,11 +85,52 @@ pre {
   max-width: 350px;
 }
 
-/*
-------------------------
------ BUTTON STYLES -----
-------------------------
-*/
+/* ================================
+   FORM ELEMENTS
+   ================================
+   Purpose: Style form legends, inputs, and form-related elements */
+
+legend {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #5c936f;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+#fileNameInput {
+  margin: 0 10px 10px 10px;
+  padding: 5px;
+  font-size: 15px;
+  flex-grow: 0.5;
+}
+
+/* Radio button styling */
+input[type='radio'] {
+  vertical-align: bottom;
+  margin: 6px 3px 0px 3px;
+}
+
+input[type='radio'].disabled {
+  accent-color: gray;
+}
+
+/* ================================
+   BUTTONS
+   ================================
+   Purpose: Style all button elements with consistent appearance */
+
+button {
+  margin-top: 10px;
+  background-color: #d5dde5;
+  border-radius: 3px;
+  color: black;
+}
 
 .content button {
   flex-grow: 0.3;
@@ -181,23 +141,62 @@ pre {
   font-size: 15px;
 }
 
+/* Reddit format button */
 #show-reddit-format.reddit {
   background-color: #c6643a;
   border-bottom: 2px solid #fe834d;
   color: white;
 }
 
+/* In-game format button */
 #show-in-game-format {
   background-color: #3a9cc6;
   border-bottom: 2px solid #cfd9db;
   color: white;
 }
 
-/*
-------------------------
---------- TABS ----------
-------------------------
-*/
+/* Save and confirm buttons */
+.content button#saveOptionsBtn,
+.content button#confirmSaveBtn {
+  flex-grow: 0.3;
+  flex-basis: 20%;
+  margin: 0 10px 0 10px;
+  padding: 10px;
+  border: none;
+  background-color: #2a7949d0;
+  border-bottom: 2px solid #437f58;
+  color: white;
+  font-size: 15px;
+}
+
+/* Load button */
+.content button#loadOptionsBtn {
+  flex-grow: 0.3;
+  flex-basis: 20%;
+  margin: 0 10px 0 10px;
+  padding: 10px;
+  border: none;
+  background-color: #fec324;
+  border-bottom: 2px solid #d4b35a;
+  font-size: 15px;
+}
+
+/* Warning and validation buttons */
+.content button#closeWarningBtn,
+.content button#okFileNameValidationBtn {
+  background-color: #c6643a;
+  color: white;
+}
+
+/* Orange color button overrides */
+.orange-color button {
+  color: white;
+}
+
+/* ================================
+   TAB NAVIGATION
+   ================================
+   Purpose: Style the deck selection tabs and tab content */
 
 .tabs {
   display: grid;
@@ -226,6 +225,7 @@ pre {
   color: black;
   text-align: center;
   white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tablink.active,
@@ -234,15 +234,10 @@ pre {
   color: white;
 }
 
-.tabs .tablink {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/*
-------------------------
---- CARD CONTAINERS -----
-------------------------
-*/
+/* ================================
+   CARD DISPLAY
+   ================================
+   Purpose: Style individual card elements and their containers */
 
 .card-container {
   display: flex;
@@ -263,6 +258,7 @@ pre {
   text-align: center;
 }
 
+/* Gold (non-tradeable) card styling */
 .gold {
   background-color: #fffef7;
   border: 1px solid #fec324;
@@ -282,92 +278,62 @@ pre {
   text-align: left;
 }
 
-/*
-------------------------
--- RADIO BUTTONS STYLE --
-------------------------
-*/
+/* ================================
+   FORMAT DISPLAY CONTAINERS
+   ================================
+   Purpose: Style the output containers for Reddit and in-game formats */
 
-input[type='radio'].disabled {
-  accent-color: gray;
+/* Reddit format display box */
+#reddit-format-container {
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px dotted #4a5768;
+  border-radius: 3px;
+  text-align: left;
 }
 
-input[type='radio'] {
-  vertical-align: bottom;
-  margin: 6px 3px 0px 3px;
+#reddit-format {
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-/*
-------------------------
------ MESSAGES ---------
-------------------------
-*/
+/* In-game format display box */
+#in-game-format-container {
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px dotted #4a5768;
+  border-radius: 3px;
+  text-align: left;
+}
+
+#in-game-format {
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ================================
+   TEXT FORMATTING
+   ================================
+   Purpose: Style pre-formatted text elements */
+
+pre {
+  white-space: pre-wrap;
+}
+
+/* ================================
+   USER MESSAGES
+   ================================
+   Purpose: Style informational messages and user guidance text */
 
 #in-game-user-message,
 #user-message {
   padding-top: 20px;
 }
 
-/*
-------------------------
--- INPUT CONTAINER ------
-------------------------
-*/
-
-.input-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-#fileNameInput {
-  margin: 0 10px 10px 10px;
-  padding: 5px;
-  font-size: 15px;
-  flex-grow: 0.5;
-}
-
-/*
-------------------------
--- SAVE & LOAD BUTTONS --
-------------------------
-*/
-
-.content button#saveOptionsBtn,
-.content button#confirmSaveBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #2a7949d0;
-  border-bottom: 2px solid #437f58;
-  color: white;
-  font-size: 15px;
-}
-
-.content button#loadOptionsBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #fec324;
-  border-bottom: 2px solid #d4b35a;
-  font-size: 15px;
-}
-
-.content button#closeWarningBtn,
-.content button#okFileNameValidationBtn {
-  background-color: #c6643a;
-  color: white;
-}
-
-/*
-------------------------
------- DIVIDERS --------
-------------------------
-*/
+/* ================================
+   VISUAL SEPARATORS
+   ================================
+   Purpose: Style dividers and spacing elements */
 
 .divider {
   border-top: 1px dotted #4a5768;
@@ -377,11 +343,10 @@ input[type='radio'] {
   margin-top: 10px;
 }
 
-/*
-------------------------
------ POPUP STYLES -----
-------------------------
-*/
+/* ================================
+   POPUP MODALS
+   ================================
+   Purpose: Style popup dialogs for warnings, file input, and validation */
 
 .popup {
   display: flex;
@@ -404,22 +369,17 @@ input[type='radio'] {
   text-align: center;
 }
 
-/*
-------------------------
---- POPUP CLOSE BTN -----
-------------------------
-*/
+/* ================================
+   POPUP ELEMENTS
+   ================================
+   Purpose: Style popup close buttons and button containers */
 
+/* Close button (hidden by default) */
 .close {
   display: none;
 }
 
-/*
-------------------------
----- POPUP BUTTONS -----
-------------------------
-*/
-
+/* Popup button containers */
 .popup-buttons {
   margin-top: 20px;
 }
@@ -428,11 +388,10 @@ input[type='radio'] {
   margin: 0 10px;
 }
 
-/*
-------------------------
------- CREDITS ---------
-------------------------
-*/
+/* ================================
+   FOOTER AND CREDITS
+   ================================
+   Purpose: Style the credits section and footer links */
 
 .credits {
   margin-top: 20px;
@@ -444,6 +403,7 @@ input[type='radio'] {
   text-align: center;
 }
 
+/* Credit link styling with hover effects */
 a.credit-link {
   transition: color 0.3s ease;
   color: #399cc6;

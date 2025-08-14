@@ -1,21 +1,22 @@
 // ---------------------------------
 // ------------ POP UPS ------------
 // ---------------------------------
-// This file defines functions that show and hide popups
+// This file defines functions that show and hide popups for various user interactions.
+// Each popup provides feedback or requests input from the user, such as warnings, errors, or file name prompts.
 
 import { translate } from './i18n.js';
 
 // ================================
-// WARNING POPUP: 
-// -------------
-// This shows a warning popup — like when someone tries to save without selecting anything.
-// warningMessage: "Select at least one 'needed' or 'duplicate' option before saving"
+// WARNING POPUP
+// ================================
+// Purpose: Display a warning popup when the user attempts an action that requires a selection,
+// such as saving without choosing any 'needed' or 'duplicate' options.
+// The popup can be dismissed by clicking outside of it or on a close button.
 
-// Function to show the warning popup
 export function showWarningPopup() {
   const popupWarning = document.getElementById('warningPopup');
 
-  // Handle clicking outside the popup
+  // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
     if (event.target === popupWarning) {
       popupWarning.style.display = 'none';
@@ -23,27 +24,26 @@ export function showWarningPopup() {
   };
 
   document.getElementById('warningMessage').textContent = translate("ids.warningMessage");
-  document.getElementById('warningPopup').style.display = 'flex';
+  popupWarning.style.display = 'flex';
 }
 
-// Function to hide the warning popup
+// Hide the warning popup
 export function hideWarningPopup() {
   document.getElementById('warningPopup').style.display = 'none';
 }
 
 
 // ================================
-// NAME VALIDATION: 
-// ----------------
-// This shows an error if someone tries to save without typing a name.
+// NAME VALIDATION POPUP
+// ================================
+// Purpose: Show an error popup if the user tries to save without entering a file name.
+// The popup can be dismissed by clicking outside of it or on a close button.
 
-
-// Function to show the file name validation popup
 export function showFileNameValidationPopup() {
   const popupValidation = document.getElementById('fileNameValidationPopup');
   const popup = document.getElementById('fileNamePopup');
 
-  // Handle clicking outside the popup
+  // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
     if (event.target === popupValidation) {
       popupValidation.style.display = 'none';
@@ -53,33 +53,37 @@ export function showFileNameValidationPopup() {
   };
 
   document.getElementById('fileNameValidationMessage').textContent = translate("ids.fileNameValidationMessage");
-  document.getElementById('fileNameValidationPopup').style.display = 'flex';
-
+  popupValidation.style.display = 'flex';
 }
 
+// Hide the file name validation popup
+export function hideFileNameValidationPopup() {
+  document.getElementById('fileNameValidationPopup').style.display = 'none';
+}
+
+
 // ================================
-// SAVE FILE NAME INPUT
-// --------------------
-// It shows the popup asking the user to type a name.
+// FILE NAME INPUT POPUP
+// ================================
+// Purpose: Prompt the user to enter a file name before saving.
+// Handles confirmation, cancellation, and validation of the input.
+// The popup can be dismissed by clicking outside of it or on a close button.
 
-// Function to show the custom popup for file name input
 export function showFileNamePopup(callback) {
-
-  const popup = document.getElementById('fileNamePopup'); //→ Finds the popup.
-
+  const popup = document.getElementById('fileNamePopup');
   const closeBtn = document.getElementById('closePopup');
   const confirmBtn = document.getElementById('confirmSaveBtn');
   const cancelBtn = document.getElementById('cancelBtn');
   const fileNameInput = document.getElementById('fileNameInput');
 
-  popup.style.display = 'flex'; //→ Shows the popup.
+  popup.style.display = 'flex';
 
   // Close popup when clicking the close button
   closeBtn.onclick = () => {
     popup.style.display = 'none';
   };
 
-  // Handle file name confirmation
+  // Confirm file name and proceed, or show validation error
   confirmBtn.onclick = () => {
     const fileName = fileNameInput.value.trim();
     if (fileName) {
@@ -90,15 +94,14 @@ export function showFileNamePopup(callback) {
     }
   };
 
-  // Handle file name cancellation
+  // Cancel and close popup
   cancelBtn.onclick = () => {
     popup.style.display = 'none';
   };
 
-  // Handle clicking outside the popup
+  // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
     const popupValidation = document.getElementById('fileNameValidationPopup');
-
     if (event.target === popup) {
       popup.style.display = 'none';
     } else if (event.target === popupValidation) {
@@ -107,16 +110,13 @@ export function showFileNamePopup(callback) {
   };
 }
 
-// Function to hide the file name validation popup
-export function hideFileNameValidationPopup() {
-  document.getElementById('fileNameValidationPopup').style.display = 'none';
-}
 
 // ================================
-// LOAD FILE
-// ---------
+// INVALID FILE POPUP
+// ================================
+// Purpose: Show a popup when the user attempts to load an invalid file.
+// Provides a translated error message and a close button.
 
-// Function to verify when loading an invalid file
 export function showInvalidFilePopup() {
   const popup = document.getElementById('invalidFilePopup');
   const message = document.getElementById('invalidFileMessage');

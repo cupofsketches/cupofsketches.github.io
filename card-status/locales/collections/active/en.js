@@ -1,9 +1,9 @@
 // =========================================================================
-// locales/collections/hobby/en.js - English hobby collection data
+// locales/collections/active/en.js - English active collection data
 // Collaboration by u/carloslaso
 // =========================================================================
 
-export const hobbyCollection = [
+export const activeCollection = [
     {
         "id": "music-studio",
         "name": "Music Studio",

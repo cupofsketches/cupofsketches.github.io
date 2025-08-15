@@ -69,5 +69,17 @@ export const translations = {
 
     collection: {
         subtitle: "Colección Hobby"
+    },
+
+    // ================================
+    // CARD OPTIONS
+    // ================================
+    // Purpose: Translate the radio button labels for card status
+
+    cardOptions: {
+        needed: "Necesito",
+        duplicate: "Duplicado",
+        owned: "Poseído",
+        nonTrade: "No Negociable"
     }
 };

@@ -10,6 +10,7 @@
 // Purpose: Import necessary data and functions from other modules
 
 import { loadCollection } from './cardsData.js';
+import { translate } from './i18n.js';
 
 // ================================
 // GLOBAL VARIABLES
@@ -81,7 +82,7 @@ export function generateCardsHTML(collection) {
                     <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
                         <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled">
-                        <span style="color:rgb(179, 179, 179)"> Non-Trade </span>
+                        <span style="color:rgb(179, 179, 179)"> ${translate("cardOptions.nonTrade")} </span>
                     </div>
                 </div>
             `;
@@ -92,11 +93,11 @@ export function generateCardsHTML(collection) {
                 <label class="cardName" for="${neededId}">${card.name}</label><br>
                 <div class="option">
                     <input type="radio" id="${neededId}" name="${card.name}" value="needed" data-card-id="${card.id}" data-collection-id="${collection.id}"> 
-                    <label for="${neededId}" style="display: inline; font-weight: normal;">Needed</label><br>
+                    <label for="${neededId}" style="display: inline; font-weight: normal;">${translate("cardOptions.needed")}</label><br>
                     <input type="radio" id="${duplicateId}" name="${card.name}" value="duplicate" data-card-id="${card.id}" data-collection-id="${collection.id}"> 
-                    <label for="${duplicateId}" style="display: inline; font-weight: normal;">Duplicate</label><br>
+                    <label for="${duplicateId}" style="display: inline; font-weight: normal;">${translate("cardOptions.duplicate")}</label><br>
                     <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled" data-card-id="${card.id}" data-collection-id="${collection.id}">
-                    <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">Owned</label>
+                    <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">${translate("cardOptions.owned")}</label>
                 </div>
             </div>
         `;

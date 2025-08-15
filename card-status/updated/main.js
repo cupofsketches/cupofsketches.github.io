@@ -86,8 +86,8 @@ function applyLabels() {
     // Purpose: Update popup text and button labels with translated content
 
     // Warning popup elements
-    const warningMsg = document.getElementById("warningMessage");
-    if (warningMsg) warningMsg.textContent = translate("ids.warningMessage");
+    const warningMessage = document.getElementById("warningMessage");
+    if (warningMessage) warningMessage.textContent = translate("ids.warningMessage");
 
     const closeWarningButton = document.getElementById("closeWarningBtn");
     if (closeWarningButton) closeWarningButton.textContent = translate("ids.closeWarningBtn");

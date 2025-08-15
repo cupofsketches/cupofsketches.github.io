@@ -63,7 +63,7 @@ export function generateRedditFormat() {
     // Purpose: Create the formatted Reddit text output
 
     let redditFormat = '';
-    let needCards = false;
+    let hasNeededCards = false;
 
     // Add needed cards section if any exist
     if (Object.keys(neededCards).length > 0) {
@@ -71,13 +71,13 @@ export function generateRedditFormat() {
         for (const collection in neededCards) {
             redditFormat += `- ${collection} ➜ ${neededCards[collection].join(', ')}\n`;
         }
-        needCards = true;
+        hasNeededCards = true;
     }
 
     // Add duplicate cards section if any exist
     if (Object.keys(duplicateCards).length > 0) {
         // Add spacing between sections if both exist
-        if (needCards) {
+        if (hasNeededCards) {
             redditFormat += '\n\n';
         }
         redditFormat += '**Cards Duplicated**:\n\n';
@@ -132,13 +132,13 @@ export function generateInGameFormat() {
     // Build needed cards section
     if (Object.keys(neededCards).length > 0) {
         needed = 'NEED: ';
-        let firstNeeded = true;
+        let isFirstNeededCollection = true;
         for (const collection in neededCards) {
-            if (!firstNeeded) {
+            if (!isFirstNeededCollection) {
                 needed += ' / ';
             }
             needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
-            firstNeeded = false;
+            isFirstNeededCollection = false;
         }
     }
 
@@ -149,13 +149,13 @@ export function generateInGameFormat() {
         } else {
             duplicate = 'DUPLICATE: ';
         }
-        let firstDuplicate = true;
+        let isFirstDuplicateCollection = true;
         for (const collection in duplicateCards) {
-            if (!firstDuplicate) {
+            if (!isFirstDuplicateCollection) {
                 duplicate += ' / ';
             }
             duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
-            firstDuplicate = false;
+            isFirstDuplicateCollection = false;
         }
     }
 

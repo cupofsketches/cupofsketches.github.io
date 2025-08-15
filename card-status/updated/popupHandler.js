@@ -16,7 +16,6 @@ import { translate } from './i18n.js';
 export function showWarningPopup() {
   const warningPopup = document.getElementById('warningPopup');
 
-
   // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
     if (event.target === warningPopup) {
@@ -30,9 +29,8 @@ export function showWarningPopup() {
 
 // Hide the warning popup
 export function hideWarningPopup() {
-  document.getElementById('warningPopup').style.display = 'none'; // Already short and clear
+  document.getElementById('warningPopup').style.display = 'none';
 }
-
 
 // ================================
 // NAME VALIDATION POPUP
@@ -41,28 +39,26 @@ export function hideWarningPopup() {
 // The popup can be dismissed by clicking outside of it or on a close button.
 
 export function showFileNameValidationPopup() {
-  const nameValidationPopup = document.getElementById('fileNameValidationPopup');
-  const namePopup = document.getElementById('fileNamePopup');
-
+  const fileNameValidationPopup = document.getElementById('fileNameValidationPopup');
+  const fileNamePopup = document.getElementById('fileNamePopup');
 
   // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
-    if (event.target === nameValidationPopup) {
-      nameValidationPopup.style.display = 'none';
-    } else if (event.target === namePopup) {
-      namePopup.style.display = 'none';
+    if (event.target === fileNameValidationPopup) {
+      fileNameValidationPopup.style.display = 'none';
+    } else if (event.target === fileNamePopup) {
+      fileNamePopup.style.display = 'none';
     }
   };
 
   document.getElementById('fileNameValidationMessage').textContent = translate("ids.fileNameValidationMessage");
-  nameValidationPopup.style.display = 'flex';
+  fileNameValidationPopup.style.display = 'flex';
 }
 
 // Hide the file name validation popup
 export function hideFileNameValidationPopup() {
   document.getElementById('fileNameValidationPopup').style.display = 'none';
 }
-
 
 // ================================
 // FILE NAME INPUT POPUP
@@ -72,24 +68,24 @@ export function hideFileNameValidationPopup() {
 // The popup can be dismissed by clicking outside of it or on a close button.
 
 export function showFileNamePopup(callback) {
-  const namePopup = document.getElementById('fileNamePopup');
+  const fileNamePopup = document.getElementById('fileNamePopup');
   const closeButton = document.getElementById('closePopup');
-  const confirmButton = document.getElementById('confirmSaveBtn');
+  const confirmSaveButton = document.getElementById('confirmSaveBtn');
   const cancelButton = document.getElementById('cancelBtn');
-  const nameInput = document.getElementById('fileNameInput');
+  const fileNameInput = document.getElementById('fileNameInput');
 
-  namePopup.style.display = 'flex';
+  fileNamePopup.style.display = 'flex';
 
   // Close popup when clicking the close button
   closeButton.onclick = () => {
-    namePopup.style.display = 'none';
+    fileNamePopup.style.display = 'none';
   };
 
   // Confirm file name and proceed, or show validation error
-  confirmButton.onclick = () => {
-    const fileName = nameInput.value.trim();
+  confirmSaveButton.onclick = () => {
+    const fileName = fileNameInput.value.trim();
     if (fileName) {
-      namePopup.style.display = 'none';
+      fileNamePopup.style.display = 'none';
       callback(fileName);
     } else {
       showFileNameValidationPopup();
@@ -98,20 +94,19 @@ export function showFileNamePopup(callback) {
 
   // Cancel and close popup
   cancelButton.onclick = () => {
-    namePopup.style.display = 'none';
+    fileNamePopup.style.display = 'none';
   };
 
   // Dismiss popup when clicking outside of it
   window.onclick = (event) => {
-    const nameValidationPopup = document.getElementById('fileNameValidationPopup');
-    if (event.target === namePopup) {
-      namePopup.style.display = 'none';
-    } else if (event.target === nameValidationPopup) {
-      nameValidationPopup.style.display = 'none';
+    const fileNameValidationPopup = document.getElementById('fileNameValidationPopup');
+    if (event.target === fileNamePopup) {
+      fileNamePopup.style.display = 'none';
+    } else if (event.target === fileNameValidationPopup) {
+      fileNameValidationPopup.style.display = 'none';
     }
   };
 }
-
 
 // ================================
 // INVALID FILE POPUP
@@ -121,12 +116,12 @@ export function showFileNamePopup(callback) {
 
 export function showInvalidFilePopup() {
   const invalidFilePopup = document.getElementById('invalidFilePopup');
-  const invalidFileMsg = document.getElementById('invalidFileMessage');
+  const invalidFileMessage = document.getElementById('invalidFileMessage');
   const closeButton = document.getElementById('closeInvalidFileBtn');
 
   // Apply translation
-  invalidFileMsg.textContent = translate('ids.invalidFileMessage');
-  closeBtn.textContent = translate('ids.closeWarningBtn'); // Reuse close label
+  invalidFileMessage.textContent = translate('ids.invalidFileMessage');
+  closeButton.textContent = translate('ids.closeWarningBtn'); // Reuse close label
 
   invalidFilePopup.style.display = 'flex';
 
@@ -134,6 +129,4 @@ export function showInvalidFilePopup() {
   closeButton.onclick = () => invalidFilePopup.style.display = 'none';
   document.getElementById('closeInvalidFilePopup').onclick = () => invalidFilePopup.style.display = 'none';
 }
-
-// ================================
 

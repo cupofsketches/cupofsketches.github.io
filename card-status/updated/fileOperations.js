@@ -68,7 +68,7 @@ export function saveOptions() {
     /**
      * Processes form data and categorizes cards by their status
      * @param {HTMLFormElement} form - The form element to process
-     * @param {string} collectionDeck - The name of the collection deck
+     * @param {string} collectionName - The name of the collection
      */
     function processFormData(form, collectionName) {
       const formData = new FormData(form);

@@ -68,14 +68,19 @@ export function generateCardsHTML(collection) {
     // Purpose: Generate HTML for each individual card in the collection
 
     const cardsHTML = collection.cards
-        .map((card) => {
+        .map((card, cardIndex) => {
+            // Create unique IDs for each radio button
+            const neededId = `${collection.id}-${card.name}-needed`;
+            const duplicateId = `${collection.id}-${card.name}-duplicate`;
+            const ownedId = `${collection.id}-${card.name}-owned`;
+
             // Handle gold (non-tradeable) cards differently
             if (card.isGold) {
                 return `
                 <div class="card gold">
-                    <label class="cardName">${card.name}</label><br>
+                    <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
-                        <input type="radio" name="${card.name}" checked="false" value="owned" class="disabled">
+                        <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled">
                         <span style="color:rgb(179, 179, 179)"> Non-Trade </span>
                     </div>
                 </div>
@@ -84,12 +89,14 @@ export function generateCardsHTML(collection) {
                 // Regular cards with full status options
                 return `
                 <div class="card">
-                    <label class="cardName">${card.name}</label><br>
+                    <label class="cardName" for="${neededId}">${card.name}</label><br>
                     <div class="option">
-                        <input type="radio" name="${card.name}" value="needed"> Needed<br>
-                        <input type="radio" name="${card.name}" value="duplicate"> Duplicate<br>
-                        <input type="radio" name="${card.name}" checked="false" value="owned" class="disabled">
-                        <span style="color:rgb(179, 179, 179)"> Owned</span>
+                        <input type="radio" id="${neededId}" name="${card.name}" value="needed"> 
+                        <label for="${neededId}" style="display: inline; font-weight: normal;">Needed</label><br>
+                        <input type="radio" id="${duplicateId}" name="${card.name}" value="duplicate"> 
+                        <label for="${duplicateId}" style="display: inline; font-weight: normal;">Duplicate</label><br>
+                        <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled">
+                        <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">Owned</label>
                     </div>
                 </div>
             `;

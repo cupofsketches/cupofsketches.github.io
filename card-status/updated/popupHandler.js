@@ -16,6 +16,7 @@ import { translate } from './i18n.js';
 export function showWarningPopup() {
   const warningPopup = document.getElementById('warningPopup');
   const warningMessage = document.getElementById('warningMessage');
+  const closeButton = document.getElementById('closeWarningBtn');
 
   // Dismiss popup when clicking outside of it
   const handleOutsideClick = (event) => {
@@ -26,13 +27,29 @@ export function showWarningPopup() {
     }
   };
 
-  // Add event listener for outside clicks
+  // Handle keyboard navigation
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      warningPopup.style.display = 'none';
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  };
+
+  // Add event listeners
   document.addEventListener('click', handleOutsideClick);
+  document.addEventListener('keydown', handleKeyDown);
 
   if (warningMessage) {
     warningMessage.textContent = translate("ids.warningMessage");
   }
+
   warningPopup.style.display = 'flex';
+
+  // Focus the close button for keyboard navigation
+  if (closeButton) {
+    closeButton.focus();
+  }
 }
 
 // Hide the warning popup
@@ -121,6 +138,20 @@ export function showFileNamePopup(callback) {
     fileNamePopup.style.display = 'none';
   };
 
+  // Handle keyboard navigation
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      fileNamePopup.style.display = 'none';
+      document.removeEventListener('keydown', handleKeyDown);
+    } else if (event.key === 'Enter' && event.target === fileNameInput) {
+      event.preventDefault();
+      confirmSaveButton.click();
+    }
+  };
+
+  // Add keyboard event listener
+  document.addEventListener('keydown', handleKeyDown);
+
   // Dismiss popup when clicking outside of it
   const handleOutsideClick = (event) => {
     const popupValidation = document.getElementById('fileNameValidationPopup');
@@ -128,15 +159,22 @@ export function showFileNamePopup(callback) {
       fileNamePopup.style.display = 'none';
       // Remove the event listener after popup is closed
       document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
     } else if (event.target === popupValidation) {
       popupValidation.style.display = 'none';
       // Remove the event listener after popup is closed
       document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
     }
   };
 
   // Add event listener for outside clicks
   document.addEventListener('click', handleOutsideClick);
+
+  // Focus the input field for keyboard navigation
+  if (fileNameInput) {
+    fileNameInput.focus();
+  }
 }
 
 // ================================

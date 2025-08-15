@@ -6,6 +6,47 @@
 */
 
 /* ================================
+   ACCESSIBILITY IMPROVEMENTS
+   ================================
+   Purpose: Enhance accessibility with focus indicators and improved contrast */
+
+/* Focus indicators for keyboard navigation */
+button:focus,
+input:focus,
+select:focus,
+.tablink:focus {
+  outline: 2px solid #3a9cc6;
+  outline-offset: 2px;
+}
+
+/* Improved focus for close buttons */
+.close:focus {
+  outline: 2px solid #c6643a;
+  outline-offset: 2px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+
+/* Better contrast for disabled elements */
+input[type='radio'].disabled {
+  accent-color: #999;
+  opacity: 0.7;
+}
+
+/* Improved focus for tab links */
+.tablink:focus {
+  background-color: #5a6b7c;
+  color: white;
+  box-shadow: 0 0 0 2px #3a9cc6;
+}
+
+/* Focus indicator for popup content */
+.popup-content:focus-within {
+  outline: 2px solid #3a9cc6;
+  outline-offset: 2px;
+}
+
+/* ================================
    BASE STYLES
    ================================
    Purpose: Define fundamental styling for the document body and basic elements */

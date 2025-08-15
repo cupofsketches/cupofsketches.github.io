@@ -16,7 +16,7 @@
     <!-- Purpose: Allow users to switch between different languages for the interface -->
     <div class="content smaller" style="gap: 8px; align-items: center;">
         <label for="langSel" style="font-size: 0.9rem;">Language</label>
-        <select id="langSel">
+        <select id="langSel" aria-label="Select interface language">
             <option value="en">English</option>
             <option value="pt-BR">Português (Brasil)</option>
             <option value="es">Español</option>
@@ -38,9 +38,9 @@
     </fieldset>
 
     <div class="content smaller">
-        <button id="saveOptionsBtn">Save</button>
-        <button id="loadOptionsBtn">Load</button>
-        <input type="file" id="loadInput" style="display: none;">
+        <button id="saveOptionsBtn" aria-label="Save current card status selections to a file">Save</button>
+        <button id="loadOptionsBtn" aria-label="Load previously saved card status from a file">Load</button>
+        <input type="file" id="loadInput" style="display: none;" accept=".json" aria-label="Select JSON file to load">
     </div>
 
     <!-- ================================ -->
@@ -49,61 +49,70 @@
     <!-- Purpose: Various popup dialogs for user interaction and feedback -->
 
     <!-- Warning popup for incomplete selections -->
-    <div id="warningPopup" class="popup" style="display: none;">
+    <div id="warningPopup" class="popup" style="display: none;" role="dialog" aria-labelledby="warningTitle"
+        aria-describedby="warningMessage">
         <div class="popup-content">
-            <span id="closeWarningPopup" class="close">&times;</span>
+            <span id="closeWarningPopup" class="close" role="button" tabindex="0"
+                aria-label="Close warning popup">&times;</span>
             <fieldset class="divider">
-                <legend class="orange-color">Whoops!</legend>
+                <legend class="orange-color" id="warningTitle">Whoops!</legend>
             </fieldset>
             <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
             <div class="content">
-                <button id="closeWarningBtn">OK</button>
+                <button id="closeWarningBtn" aria-label="Close warning and continue">OK</button>
             </div>
         </div>
     </div>
 
     <!-- File name input popup for saving -->
-    <div id="fileNamePopup" class="popup" style="display: none;">
+    <div id="fileNamePopup" class="popup" style="display: none;" role="dialog" aria-labelledby="fileNamePopupTitle"
+        aria-describedby="fileNameInputDescription">
         <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
+            <span id="closePopup" class="close" role="button" tabindex="0"
+                aria-label="Close file name popup">&times;</span>
             <fieldset class="divider">
                 <legend id="fileNamePopupTitle" class="green-color">Save Card Status</legend>
             </fieldset>
             <div class="input-container">
-                <label for="fileNameInput">File Name:</label>
-                <input id="fileNameInput" type="text" placeholder="Name Your File Here">
+                <label for="fileNameInput" id="fileNameInputDescription">File Name:</label>
+                <input id="fileNameInput" type="text" placeholder="Name Your File Here"
+                    aria-describedby="fileNameInputDescription">
             </div>
             <div class="content">
-                <button id="confirmSaveBtn">Save</button>
-                <button id="cancelBtn">Cancel</button>
+                <button id="confirmSaveBtn" aria-label="Confirm save with entered file name">Save</button>
+                <button id="cancelBtn" aria-label="Cancel file name input">Cancel</button>
             </div>
         </div>
     </div>
 
     <!-- File name validation popup for missing names -->
-    <div id="fileNameValidationPopup" class="popup" style="display: none;">
+    <div id="fileNameValidationPopup" class="popup" style="display: none;" role="dialog"
+        aria-labelledby="fileNameValidationTitle" aria-describedby="fileNameValidationMessage">
         <div class="popup-content">
-            <span id="closeFileNameValidationPopup" class="close">&times;</span>
+            <span id="closeFileNameValidationPopup" class="close" role="button" tabindex="0"
+                aria-label="Close validation popup">&times;</span>
             <fieldset class="divider">
                 <legend class="orange-color" id="fileNameValidationTitle">Missing File Name</legend>
             </fieldset>
             <p id="fileNameValidationMessage">Please enter a file name to save your file</p>
             <div class="content">
-                <button id="okFileNameValidationBtn">OK</button>
+                <button id="okFileNameValidationBtn" aria-label="Acknowledge validation message">OK</button>
             </div>
         </div>
     </div>
 
     <!-- Invalid file popup for file loading errors -->
-    <div id="invalidFilePopup" class="popup" style="display: none;">
+    <div id="invalidFilePopup" class="popup" style="display: none;" role="dialog" aria-labelledby="invalidFileTitle"
+        aria-describedby="invalidFileMessage">
         <div class="popup-content">
-            <span id="closeInvalidFilePopup" class="close">&times;</span>
+            <span id="closeInvalidFilePopup" class="close" role="button" tabindex="0"
+                aria-label="Close invalid file popup">&times;</span>
             <fieldset class="divider">
-                <legend class="orange-color">Oops!</legend>
+                <legend class="orange-color" id="invalidFileTitle">Oops!</legend>
             </fieldset>
             <p id="invalidFileMessage">Please select a valid .json file!</p>
             <div class="content">
-                <button id="closeInvalidFileBtn">OK</button>
+                <button id="closeInvalidFileBtn" aria-label="Close invalid file message">OK</button>
             </div>
         </div>
     </div>
@@ -136,27 +145,34 @@
     </fieldset>
 
     <div class="content">
-        <button id="show-reddit-format" class="reddit">Show Reddit<br>Format</button>
-        <button id="show-in-game-format">Show In-Game<br>Format</button>
+        <button id="show-reddit-format" class="reddit" aria-label="Show Reddit format for sharing card status">Show
+            Reddit<br>Format</button>
+        <button id="show-in-game-format" aria-label="Show in-game chat format for card status">Show
+            In-Game<br>Format</button>
     </div>
 
     <!-- Format display containers -->
     <fieldset class="add-space">
         <!-- Reddit format display -->
-        <div id="reddit-format-container" style="display:none;">
-            <legend class="orange-color">Reddit Format</legend>
-            <div id="user-message" style="display: block; color: gray;">Start selecting your card status...</div>
-            <pre id="reddit-format"></pre>
+        <div id="reddit-format-container" style="display:none;" role="region" aria-labelledby="redditFormatTitle"
+            aria-describedby="redditFormatDescription">
+            <legend class="orange-color" id="redditFormatTitle">Reddit Format</legend>
+            <div id="reddit-format-description" style="display: block; color: gray;">Start selecting your card status...
+            </div>
+            <pre id="reddit-format" role="textbox" aria-label="Reddit format text for sharing"
+                aria-describedby="redditFormatDescription"></pre>
         </div>
 
         <!-- In-game format display -->
-        <div id="in-game-format-container" style="display:none;">
-            <legend class="blue-color">In-Game Chat Format</legend>
+        <div id="in-game-format-container" style="display:none;" role="region" aria-labelledby="inGameFormatTitle"
+            aria-describedby="inGameFormatDescription">
+            <legend class="blue-color" id="inGameFormatTitle">In-Game Chat Format</legend>
             <div class="subtitle" style="color: #666; font-size: 0.9em; margin-bottom: 10px;">(1 paragraph,
                 500-character limit)</div>
-            <div id="in-game-user-message" style="display: block; color: gray;">Start selecting your card
+            <div id="in-game-format-description" style="display: block; color: gray;">Start selecting your card
                 status...<br>Splitting text after 500 characters</div>
-            <pre id="in-game-format"></pre>
+            <pre id="in-game-format" role="textbox" aria-label="In-game chat format text"
+                aria-describedby="inGameFormatDescription"></pre>
         </div>
     </fieldset>
 

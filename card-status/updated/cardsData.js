@@ -17,8 +17,9 @@ export const season = 'hobby';
 // ================================
 // Purpose: Import hobby collection from new structure
 
-// Import hobby collection from new structure
-import { hobbyCollection } from '../locales/collections/hobby/en.js';
+// Import hobby collections from new structure
+import { hobbyCollection as hobbyCollectionEn } from '../locales/collections/hobby/en.js';
+import { hobbyCollection as hobbyCollectionPtBR } from '../locales/collections/hobby/pt-BR.js';
 
 // ================================
 // GLOBAL VARIABLES
@@ -27,6 +28,12 @@ import { hobbyCollection } from '../locales/collections/hobby/en.js';
 
 // Variable to hold the current collection based on season
 let currentCollection;
+
+// Map of all available language collections
+const hobbyCollections = {
+    'en': hobbyCollectionEn,
+    'pt-BR': hobbyCollectionPtBR
+};
 
 // ================================
 // COLLECTION LOADING
@@ -46,8 +53,11 @@ export function loadCollection() {
     // ================================
     // Purpose: Load the hobby collection from the new structure
 
-    // Currently only hobby collection is available
-    currentCollection = hobbyCollection;
+    // Get current language from localStorage or default to English
+    const currentLanguage = localStorage.getItem('locale') || 'en';
+
+    // Load collection based on current language
+    currentCollection = hobbyCollections[currentLanguage] || hobbyCollections['en'];
 
     // ================================
     // DEBUGGING AND RETURN
@@ -57,6 +67,22 @@ export function loadCollection() {
     // Note: Collection loaded successfully
 
     // Return the current collection for use in other parts of the application
+    return currentCollection;
+}
+
+/**
+ * Reloads the collection based on the current language setting
+ * This function is called when the language changes to update the collection data
+ * @returns {Array} The updated collection array for the current language
+ */
+export function reloadCollection() {
+    // Get current language from localStorage or default to English
+    const currentLanguage = localStorage.getItem('locale') || 'en';
+
+    // Load collection based on current language
+    currentCollection = hobbyCollections[currentLanguage] || hobbyCollections['en'];
+
+    // Return the updated collection for use in other parts of the application
     return currentCollection;
 }
 

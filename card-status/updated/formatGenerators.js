@@ -173,7 +173,13 @@ export function generateInGameFormat() {
     // Cache DOM element and update the in-game format display area
     const inGameFormatElement = document.getElementById('in-game-format');
     if (inGameFormatElement) {
-        const finalFormat = [...neededParts, ...duplicateParts].join('');
+        // Add space between sections if both needed and duplicate exist
+        let finalFormat;
+        if (neededParts.length > 0 && duplicateParts.length > 0) {
+            finalFormat = [...neededParts, ' || ', ...duplicateParts].join('');
+        } else {
+            finalFormat = [...neededParts, ...duplicateParts].join('');
+        }
         inGameFormatElement.textContent = finalFormat;
     }
 }

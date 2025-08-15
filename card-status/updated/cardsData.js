@@ -51,19 +51,18 @@ export function loadCollection() {
     // ================================
     // Purpose: Select the appropriate collection based on the season variable
 
-    if (season === 'fall') {
-        currentCollection = currentCollectionFall; // Import fall cards
-    } else if (season === 'winter') {
-        currentCollection = currentCollectionWinter; // Import winter cards
-    } else if (season === 'journey') {
-        currentCollection = currentCollectionJourney; // Import journey cards
-    } else if (season === 'nature') {
-        currentCollection = currentCollectionNature; // Import nature cards
-    } else if (season === 'space') {
-        currentCollection = currentCollectionSpace; // Import space cards
-    } else if (season === 'hobby') {
-        currentCollection = currentCollectionHobby; // Import hobby cards
-    }
+    // Map season names to their corresponding collections
+    const seasonCollections = {
+        'fall': currentCollectionFall,
+        'winter': currentCollectionWinter,
+        'journey': currentCollectionJourney,
+        'nature': currentCollectionNature,
+        'space': currentCollectionSpace,
+        'hobby': currentCollectionHobby
+    };
+
+    // Get the collection for the current season, fallback to hobby if season not found
+    currentCollection = seasonCollections[season] || seasonCollections['hobby'];
 
     // ================================
     // DEBUGGING AND RETURN

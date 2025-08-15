@@ -15,6 +15,7 @@ import { translate } from './i18n.js';
 
 export function showWarningPopup() {
   const warningPopup = document.getElementById('warningPopup');
+  const warningMessage = document.getElementById('warningMessage');
 
   // Dismiss popup when clicking outside of it
   const handleOutsideClick = (event) => {
@@ -28,13 +29,18 @@ export function showWarningPopup() {
   // Add event listener for outside clicks
   document.addEventListener('click', handleOutsideClick);
 
-  document.getElementById('warningMessage').textContent = translate("ids.warningMessage");
+  if (warningMessage) {
+    warningMessage.textContent = translate("ids.warningMessage");
+  }
   warningPopup.style.display = 'flex';
 }
 
 // Hide the warning popup
 export function hideWarningPopup() {
-  document.getElementById('warningPopup').style.display = 'none';
+  const warningPopup = document.getElementById('warningPopup');
+  if (warningPopup) {
+    warningPopup.style.display = 'none';
+  }
 }
 
 // ================================
@@ -46,6 +52,7 @@ export function hideWarningPopup() {
 export function showFileNameValidationPopup() {
   const fileNameValidationPopup = document.getElementById('fileNameValidationPopup');
   const fileNamePopup = document.getElementById('fileNamePopup');
+  const fileNameValidationMessage = document.getElementById('fileNameValidationMessage');
 
   // Dismiss popup when clicking outside of it
   const handleOutsideClick = (event) => {
@@ -63,13 +70,18 @@ export function showFileNameValidationPopup() {
   // Add event listener for outside clicks
   document.addEventListener('click', handleOutsideClick);
 
-  document.getElementById('fileNameValidationMessage').textContent = translate("ids.fileNameValidationMessage");
+  if (fileNameValidationMessage) {
+    fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
+  }
   fileNameValidationPopup.style.display = 'flex';
 }
 
 // Hide the file name validation popup
 export function hideFileNameValidationPopup() {
-  document.getElementById('fileNameValidationPopup').style.display = 'none';
+  const fileNameValidationPopup = document.getElementById('fileNameValidationPopup');
+  if (fileNameValidationPopup) {
+    fileNameValidationPopup.style.display = 'none';
+  }
 }
 
 // ================================
@@ -137,15 +149,24 @@ export function showInvalidFilePopup() {
   const popup = document.getElementById('invalidFilePopup');
   const message = document.getElementById('invalidFileMessage');
   const closeButton = document.getElementById('closeInvalidFileBtn');
+  const closeInvalidFilePopup = document.getElementById('closeInvalidFilePopup');
 
   // Apply translation
-  message.textContent = translate('ids.invalidFileMessage');
-  closeButton.textContent = translate('ids.closeWarningBtn'); // Reuse close label
+  if (message) {
+    message.textContent = translate('ids.invalidFileMessage');
+  }
+  if (closeButton) {
+    closeButton.textContent = translate('ids.closeWarningBtn'); // Reuse close label
+  }
 
   popup.style.display = 'flex';
 
   // Close behavior
-  closeButton.onclick = () => popup.style.display = 'none';
-  document.getElementById('closeInvalidFilePopup').onclick = () => popup.style.display = 'none';
+  if (closeButton) {
+    closeButton.onclick = () => popup.style.display = 'none';
+  }
+  if (closeInvalidFilePopup) {
+    closeInvalidFilePopup.onclick = () => popup.style.display = 'none';
+  }
 }
 

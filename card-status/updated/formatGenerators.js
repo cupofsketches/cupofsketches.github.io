@@ -62,14 +62,14 @@ export function generateRedditFormat() {
     // ================================
     // Purpose: Create the formatted Reddit text output
 
-    let redditFormat = '';
+    const formatParts = [];
     let hasNeededCards = false;
 
     // Add needed cards section if any exist
     if (Object.keys(neededCards).length > 0) {
-        redditFormat += '**Cards Needed**:\n\n';
+        formatParts.push('**Cards Needed**:\n');
         for (const collection in neededCards) {
-            redditFormat += `- ${collection} ➜ ${neededCards[collection].join(', ')}\n`;
+            formatParts.push(`- ${collection} ➜ ${neededCards[collection].join(', ')}`);
         }
         hasNeededCards = true;
     }
@@ -78,11 +78,11 @@ export function generateRedditFormat() {
     if (Object.keys(duplicateCards).length > 0) {
         // Add spacing between sections if both exist
         if (hasNeededCards) {
-            redditFormat += '\n\n';
+            formatParts.push(''); // Empty line for spacing
         }
-        redditFormat += '**Cards Duplicated**:\n\n';
+        formatParts.push('**Cards Duplicated**:\n');
         for (const collection in duplicateCards) {
-            redditFormat += `- ${collection} ➜ ${duplicateCards[collection].join(', ')}\n`;
+            formatParts.push(`- ${collection} ➜ ${duplicateCards[collection].join(', ')}`);
         }
     }
 
@@ -91,8 +91,11 @@ export function generateRedditFormat() {
     // ================================
     // Purpose: Display the generated format in the Reddit format container
 
-    // Update the Reddit format display area
-    document.getElementById('reddit-format').textContent = redditFormat;
+    // Cache DOM element and update the Reddit format display area
+    const redditFormatElement = document.getElementById('reddit-format');
+    if (redditFormatElement) {
+        redditFormatElement.textContent = formatParts.join('\n');
+    }
 }
 
 // ================================
@@ -126,70 +129,46 @@ export function generateInGameFormat() {
     // ================================
     // Purpose: Create the compact in-game format
 
-    let needed = '';
-    let duplicate = '';
+    const neededParts = [];
+    const duplicateParts = [];
 
     // Build needed cards section
     if (Object.keys(neededCards).length > 0) {
-        needed = 'NEED: ';
+        neededParts.push('NEED: ');
         let isFirstNeededCollection = true;
         for (const collection in neededCards) {
             if (!isFirstNeededCollection) {
-                needed += ' / ';
+                neededParts.push(' / ');
             }
-            needed += `[${collection}] => ${neededCards[collection].join(', ')}`;
+            neededParts.push(`${collection}: ${neededCards[collection].join(', ')}`);
             isFirstNeededCollection = false;
         }
     }
 
     // Build duplicate cards section
     if (Object.keys(duplicateCards).length > 0) {
-        if (needed !== '') {
-            duplicate = ' ||  DUPLICATE: ';
-        } else {
-            duplicate = 'DUPLICATE: ';
-        }
+        duplicateParts.push('DUPLICATE: ');
         let isFirstDuplicateCollection = true;
         for (const collection in duplicateCards) {
             if (!isFirstDuplicateCollection) {
-                duplicate += ' / ';
+                duplicateParts.push(' / ');
             }
-            duplicate += `[${collection}] => ${duplicateCards[collection].join(', ')}`;
+            duplicateParts.push(`${collection}: ${duplicateCards[collection].join(', ')}`);
             isFirstDuplicateCollection = false;
         }
     }
 
-    // Combine both sections
-    let inGameFormat = `${needed} ${duplicate}`;
-
-    // ================================
-    // TEXT CHUNKING
-    // ================================
-    // Purpose: Split long text into manageable chunks for display
-
-    // Split text into chunks that fit within character limits
-    const chunks = splitIntoChunks(inGameFormat, 500);
-
     // ================================
     // OUTPUT DISPLAY
     // ================================
-    // Purpose: Display the chunked format in the in-game format container
+    // Purpose: Display the generated format in the in-game format container
 
-    const inGameFormatContainer = document.getElementById('in-game-format');
-    inGameFormatContainer.innerHTML = '';
-
-    // Create paragraphs for each chunk with separators
-    chunks.forEach((chunk, index) => {
-        const paragraph = document.createElement('p');
-        paragraph.textContent = chunk;
-        inGameFormatContainer.appendChild(paragraph);
-
-        // Add separator line between chunks (except after the last one)
-        if (index < chunks.length - 1) {
-            const line = document.createElement('hr');
-            inGameFormatContainer.appendChild(line);
-        }
-    });
+    // Cache DOM element and update the in-game format display area
+    const inGameFormatElement = document.getElementById('in-game-format');
+    if (inGameFormatElement) {
+        const finalFormat = [...neededParts, ...duplicateParts].join('');
+        inGameFormatElement.textContent = finalFormat;
+    }
 }
 
 // ================================

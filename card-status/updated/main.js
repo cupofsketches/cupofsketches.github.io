@@ -35,7 +35,37 @@ const currentCollection = loadCollection();
  * This function updates text content throughout the interface based on the selected language
  */
 function applyLabels() {
-    // Apply translations to UI elements
+    // Cache DOM elements once to avoid repeated queries
+    const domElements = {
+        // Section headers
+        saveLoadSection: document.getElementById("saveLoadSection"),
+        chooseDecksSection: document.getElementById("chooseDecksSection"),
+        generateTextSection: document.getElementById("generateTextSection"),
+
+        // Main buttons
+        saveButton: document.getElementById("saveOptionsBtn"),
+        loadButton: document.getElementById("loadOptionsBtn"),
+
+        // Format buttons
+        redditButton: document.getElementById("show-reddit-format"),
+        inGameButton: document.getElementById("show-in-game-format"),
+
+        // Warning popup elements
+        warningMessage: document.getElementById("warningMessage"),
+        closeWarningButton: document.getElementById("closeWarningBtn"),
+
+        // File name popup buttons
+        confirmSaveButton: document.getElementById("confirmSaveBtn"),
+        cancelButton: document.getElementById("cancelBtn"),
+
+        // File name validation popup elements
+        fileNameValidationTitle: document.getElementById("fileNameValidationTitle"),
+        fileNameValidationMessage: document.getElementById("fileNameValidationMessage"),
+        okFileNameValidationButton: document.getElementById("okFileNameValidationBtn"),
+
+        // Input placeholders
+        fileNameInput: document.getElementById("fileNameInput")
+    };
 
     // ================================
     // SECTION HEADERS
@@ -43,16 +73,19 @@ function applyLabels() {
     // Purpose: Update main section titles with translated text
 
     // "Save & Load Card Status" section
-    const saveLoadSection = document.getElementById("saveLoadSection");
-    if (saveLoadSection) saveLoadSection.textContent = translate("ids.saveLoadSection");
+    if (domElements.saveLoadSection) {
+        domElements.saveLoadSection.textContent = translate("ids.saveLoadSection");
+    }
 
     // "Choose Decks:" section
-    const chooseDecksSection = document.getElementById("chooseDecksSection");
-    if (chooseDecksSection) chooseDecksSection.textContent = translate("ids.chooseDecksSection");
+    if (domElements.chooseDecksSection) {
+        domElements.chooseDecksSection.textContent = translate("ids.chooseDecksSection");
+    }
 
     // "Generate Text" section
-    const generateTextSection = document.getElementById("generateTextSection");
-    if (generateTextSection) generateTextSection.textContent = translate("ids.generateTextSection");
+    if (domElements.generateTextSection) {
+        domElements.generateTextSection.textContent = translate("ids.generateTextSection");
+    }
 
     // ================================
     // MAIN BUTTONS
@@ -60,12 +93,14 @@ function applyLabels() {
     // Purpose: Update button labels with translated text
 
     // Save button
-    const saveButton = document.getElementById("saveOptionsBtn");
-    if (saveButton) saveButton.textContent = translate("ids.saveOptionsBtn");
+    if (domElements.saveButton) {
+        domElements.saveButton.textContent = translate("ids.saveOptionsBtn");
+    }
 
     // Load button
-    const loadButton = document.getElementById("loadOptionsBtn");
-    if (loadButton) loadButton.textContent = translate("ids.loadOptionsBtn");
+    if (domElements.loadButton) {
+        domElements.loadButton.textContent = translate("ids.loadOptionsBtn");
+    }
 
     // ================================
     // FORMAT BUTTONS (WITH <br>)
@@ -73,12 +108,14 @@ function applyLabels() {
     // Purpose: Update format buttons that include line breaks using innerHTML
 
     // "Show Reddit<br>Format" button
-    const redditButton = document.getElementById("show-reddit-format");
-    if (redditButton) redditButton.innerHTML = translate("ids.show-reddit-format");
+    if (domElements.redditButton) {
+        domElements.redditButton.innerHTML = translate("ids.show-reddit-format");
+    }
 
     // "Show In-Game<br>Format" button
-    const inGameButton = document.getElementById("show-in-game-format");
-    if (inGameButton) inGameButton.innerHTML = translate("ids.show-in-game-format");
+    if (domElements.inGameButton) {
+        domElements.inGameButton.innerHTML = translate("ids.show-in-game-format");
+    }
 
     // ================================
     // POPUP LABELS
@@ -86,36 +123,44 @@ function applyLabels() {
     // Purpose: Update popup text and button labels with translated content
 
     // Warning popup elements
-    const warningMessage = document.getElementById("warningMessage");
-    if (warningMessage) warningMessage.textContent = translate("ids.warningMessage");
+    if (domElements.warningMessage) {
+        domElements.warningMessage.textContent = translate("ids.warningMessage");
+    }
 
-    const closeWarningButton = document.getElementById("closeWarningBtn");
-    if (closeWarningButton) closeWarningButton.textContent = translate("ids.closeWarningBtn");
+    if (domElements.closeWarningButton) {
+        domElements.closeWarningButton.textContent = translate("ids.closeWarningBtn");
+    }
 
     // File name popup buttons
-    const confirmSaveButton = document.getElementById("confirmSaveBtn");
-    if (confirmSaveButton) confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
+    if (domElements.confirmSaveButton) {
+        domElements.confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
+    }
 
-    const cancelButton = document.getElementById("cancelBtn");
-    if (cancelButton) cancelButton.textContent = translate("ids.cancelBtn");
+    if (domElements.cancelButton) {
+        domElements.cancelButton.textContent = translate("ids.cancelBtn");
+    }
 
     // File name validation popup elements
-    const fileNameValidationTitle = document.getElementById("fileNameValidationTitle");
-    if (fileNameValidationTitle) fileNameValidationTitle.textContent = translate("ids.fileNameValidationTitle");
+    if (domElements.fileNameValidationTitle) {
+        domElements.fileNameValidationTitle.textContent = translate("ids.fileNameValidationTitle");
+    }
 
-    const fileNameValidationMessage = document.getElementById("fileNameValidationMessage");
-    if (fileNameValidationMessage) fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
+    if (domElements.fileNameValidationMessage) {
+        domElements.fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
+    }
 
-    const okFileNameValidationButton = document.getElementById("okFileNameValidationBtn");
-    if (okFileNameValidationButton) okFileNameValidationButton.textContent = translate("ids.okFileNameValidationBtn");
+    if (domElements.okFileNameValidationButton) {
+        domElements.okFileNameValidationButton.textContent = translate("ids.okFileNameValidationBtn");
+    }
 
     // ================================
     // INPUT PLACEHOLDERS
     // ================================
     // Purpose: Update input field placeholders with translated text
 
-    const fileNameInput = document.getElementById("fileNameInput");
-    if (fileNameInput) fileNameInput.placeholder = translate("placeholders.fileNameInput");
+    if (domElements.fileNameInput) {
+        domElements.fileNameInput.placeholder = translate("placeholders.fileNameInput");
+    }
 }
 
 // ================================
@@ -207,29 +252,54 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         // ================================
+        // DOM ELEMENT CACHING
+        // ================================
+        // Purpose: Cache frequently used DOM elements to avoid repeated queries
+
+        const domElements = {
+            // Tab elements
+            firstCollection: currentCollection[0],
+            firstTabLink: document.querySelector('.tablink'),
+            deckTabButtons: document.querySelectorAll('.tablink'),
+
+            // Form elements
+            cardStatusFields: document.querySelectorAll('.collection-form input[type="radio"], .collection-form input[type="checkbox"]'),
+
+            // Format buttons
+            redditFormatButton: document.getElementById('show-reddit-format'),
+            inGameFormatButton: document.getElementById('show-in-game-format'),
+
+            // Save functionality
+            saveButton: document.getElementById('saveOptionsBtn'),
+            closeWarningButton: document.getElementById('closeWarningBtn'),
+            okFileNameValidationButton: document.getElementById('okFileNameValidationBtn'),
+
+            // Load functionality
+            loadButton: document.getElementById('loadOptionsBtn'),
+            loadInput: document.getElementById('loadInput')
+        };
+
+        // ================================
         // TAB FUNCTIONALITY
         // ================================
         // Purpose: Handle deck tab switching and display
 
         try {
             // Set first tab as active by default
-            const firstCollection = currentCollection[0];
-            if (firstCollection && firstCollection.id) {
-                const firstTab = document.getElementById(firstCollection.id);
+            if (domElements.firstCollection && domElements.firstCollection.id) {
+                const firstTab = document.getElementById(domElements.firstCollection.id);
                 if (firstTab) {
                     firstTab.style.display = 'block';
                 }
             }
 
-            const firstTabLink = document.querySelector('.tablink');
-            if (firstTabLink) {
-                firstTabLink.classList.add('active');
+            if (domElements.firstTabLink) {
+                domElements.firstTabLink.classList.add('active');
             }
 
             // Add event listeners for collection tabs
-            const deckTabButtons = document.querySelectorAll('.tablink');
-            if (deckTabButtons && deckTabButtons.length > 0) {
-                deckTabButtons.forEach((deckTabButton) => {
+            if (domElements.deckTabButtons && domElements.deckTabButtons.length > 0) {
+                domElements.deckTabButtons.forEach((deckTabButton) => {
                     deckTabButton.addEventListener('click', function () {
                         try {
                             const collectionName = deckTabButton.getAttribute('data-collection');
@@ -253,12 +323,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         try {
             // Add event listeners for form inputs (radio buttons and checkboxes)
-            const cardStatusFields = document.querySelectorAll(
-                '.collection-form input[type="radio"], .collection-form input[type="checkbox"]'
-            );
-
-            if (cardStatusFields && cardStatusFields.length > 0) {
-                cardStatusFields.forEach((cardStatusField) => {
+            if (domElements.cardStatusFields && domElements.cardStatusFields.length > 0) {
+                domElements.cardStatusFields.forEach((cardStatusField) => {
                     cardStatusField.addEventListener('change', () => {
                         try {
                             hideUserMessage();
@@ -272,14 +338,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
 
             // Add event listeners for showing different format types
-            const redditFormatButton = document.getElementById('show-reddit-format');
-            if (redditFormatButton) {
-                redditFormatButton.addEventListener('click', showRedditFormat);
+            if (domElements.redditFormatButton) {
+                domElements.redditFormatButton.addEventListener('click', showRedditFormat);
             }
 
-            const inGameFormatButton = document.getElementById('show-in-game-format');
-            if (inGameFormatButton) {
-                inGameFormatButton.addEventListener('click', showInGameFormat);
+            if (domElements.inGameFormatButton) {
+                domElements.inGameFormatButton.addEventListener('click', showInGameFormat);
             }
         } catch (error) {
             console.error('Error setting up format generation:', error);
@@ -292,21 +356,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         try {
             // Add event listener for save button
-            const saveButton = document.getElementById('saveOptionsBtn');
-            if (saveButton) {
-                saveButton.addEventListener('click', saveOptions);
+            if (domElements.saveButton) {
+                domElements.saveButton.addEventListener('click', saveOptions);
             }
 
             // Add event listener for warning popup OK button
-            const closeWarningButton = document.getElementById('closeWarningBtn');
-            if (closeWarningButton) {
-                closeWarningButton.addEventListener('click', hideWarningPopup);
+            if (domElements.closeWarningButton) {
+                domElements.closeWarningButton.addEventListener('click', hideWarningPopup);
             }
 
             // Add event listener for file name validation popup OK button
-            const okFileNameValidationButton = document.getElementById('okFileNameValidationBtn');
-            if (okFileNameValidationButton) {
-                okFileNameValidationButton.addEventListener('click', hideFileNameValidationPopup);
+            if (domElements.okFileNameValidationButton) {
+                domElements.okFileNameValidationButton.addEventListener('click', hideFileNameValidationPopup);
             }
         } catch (error) {
             console.error('Error setting up save functionality:', error);
@@ -319,19 +380,16 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         try {
             // Add event listeners for load functionality
-            const loadButton = document.getElementById('loadOptionsBtn');
-            const loadInput = document.getElementById('loadInput');
-
-            if (loadButton && loadInput) {
-                loadButton.addEventListener('click', () => {
+            if (domElements.loadButton && domElements.loadInput) {
+                domElements.loadButton.addEventListener('click', () => {
                     try {
-                        loadInput.click();
+                        domElements.loadInput.click();
                     } catch (error) {
                         console.error('Error triggering file input:', error);
                     }
                 });
 
-                loadInput.addEventListener('change', loadOptions);
+                domElements.loadInput.addEventListener('change', loadOptions);
             }
         } catch (error) {
             console.error('Error setting up load functionality:', error);

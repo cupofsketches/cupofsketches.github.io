@@ -275,6 +275,10 @@ function initLanguageSelector() {
         // Change language and re-apply labels
         await setLocale(selectedValue);
         applyLabels();
+
+        // Regenerate format text with new language
+        generateRedditFormat();
+        generateInGameFormat();
     });
 
     // Close dropdown when clicking outside

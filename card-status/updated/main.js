@@ -43,16 +43,16 @@ function applyLabels() {
     // Purpose: Update main section titles with translated text
 
     // "Save & Load Card Status" section
-    const saveLoad = document.getElementById("saveLoadSection");
-    if (saveLoad) saveLoad.textContent = translate("ids.saveLoadSection");
+    const saveLoadSection = document.getElementById("saveLoadSection");
+    if (saveLoadSection) saveLoadSection.textContent = translate("ids.saveLoadSection");
 
     // "Choose Decks:" section
-    const chooseDecks = document.getElementById("chooseDecksSection");
-    if (chooseDecks) chooseDecks.textContent = translate("ids.chooseDecksSection");
+    const chooseDecksSection = document.getElementById("chooseDecksSection");
+    if (chooseDecksSection) chooseDecksSection.textContent = translate("ids.chooseDecksSection");
 
     // "Generate Text" section
-    const generateText = document.getElementById("generateTextSection");
-    if (generateText) generateText.textContent = translate("ids.generateTextSection");
+    const generateTextSection = document.getElementById("generateTextSection");
+    if (generateTextSection) generateTextSection.textContent = translate("ids.generateTextSection");
 
     // ================================
     // MAIN BUTTONS
@@ -181,9 +181,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Purpose: Generate and render the dynamic HTML content
 
     // Update the subtitle with current season information
-    const titleElement = document.querySelector('h1 span.subtitle');
-    if (titleElement) {
-        titleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
+    const subtitleElement = document.querySelector('h1 span.subtitle');
+    if (subtitleElement) {
+        subtitleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
     }
 
     // Render cards and decks dynamically
@@ -200,10 +200,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.querySelector('.tablink').classList.add('active');
 
     // Add event listeners for collection tabs
-    const deckTabLinks = document.querySelectorAll('.tablink');
-    deckTabLinks.forEach((deckTabLink) => {
-        deckTabLink.addEventListener('click', function () {
-            openCollection(deckTabLink.getAttribute('data-collection'));
+    const deckTabButtons = document.querySelectorAll('.tablink');
+    deckTabButtons.forEach((deckTabButton) => {
+        deckTabButton.addEventListener('click', function () {
+            openCollection(deckTabButton.getAttribute('data-collection'));
         });
     });
 
@@ -213,12 +213,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Purpose: Handle form input changes and format generation
 
     // Add event listeners for form inputs (radio buttons and checkboxes)
-    const cardStatusInputs = document.querySelectorAll(
+    const cardStatusFields = document.querySelectorAll(
         '.collection-form input[type="radio"], .collection-form input[type="checkbox"]'
     );
 
-    cardStatusInputs.forEach((cardStatusInput) => {
-        cardStatusInput.addEventListener('change', () => {
+    cardStatusFields.forEach((cardStatusField) => {
+        cardStatusField.addEventListener('change', () => {
             hideUserMessage();
             generateRedditFormat();
             generateInGameFormat();

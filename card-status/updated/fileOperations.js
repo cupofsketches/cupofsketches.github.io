@@ -23,92 +23,139 @@ import { translate } from './i18n.js';
  * This function validates that at least one option is selected before allowing save
  */
 export function saveOptions() {
-  // ================================
-  // VALIDATION
-  // ================================
-  // Purpose: Ensure user has selected at least one 'needed' or 'duplicate' option
-
-  // Check if any 'needed' or 'duplicate' options are selected across all forms
-  const forms = document.querySelectorAll('.collection-form');
-  let optionsSelected = false;
-
-  forms.forEach((form) => {
-    const radioButtons = form.querySelectorAll('input[type="radio"]');
-    const selectedOptions = Array.from(radioButtons).some(
-      (radio) => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate')
-    );
-    if (selectedOptions) {
-      optionsSelected = true;
-    }
-  });
-
-  // Show warning if no valid options are selected
-  if (!optionsSelected) {
-    showWarningPopup(translate("ids.warningMessage"));
-    return;
-  }
-
-  // ================================
-  // FILE NAME COLLECTION
-  // ================================
-  // Purpose: Prompt user for file name and proceed with saving
-
-  // Show the custom popup to get the file name from user
-  showFileNamePopup((fileName) => {
+  try {
     // ================================
-    // DATA COLLECTION
+    // VALIDATION
     // ================================
-    // Purpose: Gather all selected card statuses from the forms
+    // Purpose: Ensure user has selected at least one 'needed' or 'duplicate' option
 
-    // Initialize objects to store different card categories
-    const neededCards = {};
-    const duplicateCards = {};
-    const ownedCards = {};
+    // Check if any 'needed' or 'duplicate' options are selected across all forms
+    const forms = document.querySelectorAll('.collection-form');
 
-    /**
-     * Processes form data and categorizes cards by their status
-     * @param {HTMLFormElement} form - The form element to process
-     * @param {string} collectionName - The name of the collection
-     */
-    function processFormData(form, collectionName) {
-      const formData = new FormData(form);
-      formData.forEach((value, key) => {
-        if (value === 'needed') {
-          if (!neededCards[collectionName]) neededCards[collectionName] = [];
-          neededCards[collectionName].push(key);
-        } else if (value === 'duplicate') {
-          if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
-          duplicateCards[collectionName].push(key);
-        } else if (value === 'owned') {
-          if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
-          ownedCards[collectionName].push(key);
-        }
-      });
+    if (!forms || forms.length === 0) {
+      throw new Error('No collection forms found');
     }
 
-    // Process all forms to collect card data
+    let optionsSelected = false;
+
     forms.forEach((form) => {
-      const collectionName = form.getAttribute('data-collection');
-      processFormData(form, collectionName);
+      const radioButtons = form.querySelectorAll('input[type="radio"]');
+      const selectedOptions = Array.from(radioButtons).some(
+        (radio) => radio.checked && (radio.value === 'needed' || radio.value === 'duplicate')
+      );
+      if (selectedOptions) {
+        optionsSelected = true;
+      }
     });
 
-    // ================================
-    // FILE CREATION AND DOWNLOAD
-    // ================================
-    // Purpose: Create JSON file and trigger download
+    // Show warning if no valid options are selected
+    if (!optionsSelected) {
+      showWarningPopup(translate("ids.warningMessage"));
+      return;
+    }
 
-    // Combine all card data into a single object
-    const optionsData = { neededCards, duplicateCards, ownedCards };
+    // ================================
+    // FILE NAME COLLECTION
+    // ================================
+    // Purpose: Prompt user for file name and proceed with saving
 
-    // Create and download the JSON file
-    const blob = new Blob([JSON.stringify(optionsData)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = fileName;
-    a.click();
-    URL.revokeObjectURL(url);
-  });
+    // Show the custom popup to get the file name from user
+    showFileNamePopup((fileName) => {
+      try {
+        // Validate file name
+        if (!fileName || typeof fileName !== 'string' || fileName.trim().length === 0) {
+          throw new Error('Invalid file name provided');
+        }
+
+        // Sanitize file name (remove invalid characters)
+        const sanitizedFileName = fileName.replace(/[<>:"/\\|?*]/g, '_').trim();
+
+        if (sanitizedFileName.length === 0) {
+          throw new Error('File name contains only invalid characters');
+        }
+
+        // ================================
+        // DATA COLLECTION
+        // ================================
+        // Purpose: Gather all selected card statuses from the forms
+
+        // Initialize objects to store different card categories
+        const neededCards = {};
+        const duplicateCards = {};
+        const ownedCards = {};
+
+        /**
+         * Processes form data and categorizes cards by their status
+         * @param {HTMLFormElement} form - The form element to process
+         * @param {string} collectionName - The name of the collection
+         */
+        function processFormData(form, collectionName) {
+          if (!form || !collectionName) {
+            throw new Error('Invalid form or collection name');
+          }
+
+          const formData = new FormData(form);
+          formData.forEach((value, key) => {
+            if (value === 'needed') {
+              if (!neededCards[collectionName]) neededCards[collectionName] = [];
+              neededCards[collectionName].push(key);
+            } else if (value === 'duplicate') {
+              if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
+              duplicateCards[collectionName].push(key);
+            } else if (value === 'owned') {
+              if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
+              ownedCards[collectionName].push(key);
+            }
+          });
+        }
+
+        // Process all forms to collect card data
+        forms.forEach((form) => {
+          const collectionName = form.getAttribute('data-collection');
+          if (collectionName) {
+            processFormData(form, collectionName);
+          }
+        });
+
+        // ================================
+        // FILE CREATION AND DOWNLOAD
+        // ================================
+        // Purpose: Create JSON file and trigger download
+
+        // Combine all card data into a single object
+        const optionsData = { neededCards, duplicateCards, ownedCards };
+
+        // Validate data before creating file
+        if (Object.keys(neededCards).length === 0 && Object.keys(duplicateCards).length === 0) {
+          throw new Error('No valid card data to save');
+        }
+
+        // Create and download the JSON file
+        const jsonString = JSON.stringify(optionsData, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        try {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = sanitizedFileName + '.json';
+          a.click();
+        } finally {
+          // Always clean up the URL to prevent memory leaks
+          URL.revokeObjectURL(url);
+        }
+
+      } catch (error) {
+        console.error('Error during save operation:', error);
+        // Show user-friendly error message
+        showInvalidFilePopup(translate("ids.invalidFileMessage"));
+      }
+    });
+
+  } catch (error) {
+    console.error('Error in saveOptions:', error);
+    showInvalidFilePopup(translate("ids.invalidFileMessage"));
+  }
 }
 
 // ================================
@@ -121,27 +168,54 @@ export function saveOptions() {
  * @param {Event} event - The file input change event
  */
 export function loadOptions(event) {
-  // ================================
-  // HELPER FUNCTIONS
-  // ================================
-  // Purpose: Local utility functions for the load operation
+  try {
+    // Validate event parameter
+    if (!event || !event.target || !event.target.files) {
+      throw new Error('Invalid file input event');
+    }
 
-  /**
-   * Hides user message displays when loading new data
-   */
-  function hideUserMessage() {
-    document.getElementById('user-message').style.display = 'none';
-    document.getElementById('in-game-user-message').style.display = 'none';
-  }
+    // ================================
+    // HELPER FUNCTIONS
+    // ================================
+    // Purpose: Local utility functions for the load operation
 
-  // ================================
-  // FILE VALIDATION
-  // ================================
-  // Purpose: Ensure the selected file is valid JSON
+    /**
+     * Hides user message displays when loading new data
+     */
+    function hideUserMessage() {
+      try {
+        const userMessage = document.getElementById('user-message');
+        const inGameUserMessage = document.getElementById('in-game-user-message');
 
-  const file = event.target.files[0];
+        if (userMessage) userMessage.style.display = 'none';
+        if (inGameUserMessage) inGameUserMessage.style.display = 'none';
+      } catch (error) {
+        console.warn('Could not hide user messages:', error);
+      }
+    }
 
-  if (file && file.type === 'application/json') {
+    // ================================
+    // FILE VALIDATION
+    // ================================
+    // Purpose: Ensure the selected file is valid JSON
+
+    const file = event.target.files[0];
+
+    if (!file) {
+      throw new Error('No file selected');
+    }
+
+    // Check file type and size
+    if (file.type !== 'application/json') {
+      throw new Error('Invalid file type. Please select a JSON file.');
+    }
+
+    // Check file size (limit to 1MB)
+    const maxSize = 1024 * 1024; // 1MB
+    if (file.size > maxSize) {
+      throw new Error('File too large. Please select a file smaller than 1MB.');
+    }
+
     // Hide user messages and proceed with loading
     hideUserMessage();
 
@@ -151,10 +225,35 @@ export function loadOptions(event) {
     // Purpose: Read file contents and apply data to the interface
 
     const reader = new FileReader();
+
+    reader.onerror = function () {
+      throw new Error('Error reading file');
+    };
+
     reader.onload = function () {
       try {
+        // Validate reader result
+        if (!reader.result || typeof reader.result !== 'string') {
+          throw new Error('Invalid file content');
+        }
+
         // Parse the JSON data from the file
-        const optionsData = JSON.parse(reader.result);
+        let optionsData;
+        try {
+          optionsData = JSON.parse(reader.result);
+        } catch (parseError) {
+          throw new Error('Invalid JSON format in file');
+        }
+
+        // Validate data structure
+        if (!optionsData || typeof optionsData !== 'object') {
+          throw new Error('Invalid data structure in file');
+        }
+
+        // Check if required properties exist
+        if (!optionsData.neededCards && !optionsData.duplicateCards && !optionsData.ownedCards) {
+          throw new Error('File does not contain valid card data');
+        }
 
         // ================================
         // DATA APPLICATION
@@ -162,31 +261,48 @@ export function loadOptions(event) {
         // Purpose: Apply loaded data to all collection forms
 
         // Iterate through all collection forms
-        document.querySelectorAll('.collection-form').forEach((form) => {
-          const collectionName = form.getAttribute('data-collection');
+        const forms = document.querySelectorAll('.collection-form');
 
-          // Apply needed cards data
-          if (optionsData.neededCards[collectionName]) {
-            optionsData.neededCards[collectionName].forEach((card) => {
-              const input = form.querySelector(`input[name="${card}"][value="needed"]`);
-              if (input) input.checked = true;
-            });
-          }
+        if (!forms || forms.length === 0) {
+          throw new Error('No collection forms found in interface');
+        }
 
-          // Apply duplicate cards data
-          if (optionsData.duplicateCards[collectionName]) {
-            optionsData.duplicateCards[collectionName].forEach((card) => {
-              const input = form.querySelector(`input[name="${card}"][value="duplicate"]`);
-              if (input) input.checked = true;
-            });
-          }
+        forms.forEach((form) => {
+          try {
+            const collectionName = form.getAttribute('data-collection');
+            if (!collectionName) return;
 
-          // Apply owned cards data
-          if (optionsData.ownedCards[collectionName]) {
-            optionsData.ownedCards[collectionName].forEach((card) => {
-              const input = form.querySelector(`input[name="${card}"][value="owned"]`);
-              if (input) input.checked = true;
-            });
+            // Apply needed cards data
+            if (optionsData.neededCards && optionsData.neededCards[collectionName]) {
+              optionsData.neededCards[collectionName].forEach((card) => {
+                if (card && typeof card === 'string') {
+                  const input = form.querySelector(`input[name="${card}"][value="needed"]`);
+                  if (input) input.checked = true;
+                }
+              });
+            }
+
+            // Apply duplicate cards data
+            if (optionsData.duplicateCards && optionsData.duplicateCards[collectionName]) {
+              optionsData.duplicateCards[collectionName].forEach((card) => {
+                if (card && typeof card === 'string') {
+                  const input = form.querySelector(`input[name="${card}"][value="duplicate"]`);
+                  if (input) input.checked = true;
+                }
+              });
+            }
+
+            // Apply owned cards data
+            if (optionsData.ownedCards && optionsData.ownedCards[collectionName]) {
+              optionsData.ownedCards[collectionName].forEach((card) => {
+                if (card && typeof card === 'string') {
+                  const input = form.querySelector(`input[name="${card}"][value="owned"]`);
+                  if (input) input.checked = true;
+                }
+              });
+            }
+          } catch (formError) {
+            console.warn(`Error processing form for collection ${collectionName}:`, formError);
           }
         });
 
@@ -196,12 +312,16 @@ export function loadOptions(event) {
         // Purpose: Refresh the display to show loaded data
 
         // Regenerate format displays with new data
-        generateRedditFormat();
-        generateInGameFormat();
+        try {
+          generateRedditFormat();
+          generateInGameFormat();
+        } catch (formatError) {
+          console.warn('Error regenerating formats:', formatError);
+        }
 
       } catch (error) {
         // Handle JSON parsing errors
-        console.error('Error parsing JSON file:', error);
+        console.error('Error processing loaded file:', error);
         showInvalidFilePopup(translate("ids.invalidFileMessage"));
       }
     };
@@ -209,22 +329,22 @@ export function loadOptions(event) {
     // Start reading the file
     reader.readAsText(file);
 
-  } else {
-    // ================================
-    // ERROR HANDLING
-    // ================================
-    // Purpose: Show error message for invalid file types
-
-    // Show error popup for invalid file type
+  } catch (error) {
+    console.error('Error in loadOptions:', error);
+    // Show user-friendly error message
     showInvalidFilePopup(translate("ids.invalidFileMessage"));
+  } finally {
+    // ================================
+    // CLEANUP
+    // ================================
+    // Purpose: Reset file input for future selections
+
+    // Reset the file input value to allow re-selection of the same file
+    try {
+      const fileInput = document.getElementById('loadInput');
+      if (fileInput) fileInput.value = '';
+    } catch (cleanupError) {
+      console.warn('Error during cleanup:', cleanupError);
+    }
   }
-
-  // ================================
-  // CLEANUP
-  // ================================
-  // Purpose: Reset file input for future selections
-
-  // Reset the file input value to allow re-selection of the same file
-  const fileInput = document.getElementById('loadInput');
-  fileInput.value = '';
 }

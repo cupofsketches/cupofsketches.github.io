@@ -167,99 +167,201 @@ function initLanguageSelector() {
  * Sets up all event listeners and initializes the application
  */
 document.addEventListener('DOMContentLoaded', async function () {
-    // ================================
-    // I18N INITIALIZATION
-    // ================================
-    // Purpose: Initialize internationalization first
+    try {
+        // ================================
+        // I18N INITIALIZATION
+        // ================================
+        // Purpose: Initialize internationalization first
 
-    await bootI18n();
-    initLanguageSelector();
+        await bootI18n();
+        initLanguageSelector();
 
-    // ================================
-    // HTML GENERATION
-    // ================================
-    // Purpose: Generate and render the dynamic HTML content
+        // ================================
+        // HTML GENERATION
+        // ================================
+        // Purpose: Generate and render the dynamic HTML content
 
-    // Update the subtitle with current season information
-    const subtitleElement = document.querySelector('h1 span.subtitle');
-    if (subtitleElement) {
-        subtitleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
-    }
+        // Update the subtitle with current season information
+        try {
+            const subtitleElement = document.querySelector('h1 span.subtitle');
+            if (subtitleElement) {
+                subtitleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
+            }
+        } catch (error) {
+            console.warn('Could not update subtitle:', error);
+        }
 
-    // Render cards and decks dynamically
-    renderCards();
-    renderDecks();
+        // Render cards and decks dynamically
+        try {
+            renderCards();
+            renderDecks();
+        } catch (error) {
+            console.error('Error rendering cards and decks:', error);
+            // Show user-friendly error message
+            const errorMessage = document.createElement('div');
+            errorMessage.textContent = 'Error loading card data. Please refresh the page.';
+            errorMessage.style.color = 'red';
+            errorMessage.style.textAlign = 'center';
+            errorMessage.style.padding = '20px';
+            document.body.insertBefore(errorMessage, document.body.firstChild);
+        }
 
-    // ================================
-    // TAB FUNCTIONALITY
-    // ================================
-    // Purpose: Handle deck tab switching and display
+        // ================================
+        // TAB FUNCTIONALITY
+        // ================================
+        // Purpose: Handle deck tab switching and display
 
-    // Set first tab as active by default
-    document.getElementById(currentCollection[0].id).style.display = 'block';
-    document.querySelector('.tablink').classList.add('active');
+        try {
+            // Set first tab as active by default
+            const firstCollection = currentCollection[0];
+            if (firstCollection && firstCollection.id) {
+                const firstTab = document.getElementById(firstCollection.id);
+                if (firstTab) {
+                    firstTab.style.display = 'block';
+                }
+            }
 
-    // Add event listeners for collection tabs
-    const deckTabButtons = document.querySelectorAll('.tablink');
-    deckTabButtons.forEach((deckTabButton) => {
-        deckTabButton.addEventListener('click', function () {
-            openCollection(deckTabButton.getAttribute('data-collection'));
-        });
-    });
+            const firstTabLink = document.querySelector('.tablink');
+            if (firstTabLink) {
+                firstTabLink.classList.add('active');
+            }
 
-    // ================================
-    // TEXT FORMAT GENERATION
-    // ================================
-    // Purpose: Handle form input changes and format generation
+            // Add event listeners for collection tabs
+            const deckTabButtons = document.querySelectorAll('.tablink');
+            if (deckTabButtons && deckTabButtons.length > 0) {
+                deckTabButtons.forEach((deckTabButton) => {
+                    deckTabButton.addEventListener('click', function () {
+                        try {
+                            const collectionName = deckTabButton.getAttribute('data-collection');
+                            if (collectionName) {
+                                openCollection(collectionName);
+                            }
+                        } catch (error) {
+                            console.error('Error opening collection:', error);
+                        }
+                    });
+                });
+            }
+        } catch (error) {
+            console.error('Error setting up tab functionality:', error);
+        }
 
-    // Add event listeners for form inputs (radio buttons and checkboxes)
-    const cardStatusFields = document.querySelectorAll(
-        '.collection-form input[type="radio"], .collection-form input[type="checkbox"]'
-    );
+        // ================================
+        // TEXT FORMAT GENERATION
+        // ================================
+        // Purpose: Handle form input changes and format generation
 
-    cardStatusFields.forEach((cardStatusField) => {
-        cardStatusField.addEventListener('change', () => {
-            hideUserMessage();
+        try {
+            // Add event listeners for form inputs (radio buttons and checkboxes)
+            const cardStatusFields = document.querySelectorAll(
+                '.collection-form input[type="radio"], .collection-form input[type="checkbox"]'
+            );
+
+            if (cardStatusFields && cardStatusFields.length > 0) {
+                cardStatusFields.forEach((cardStatusField) => {
+                    cardStatusField.addEventListener('change', () => {
+                        try {
+                            hideUserMessage();
+                            generateRedditFormat();
+                            generateInGameFormat();
+                        } catch (error) {
+                            console.error('Error generating formats:', error);
+                        }
+                    });
+                });
+            }
+
+            // Add event listeners for showing different format types
+            const redditFormatButton = document.getElementById('show-reddit-format');
+            if (redditFormatButton) {
+                redditFormatButton.addEventListener('click', showRedditFormat);
+            }
+
+            const inGameFormatButton = document.getElementById('show-in-game-format');
+            if (inGameFormatButton) {
+                inGameFormatButton.addEventListener('click', showInGameFormat);
+            }
+        } catch (error) {
+            console.error('Error setting up format generation:', error);
+        }
+
+        // ================================
+        // SAVE FUNCTIONALITY
+        // ================================
+        // Purpose: Handle saving card status data
+
+        try {
+            // Add event listener for save button
+            const saveButton = document.getElementById('saveOptionsBtn');
+            if (saveButton) {
+                saveButton.addEventListener('click', saveOptions);
+            }
+
+            // Add event listener for warning popup OK button
+            const closeWarningButton = document.getElementById('closeWarningBtn');
+            if (closeWarningButton) {
+                closeWarningButton.addEventListener('click', hideWarningPopup);
+            }
+
+            // Add event listener for file name validation popup OK button
+            const okFileNameValidationButton = document.getElementById('okFileNameValidationBtn');
+            if (okFileNameValidationButton) {
+                okFileNameValidationButton.addEventListener('click', hideFileNameValidationPopup);
+            }
+        } catch (error) {
+            console.error('Error setting up save functionality:', error);
+        }
+
+        // ================================
+        // LOAD FUNCTIONALITY
+        // ================================
+        // Purpose: Handle loading previously saved card status data
+
+        try {
+            // Add event listeners for load functionality
+            const loadButton = document.getElementById('loadOptionsBtn');
+            const loadInput = document.getElementById('loadInput');
+
+            if (loadButton && loadInput) {
+                loadButton.addEventListener('click', () => {
+                    try {
+                        loadInput.click();
+                    } catch (error) {
+                        console.error('Error triggering file input:', error);
+                    }
+                });
+
+                loadInput.addEventListener('change', loadOptions);
+            }
+        } catch (error) {
+            console.error('Error setting up load functionality:', error);
+        }
+
+        // ================================
+        // INITIAL FORMAT GENERATION
+        // ================================
+        // Purpose: Generate initial format displays when page loads
+
+        try {
+            // Generate formats initially to show default state
             generateRedditFormat();
             generateInGameFormat();
-        });
-    });
+        } catch (error) {
+            console.error('Error generating initial formats:', error);
+        }
 
-    // Add event listeners for showing different format types
-    document.getElementById('show-reddit-format').addEventListener('click', showRedditFormat);
-    document.getElementById('show-in-game-format').addEventListener('click', showInGameFormat);
-
-    // ================================
-    // SAVE FUNCTIONALITY
-    // ================================
-    // Purpose: Handle saving card status data
-
-    // Add event listener for save button
-    document.getElementById('saveOptionsBtn').addEventListener('click', saveOptions);
-
-    // Add event listener for warning popup OK button
-    document.getElementById('closeWarningBtn').addEventListener('click', hideWarningPopup);
-
-    // Add event listener for file name validation popup OK button
-    document.getElementById('okFileNameValidationBtn').addEventListener('click', hideFileNameValidationPopup);
-
-    // ================================
-    // LOAD FUNCTIONALITY
-    // ================================
-    // Purpose: Handle loading previously saved card status data
-
-    // Add event listeners for load functionality
-    document.getElementById('loadOptionsBtn').addEventListener('click', () => {
-        document.getElementById('loadInput').click();
-    });
-    document.getElementById('loadInput').addEventListener('change', loadOptions);
-
-    // ================================
-    // INITIAL FORMAT GENERATION
-    // ================================
-    // Purpose: Generate initial format displays when page loads
-
-    // Generate formats initially to show default state
-    generateRedditFormat();
-    generateInGameFormat();
+    } catch (error) {
+        console.error('Critical error during application initialization:', error);
+        // Show critical error message to user
+        const criticalError = document.createElement('div');
+        criticalError.textContent = 'Critical error during initialization. Please refresh the page or contact support.';
+        criticalError.style.color = 'red';
+        criticalError.style.textAlign = 'center';
+        criticalError.style.padding = '20px';
+        criticalError.style.backgroundColor = '#ffe6e6';
+        criticalError.style.border = '1px solid #ff9999';
+        criticalError.style.borderRadius = '5px';
+        criticalError.style.margin = '20px';
+        document.body.insertBefore(criticalError, document.body.firstChild);
+    }
 });

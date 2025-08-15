@@ -88,18 +88,18 @@ export function generateCardsHTML(collection) {
             } else {
                 // Regular cards with full status options
                 return `
-                <div class="card">
-                    <label class="cardName" for="${neededId}">${card.name}</label><br>
-                    <div class="option">
-                        <input type="radio" id="${neededId}" name="${card.name}" value="needed"> 
-                        <label for="${neededId}" style="display: inline; font-weight: normal;">Needed</label><br>
-                        <input type="radio" id="${duplicateId}" name="${card.name}" value="duplicate"> 
-                        <label for="${duplicateId}" style="display: inline; font-weight: normal;">Duplicate</label><br>
-                        <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled">
-                        <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">Owned</label>
-                    </div>
+            <div class="card" data-card-id="${card.id}" data-collection-id="${collection.id}">
+                <label class="cardName" for="${neededId}">${card.name}</label><br>
+                <div class="option">
+                    <input type="radio" id="${neededId}" name="${card.name}" value="needed" data-card-id="${card.id}" data-collection-id="${collection.id}"> 
+                    <label for="${neededId}" style="display: inline; font-weight: normal;">Needed</label><br>
+                    <input type="radio" id="${duplicateId}" name="${card.name}" value="duplicate" data-card-id="${card.id}" data-collection-id="${collection.id}"> 
+                    <label for="${duplicateId}" style="display: inline; font-weight: normal;">Duplicate</label><br>
+                    <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled" data-card-id="${card.id}" data-collection-id="${collection.id}">
+                    <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">Owned</label>
                 </div>
-            `;
+            </div>
+        `;
             }
         })
         .join('');

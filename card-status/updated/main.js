@@ -274,6 +274,12 @@ function initLanguageSelector() {
 
         // Change language and re-apply labels
         console.log('🔄 Language change started:', selectedValue);
+
+        // Save current radio button states before switching languages
+        console.log('💾 Saving current radio button states...');
+        const savedSelections = saveRadioButtonStates();
+        console.log('💾 Saved selections:', savedSelections.length, 'cards');
+
         await setLocale(selectedValue);
         console.log('✅ setLocale completed');
         applyLabels();
@@ -359,6 +365,11 @@ function initLanguageSelector() {
         console.log('🔧 Re-attaching event listeners...');
         setupEventListeners();
         console.log('✅ Event listeners re-attached!');
+
+        // Restore radio button selections after re-rendering
+        console.log('🔄 Restoring radio button selections...');
+        restoreRadioButtonStates(savedSelections);
+        console.log('✅ Radio button selections restored!');
     });
 
     // Close dropdown when clicking outside
@@ -532,6 +543,88 @@ function openCollection(collectionDeck) {
         }
     } catch (error) {
         console.error('❌ Error opening collection:', error);
+    }
+}
+
+/**
+ * Saves the current state of all radio button selections
+ * @returns {Array} Array of objects containing card ID and selected value
+ */
+function saveRadioButtonStates() {
+    try {
+        const selections = [];
+
+        // Get ALL radio buttons from ALL tabs, even hidden ones
+        const allTabs = document.querySelectorAll('.tabcontent');
+        console.log('📋 Found', allTabs.length, 'tabs to scan for selections');
+
+        allTabs.forEach(tab => {
+            const radioButtons = tab.querySelectorAll('input[type="radio"]:not(.disabled)');
+            console.log('📻 Tab', tab.id, 'has', radioButtons.length, 'radio buttons');
+
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    // Extract card ID and collection ID from data attributes (these don't change between languages)
+                    const cardId = radio.getAttribute('data-card-id'); // e.g., "tape-recorder"
+                    const collectionId = radio.getAttribute('data-collection-id'); // e.g., "music-studio"
+                    const selectedValue = radio.value; // e.g., "needed", "duplicate", "owned"
+
+                    if (cardId && collectionId) {
+                        selections.push({
+                            cardId: cardId,
+                            collectionId: collectionId,
+                            value: selectedValue
+                        });
+                    }
+                }
+            });
+        });
+
+        console.log('💾 Saved', selections.length, 'radio button selections from all tabs');
+        return selections;
+    } catch (error) {
+        console.error('❌ Error saving radio button states:', error);
+        return [];
+    }
+}
+
+/**
+ * Restores radio button selections after language change
+ * @param {Array} savedSelections - Array of saved selection objects
+ */
+function restoreRadioButtonStates(savedSelections) {
+    try {
+        if (!savedSelections || savedSelections.length === 0) {
+            console.log('💾 No saved selections to restore');
+            return;
+        }
+
+        console.log('🔄 Attempting to restore', savedSelections.length, 'selections...');
+        let restoredCount = 0;
+
+        savedSelections.forEach(selection => {
+            // Find the radio button using data attributes that don't change between languages
+            const radioButton = document.querySelector(`input[data-card-id="${selection.cardId}"][data-collection-id="${selection.collectionId}"][value="${selection.value}"]`);
+
+            if (radioButton) {
+                radioButton.checked = true;
+                restoredCount++;
+                console.log('✅ Restored:', selection.cardId, 'in', selection.collectionId, '=', selection.value);
+            } else {
+                console.log('❌ Could not find radio button for:', selection.cardId, 'in', selection.collectionId, '=', selection.value);
+            }
+        });
+
+        console.log('🔄 Restored', restoredCount, 'out of', savedSelections.length, 'selections');
+
+        // Regenerate format text with restored selections
+        if (restoredCount > 0) {
+            console.log('🔄 Regenerating format text with restored selections...');
+            generateRedditFormat();
+            generateInGameFormat();
+        }
+    } catch (error) {
+        console.error('❌ Error restoring radio button states:', error);
     }
 }
 

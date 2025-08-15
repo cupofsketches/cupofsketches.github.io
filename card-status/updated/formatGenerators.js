@@ -147,7 +147,7 @@ export function generateInGameFormat() {
             if (!isFirstNeededCollection) {
                 neededParts.push(' / ');
             }
-            neededParts.push(`${collection}: ${neededCards[collection].join(', ')}`);
+            neededParts.push(`[${collection}]: ${neededCards[collection].join(', ')}`);
             isFirstNeededCollection = false;
         }
     }
@@ -160,7 +160,7 @@ export function generateInGameFormat() {
             if (!isFirstDuplicateCollection) {
                 duplicateParts.push(' / ');
             }
-            duplicateParts.push(`${collection}: ${duplicateCards[collection].join(', ')}`);
+            duplicateParts.push(`[${collection}]: ${duplicateCards[collection].join(', ')}`);
             isFirstDuplicateCollection = false;
         }
     }

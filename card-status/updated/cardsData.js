@@ -1,29 +1,24 @@
 // ---------------------------------
 // --------- CARDS DATA -----------
 // ---------------------------------
-// This file manages the card collection data and provides functions to load different seasonal collections.
-// It handles the dynamic switching between various card sets based on the current season.
+// This file manages the card collection data and provides functions to load the hobby collection.
+// It handles loading the hobby collection from the new locales structure.
 
 // ================================
-// SEASON CONFIGURATION
+// COLLECTION CONFIGURATION
 // ================================
-// Purpose: Define which season/collection is currently active
+// Purpose: Define which collection is currently active
 
-// Set this dynamically based on your logic, e.g., using the current date
+// Currently only hobby collection is available
 export const season = 'hobby';
 
 // ================================
 // IMPORT STATEMENTS
 // ================================
-// Purpose: Import all available seasonal card collections
+// Purpose: Import hobby collection from new structure
 
-// Import all seasonal card collections
-import { currentCollectionFall } from '../seasons/fallCards.js';
-import { currentCollectionWinter } from '../seasons/winterCards.js';
-import { currentCollectionJourney } from '../seasons/journeyCards.js';
-import { currentCollectionNature } from '../seasons/natureCards.js';
-import { currentCollectionSpace } from '../seasons/spaceCards.js';
-import { currentCollectionHobby } from '../seasons/hobbyCards.js';
+// Import hobby collection from new structure
+import { hobbyCollection } from '../locales/collections/hobby/en.js';
 
 // ================================
 // GLOBAL VARIABLES
@@ -36,33 +31,23 @@ let currentCollection;
 // ================================
 // COLLECTION LOADING
 // ================================
-// Purpose: Load the appropriate card collection based on the current season
+// Purpose: Load the hobby collection from the new structure
 
 /**
- * Loads the appropriate card collection based on the current season setting.
- * This function dynamically selects which collection to use and returns it for use in the application.
- * @returns {Array} The current collection array containing all cards and deck information
+ * Loads the hobby collection from the new locales structure.
+ * This function loads the hobby collection and returns it for use in the application.
+ * @returns {Array} The hobby collection array containing all cards and deck information
  * @example
- * const collection = loadCollection(); // Returns the hobby collection if season = 'hobby'
+ * const collection = loadCollection(); // Returns the hobby collection
  */
 export function loadCollection() {
     // ================================
-    // SEASON-BASED COLLECTION SELECTION
+    // HOBBY COLLECTION LOADING
     // ================================
-    // Purpose: Select the appropriate collection based on the season variable
+    // Purpose: Load the hobby collection from the new structure
 
-    // Map season names to their corresponding collections
-    const seasonCollections = {
-        'fall': currentCollectionFall,
-        'winter': currentCollectionWinter,
-        'journey': currentCollectionJourney,
-        'nature': currentCollectionNature,
-        'space': currentCollectionSpace,
-        'hobby': currentCollectionHobby
-    };
-
-    // Get the collection for the current season, fallback to hobby if season not found
-    currentCollection = seasonCollections[season] || seasonCollections['hobby'];
+    // Currently only hobby collection is available
+    currentCollection = hobbyCollection;
 
     // ================================
     // DEBUGGING AND RETURN

@@ -226,8 +226,27 @@ export function loadOptions(event) {
 
     const reader = new FileReader();
 
+    // Clean up reader on error
     reader.onerror = function () {
-      throw new Error('Error reading file');
+      try {
+        reader.abort(); // Abort any ongoing read operation
+        throw new Error('Error reading file');
+      } catch (error) {
+        console.error('FileReader error:', error);
+        showInvalidFilePopup(translate("ids.invalidFileMessage"));
+      }
+    };
+
+    // Clean up reader when done
+    reader.onloadend = function () {
+      try {
+        // Clear the reader reference
+        reader.onload = null;
+        reader.onerror = null;
+        reader.onloadend = null;
+      } catch (error) {
+        console.warn('Error cleaning up FileReader:', error);
+      }
     };
 
     reader.onload = function () {

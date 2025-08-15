@@ -203,6 +203,62 @@ function initLanguageSelector() {
 }
 
 // ================================
+// MEMORY MANAGEMENT
+// ================================
+// Purpose: Clean up resources and prevent memory leaks
+
+/**
+ * Safely removes an event listener from an element
+ * @param {Element} element - The DOM element to remove the listener from
+ * @param {string} eventType - The type of event (e.g., 'click', 'change')
+ * @param {Function} listener - The event listener function to remove
+ */
+function safeRemoveEventListener(element, eventType, listener) {
+    try {
+        if (element && element.removeEventListener) {
+            element.removeEventListener(eventType, listener);
+        }
+    } catch (error) {
+        console.warn('Error removing event listener:', error);
+    }
+}
+
+/**
+ * Cleans up all event listeners and resources to prevent memory leaks
+ * Should be called when the application is being destroyed or reset
+ */
+function cleanupApplication() {
+    try {
+        // Remove all event listeners from DOM elements
+        const allButtons = document.querySelectorAll('button');
+        const allInputs = document.querySelectorAll('input');
+
+        // Clone elements to remove all event listeners
+        allButtons.forEach(button => {
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+        });
+
+        allInputs.forEach(input => {
+            const newInput = input.cloneNode(true);
+            input.parentNode.replaceChild(newInput, input);
+        });
+
+        // Clear any stored references
+        if (window.currentCollection) {
+            window.currentCollection = null;
+        }
+
+        console.log('Application cleanup completed');
+    } catch (error) {
+        console.error('Error during cleanup:', error);
+    }
+}
+
+// Add cleanup on page unload
+window.addEventListener('beforeunload', cleanupApplication);
+
+// ================================
 // EVENT LISTENERS
 // ================================
 // Purpose: Set up all event handlers for user interactions
@@ -284,6 +340,49 @@ document.addEventListener('DOMContentLoaded', async function () {
         // ================================
         // Purpose: Handle deck tab switching and display
 
+        /**
+         * Opens a specific collection tab and updates the UI accordingly
+         * @param {string} collectionDeck - The ID of the collection to open
+         */
+        function openCollection(collectionDeck) {
+            try {
+                // Cache DOM elements to avoid repeated queries
+                const tabContents = document.querySelectorAll('.tabcontent');
+                const tabLinks = document.querySelectorAll('.tablink');
+
+                // Hide all tab contents
+                tabContents.forEach(tabContent => {
+                    if (tabContent) {
+                        tabContent.style.display = 'none';
+                    }
+                });
+
+                // Remove active class from all tab links
+                tabLinks.forEach(tabLink => {
+                    if (tabLink) {
+                        tabLink.classList.remove('active');
+                    }
+                });
+
+                // Show the selected tab content
+                const currentTabContent = document.getElementById(collectionDeck);
+                if (currentTabContent) {
+                    currentTabContent.style.display = 'block';
+                }
+
+                // Add active class to the clicked tab link
+                const clickedTabLink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
+                if (clickedTabLink) {
+                    clickedTabLink.classList.add('active');
+                }
+            } catch (error) {
+                console.error('Error opening collection:', error);
+            }
+        }
+
+        /**
+         * Sets up all event listeners and initializes the application
+         */
         try {
             // Set first tab as active by default
             if (domElements.firstCollection && domElements.firstCollection.id) {

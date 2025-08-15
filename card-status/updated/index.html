@@ -176,34 +176,6 @@
     </div>
 
     <!-- ================================ -->
-    <!-- UTILITY FUNCTIONS -->
-    <!-- ================================ -->
-    <!-- Purpose: Helper functions for tab functionality -->
-    <script>
-        function openCollection(collectionDeck) {
-            const tabcontents = document.querySelectorAll('.tabcontent');
-            tabcontents.forEach(tabcontent => {
-                tabcontent.style.display = 'none';
-            });
-
-            const tablinks = document.querySelectorAll('.tablink');
-            tablinks.forEach(tablink => {
-                tablink.classList.remove('active');
-            });
-
-            const currentTabcontent = document.getElementById(collectionDeck);
-            if (currentTabcontent) {
-                currentTabcontent.style.display = 'block';
-            }
-
-            const clickedTablink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
-            if (clickedTablink) {
-                clickedTablink.classList.add('active');
-            }
-        }
-    </script>
-
-    <!-- ================================ -->
     <!-- SCRIPT IMPORTS -->
     <!-- ================================ -->
     <!-- Purpose: Load all necessary JavaScript modules for the application -->

@@ -20,6 +20,30 @@ import { loadCollection } from './cardsData.js';
 const currentCollection = loadCollection();
 
 // ================================
+// MEMORY MANAGEMENT
+// ================================
+// Purpose: Track and clean up event listeners and DOM references
+
+// Store references to event listeners for cleanup
+const eventListeners = new Map();
+
+/**
+ * Cleans up event listeners and DOM references to prevent memory leaks
+ * Should be called when the application is being destroyed or reset
+ */
+export function cleanupHTMLGenerator() {
+    // Remove all stored event listeners
+    eventListeners.forEach((listener, element) => {
+        if (element && element.removeEventListener) {
+            element.removeEventListener('click', listener);
+        }
+    });
+
+    // Clear the event listeners map
+    eventListeners.clear();
+}
+
+// ================================
 // CARD HTML GENERATION
 // ================================
 // Purpose: Generate HTML for individual cards and collection forms
@@ -98,7 +122,9 @@ export function generateCardsHTML(collection) {
  */
 export function renderCards() {
     const container = document.getElementById('cards-container'); // Main container div
-    container.innerHTML = currentCollection.map(generateCardsHTML).join('');
+    if (container) {
+        container.innerHTML = currentCollection.map(generateCardsHTML).join('');
+    }
 }
 
 // ================================
@@ -109,6 +135,7 @@ export function renderCards() {
 /**
  * Generates HTML for a single deck navigation tab
  * Creates a button that can be clicked to switch between different card collections
+ * Note: Event listeners are now added in main.js instead of inline onclick
  * @param {Object} collection - The collection object containing deck information
  * @returns {string} HTML string for the deck tab button
  */
@@ -119,14 +146,14 @@ export function generateDeckHTML(collection) {
     // First deck is active by default
     if (deckId === currentCollection[0].id) {
         return `
-        <button class="tablink active" data-collection="${deckId}" onclick="openCollection('${deckId}')">
+        <button class="tablink active" data-collection="${deckId}">
             ${deckName}
         </button>
         `;
     } else {
         // Other decks start as inactive
         return `
-        <button class="tablink" data-collection="${deckId}" onclick="openCollection('${deckId}')">
+        <button class="tablink" data-collection="${deckId}">
             ${deckName}
         </button>
     `;
@@ -139,5 +166,7 @@ export function generateDeckHTML(collection) {
  */
 export function renderDecks() {
     const container = document.getElementById('decks-container'); // Main container div
-    container.innerHTML = currentCollection.map(generateDeckHTML).join('');
+    if (container) {
+        container.innerHTML = currentCollection.map(generateDeckHTML).join('');
+    }
 }

@@ -60,12 +60,12 @@ function applyLabels() {
     // Purpose: Update button labels with translated text
 
     // Save button
-    const saveBtn = document.getElementById("saveOptionsBtn");
-    if (saveBtn) saveBtn.textContent = translate("ids.saveOptionsBtn");
+    const saveButton = document.getElementById("saveOptionsBtn");
+    if (saveButton) saveButton.textContent = translate("ids.saveOptionsBtn");
 
     // Load button
-    const loadBtn = document.getElementById("loadOptionsBtn");
-    if (loadBtn) loadBtn.textContent = translate("ids.loadOptionsBtn");
+    const loadButton = document.getElementById("loadOptionsBtn");
+    if (loadButton) loadButton.textContent = translate("ids.loadOptionsBtn");
 
     // ================================
     // FORMAT BUTTONS (WITH <br>)
@@ -73,12 +73,12 @@ function applyLabels() {
     // Purpose: Update format buttons that include line breaks using innerHTML
 
     // "Show Reddit<br>Format" button
-    const redditBtn = document.getElementById("show-reddit-format");
-    if (redditBtn) redditBtn.innerHTML = translate("ids.show-reddit-format");
+    const redditButton = document.getElementById("show-reddit-format");
+    if (redditButton) redditButton.innerHTML = translate("ids.show-reddit-format");
 
     // "Show In-Game<br>Format" button
-    const inGameBtn = document.getElementById("show-in-game-format");
-    if (inGameBtn) inGameBtn.innerHTML = translate("ids.show-in-game-format");
+    const inGameButton = document.getElementById("show-in-game-format");
+    if (inGameButton) inGameButton.innerHTML = translate("ids.show-in-game-format");
 
     // ================================
     // POPUP LABELS
@@ -89,15 +89,15 @@ function applyLabels() {
     const warningMsg = document.getElementById("warningMessage");
     if (warningMsg) warningMsg.textContent = translate("ids.warningMessage");
 
-    const closeWarn = document.getElementById("closeWarningBtn");
-    if (closeWarn) closeWarn.textContent = translate("ids.closeWarningBtn");
+    const closeWarningButton = document.getElementById("closeWarningBtn");
+    if (closeWarningButton) closeWarningButton.textContent = translate("ids.closeWarningBtn");
 
     // File name popup buttons
-    const confirmSave = document.getElementById("confirmSaveBtn");
-    if (confirmSave) confirmSave.textContent = translate("ids.confirmSaveBtn");
+    const confirmSaveButton = document.getElementById("confirmSaveBtn");
+    if (confirmSaveButton) confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
 
-    const cancelBtn = document.getElementById("cancelBtn");
-    if (cancelBtn) cancelBtn.textContent = translate("ids.cancelBtn");
+    const cancelButton = document.getElementById("cancelBtn");
+    if (cancelButton) cancelButton.textContent = translate("ids.cancelBtn");
 
     // File name validation popup elements
     const fileNameValidationTitle = document.getElementById("fileNameValidationTitle");

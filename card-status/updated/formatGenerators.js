@@ -13,20 +13,20 @@
  * Processes form data and categorizes cards by their status
  * This function extracts 'needed' and 'duplicate' selections from collection forms
  * @param {HTMLFormElement} form - The form element to process
- * @param {string} collectionDeck - The name of the collection deck
+ * @param {string} collectionName - The name of the collection
  * @param {Object} neededCards - Object to store needed cards
  * @param {Object} duplicateCards - Object to store duplicate cards
  */
-function processFormData(form, collectionDeck, neededCards, duplicateCards) {
+function processFormData(form, collectionName, neededCards, duplicateCards) {
     const formData = new FormData(form);
 
     formData.forEach((value, key) => {
         if (value === 'needed') {
-            if (!neededCards[collectionDeck]) neededCards[collectionDeck] = [];
-            neededCards[collectionDeck].push(key);
+            if (!neededCards[collectionName]) neededCards[collectionName] = [];
+            neededCards[collectionName].push(key);
         } else if (value === 'duplicate') {
-            if (!duplicateCards[collectionDeck]) duplicateCards[collectionDeck] = [];
-            duplicateCards[collectionDeck].push(key);
+            if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
+            duplicateCards[collectionName].push(key);
         }
     });
 }
@@ -53,8 +53,8 @@ export function generateRedditFormat() {
     // Collect data from all collection forms
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
-        const collectionDeck = form.getAttribute('data-collection');
-        processFormData(form, collectionDeck, neededCards, duplicateCards);
+        const collectionName = form.getAttribute('data-collection');
+        processFormData(form, collectionName, neededCards, duplicateCards);
     });
 
     // ================================
@@ -117,8 +117,8 @@ export function generateInGameFormat() {
     // Collect data from all collection forms
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
-        const collectionDeck = form.getAttribute('data-collection');
-        processFormData(form, collectionDeck, neededCards, duplicateCards);
+        const collectionName = form.getAttribute('data-collection');
+        processFormData(form, collectionName, neededCards, duplicateCards);
     });
 
     // ================================

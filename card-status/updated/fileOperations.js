@@ -70,26 +70,26 @@ export function saveOptions() {
      * @param {HTMLFormElement} form - The form element to process
      * @param {string} collectionDeck - The name of the collection deck
      */
-    function processFormData(form, collectionDeck) {
+    function processFormData(form, collectionName) {
       const formData = new FormData(form);
       formData.forEach((value, key) => {
         if (value === 'needed') {
-          if (!neededCards[collectionDeck]) neededCards[collectionDeck] = [];
-          neededCards[collectionDeck].push(key);
+          if (!neededCards[collectionName]) neededCards[collectionName] = [];
+          neededCards[collectionName].push(key);
         } else if (value === 'duplicate') {
-          if (!duplicateCards[collectionDeck]) duplicateCards[collectionDeck] = [];
-          duplicateCards[collectionDeck].push(key);
+          if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
+          duplicateCards[collectionName].push(key);
         } else if (value === 'owned') {
-          if (!ownedCards[collectionDeck]) ownedCards[collectionDeck] = [];
-          ownedCards[collectionDeck].push(key);
+          if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
+          ownedCards[collectionName].push(key);
         }
       });
     }
 
     // Process all forms to collect card data
     forms.forEach((form) => {
-      const collectionDeck = form.getAttribute('data-collection');
-      processFormData(form, collectionDeck);
+      const collectionName = form.getAttribute('data-collection');
+      processFormData(form, collectionName);
     });
 
     // ================================
@@ -163,27 +163,27 @@ export function loadOptions(event) {
 
         // Iterate through all collection forms
         document.querySelectorAll('.collection-form').forEach((form) => {
-          const collectionDeck = form.getAttribute('data-collection');
+          const collectionName = form.getAttribute('data-collection');
 
           // Apply needed cards data
-          if (optionsData.neededCards[collectionDeck]) {
-            optionsData.neededCards[collectionDeck].forEach((card) => {
+          if (optionsData.neededCards[collectionName]) {
+            optionsData.neededCards[collectionName].forEach((card) => {
               const input = form.querySelector(`input[name="${card}"][value="needed"]`);
               if (input) input.checked = true;
             });
           }
 
           // Apply duplicate cards data
-          if (optionsData.duplicateCards[collectionDeck]) {
-            optionsData.duplicateCards[collectionDeck].forEach((card) => {
+          if (optionsData.duplicateCards[collectionName]) {
+            optionsData.duplicateCards[collectionName].forEach((card) => {
               const input = form.querySelector(`input[name="${card}"][value="duplicate"]`);
               if (input) input.checked = true;
             });
           }
 
           // Apply owned cards data
-          if (optionsData.ownedCards[collectionDeck]) {
-            optionsData.ownedCards[collectionDeck].forEach((card) => {
+          if (optionsData.ownedCards[collectionName]) {
+            optionsData.ownedCards[collectionName].forEach((card) => {
               const input = form.querySelector(`input[name="${card}"][value="owned"]`);
               if (input) input.checked = true;
             });

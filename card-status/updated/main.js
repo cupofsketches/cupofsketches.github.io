@@ -391,8 +391,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Render cards and decks dynamically
         try {
-            renderCards();
-            renderDecks();
+            renderCards(currentCollection);
+            renderDecks(currentCollection);
         } catch (error) {
             console.error('Error rendering cards and decks:', error);
             // Show user-friendly error message

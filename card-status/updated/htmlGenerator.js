@@ -126,11 +126,16 @@ export function generateCardsHTML(collection) {
 /**
  * Renders all card collections to the main cards container
  * This function populates the cards-container div with all collection forms
+ * @param {Array} collection - The collection data to render
  */
-export function renderCards() {
+export function renderCards(collection) {
     const container = document.getElementById('cards-container'); // Main container div
     if (container) {
-        container.innerHTML = currentCollection.map(generateCardsHTML).join('');
+        if (collection && collection.length > 0) {
+            container.innerHTML = collection.map(generateCardsHTML).join('');
+        } else {
+            container.innerHTML = '<p>No card data available</p>';
+        }
     }
 }
 
@@ -144,14 +149,15 @@ export function renderCards() {
  * Creates a button that can be clicked to switch between different card collections
  * Note: Event listeners are now added in main.js instead of inline onclick
  * @param {Object} collection - The collection object containing deck information
+ * @param {number} index - The index of this deck in the collection array
  * @returns {string} HTML string for the deck tab button
  */
-export function generateDeckHTML(collection) {
+export function generateDeckHTML(collection, index) {
     const deckId = collection.id;
     const deckName = collection.name;
 
     // First deck is active by default
-    if (deckId === currentCollection[0].id) {
+    if (index === 0) {
         return `
         <button class="tablink active" data-collection="${deckId}">
             ${deckName}
@@ -170,10 +176,15 @@ export function generateDeckHTML(collection) {
 /**
  * Renders all deck tabs to the decks container
  * This function populates the decks-container div with navigation buttons
+ * @param {Array} collection - The collection data to render
  */
-export function renderDecks() {
+export function renderDecks(collection) {
     const container = document.getElementById('decks-container'); // Main container div
     if (container) {
-        container.innerHTML = currentCollection.map(generateDeckHTML).join('');
+        if (collection && collection.length > 0) {
+            container.innerHTML = collection.map((deck, index) => generateDeckHTML(deck, index)).join('');
+        } else {
+            container.innerHTML = '<p>No deck data available</p>';
+        }
     }
 }

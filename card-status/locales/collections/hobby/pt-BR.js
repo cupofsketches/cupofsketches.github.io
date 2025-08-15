@@ -99,6 +99,30 @@ export const hobbyCollection = [
                 "name": "Chave de Roda",
                 "stars": 1,
                 "isGold": false
+            },
+            {
+                "id": "motorcycle",
+                "name": "Motocicleta",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "bike",
+                "name": "Bicicleta",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "air-balloon",
+                "name": "Balão de Ar",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "train",
+                "name": "Trem",
+                "stars": 2,
+                "isGold": false
             }
         ]
     },
@@ -108,8 +132,38 @@ export const hobbyCollection = [
         "legend": "Fábrica",
         "cards": [
             {
+                "id": "panel-board",
+                "name": "Painel de Controle",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "package",
+                "name": "Pacote",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "forklift",
+                "name": "Empilhadeira",
+                "stars": 1,
+                "isGold": false
+            },
+            {
                 "id": "conveyor-belt",
                 "name": "Esteira",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "punch-card",
+                "name": "Cartão Perfurado",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "ventilation",
+                "name": "Ventilação",
                 "stars": 1,
                 "isGold": false
             },
@@ -120,45 +174,39 @@ export const hobbyCollection = [
                 "isGold": false
             },
             {
-                "id": "control-panel",
-                "name": "Painel de Controle",
-                "stars": 1,
+                "id": "pallet",
+                "name": "Palete",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "steam-pipe",
-                "name": "Tubo de Vapor",
-                "stars": 1,
-                "isGold": false
-            },
-            {
-                "id": "gears",
-                "name": "Engrenagens",
-                "stars": 1,
+                "id": "tool-kit",
+                "name": "Kit de Ferramentas",
+                "stars": 3,
                 "isGold": false
             }
         ]
     },
     {
-        "id": "jewels",
+        "id": "jewelry",
         "name": "Joias",
         "legend": "Joias",
         "cards": [
             {
-                "id": "diamond",
-                "name": "Diamante",
-                "stars": 1,
-                "isGold": false
-            },
-            {
-                "id": "ruby",
-                "name": "Rubi",
-                "stars": 1,
-                "isGold": false
-            },
-            {
                 "id": "emerald",
                 "name": "Esmeralda",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "pearl",
+                "name": "Pérola",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "ring-box",
+                "name": "Caixa de Anel",
                 "stars": 1,
                 "isGold": false
             },
@@ -169,9 +217,33 @@ export const hobbyCollection = [
                 "isGold": false
             },
             {
-                "id": "pearl",
-                "name": "Pérola",
+                "id": "safe",
+                "name": "Cofre",
                 "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "loupe",
+                "name": "Lupa",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "ruby",
+                "name": "Rubi",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "gold-bar",
+                "name": "Barra de Ouro",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "bracelet",
+                "name": "Pulseira",
+                "stars": 3,
                 "isGold": false
             }
         ]
@@ -182,33 +254,57 @@ export const hobbyCollection = [
         "legend": "Vidro",
         "cards": [
             {
-                "id": "wine-glass",
-                "name": "Taça de Vinho",
+                "id": "crystal-vase",
+                "name": "Vaso de Cristal",
                 "stars": 1,
                 "isGold": false
             },
             {
-                "id": "vase",
-                "name": "Vaso",
+                "id": "artisan-glass",
+                "name": "Vidro Artesanal",
                 "stars": 1,
                 "isGold": false
             },
             {
-                "id": "mirror",
-                "name": "Espelho",
+                "id": "glass-orb",
+                "name": "Orbe de Vidro",
                 "stars": 1,
                 "isGold": false
             },
             {
-                "id": "lamp",
-                "name": "Lâmpada",
-                "stars": 1,
+                "id": "blow-torch",
+                "name": "Maçarico",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "bottle",
-                "name": "Garrafa",
-                "stars": 1,
+                "id": "glass-bird",
+                "name": "Pássaro de Vidro",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "perfume",
+                "name": "Perfume",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "prism",
+                "name": "Prisma",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "hourglass",
+                "name": "Ampulheta",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "chandelier",
+                "name": "Candelabro",
+                "stars": 4,
                 "isGold": false
             }
         ]
@@ -219,108 +315,180 @@ export const hobbyCollection = [
         "legend": "Rua",
         "cards": [
             {
-                "id": "streetlight",
-                "name": "Poste de Luz",
+                "id": "graffiti",
+                "name": "Grafite",
                 "stars": 1,
                 "isGold": false
             },
             {
-                "id": "bench",
-                "name": "Banco",
+                "id": "sneakers",
+                "name": "Tênis",
                 "stars": 1,
                 "isGold": false
             },
             {
-                "id": "trash-can",
-                "name": "Lixeira",
-                "stars": 1,
+                "id": "stickers",
+                "name": "Adesivos",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "fire-hydrant",
-                "name": "Hidrante",
-                "stars": 1,
+                "id": "spray-can",
+                "name": "Lata de Spray",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "mailbox",
-                "name": "Caixa de Correio",
-                "stars": 1,
+                "id": "tag-style",
+                "name": "Estilo de Tag",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "boom-box",
+                "name": "Caixa de Som",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "skate-art",
+                "name": "Arte de Skate",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "hoodie",
+                "name": "Moletom",
+                "stars": 4,
+                "isGold": false
+            },
+            {
+                "id": "backpack",
+                "name": "Mochila",
+                "stars": 5,
                 "isGold": false
             }
         ]
     },
     {
-        "id": "fantasy",
+        "id": "costumes",
         "name": "Fantasia",
         "legend": "Fantasia",
         "cards": [
             {
+                "id": "princess",
+                "name": "Princesa",
+                "stars": 1,
+                "isGold": false
+            },
+            {
+                "id": "witch",
+                "name": "Bruxa",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "pirate",
+                "name": "Pirata",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "ninja",
+                "name": "Ninja",
+                "stars": 2,
+                "isGold": false
+            },
+            {
                 "id": "dragon",
                 "name": "Dragão",
-                "stars": 1,
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "wizard",
-                "name": "Mago",
-                "stars": 1,
+                "id": "clown",
+                "name": "Palhaço",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "castle",
-                "name": "Castelo",
-                "stars": 1,
+                "id": "super-hero",
+                "name": "Super Herói",
+                "stars": 4,
                 "isGold": false
             },
             {
-                "id": "sword",
-                "name": "Espada",
-                "stars": 1,
+                "id": "bear",
+                "name": "Urso",
+                "stars": 5,
                 "isGold": false
             },
             {
-                "id": "shield",
-                "name": "Escudo",
-                "stars": 1,
-                "isGold": false
+                "id": "knight",
+                "name": "Cavaleiro",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
     {
-        "id": "paper-craft",
+        "id": "paper-crafts",
         "name": "Artesanato de Papel",
         "legend": "Artesanato de Papel",
         "cards": [
             {
-                "id": "origami-crane",
-                "name": "Grou de Origami",
-                "stars": 1,
+                "id": "lantern",
+                "name": "Lanterna",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "paper-airplane",
+                "id": "pinwheel",
+                "name": "Cata-vento",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "fortune-teller",
+                "name": "Vidente",
+                "stars": 2,
+                "isGold": false
+            },
+            {
+                "id": "paper-plane",
                 "name": "Avião de Papel",
-                "stars": 1,
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "paper-flower",
-                "name": "Flor de Papel",
-                "stars": 1,
+                "id": "origami",
+                "name": "Origami",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "umbrella",
+                "name": "Guarda-chuva",
+                "stars": 3,
                 "isGold": false
             },
             {
                 "id": "paper-boat",
                 "name": "Barco de Papel",
-                "stars": 1,
+                "stars": 4,
                 "isGold": false
             },
             {
-                "id": "paper-fan",
-                "name": "Leque de Papel",
-                "stars": 1,
+                "id": "paper-cutout",
+                "name": "Recorte de Papel",
+                "stars": 5,
                 "isGold": false
+            },
+            {
+                "id": "pop-up-card",
+                "name": "Cartão Pop-up",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
@@ -330,34 +498,58 @@ export const hobbyCollection = [
         "legend": "Estilos",
         "cards": [
             {
-                "id": "vintage",
-                "name": "Vintage",
-                "stars": 1,
+                "id": "cubism",
+                "name": "Cubismo",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "modern",
-                "name": "Moderno",
-                "stars": 1,
+                "id": "renaissance",
+                "name": "Renascimento",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "classic",
-                "name": "Clássico",
-                "stars": 1,
+                "id": "comic",
+                "name": "Quadrinhos",
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "elegant",
-                "name": "Elegante",
-                "stars": 1,
+                "id": "impression",
+                "name": "Impressão",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "casual",
-                "name": "Casual",
-                "stars": 1,
+                "id": "surreal",
+                "name": "Surreal",
+                "stars": 3,
                 "isGold": false
+            },
+            {
+                "id": "pop-art",
+                "name": "Arte Pop",
+                "stars": 4,
+                "isGold": false
+            },
+            {
+                "id": "ukiyo-e",
+                "name": "Ukiyo-e",
+                "stars": 5,
+                "isGold": false
+            },
+            {
+                "id": "expression",
+                "name": "Expressão",
+                "stars": 5,
+                "isGold": false
+            },
+            {
+                "id": "pixel-art",
+                "name": "Arte Pixel",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
@@ -367,34 +559,58 @@ export const hobbyCollection = [
         "legend": "Jogos",
         "cards": [
             {
-                "id": "chess-piece",
-                "name": "Peça de Xadrez",
-                "stars": 1,
+                "id": "game-board",
+                "name": "Tabuleiro de Jogo",
+                "stars": 2,
                 "isGold": false
             },
             {
                 "id": "dice",
                 "name": "Dados",
-                "stars": 1,
+                "stars": 2,
                 "isGold": false
             },
             {
-                "id": "playing-card",
-                "name": "Carta de Baralho",
-                "stars": 1,
+                "id": "tokens",
+                "name": "Fichas",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "puzzle-piece",
-                "name": "Peça de Quebra-Cabeça",
-                "stars": 1,
+                "id": "fussball",
+                "name": "Futebol de Mesa",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "game-controller",
-                "name": "Controle de Jogo",
-                "stars": 1,
+                "id": "table-tennis",
+                "name": "Tênis de Mesa",
+                "stars": 4,
                 "isGold": false
+            },
+            {
+                "id": "dart",
+                "name": "Dardo",
+                "stars": 4,
+                "isGold": false
+            },
+            {
+                "id": "score-pad",
+                "name": "Bloco de Pontuação",
+                "stars": 5,
+                "isGold": false
+            },
+            {
+                "id": "bottom-right",
+                "name": "Canto direito!",
+                "stars": 5,
+                "isGold": true
+            },
+            {
+                "id": "wooden-tower",
+                "name": "Torre de Madeira!",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
@@ -404,71 +620,119 @@ export const hobbyCollection = [
         "legend": "Artesanato de Areia",
         "cards": [
             {
+                "id": "beach-bucket",
+                "name": "Balde de Praia",
+                "stars": 2,
+                "isGold": false
+            },
+            {
                 "id": "sandcastle",
                 "name": "Castelo de Areia",
-                "stars": 1,
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "sand-sculpture",
-                "name": "Escultura de Areia",
-                "stars": 1,
+                "id": "paw-mold",
+                "name": "Molde de Pata",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "sand-art",
-                "name": "Arte de Areia",
-                "stars": 1,
+                "id": "colored-sand",
+                "name": "Areia Colorida",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "sand-stamp",
+                "name": "Carimbo de Areia",
+                "stars": 4,
                 "isGold": false
             },
             {
                 "id": "sand-bottle",
                 "name": "Garrafa de Areia",
-                "stars": 1,
+                "stars": 5,
                 "isGold": false
             },
             {
-                "id": "sand-painting",
-                "name": "Pintura de Areia",
-                "stars": 1,
+                "id": "seashell-art",
+                "name": "Arte de Conchas",
+                "stars": 5,
                 "isGold": false
+            },
+            {
+                "id": "sculpture",
+                "name": "Escultura",
+                "stars": 5,
+                "isGold": true
+            },
+            {
+                "id": "sand-mosaic",
+                "name": "Mosaico de Areia",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
     {
-        "id": "culinary",
+        "id": "baking",
         "name": "Culinária",
         "legend": "Culinária",
         "cards": [
             {
-                "id": "chef-hat",
-                "name": "Chapéu de Chef",
-                "stars": 1,
+                "id": "muffin-pan",
+                "name": "Forma de Muffin",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "spatula",
-                "name": "Espátula",
-                "stars": 1,
+                "id": "cookie-cutter",
+                "name": "Cortador de Biscoitos",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "oven-mitt",
+                "name": "Luva de Forno",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "timer",
+                "name": "Timer",
+                "stars": 4,
+                "isGold": false
+            },
+            {
+                "id": "dough-mixer",
+                "name": "Batedor de Massa",
+                "stars": 4,
                 "isGold": false
             },
             {
                 "id": "whisk",
                 "name": "Batedor",
-                "stars": 1,
+                "stars": 5,
                 "isGold": false
             },
             {
-                "id": "rolling-pin",
-                "name": "Rolo de Massa",
-                "stars": 1,
+                "id": "macaron",
+                "name": "Macaron",
+                "stars": 5,
                 "isGold": false
             },
             {
-                "id": "measuring-cup",
-                "name": "Copo Medidor",
-                "stars": 1,
-                "isGold": false
+                "id": "donut",
+                "name": "Rosquinha",
+                "stars": 5,
+                "isGold": true
+            },
+            {
+                "id": "frosting",
+                "name": "Cobertura!",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
@@ -478,34 +742,58 @@ export const hobbyCollection = [
         "legend": "Arte de Balões",
         "cards": [
             {
-                "id": "balloon-animal",
-                "name": "Animal de Balão",
-                "stars": 1,
-                "isGold": false
-            },
-            {
-                "id": "balloon-flower",
-                "name": "Flor de Balão",
-                "stars": 1,
+                "id": "balloon-pump",
+                "name": "Bomba de Balões",
+                "stars": 3,
                 "isGold": false
             },
             {
                 "id": "balloon-sword",
                 "name": "Espada de Balão",
-                "stars": 1,
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "balloon-heart",
-                "name": "Coração de Balão",
-                "stars": 1,
+                "id": "helium-tank",
+                "name": "Tanque de Hélio",
+                "stars": 3,
                 "isGold": false
             },
             {
-                "id": "balloon-hat",
-                "name": "Chapéu de Balão",
-                "stars": 1,
+                "id": "balloon-bee",
+                "name": "Abelha de Balão",
+                "stars": 4,
                 "isGold": false
+            },
+            {
+                "id": "heart-balloon",
+                "name": "Balão Coração",
+                "stars": 4,
+                "isGold": false
+            },
+            {
+                "id": "bubbles",
+                "name": "Bolhas",
+                "stars": 5,
+                "isGold": false
+            },
+            {
+                "id": "coronation",
+                "name": "Coroação!",
+                "stars": 5,
+                "isGold": true
+            },
+            {
+                "id": "balloon-dog",
+                "name": "Cachorro de Balão",
+                "stars": 5,
+                "isGold": true
+            },
+            {
+                "id": "hang-tight",
+                "name": "Aguente Firme!",
+                "stars": 5,
+                "isGold": true
             }
         ]
     },
@@ -515,9 +803,21 @@ export const hobbyCollection = [
         "legend": "Brinquedos",
         "cards": [
             {
-                "id": "teddy-bear",
-                "name": "Ursinho de Pelúcia",
-                "stars": 1,
+                "id": "action-figure",
+                "name": "Boneco de Ação",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "rc-car",
+                "name": "Carro RC",
+                "stars": 3,
+                "isGold": false
+            },
+            {
+                "id": "water-gun",
+                "name": "Pistola de Água",
+                "stars": 3,
                 "isGold": false
             },
             {

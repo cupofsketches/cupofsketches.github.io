@@ -10,7 +10,7 @@
 // Purpose: Import all necessary modules and functions from other files
 
 import { translate, setLocale } from "./i18n.js";
-import { loadCollection, season, reloadCollection } from './cardsData.js';
+import { loadCollection, reloadCollection } from './cardsData.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
@@ -99,6 +99,12 @@ function applyLabels() {
     const characterLimitDescription = document.querySelector('[data-translate="format.characterLimitDescription"]');
     if (characterLimitDescription) {
         characterLimitDescription.textContent = translate("format.characterLimitDescription");
+    }
+
+    // Collection subtitle
+    const subtitleElement = document.querySelector('h1 span.subtitle');
+    if (subtitleElement) {
+        subtitleElement.textContent = `- ${translate("collection.subtitle")} -`;
     }
 
     // ================================
@@ -662,11 +668,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         // ================================
         // Purpose: Generate and render the dynamic HTML content
 
-        // Update the subtitle with current season information
+        // Update the subtitle with current collection information
         try {
             const subtitleElement = document.querySelector('h1 span.subtitle');
             if (subtitleElement) {
-                subtitleElement.textContent = `- ${season.charAt(0).toUpperCase() + season.slice(1)} Collection -`;
+                subtitleElement.textContent = `- ${translate("collection.subtitle")} -`;
             }
         } catch (error) {
             console.warn('Could not update subtitle:', error);

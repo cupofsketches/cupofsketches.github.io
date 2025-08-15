@@ -48,22 +48,26 @@ export const translations = {
     },
 
     // ================================
-    // FORMAT OUTPUT TEXT
+    // FORMAT OUTPUT
     // ================================
+    // Purpose: Translate text that appears in the generated format output
+
     format: {
-        // Section headers for Reddit format
         cardsNeeded: "Cards Needed:",
         cardsDuplicated: "Cards Duplicated:",
-
-        // Section headers for in-game format
         need: "NEED:",
         duplicate: "DUPLICATE:",
-
-        // Format display titles
         redditFormatTitle: "Reddit Format",
-        inGameFormatTitle: "In-Game Chat Format",
-
-        // Format descriptions and limits
+        inGameFormatTitle: "In-Game Format",
         characterLimitDescription: "(1 paragraph, 500-character limit)"
+    },
+
+    // ================================
+    // COLLECTION DISPLAY
+    // ================================
+    // Purpose: Translate collection-related display text
+
+    collection: {
+        subtitle: "Hobby Collection"
     }
 };

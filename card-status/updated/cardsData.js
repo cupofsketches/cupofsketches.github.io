@@ -10,7 +10,7 @@
 // Purpose: Define which collection is currently active
 
 // Currently only active collection is available
-export const season = 'active';
+// Note: Collection name is now handled via translation keys
 
 // ================================
 // IMPORT STATEMENTS
@@ -26,7 +26,7 @@ import { activeCollection as activeCollectionPtBR } from '../locales/collections
 // ================================
 // Purpose: Store the currently loaded collection data
 
-// Variable to hold the current collection based on season
+// Variable to hold the current collection based on language selection
 let currentCollection;
 
 // Map of all available language collections

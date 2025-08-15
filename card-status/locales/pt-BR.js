@@ -52,11 +52,11 @@ export const translations = {
     // ================================
     format: {
         // Section headers for Reddit format
-        cardsNeeded: "Cartas Necessárias:",
+        cardsNeeded: "Cartas Faltando:",
         cardsDuplicated: "Cartas Duplicadas:",
 
         // Section headers for in-game format
-        need: "NECESSÁRIO:",
+        need: "FALTANDO:",
         duplicate: "DUPLICADO:",
 
         // Format display titles

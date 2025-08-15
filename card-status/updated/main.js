@@ -10,7 +10,7 @@
 // Purpose: Import all necessary modules and functions from other files
 
 import { translate, setLocale } from "./i18n.js";
-import { loadCollection, season } from './cardsData.js';
+import { loadCollection, season, reloadCollection } from './cardsData.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
@@ -273,12 +273,92 @@ function initLanguageSelector() {
         languageSelector.parentElement.classList.remove('active');
 
         // Change language and re-apply labels
+        console.log('🔄 Language change started:', selectedValue);
         await setLocale(selectedValue);
+        console.log('✅ setLocale completed');
         applyLabels();
+        console.log('✅ applyLabels completed');
+
+        // Reload collection data with new language
+        console.log('🔄 Reloading collection...');
+        const newCollection = reloadCollection();
+        console.log('📦 New collection loaded:', newCollection ? newCollection.length : 'undefined', 'collections');
+
+        // Re-render cards and decks with new language
+        console.log('🎨 Re-rendering cards...');
+        renderCards(newCollection);
+        console.log('🎨 Re-rendering decks...');
+        renderDecks(newCollection);
+        console.log('✅ Re-rendering completed');
+
+        // Show the first tab after re-rendering
+        console.log('🔄 Managing tabs...');
+        if (newCollection && newCollection.length > 0) {
+            const firstCollectionId = newCollection[0].id;
+            console.log('🎯 First collection ID:', firstCollectionId);
+            const firstTabContent = document.getElementById(firstCollectionId);
+            if (firstTabContent) {
+                firstTabContent.style.display = 'block';
+                console.log('✅ First tab shown:', firstCollectionId);
+            } else {
+                console.log('❌ First tab not found:', firstCollectionId);
+            }
+            // Hide all other tabs
+            const allTabs = document.querySelectorAll('.tabcontent');
+            console.log('📋 Total tabs found:', allTabs.length);
+            allTabs.forEach(tab => {
+                if (tab.id !== firstCollectionId) {
+                    tab.style.display = 'none';
+                }
+            });
+
+            // Update tab button states
+            const allTabLinks = document.querySelectorAll('.tablink');
+            console.log('🔗 Total tab links found:', allTabLinks.length);
+            allTabLinks.forEach(tabLink => {
+                if (tabLink.getAttribute('data-collection') === firstCollectionId) {
+                    tabLink.classList.add('active');
+                    console.log('✅ Active tab set:', firstCollectionId);
+                } else {
+                    tabLink.classList.remove('active');
+                }
+            });
+        } else {
+            console.log('❌ No collection data for tab management');
+        }
 
         // Regenerate format text with new language
-        generateRedditFormat();
-        generateInGameFormat();
+        console.log('🔄 Generating format text...');
+        try {
+            generateRedditFormat();
+            console.log('✅ Reddit format generated');
+        } catch (error) {
+            console.error('❌ Error generating Reddit format:', error);
+        }
+
+        try {
+            generateInGameFormat();
+            console.log('✅ In-game format generated');
+        } catch (error) {
+            console.error('❌ Error generating in-game format:', error);
+        }
+
+        console.log('🎉 Language change process completed!');
+
+        // Debug: Check if event listeners are working
+        console.log('🔍 Checking event listeners after re-render...');
+        const radioButtons = document.querySelectorAll('input[type="radio"]:not(.disabled)');
+        console.log('📻 Radio buttons found:', radioButtons.length);
+
+        const deckButtons = document.querySelectorAll('.tablink');
+        console.log('🔗 Deck buttons found:', deckButtons.length);
+
+        console.log('⚠️  NOTE: Event listeners may not be attached to these new elements!');
+
+        // Re-attach event listeners to the newly rendered elements
+        console.log('🔧 Re-attaching event listeners...');
+        setupEventListeners();
+        console.log('✅ Event listeners re-attached!');
     });
 
     // Close dropdown when clicking outside
@@ -361,6 +441,116 @@ window.addEventListener('beforeunload', cleanupApplication);
 // Purpose: Set up all event handlers for user interactions
 
 /**
+ * Sets up all event listeners for the application
+ * This function can be called multiple times to re-attach listeners after DOM changes
+ */
+function setupEventListeners() {
+    try {
+        console.log('🔧 Setting up event listeners...');
+
+        // Add event listeners for form inputs (radio buttons and checkboxes)
+        const cardStatusFields = document.querySelectorAll('input[type="radio"]:not(.disabled)');
+        console.log('📻 Adding listeners to', cardStatusFields.length, 'radio buttons');
+
+        cardStatusFields.forEach((cardStatusField) => {
+            // Remove existing listeners to avoid duplicates
+            cardStatusField.removeEventListener('change', handleCardStatusChange);
+            cardStatusField.addEventListener('change', handleCardStatusChange);
+        });
+
+        // Add event listeners for collection tabs
+        const deckTabButtons = document.querySelectorAll('.tablink');
+        console.log('🔗 Adding listeners to', deckTabButtons.length, 'deck buttons');
+
+        deckTabButtons.forEach((deckTabButton) => {
+            // Remove existing listeners to avoid duplicates
+            deckTabButton.removeEventListener('click', handleTabClick);
+            deckTabButton.addEventListener('click', handleTabClick);
+        });
+
+        console.log('✅ Event listeners setup completed');
+    } catch (error) {
+        console.error('❌ Error setting up event listeners:', error);
+    }
+}
+
+/**
+ * Handle card status changes (radio button selections)
+ */
+function handleCardStatusChange() {
+    try {
+        console.log('📻 Card status changed:', this.name, this.value);
+        hideUserMessage();
+        generateRedditFormat();
+        generateInGameFormat();
+    } catch (error) {
+        console.error('❌ Error generating formats:', error);
+    }
+}
+
+/**
+ * Opens a specific collection tab and updates the UI accordingly
+ * @param {string} collectionDeck - The ID of the collection to open
+ */
+function openCollection(collectionDeck) {
+    try {
+        console.log('🔄 Opening collection:', collectionDeck);
+        // Cache DOM elements to avoid repeated queries
+        const tabContents = document.querySelectorAll('.tabcontent');
+        const tabLinks = document.querySelectorAll('.tablink');
+
+        // Hide all tab contents
+        tabContents.forEach(tabContent => {
+            if (tabContent) {
+                tabContent.style.display = 'none';
+            }
+        });
+
+        // Remove active class from all tab links
+        tabLinks.forEach(tabLink => {
+            if (tabLink) {
+                tabLink.classList.remove('active');
+            }
+        });
+
+        // Show the selected tab content
+        const currentTabContent = document.getElementById(collectionDeck);
+        if (currentTabContent) {
+            currentTabContent.style.display = 'block';
+            console.log('✅ Tab content shown:', collectionDeck);
+        } else {
+            console.log('❌ Tab content not found:', collectionDeck);
+        }
+
+        // Add active class to the clicked tab link
+        const clickedTabLink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
+        if (clickedTabLink) {
+            clickedTabLink.classList.add('active');
+            console.log('✅ Tab button activated:', collectionDeck);
+        } else {
+            console.log('❌ Tab button not found:', collectionDeck);
+        }
+    } catch (error) {
+        console.error('❌ Error opening collection:', error);
+    }
+}
+
+/**
+ * Handle tab clicks for collection switching
+ */
+function handleTabClick() {
+    try {
+        const collectionName = this.getAttribute('data-collection');
+        console.log('🔗 Tab clicked:', collectionName);
+        if (collectionName) {
+            openCollection(collectionName);
+        }
+    } catch (error) {
+        console.error('❌ Error opening collection:', error);
+    }
+}
+
+/**
  * Main initialization function that runs when the DOM is loaded
  * Sets up all event listeners and initializes the application
  */
@@ -437,45 +627,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         // ================================
         // Purpose: Handle deck tab switching and display
 
-        /**
-         * Opens a specific collection tab and updates the UI accordingly
-         * @param {string} collectionDeck - The ID of the collection to open
-         */
-        function openCollection(collectionDeck) {
-            try {
-                // Cache DOM elements to avoid repeated queries
-                const tabContents = document.querySelectorAll('.tabcontent');
-                const tabLinks = document.querySelectorAll('.tablink');
 
-                // Hide all tab contents
-                tabContents.forEach(tabContent => {
-                    if (tabContent) {
-                        tabContent.style.display = 'none';
-                    }
-                });
-
-                // Remove active class from all tab links
-                tabLinks.forEach(tabLink => {
-                    if (tabLink) {
-                        tabLink.classList.remove('active');
-                    }
-                });
-
-                // Show the selected tab content
-                const currentTabContent = document.getElementById(collectionDeck);
-                if (currentTabContent) {
-                    currentTabContent.style.display = 'block';
-                }
-
-                // Add active class to the clicked tab link
-                const clickedTabLink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
-                if (clickedTabLink) {
-                    clickedTabLink.classList.add('active');
-                }
-            } catch (error) {
-                console.error('Error opening collection:', error);
-            }
-        }
 
         /**
          * Sets up all event listeners and initializes the application
@@ -518,20 +670,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Purpose: Handle form input changes and format generation
 
         try {
-            // Add event listeners for form inputs (radio buttons and checkboxes)
-            if (domElements.cardStatusFields && domElements.cardStatusFields.length > 0) {
-                domElements.cardStatusFields.forEach((cardStatusField) => {
-                    cardStatusField.addEventListener('change', () => {
-                        try {
-                            hideUserMessage();
-                            generateRedditFormat();
-                            generateInGameFormat();
-                        } catch (error) {
-                            console.error('Error generating formats:', error);
-                        }
-                    });
-                });
-            }
+            // Set up all event listeners using our centralized function
+            setupEventListeners();
 
             // Add event listeners for showing different format types
             if (domElements.redditFormatButton) {

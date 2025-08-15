@@ -14,13 +14,28 @@
     <!-- LANGUAGE SELECTOR -->
     <!-- ================================ -->
     <!-- Purpose: Allow users to switch between different languages for the interface -->
-    <div class="content smaller" style="gap: 8px; align-items: center;">
-        <label for="langSel" style="font-size: 0.9rem;">Language</label>
-        <select id="langSel" aria-label="Select interface language">
-            <option value="en">English</option>
-            <option value="pt-BR">Português (Brasil)</option>
-            <option value="es">Español</option>
-        </select>
+    <div class="language-selector-container">
+        <div class="language-selector">
+            <div class="language-selector-current" id="currentLanguage">
+                <span class="language-flag">🇺🇸</span>
+                <span class="language-name">English</span>
+                <span class="language-arrow">▼</span>
+            </div>
+            <div class="language-selector-dropdown" id="languageDropdown">
+                <div class="language-option" data-value="en" data-flag="🇺🇸" data-name="English">
+                    <span class="language-flag">🇺🇸</span>
+                    <span class="language-name">English</span>
+                </div>
+                <div class="language-option" data-value="pt-BR" data-flag="🇧🇷" data-name="Português">
+                    <span class="language-flag">🇧🇷</span>
+                    <span class="language-name">Português</span>
+                </div>
+                <div class="language-option" data-value="es" data-flag="🇪🇸" data-name="Español">
+                    <span class="language-flag">🇪🇸</span>
+                    <span class="language-name">Español</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- ================================ -->

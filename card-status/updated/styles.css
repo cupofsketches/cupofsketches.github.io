@@ -6,6 +6,210 @@
 */
 
 /* ================================
+   LANGUAGE SELECTOR
+   ================================
+   Purpose: Style the custom language selector with modern design */
+
+.language-selector-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+  padding: 0 20px;
+}
+
+.language-selector {
+  position: relative;
+  display: inline-block;
+  min-width: 160px;
+}
+
+.language-selector-current {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+.language-selector-current:hover {
+  border-color: #3a9cc6;
+  box-shadow: 0 4px 12px rgba(58, 156, 198, 0.2);
+  transform: translateY(-1px);
+}
+
+.language-selector-current:active {
+  transform: translateY(0);
+}
+
+.language-flag {
+  font-size: 18px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.language-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #6e7a8a;
+  flex-grow: 0;
+  text-align: center;
+}
+
+.language-arrow {
+  font-size: 10px;
+  color: #6c757d;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.language-selector.active .language-arrow {
+  transform: rotate(180deg);
+}
+
+.language-selector-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.language-selector.active .language-selector-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.language-option:last-child {
+  border-bottom: none;
+}
+
+.language-option:hover {
+  background-color: #f8f9fa;
+  transform: translateX(4px);
+}
+
+.language-option.selected {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.language-option .language-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #6e7a8a;
+  text-align: center;
+}
+
+.language-option.selected .language-name {
+  color: #1976d2;
+  font-weight: 700;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================
+   Purpose: Ensure language selector works well on all devices */
+
+@media (max-width: 768px) {
+  .language-selector-container {
+    margin: 12px auto;
+    padding: 0 15px;
+  }
+
+  .language-selector {
+    min-width: 150px;
+  }
+
+  .language-selector-current {
+    padding: 7px 12px;
+    gap: 5px;
+  }
+
+  .language-flag {
+    font-size: 16px;
+  }
+
+  .language-name {
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+  .language-arrow {
+    font-size: 9px;
+  }
+
+  .language-option {
+    padding: 7px 12px;
+    gap: 5px;
+  }
+
+  .language-option .language-name {
+    font-size: 1em;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-selector {
+    min-width: 140px;
+  }
+
+  .language-selector-current {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .language-flag {
+    font-size: 14px;
+  }
+
+  .language-name {
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
+  .language-arrow {
+    font-size: 8px;
+  }
+
+  .language-option {
+    padding: 6px 10px;
+    gap: 4px;
+  }
+
+  .language-option .language-name {
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+}
+
+/* ================================
    ACCESSIBILITY IMPROVEMENTS
    ================================
    Purpose: Enhance accessibility with focus indicators and improved contrast */

@@ -207,9 +207,18 @@ function applyLabels() {
  * Loads the selected language and applies translated labels
  */
 async function bootI18n() {
-    // Get initial language from dropdown or default to English
-    const languageSelector = document.getElementById("langSel");
-    const initialLanguage = languageSelector ? languageSelector.value : "en";
+    // Get initial language from custom selector or default to English
+    const currentLanguageElement = document.getElementById("currentLanguage");
+    let initialLanguage = "en";
+
+    if (currentLanguageElement) {
+        const currentLanguageName = currentLanguageElement.querySelector('.language-name').textContent;
+        if (currentLanguageName === 'Português') {
+            initialLanguage = "pt-BR";
+        } else if (currentLanguageName === 'Español') {
+            initialLanguage = "es";
+        }
+    }
 
     // Load the language dictionary
     await setLocale(initialLanguage);
@@ -223,17 +232,67 @@ async function bootI18n() {
  * Handles language changes and re-applies labels when language is switched
  */
 function initLanguageSelector() {
-    const languageSelector = document.getElementById("langSel");
-    if (!languageSelector) return;
+    const languageSelector = document.getElementById('currentLanguage');
+    const languageDropdown = document.getElementById('languageDropdown');
 
-    // When user changes language, reload it and re-label the UI
-    languageSelector.addEventListener("change", async () => {
-        await setLocale(languageSelector.value);
-        applyLabels();
-        // Note: If you later localize dynamic decks/cards, re-render here:
-        // renderCards();
-        // renderDecks();
+    if (!languageSelector || !languageDropdown) return;
+
+    // Toggle dropdown visibility
+    languageSelector.addEventListener('click', () => {
+        const isActive = languageSelector.parentElement.classList.contains('active');
+        if (isActive) {
+            languageSelector.parentElement.classList.remove('active');
+        } else {
+            languageSelector.parentElement.classList.add('active');
+        }
     });
+
+    // Handle language option selection
+    languageDropdown.addEventListener('click', async (event) => {
+        const languageOption = event.target.closest('.language-option');
+        if (!languageOption) return;
+
+        const selectedValue = languageOption.dataset.value;
+        const selectedFlag = languageOption.dataset.flag;
+        const selectedName = languageOption.dataset.name;
+
+        // Update current language display
+        const currentFlag = languageSelector.querySelector('.language-flag');
+        const currentName = languageSelector.querySelector('.language-name');
+
+        if (currentFlag) currentFlag.textContent = selectedFlag;
+        if (currentName) currentName.textContent = selectedName;
+
+        // Update selected state in dropdown
+        languageDropdown.querySelectorAll('.language-option').forEach(option => {
+            option.classList.remove('selected');
+        });
+        languageOption.classList.add('selected');
+
+        // Close dropdown
+        languageSelector.parentElement.classList.remove('active');
+
+        // Change language and re-apply labels
+        await setLocale(selectedValue);
+        applyLabels();
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!languageSelector.contains(event.target) && !languageDropdown.contains(event.target)) {
+            languageSelector.parentElement.classList.remove('active');
+        }
+    });
+
+    // Set initial selected state
+    const currentLanguage = languageSelector.querySelector('.language-name').textContent;
+    if (currentLanguage === 'English') {
+        languageDropdown.querySelector('[data-value="en"]').classList.add('selected');
+    } else if (currentLanguage === 'Português') {
+        languageDropdown.querySelector('[data-value="pt-BR"]').classList.add('selected');
+    } else if (currentLanguage === 'Español') {
+        languageDropdown.querySelector('[data-value="es"]').classList.add('selected');
+    }
 }
 
 // ================================

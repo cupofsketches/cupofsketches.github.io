@@ -95,6 +95,12 @@ function applyLabels() {
         inGameFormatTitle.textContent = translate("format.inGameFormatTitle");
     }
 
+    // Character limit description
+    const characterLimitDescription = document.querySelector('[data-translate="format.characterLimitDescription"]');
+    if (characterLimitDescription) {
+        characterLimitDescription.textContent = translate("format.characterLimitDescription");
+    }
+
     // ================================
     // SECTION HEADERS
     // ================================

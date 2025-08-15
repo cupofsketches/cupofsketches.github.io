@@ -61,6 +61,9 @@ export const translations = {
 
         // Format display titles
         redditFormatTitle: "Formato do Reddit",
-        inGameFormatTitle: "Formato do Jogo"
+        inGameFormatTitle: "Formato do Jogo",
+
+        // Format descriptions and limits
+        characterLimitDescription: "(1 parágrafo, limite de 500 caracteres)"
     }
 };

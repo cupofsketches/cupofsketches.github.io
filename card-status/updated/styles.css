@@ -355,6 +355,14 @@ legend {
   flex-grow: 0.5;
 }
 
+/* File input styling */
+#loadInput {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  z-index: 9999;
+}
+
 /* Radio button styling */
 input[type='radio'] {
   vertical-align: bottom;
@@ -603,7 +611,7 @@ pre {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
+  z-index: 1000;
 }
 
 .popup-content {
@@ -613,7 +621,7 @@ pre {
   background-color: #fff;
   border-radius: 5px;
   text-align: center;
-  z-index: 2001;
+  z-index: 1001;
 }
 
 /* ================================

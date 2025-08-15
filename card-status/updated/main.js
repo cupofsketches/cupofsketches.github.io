@@ -810,18 +810,36 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
             // Add event listeners for load functionality
             if (domElements.loadButton && domElements.loadInput) {
+                console.log('🔧 Setting up load functionality...');
+
                 domElements.loadButton.addEventListener('click', () => {
                     try {
+                        console.log('📁 Load button clicked, triggering file input...');
                         domElements.loadInput.click();
+                        console.log('✅ File input click triggered');
                     } catch (error) {
-                        console.error('Error triggering file input:', error);
+                        console.error('❌ Error triggering file input:', error);
                     }
                 });
 
-                domElements.loadInput.addEventListener('change', loadOptions);
+                domElements.loadInput.addEventListener('change', (event) => {
+                    try {
+                        console.log('📂 File input change event triggered:', event);
+                        loadOptions(event);
+                    } catch (error) {
+                        console.error('❌ Error in file input change handler:', error);
+                    }
+                });
+
+                console.log('✅ Load functionality setup completed');
+            } else {
+                console.warn('⚠️ Load button or input not found:', {
+                    loadButton: !!domElements.loadButton,
+                    loadInput: !!domElements.loadInput
+                });
             }
         } catch (error) {
-            console.error('Error setting up load functionality:', error);
+            console.error('❌ Error setting up load functionality:', error);
         }
 
         // ================================

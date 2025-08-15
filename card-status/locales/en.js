@@ -1,24 +1,27 @@
 export const translations = {
+    // ================================
+    // SECTION HEADERS
+    // ================================
     ids: {
-        // Sections
+        // Main application sections
         saveLoadSection: "Save & Load Card Status",
         chooseDecksSection: "Choose Decks:",
         generateTextSection: "Generate Text",
 
-        // Main buttons
+        // Primary action buttons
         saveOptionsBtn: "Save",
         loadOptionsBtn: "Load",
 
-        // Format buttons (two-line labels use <br>)
+        // Format generation buttons (two-line labels use <br>)
         "show-reddit-format": "Show Reddit<br>Format",
         "show-in-game-format": "Show In-Game<br>Format",
 
-        // Warning popup
+        // Warning and error messages
         warningMessage: "Select at least one \"needed\" or \"duplicate\" option before saving",
         closeWarningBtn: "OK",
         invalidFileMessage: "Please select a valid .json file!",
 
-        // File name popup
+        // File name input popup
         fileNamePopupTitle: "Save Card Status",
         confirmSaveBtn: "Save",
         cancelBtn: "Cancel",
@@ -29,23 +32,34 @@ export const translations = {
         okFileNameValidationBtn: "OK"
     },
 
-    // Optional placeholders
+    // ================================
+    // INPUT PLACEHOLDERS
+    // ================================
     placeholders: {
         fileNameInput: "Name Your File Here"
     },
 
-    // Optional free-text messages (if you want to set these by ID later)
+    // ================================
+    // USER GUIDANCE MESSAGES
+    // ================================
     messages: {
         redditUserMessage: "Start selecting your card status...",
         inGameUserMessage: "Start selecting your card status...\nSplitting text after 500 characters"
     },
 
-    // Format text translations
+    // ================================
+    // FORMAT OUTPUT TEXT
+    // ================================
     format: {
+        // Section headers for Reddit format
         cardsNeeded: "Cards Needed:",
         cardsDuplicated: "Cards Duplicated:",
+
+        // Section headers for in-game format
         need: "NEED:",
         duplicate: "DUPLICATE:",
+
+        // Format display titles
         redditFormatTitle: "Reddit Format",
         inGameFormatTitle: "In-Game Chat Format"
     }

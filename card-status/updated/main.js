@@ -68,6 +68,34 @@ function applyLabels() {
     };
 
     // ================================
+    // USER MESSAGE TRANSLATIONS
+    // ================================
+    // Purpose: Update user guidance messages with translated text
+
+    // Reddit format user message
+    const redditFormatDescription = document.getElementById('reddit-format-description');
+    if (redditFormatDescription) {
+        redditFormatDescription.textContent = translate("messages.redditUserMessage");
+    }
+
+    // In-game format user message
+    const inGameFormatDescription = document.getElementById('in-game-format-description');
+    if (inGameFormatDescription) {
+        inGameFormatDescription.textContent = translate("messages.inGameUserMessage");
+    }
+
+    // Format titles
+    const redditFormatTitle = document.getElementById('redditFormatTitle');
+    if (redditFormatTitle) {
+        redditFormatTitle.textContent = translate("format.redditFormatTitle");
+    }
+
+    const inGameFormatTitle = document.getElementById('inGameFormatTitle');
+    if (inGameFormatTitle) {
+        inGameFormatTitle.textContent = translate("format.inGameFormatTitle");
+    }
+
+    // ================================
     // SECTION HEADERS
     // ================================
     // Purpose: Update main section titles with translated text

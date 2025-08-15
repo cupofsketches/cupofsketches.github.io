@@ -5,6 +5,13 @@
 // It processes user selections and creates readable formats for sharing card status information.
 
 // ================================
+// IMPORT STATEMENTS
+// ================================
+// Purpose: Import necessary functions and modules from other files
+
+import { translate } from './i18n.js';
+
+// ================================
 // SHARED UTILITIES
 // ================================
 // Purpose: Common functions used by multiple format generators
@@ -67,7 +74,7 @@ export function generateRedditFormat() {
 
     // Add needed cards section if any exist
     if (Object.keys(neededCards).length > 0) {
-        formatParts.push('**Cards Needed**:\n');
+        formatParts.push(`**${translate("format.cardsNeeded")}**\n`);
         for (const collection in neededCards) {
             formatParts.push(`- ${collection} ➜ ${neededCards[collection].join(', ')}`);
         }
@@ -80,7 +87,7 @@ export function generateRedditFormat() {
         if (hasNeededCards) {
             formatParts.push(''); // Empty line for spacing
         }
-        formatParts.push('**Cards Duplicated**:\n');
+        formatParts.push(`**${translate("format.cardsDuplicated")}**\n`);
         for (const collection in duplicateCards) {
             formatParts.push(`- ${collection} ➜ ${duplicateCards[collection].join(', ')}`);
         }
@@ -134,7 +141,7 @@ export function generateInGameFormat() {
 
     // Build needed cards section
     if (Object.keys(neededCards).length > 0) {
-        neededParts.push('NEED: ');
+        neededParts.push(`${translate("format.need")} `);
         let isFirstNeededCollection = true;
         for (const collection in neededCards) {
             if (!isFirstNeededCollection) {
@@ -147,7 +154,7 @@ export function generateInGameFormat() {
 
     // Build duplicate cards section
     if (Object.keys(duplicateCards).length > 0) {
-        duplicateParts.push('DUPLICATE: ');
+        duplicateParts.push(`${translate("format.duplicate")} `);
         let isFirstDuplicateCollection = true;
         for (const collection in duplicateCards) {
             if (!isFirstDuplicateCollection) {

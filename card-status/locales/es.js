@@ -36,5 +36,15 @@ export const translations = {
     messages: {
         redditUserMessage: "Empieza seleccionando el estado de tus cartas...",
         inGameUserMessage: "Empieza seleccionando el estado de tus cartas...\nEl texto se dividirá después de 500 caracteres"
+    },
+
+    // Format text translations
+    format: {
+        cardsNeeded: "Cartas Necesarias:",
+        cardsDuplicated: "Cartas Duplicadas:",
+        need: "NECESITO:",
+        duplicate: "DUPLICADO:",
+        redditFormatTitle: "Formato de Reddit",
+        inGameFormatTitle: "Formato en el Juego"
     }
 };

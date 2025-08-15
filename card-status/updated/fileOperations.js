@@ -334,6 +334,7 @@ export function loadOptions(event) {
         try {
           generateRedditFormat();
           generateInGameFormat();
+          hideUserMessage();
         } catch (formatError) {
           console.warn('Error regenerating formats:', formatError);
         }

@@ -60,7 +60,7 @@ export function generateRedditFormat() {
     // Collect data from all collection forms
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
-        const collectionName = form.getAttribute('data-collection');
+        const collectionName = form.getAttribute('data-collection-name');
         processFormData(form, collectionName, neededCards, duplicateCards);
     });
 
@@ -127,7 +127,7 @@ export function generateInGameFormat() {
     // Collect data from all collection forms
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
-        const collectionName = form.getAttribute('data-collection');
+        const collectionName = form.getAttribute('data-collection-name');
         processFormData(form, collectionName, neededCards, duplicateCards);
     });
 

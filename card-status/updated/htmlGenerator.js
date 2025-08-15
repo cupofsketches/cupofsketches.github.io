@@ -111,7 +111,7 @@ export function generateCardsHTML(collection) {
 
     return `
         <div id="${collection.id}" class="tabcontent">
-            <form id="${formId}" class="collection-form" data-collection="${collection.id}">
+            <form id="${formId}" class="collection-form" data-collection="${collection.id}" data-collection-name="${collection.name}">
                 <fieldset class="fieldset divider">
                     <legend>${collection.legend}</legend>
                     <div class="card-container">

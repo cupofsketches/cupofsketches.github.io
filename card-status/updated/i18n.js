@@ -68,10 +68,10 @@ export function translate(key) {
 export async function setLocale(localeCode = "en") {
     // Dynamically import the locale module based on the selected language
     const localeModule = await import(`../locales/${localeCode}.js`);
-    
+
     // Update the current translations with the new language
     currentTranslations = localeModule.translations;
-    
+
     // Save the selected locale to localStorage for persistence across sessions
     localStorage.setItem("locale", localeCode);
 }

@@ -81,7 +81,7 @@ export function generateCardsHTML(collection) {
                 <div class="card gold">
                     <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
-                        <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled">
+                        <input type="radio" id="${ownedId}" name="${card.name}" value="owned">
                         <span style="color:rgb(179, 179, 179)"> ${translate("cardOptions.nonTrade")} </span>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ export function generateCardsHTML(collection) {
                     <label for="${neededId}" style="display: inline; font-weight: normal;">${translate("cardOptions.needed")}</label><br>
                     <input type="radio" id="${duplicateId}" name="${card.name}" value="duplicate" data-card-id="${card.id}" data-collection-id="${collection.id}"> 
                     <label for="${duplicateId}" style="display: inline; font-weight: normal;">${translate("cardOptions.duplicate")}</label><br>
-                    <input type="radio" id="${ownedId}" name="${card.name}" checked="false" value="owned" class="disabled" data-card-id="${card.id}" data-collection-id="${collection.id}">
+                    <input type="radio" id="${ownedId}" name="${card.name}" value="owned" checked data-card-id="${card.id}" data-collection-id="${collection.id}">
                     <label for="${ownedId}" style="display: inline; font-weight: normal; color:rgb(179, 179, 179);">${translate("cardOptions.owned")}</label>
                 </div>
             </div>

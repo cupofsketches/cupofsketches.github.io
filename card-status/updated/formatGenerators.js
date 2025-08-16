@@ -19,22 +19,37 @@ import { translate } from './i18n.js';
 /**
  * Processes form data and categorizes cards by their status
  * This function extracts 'needed' and 'duplicate' selections from collection forms
+ * Only considers currently checked radio buttons to handle status changes correctly
  * @param {HTMLFormElement} form - The form element to process
  * @param {string} collectionName - The name of the collection
  * @param {Object} neededCards - Object to store needed cards
  * @param {Object} duplicateCards - Object to store duplicate cards
  */
 function processFormData(form, collectionName, neededCards, duplicateCards) {
-    const formData = new FormData(form);
+    // Get all radio buttons in this form
+    const radioButtons = form.querySelectorAll('input[type="radio"]:checked');
 
-    formData.forEach((value, key) => {
-        if (value === 'needed') {
+    console.log(`🔍 Processing form for collection: ${collectionName}`);
+    console.log(`🔍 Found ${radioButtons.length} checked radio buttons`);
+
+    radioButtons.forEach(radio => {
+        const cardName = radio.name; // This is the card name
+        const status = radio.value;  // This is the current status
+
+        console.log(`🔍 Card: ${cardName}, Status: ${status}`);
+
+        if (status === 'needed') {
             if (!neededCards[collectionName]) neededCards[collectionName] = [];
-            neededCards[collectionName].push(key);
-        } else if (value === 'duplicate') {
+            neededCards[collectionName].push(cardName);
+            console.log(`✅ Added ${cardName} to needed cards for ${collectionName}`);
+        } else if (status === 'duplicate') {
             if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
-            duplicateCards[collectionName].push(key);
+            duplicateCards[collectionName].push(cardName);
+            console.log(`✅ Added ${cardName} to duplicate cards for ${collectionName}`);
+        } else {
+            console.log(`⏭️ Skipping ${cardName} with status '${status}' (not included in format output)`);
         }
+        // Note: 'owned' and 'nonTrade' cards are intentionally excluded from format output
     });
 }
 

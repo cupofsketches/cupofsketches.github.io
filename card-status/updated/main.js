@@ -64,7 +64,10 @@ function applyLabels() {
         okFileNameValidationButton: document.getElementById("okFileNameValidationBtn"),
 
         // Input placeholders
-        fileNameInput: document.getElementById("fileNameInput")
+        fileNameInput: document.getElementById("fileNameInput"),
+
+        // Auto-save section header
+        autoSaveSectionHeader: document.querySelector('[data-translate="ids.autoSaveSectionHeader"]')
     };
 
     // ================================
@@ -206,6 +209,14 @@ function applyLabels() {
 
     if (domElements.fileNameInput) {
         domElements.fileNameInput.placeholder = translate("placeholders.fileNameInput");
+    }
+
+    // Auto-save section header
+    if (domElements.autoSaveSectionHeader) {
+        console.log('🌍 Translating auto-save header to:', translate("ids.autoSaveSectionHeader"));
+        domElements.autoSaveSectionHeader.textContent = translate("ids.autoSaveSectionHeader");
+    } else {
+        console.warn('⚠️ Auto-save header element not found');
     }
 }
 
@@ -1174,6 +1185,18 @@ document.addEventListener('DOMContentLoaded', async function () {
             generateInGameFormat();
         } catch (error) {
             console.error('Error generating initial formats:', error);
+        }
+
+        // ================================
+        // FINAL LABEL APPLICATION
+        // ================================
+        // Purpose: Ensure all static HTML elements are translated after DOM is fully ready
+
+        try {
+            console.log('🌍 Applying final labels to static HTML elements...');
+            applyLabels();
+        } catch (error) {
+            console.warn('Could not apply final labels:', error);
         }
 
         // Auto-restore from localStorage after HTML is generated

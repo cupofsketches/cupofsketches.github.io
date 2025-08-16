@@ -29,7 +29,10 @@ export const translations = {
         // File name validation popup
         fileNameValidationTitle: "Falta el Nombre del Archivo",
         fileNameValidationMessage: "Por favor, introduce un nombre para guardar el archivo",
-        okFileNameValidationBtn: "OK"
+        okFileNameValidationBtn: "OK",
+
+        // Auto-save section header
+        autoSaveSectionHeader: "Estado del Auto-Guardado"
     },
 
     // ================================

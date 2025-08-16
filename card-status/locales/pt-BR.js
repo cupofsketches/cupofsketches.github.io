@@ -29,7 +29,10 @@ export const translations = {
         // File name validation popup
         fileNameValidationTitle: "Nome do Arquivo Ausente",
         fileNameValidationMessage: "Por favor, insira um nome para salvar o arquivo",
-        okFileNameValidationBtn: "OK"
+        okFileNameValidationBtn: "OK",
+
+        // Auto-save section header
+        autoSaveSectionHeader: "Status do Auto-Salvamento"
     },
 
     // ================================

@@ -753,12 +753,24 @@ function handleTabClick() {
 function copyToClipboard(formatId) {
     try {
         const formatElement = document.getElementById(formatId);
-        if (!formatElement || !formatElement.textContent) {
-            console.warn('No content to copy from:', formatId);
+        if (!formatElement) {
+            console.warn('No element found to copy from:', formatId);
             return;
         }
 
-        const textToCopy = formatElement.textContent.trim();
+        // For NEED and DUPLICATE sections, use the stored copy text with prefixes
+        let textToCopy;
+        if (formatId === 'need-section' || formatId === 'duplicate-section') {
+            textToCopy = formatElement.getAttribute('data-copy-text');
+            if (!textToCopy) {
+                // Fallback to textContent if data-copy-text is not available
+                textToCopy = formatElement.textContent.trim();
+            }
+        } else {
+            // For other formats, use the regular textContent
+            textToCopy = formatElement.textContent.trim();
+        }
+
         if (!textToCopy) {
             console.warn('Empty content to copy from:', formatId);
             return;

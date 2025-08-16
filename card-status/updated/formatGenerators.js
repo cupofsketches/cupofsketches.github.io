@@ -168,10 +168,12 @@ export function generateInGameFormat() {
 
     const neededParts = [];
     const duplicateParts = [];
+    const neededPartsForCopy = [];
+    const duplicatePartsForCopy = [];
 
     // Build needed cards section
     if (Object.keys(neededCards).length > 0) {
-        neededParts.push(`${translate("format.need")} `);
+        // For display: no prefix
         let isFirstNeededCollection = true;
         for (const collection in neededCards) {
             if (!isFirstNeededCollection) {
@@ -180,17 +182,39 @@ export function generateInGameFormat() {
             neededParts.push(`[${collection}] => ${neededCards[collection].join(', ')}`);
             isFirstNeededCollection = false;
         }
+
+        // For copy: with prefix
+        neededPartsForCopy.push(`${translate("format.need")} `);
+        isFirstNeededCollection = true;
+        for (const collection in neededCards) {
+            if (!isFirstNeededCollection) {
+                neededPartsForCopy.push(' / ');
+            }
+            neededPartsForCopy.push(`[${collection}] => ${neededCards[collection].join(', ')}`);
+            isFirstNeededCollection = false;
+        }
     }
 
     // Build duplicate cards section
     if (Object.keys(duplicateCards).length > 0) {
-        duplicateParts.push(`${translate("format.duplicate")} `);
+        // For display: no prefix
         let isFirstDuplicateCollection = true;
         for (const collection in duplicateCards) {
             if (!isFirstDuplicateCollection) {
                 duplicateParts.push(' / ');
             }
             duplicateParts.push(`[${collection}] => ${duplicateCards[collection].join(', ')}`);
+            isFirstDuplicateCollection = false;
+        }
+
+        // For copy: with prefix
+        duplicatePartsForCopy.push(`${translate("format.duplicate")} `);
+        isFirstDuplicateCollection = true;
+        for (const collection in duplicateCards) {
+            if (!isFirstDuplicateCollection) {
+                duplicatePartsForCopy.push(' / ');
+            }
+            duplicatePartsForCopy.push(`[${collection}] => ${duplicateCards[collection].join(', ')}`);
             isFirstDuplicateCollection = false;
         }
     }
@@ -225,7 +249,10 @@ export function generateInGameFormat() {
         // Show/hide sections based on content
         if (neededParts.length > 0) {
             needSectionContainer.style.display = 'block';
+            // Display without "NEED:" prefix for cleaner appearance
             needSection.textContent = neededParts.join('');
+            // Store the full text with prefix for copying
+            needSection.setAttribute('data-copy-text', neededPartsForCopy.join(''));
             console.log('✅ Need section displayed with content:', neededParts.join(''));
         } else {
             needSectionContainer.style.display = 'none';
@@ -234,7 +261,10 @@ export function generateInGameFormat() {
 
         if (duplicateParts.length > 0) {
             duplicateSectionContainer.style.display = 'block';
+            // Display without "DUPLICATE:" prefix for cleaner appearance
             duplicateSection.textContent = duplicateParts.join('');
+            // Store the full text with prefix for copying
+            duplicateSection.setAttribute('data-copy-text', duplicatePartsForCopy.join(''));
             console.log('✅ Duplicate section displayed with content:', duplicateParts.join(''));
         } else {
             duplicateSectionContainer.style.display = 'none';

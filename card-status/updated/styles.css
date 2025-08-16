@@ -469,16 +469,16 @@ button {
   flex-basis: 20%;
   margin: 0 10px 0 10px;
   padding: 10px;
-  border: 2px solid #dc3545;
+  border: 2px solid #c6643a;
   background-color: white;
-  color: #dc3545;
+  color: #c6643a;
   font-size: 15px;
   border-radius: 6px;
   transition: all 0.3s ease;
 }
 
 .content button#resetAllBtn:hover {
-  background-color: #dc3545;
+  background-color: #c6643a;
   color: white;
   transform: translateY(-1px);
 }
@@ -741,13 +741,13 @@ pre {
 
 #resetConfirmationPopup .content button#confirmResetBtn {
   background-color: white;
-  color: #dc3545;
-  border: 2px solid #dc3545;
+  color: #c6643a;
+  border: 2px solid #c6643a;
   border-radius: 6px;
 }
 
 #resetConfirmationPopup .content button#confirmResetBtn:hover {
-  background-color: #dc3545;
+  background-color: #c6643a;
   color: white;
   transform: translateY(-1px);
 }

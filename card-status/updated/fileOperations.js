@@ -356,6 +356,10 @@ export function loadOptions(event) {
           generateRedditFormat();
           generateInGameFormat();
           hideUserMessage();
+
+          // Auto-save the loaded selections to localStorage
+          console.log('💾 Auto-saving loaded file selections...');
+          autoSaveLoadedSelections();
         } catch (formatError) {
           console.warn('Error regenerating formats:', formatError);
         }
@@ -387,5 +391,89 @@ export function loadOptions(event) {
     } catch (cleanupError) {
       console.warn('Error during cleanup:', cleanupError);
     }
+  }
+}
+
+/**
+ * Automatically saves the loaded file selections to localStorage
+ * This ensures that loaded selections persist across browser sessions
+ */
+function autoSaveLoadedSelections() {
+  try {
+    // Get all current radio button selections (including the newly loaded ones)
+    const allTabs = document.querySelectorAll('.tabcontent');
+    const selections = [];
+
+    allTabs.forEach(tab => {
+      const radioButtons = tab.querySelectorAll('input[type="radio"]:not(.disabled)');
+      radioButtons.forEach(radio => {
+        if (radio.checked) {
+          const cardId = radio.getAttribute('data-card-id');
+          const collectionId = radio.getAttribute('data-collection-id');
+          const selectedValue = radio.value;
+
+          if (cardId && collectionId) {
+            selections.push({
+              cardId: cardId,
+              collectionId: collectionId,
+              value: selectedValue
+            });
+          }
+        }
+      });
+    });
+
+    if (selections.length > 0) {
+      const autoSaveData = {
+        timestamp: Date.now(),
+        language: localStorage.getItem('locale') || 'en',
+        selections: selections,
+        version: '1.0'
+      };
+
+      localStorage.setItem('autoSaveData', JSON.stringify(autoSaveData));
+      console.log('💾 Auto-saved', selections.length, 'loaded selections to localStorage:', autoSaveData);
+
+      // Show auto-save status indicator
+      showAutoSaveStatusAfterLoad();
+    } else {
+      console.log('💾 No selections found to auto-save after file load');
+    }
+  } catch (error) {
+    console.warn('Auto-save of loaded selections failed:', error);
+  }
+}
+
+/**
+ * Shows auto-save status after loading a file
+ * This provides visual feedback that loaded selections are being saved
+ */
+function showAutoSaveStatusAfterLoad() {
+  try {
+    const statusIndicator = document.getElementById('auto-save-status');
+    const statusText = statusIndicator?.querySelector('.auto-save-text');
+
+    if (statusIndicator && statusText) {
+      // Show "Saving loaded selections..." first (translated)
+      statusText.textContent = translate('autoSave.savingLoaded');
+      statusIndicator.style.display = 'inline-flex';
+      statusIndicator.style.opacity = '1';
+
+      // After a short delay, show "Loaded selections saved automatically" (translated)
+      setTimeout(() => {
+        if (statusText) {
+          statusText.textContent = translate('autoSave.loadedSaved');
+        }
+      }, 500);
+
+      // Fade out after 3 seconds
+      setTimeout(() => {
+        if (statusIndicator) {
+          statusIndicator.style.opacity = '0.3';
+        }
+      }, 3000);
+    }
+  } catch (error) {
+    console.warn('Error showing auto-save status after load:', error);
   }
 }

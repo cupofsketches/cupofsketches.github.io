@@ -91,6 +91,8 @@ export const translations = {
     autoSave: {
         enabled: "Auto-guardado activado",
         saving: "Guardando...",
-        saved: "Guardado automáticamente"
+        saved: "Guardado automáticamente",
+        savingLoaded: "Guardando selecciones cargadas...",
+        loadedSaved: "Selecciones cargadas guardadas automáticamente"
     }
 };

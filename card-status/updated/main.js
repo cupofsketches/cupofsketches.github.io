@@ -841,7 +841,10 @@ function showCopySuccess(formatId) {
  */
 function autoSaveToLocalStorage() {
     try {
+        console.log('💾 Auto-save triggered...');
         const selections = saveRadioButtonStates();
+        console.log('💾 Radio button states saved:', selections);
+
         if (selections && selections.length > 0) {
             const autoSaveData = {
                 timestamp: Date.now(),
@@ -851,10 +854,12 @@ function autoSaveToLocalStorage() {
             };
 
             localStorage.setItem('autoSaveData', JSON.stringify(autoSaveData));
-            console.log('💾 Auto-saved', selections.length, 'selections to localStorage');
+            console.log('💾 Auto-saved', selections.length, 'selections to localStorage:', autoSaveData);
 
             // Show auto-save status indicator
             showAutoSaveStatus();
+        } else {
+            console.log('💾 No selections to save');
         }
     } catch (error) {
         console.warn('Auto-save failed:', error);
@@ -896,9 +901,13 @@ function showAutoSaveStatus() {
  */
 function autoRestoreFromLocalStorage() {
     try {
+        console.log('🔄 Auto-restore started...');
         const autoSaveData = localStorage.getItem('autoSaveData');
+        console.log('🔄 Raw auto-save data from localStorage:', autoSaveData);
+
         if (autoSaveData) {
             const data = JSON.parse(autoSaveData);
+            console.log('🔄 Parsed auto-save data:', data);
 
             // Check if data is from current language or can be migrated
             if (data.language === (localStorage.getItem('locale') || 'en') || data.selections) {
@@ -915,7 +924,11 @@ function autoRestoreFromLocalStorage() {
 
                 // Show auto-save status to indicate data was restored
                 showAutoSaveStatus();
+            } else {
+                console.log('🔄 Language mismatch or no selections in data');
             }
+        } else {
+            console.log('🔄 No auto-save data found in localStorage');
         }
     } catch (error) {
         console.warn('Auto-restore failed:', error);
@@ -942,7 +955,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         await bootI18n();
         initLanguageSelector();
-        autoRestoreFromLocalStorage(); // Auto-restore on page load
 
         // ================================
         // HTML GENERATION
@@ -1163,6 +1175,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         } catch (error) {
             console.error('Error generating initial formats:', error);
         }
+
+        // Auto-restore from localStorage after HTML is generated
+        setTimeout(() => {
+            console.log('🔄 Starting auto-restore with delay to ensure DOM is ready...');
+            autoRestoreFromLocalStorage();
+        }, 100); // Small delay to ensure DOM is fully ready
 
     } catch (error) {
         console.error('Critical error during application initialization:', error);

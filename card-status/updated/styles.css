@@ -28,12 +28,12 @@
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: #ffffff;
   border: 2px solid #e9ecef;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   user-select: none;
 }
 

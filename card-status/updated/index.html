@@ -5,144 +5,334 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Match Card Status Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1 span class="">Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
 
-    <!-- Save and Load -->
+    <!-- ================================ -->
+    <!-- LANGUAGE SELECTOR -->
+    <!-- ================================ -->
+    <!-- Purpose: Allow users to switch between different languages for the interface -->
+    <div class="language-selector-container" style="background-color: #f5f5f5; padding: 15px; border-radius: 6px;">
+        <div class="language-selector">
+            <div class="language-selector-current" id="currentLanguage">
+                <span class="language-flag">🇺🇸</span>
+                <span class="language-name">English</span>
+                <span class="language-arrow">▼</span>
+            </div>
+            <div class="language-selector-dropdown" id="languageDropdown">
+                <div class="language-option" data-value="en" data-flag="🇺🇸" data-name="English">
+                    <span class="language-flag">🇺🇸</span>
+                    <span class="language-name">English</span>
+                </div>
+                <div class="language-option" data-value="pt-BR" data-flag="🇧🇷" data-name="Português">
+                    <span class="language-flag">🇧🇷</span>
+                    <span class="language-name">Português</span>
+                </div>
+                <div class="language-option" data-value="es" data-flag="🇪🇸" data-name="Español">
+                    <span class="language-flag">🇪🇸</span>
+                    <span class="language-name">Español</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- MAIN HEADER -->
+    <!-- ================================ -->
+    <!-- Purpose: Display the main title and subtitle of the application -->
+    <h1>Royal Match<br>Card Status Tool<br><span class="subtitle"></span></h1>
+
+    <!-- ================================ -->
+    <!-- SAVE AND LOAD SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Provide buttons for saving and loading card status data -->
     <fieldset class="divider add-space">
-        <legend class="gray-color">Save & Load Card Status</legend>
-    </fieldset>
-
-    <div class="content smaller">
-        <button id="saveOptionsBtn">Save</button>
-        <button id="loadOptionsBtn">Load</button>
-        <input type="file" id="loadInput" style="display: none;">
-    </div>
-
-    <!-- Popup for warning message -->
-    <div id="warningPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeWarningPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Whoops!<legend>
-            </fieldset>
-            <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
-            <div class="content">
-                <button id="closeWarningBtn">OK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup for file name input -->
-    <div id="fileNamePopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closePopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="green-color">Save Card Status<legend>
-            </fieldset>
-            <div class="input-container">
-                <label for="fileNameInput"></label>
-                <input type="text" id="fileNameInput" placeholder="Name Your File Here">
-            </div>
-            <div class="content">
-                <button id="confirmSaveBtn">Save</button>
-                <button id="cancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Popup for file name validation -->
-    <div id="fileNameValidationPopup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <span id="closeFileNameValidationPopup" class="close">&times;</span>
-            <fieldset class="divider">
-                <legend class="orange-color">Missing File Name</legend>
-            </fieldset>
-            <p id="fileNameValidationMessage"></p>
-            <div class="content">
-                <button id="okFileNameValidationBtn">OK</button>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Tabs Content PLACEHOLDER - CARDS: DYNAMIC HTML -->
-    <div id="cards-container"></div>
-
-
-    <!-- Tabs Legend -->
-    <fieldset class="divider">
-        <legend>Choose Decks:<legend>
-    </fieldset>
-
-    <!-- Tabs PLACEHOLDER - DECKS: DYNAMIC HTML -->
-    <div id="decks-container" class="tabs">
-    </div>
-
-
-    <fieldset class="divider">
-        <legend class="gray-color">Generate Text<legend>
+        <legend class="gray-color" id="saveLoadSection">Save & Load Card Status</legend>
     </fieldset>
 
     <div class="content">
-        <button id="show-reddit-format" class="reddit">Show Reddit<br>Format</button>
-        <button id="show-in-game-format">Show In-Game<br>Format</button>
+        <button id="saveOptionsBtn" class="save" aria-label="Save card status selections to file">Save</button>
+        <button id="loadOptionsBtn" class="load" aria-label="Load previously saved card status">Load</button>
+        <button id="resetAllBtn" class="reset" aria-label="Reset all selections and start fresh"
+            data-translate="cardManagement.reset">Start Fresh</button>
+        <input type="file" id="loadInput" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"
+            accept=".json" aria-label="Select JSON file to load">
     </div>
 
-    <fieldset class="add-space">
-        <div id="reddit-format-container" style="display:none;">
-            <legend class="orange-color">Reddit Format</legend>
-            <div id="user-message" style="display: block; color: gray;">Start selecting your card status...</div>
-            <pre id="reddit-format"></pre>
+    <!-- ================================ -->
+    <!-- POPUP COMPONENTS -->
+    <!-- ================================ -->
+    <!-- Purpose: Various popup dialogs for user interaction and feedback -->
+
+    <!-- Warning popup for incomplete selections -->
+    <div id="warningPopup" class="popup" style="display: none;" role="dialog" aria-labelledby="warningTitle"
+        aria-describedby="warningMessage">
+        <div class="popup-content">
+            <span id="closeWarningPopup" class="close" role="button" tabindex="0"
+                aria-label="Close warning popup">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color" id="warningTitle">Whoops!</legend>
+            </fieldset>
+            <p id="warningMessage">Select at least one "needed" or "duplicate" option before saving</p>
+            <div class="content">
+                <button id="closeWarningBtn" aria-label="Close warning and continue">OK</button>
+            </div>
         </div>
-        <div id="in-game-format-container" style="display:none;">
-            <legend class="blue-color">In-Game Chat Format<br><span class="subtitle">(1 paragraph, 500-character
-                    limit)</span></legend>
-            <div id="in-game-user-message" style="display: block; color: gray;">Start selecting your card
-                status...<br>Splitting text after 500 characters</div>
-            <pre id="in-game-format"></pre>
+    </div>
+
+    <!-- File name input popup for saving -->
+    <div id="fileNamePopup" class="popup" style="display: none;" role="dialog" aria-labelledby="fileNamePopupTitle"
+        aria-describedby="fileNameInputDescription">
+        <div class="popup-content">
+            <span id="closePopup" class="close" role="button" tabindex="0"
+                aria-label="Close file name popup">&times;</span>
+            <fieldset class="divider">
+                <legend id="fileNamePopupTitle" class="green-color">Save Card Status</legend>
+            </fieldset>
+            <div class="input-container">
+                <label for="fileNameInput" id="fileNameInputDescription">File Name:</label>
+                <input id="fileNameInput" type="text" placeholder="Name Your File Here"
+                    aria-describedby="fileNameInputDescription">
+            </div>
+            <div class="content">
+                <button id="confirmSaveBtn" aria-label="Confirm save with entered file name">Save</button>
+                <button id="cancelBtn" aria-label="Cancel file name input">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- File name validation popup for missing names -->
+    <div id="fileNameValidationPopup" class="popup" style="display: none;" role="dialog"
+        aria-labelledby="fileNameValidationTitle" aria-describedby="fileNameValidationMessage">
+        <div class="popup-content">
+            <span id="closeFileNameValidationPopup" class="close" role="button" tabindex="0"
+                aria-label="Close validation popup">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color" id="fileNameValidationTitle">Missing File Name</legend>
+            </fieldset>
+            <p id="fileNameValidationMessage">Please enter a file name to save your file</p>
+            <div class="content">
+                <button id="okFileNameValidationBtn" aria-label="Acknowledge validation message">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invalid file popup for file loading errors -->
+    <div id="invalidFilePopup" class="popup" style="display: none;" role="dialog" aria-labelledby="invalidFileTitle"
+        aria-describedby="invalidFileMessage">
+        <div class="popup-content">
+            <span id="closeInvalidFilePopup" class="close" role="button" tabindex="0"
+                aria-label="Close invalid file popup">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color" id="invalidFileTitle">Oops!</legend>
+            </fieldset>
+            <p id="invalidFileMessage">Please select a valid .json file!</p>
+            <div class="content">
+                <button id="closeInvalidFileBtn" aria-label="Close invalid file message">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset confirmation popup for starting fresh -->
+    <div id="resetConfirmationPopup" class="popup" style="display: none;" role="dialog"
+        aria-labelledby="resetConfirmationTitle" aria-describedby="resetConfirmationMessage">
+        <div class="popup-content">
+            <span id="closeResetConfirmationPopup" class="close" role="button" tabindex="0"
+                aria-label="Close reset confirmation popup">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color" id="resetConfirmationTitle" data-translate="resetConfirmation.title">Start
+                    Fresh?</legend>
+            </fieldset>
+            <p id="resetConfirmationMessage" data-translate="resetConfirmation.message">This will reset all your card
+                selections to "Owned" and clear
+                any auto-saved data. Manual saves are safe and will not be affected.</p>
+            <p id="resetConfirmationWarning" data-translate="resetConfirmation.warning">This action cannot be
+                undone.</p>
+            <div class="content">
+                <button id="confirmResetBtn" class="confirm-btn"
+                    data-translate="resetConfirmation.confirmButton">Confirm</button>
+                <button id="cancelResetBtn" class="cancel-btn"
+                    data-translate="resetConfirmation.cancelButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- CARDS CONTAINER -->
+    <!-- ================================ -->
+    <!-- Purpose: Dynamic HTML container for displaying card information -->
+    <!-- This section is populated by JavaScript based on user selections -->
+    <div id="cards-container"></div>
+
+    <!-- ================================ -->
+    <!-- BULK SELECTION SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Provide quick bulk selection options for all cards in the current deck -->
+    <fieldset class="divider" id="bulk-selection-section" style="display: none;">
+        <legend class="gray-color" data-translate="bulkSelection.sectionHeader">Select All As:</legend>
+        <div class="content">
+            <div class="bulk-selection-container">
+                <div class="bulk-selection-buttons">
+                    <button id="selectAllNeededBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as needed">
+                        <i class="fa-solid fa-handshake"></i>
+                        <span data-translate="bulkSelection.needed">Needed</span>
+                    </button>
+                    <button id="selectAllDuplicateBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as duplicate">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span data-translate="bulkSelection.duplicate">Duplicate</span>
+                    </button>
+                    <button id="selectAllOwnedBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as owned">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span data-translate="bulkSelection.owned">Owned</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Feedback message for bulk actions -->
+        <div id="bulk-selection-feedback" class="bulk-feedback" style="display: none;"></div>
+    </fieldset>
+
+    <!-- ================================ -->
+    <!-- DECKS SELECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Allow users to choose which card decks to display -->
+    <fieldset class="divider">
+        <legend id="chooseDecksSection">Choose Decks:</legend>
+    </fieldset>
+
+    <!-- Dynamic HTML container for deck tabs -->
+    <div id="decks-container" class="tabs">
+    </div>
+
+    <!-- ================================ -->
+    <!-- TEXT GENERATION SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Generate formatted text for Reddit posts and in-game chat -->
+    <fieldset class="divider">
+        <legend id="generateTextSection" class="gray-color">Generate Text</legend>
+    </fieldset>
+
+    <div class="content">
+        <button id="show-reddit-format" class="reddit" aria-label="Show Reddit format for sharing card status">Show
+            Reddit<br>Format</button>
+        <button id="show-in-game-format" aria-label="Show in-game chat format for card status">Show
+            In-Game<br>Format</button>
+    </div>
+
+    <!-- Format display containers -->
+    <fieldset class="add-space">
+        <!-- Reddit format display -->
+        <div id="reddit-format-container" style="display:none;" role="region" aria-labelledby="redditFormatTitle"
+            aria-describedby="redditFormatDescription">
+            <legend class="orange-color" id="redditFormatTitle" data-translate="format.redditFormatTitle">Reddit Format
+            </legend>
+            <div id="reddit-format-description" style="display: block; color: gray;"
+                data-translate="messages.redditUserMessage">Start selecting your card status...</div>
+
+            <!-- Copy button - only visible when there's content -->
+            <button class="copy-button" id="copy-reddit-format" style="display: none;"
+                aria-label="Copy Reddit format to clipboard" title="Copy to clipboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                </svg>
+            </button>
+
+            <pre id="reddit-format" role="textbox" aria-label="Reddit format text for sharing"
+                aria-describedby="redditFormatDescription"></pre>
+        </div>
+
+        <!-- In-game format display -->
+        <div id="in-game-format-container" style="display:none;" role="region" aria-labelledby="inGameFormatTitle"
+            aria-describedby="inGameFormatDescription">
+            <legend class="blue-color" id="inGameFormatTitle" data-translate="format.inGameFormatTitle">In-Game Chat
+                Format</legend>
+            <div class="subtitle" style="color: #666; font-size: 0.9em; margin-bottom: 10px;"
+                data-translate="format.characterLimitDescription">(1 paragraph,
+                500-character limit)</div>
+            <div id="in-game-format-description" style="display: block; color: gray;"
+                data-translate="messages.inGameUserMessage"></div>
+
+            <!-- NEED section with copy button -->
+            <div class="format-section" id="need-section-container" style="display: none;">
+                <div class="section-header">
+                    <span class="section-title" data-translate="format.need">NEED:</span>
+                    <button class="copy-button section-copy-button" id="copy-need-section"
+                        aria-label="Copy need section to clipboard" title="Copy need section">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                        </svg>
+                    </button>
+                </div>
+                <pre id="need-section" class="format-section-content" role="textbox"
+                    aria-label="Need section text"></pre>
+            </div>
+
+            <!-- HR separator -->
+            <hr id="sections-separator" style="display: none; margin: 20px 0;">
+
+            <!-- DUPLICATE section with copy button -->
+            <div class="format-section" id="duplicate-section-container" style="display: none;">
+                <div class="section-header">
+                    <span class="section-title" data-translate="format.duplicate">DUPLICATE:</span>
+                    <button class="copy-button section-copy-button" id="copy-duplicate-section"
+                        aria-label="Copy duplicate section to clipboard" title="Copy duplicate section">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                        </svg>
+                    </button>
+                </div>
+                <pre id="duplicate-section" class="format-section-content" role="textbox"
+                    aria-label="Duplicate section text"></pre>
+            </div>
+
+            <!-- Legacy container for backward compatibility -->
+            <pre id="in-game-format" role="textbox" aria-label="In-game chat format text" style="display: none;"
+                aria-describedby="inGameFormatDescription"></pre>
         </div>
     </fieldset>
 
-    <!-- Credits: u/Potential_Save | cupofsketches@gmail.com | ID:2N96AFNK -->
-    <!-- Who lost a lot of sleep to make your life a bit easier xD -->
+    <!-- ================================ -->
+    <!-- AUTO-SAVE STATUS SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Display auto-save status and confirmation -->
+    <fieldset class="divider">
+        <legend class="gray-color" data-translate="autoSave.sectionHeader">Auto-Save Status</legend>
+    </fieldset>
 
-    <div class="credits credit-link">Royal Match Card Status Tool by <a
-            href="https://www.reddit.com/user/Potential_Save" class="credit-link">u/Potential_Save</a>
-        <br>Hobby collection co-created by: <a href="https://www.reddit.com/user/carloslaso"
-            class="credit-link">u/carloslaso</a>
-        <br>For General Discussion: <a href="https://www.reddit.com/r/RoyalMatch" class="credit-link">r/RoyalMatch</a>
-        <br>Card Trading: <a href="https://www.reddit.com/r/RoyalMatchGame" class="credit-link">r/RoyalMatchGame</a>
-        <!-- <br>cupofsketches@gmail.com -->
+    <div class="content">
+        <!-- Auto-save status indicator -->
+        <div id="auto-save-status" class="auto-save-indicator" style="display: none;">
+            <span class="auto-save-icon">💾</span>
+            <span class="auto-save-text" data-translate="autoSave.enabled">Auto-save enabled</span>
+        </div>
     </div>
 
-    <script>
-        function openCollection(collectionDeck) {
-            const tabcontents = document.querySelectorAll('.tabcontent');
-            tabcontents.forEach(tabcontent => {
-                tabcontent.style.display = 'none';
-            });
+    <!-- ================================ -->
+    <!-- CREDITS AND ATTRIBUTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Display credits and links to creators and communities -->
+    <!-- Who lost a lot of sleep to make your life a bit easier xD -->
+    <div class="credits credit-link">
+        Royal Match Card Status Tool by <a href="https://www.reddit.com/user/Potential_Save"
+            class="credit-link">u/Potential_Save</a>
+        <br>For General Discussion: <a href="https://www.reddit.com/r/RoyalMatch" class="credit-link">r/RoyalMatch</a>
+        <br>Card Trading: <a href="https://www.reddit.com/r/RoyalMatchGame" class="credit-link">r/RoyalMatchGame</a>
+        <br>Co-created with: <a href="https://www.reddit.com/user/carloslaso" class="credit-link">u/carloslaso</a>
+    </div>
 
-            const tablinks = document.querySelectorAll('.tablink');
-            tablinks.forEach(tablink => {
-                tablink.classList.remove('active');
-            });
-
-            const currentTabcontent = document.getElementById(collectionDeck);
-            if (currentTabcontent) {
-                currentTabcontent.style.display = 'block';
-            }
-
-            const clickedTablink = document.querySelector(`.tablink[data-collection="${collectionDeck}"]`);
-            if (clickedTablink) {
-                clickedTablink.classList.add('active');
-            }
-        }
-    </script>
+    <!-- ================================ -->
+    <!-- SCRIPT IMPORTS -->
+    <!-- ================================ -->
+    <!-- Purpose: Load all necessary JavaScript modules for the application -->
 
     <!-- Data and generator scripts -->
     <script type="module" src="cardsData.js"></script>
@@ -154,7 +344,7 @@
     <script type="module" src="formatGenerators.js"></script>
     <script type="module" src="formatView.js"></script>
 
-    <!-- Main script -->
+    <!-- Main application script -->
     <script type="module" src="main.js"></script>
 
 </body>

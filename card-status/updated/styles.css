@@ -1,19 +1,255 @@
-/*
-------------------------
--------- BODY ----------
-------------------------
+/* ---------------------------------
+   ---------- STYLES.CSS -----------
+   ---------------------------------
+   This file contains all the CSS styling for the Royal Match Card Status Tool.
 */
+
+/* ================================
+   LANGUAGE SELECTOR
+   ================================
+   Purpose: Style the custom language selector with modern design */
+
+/* Container for the language selector dropdown */
+.language-selector-container {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+  padding: 0 20px;
+}
+
+/* Main language selector wrapper with dropdown positioning */
+.language-selector {
+  position: relative;
+  display: inline-block;
+  min-width: 160px;
+}
+
+/* Currently selected language display button */
+.language-selector-current {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  /* Transition only the properties that animate */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+/* Keyboard focus: visible ring for accessibility */
+.language-selector-current:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(58, 156, 198, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #3a9cc6;
+}
+
+/* Hover: slightly lift and accent the button to indicate interactivity */
+.language-selector-current:hover {
+  border-color: #3a9cc6;
+  box-shadow: 0 4px 12px rgba(58, 156, 198, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Active (pressed) state: return to resting position */
+.language-selector-current:active {
+  transform: translateY(0);
+}
+
+/* Flag emoji display in language selector */
+.language-flag {
+  font-size: 18px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Language name text in language selector */
+.language-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #6e7a8a;
+  flex-grow: 0;
+  text-align: center;
+}
+
+/* Dropdown arrow indicator in language selector */
+.language-arrow {
+  font-size: 10px;
+  color: #6c757d;
+  /* Transition arrow rotation smoothly */
+  transition:
+    transform 0.3s ease,
+    color 0.2s ease;
+  margin-left: auto;
+}
+
+/* When selector is open, rotate the arrow upwards */
+.language-selector.active .language-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown menu containing language options */
+.language-selector-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  /* Transition only opacity and transform for performance */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Reveal dropdown when the selector is active/open */
+.language-selector.active .language-selector-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Individual language option in dropdown menu */
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  /* Transition background and subtle slide only */
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+/* No divider line after the final option */
+.language-option:last-child {
+  border-bottom: none;
+}
+
+/* Subtle hover effect to indicate clickable option */
+.language-option:hover {
+  background-color: #f8f9fa;
+  transform: translateX(4px);
+}
+
+/* Visual state for the selected/active option */
+.language-option.selected {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+/* Typography for language name within each option */
+.language-option .language-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #6e7a8a;
+  text-align: center;
+}
+
+/* Stronger emphasis for the selected option's language name */
+.language-option.selected .language-name {
+  color: #1976d2;
+  font-weight: 700;
+}
+
+/* Extra small devices (e.g., Galaxy S8) - language selector tweaks */
+@media (max-width: 360px) {
+  .language-selector {
+    min-width: 120px;
+  }
+  .language-selector-current {
+    padding: 8px 10px;
+  }
+  .language-name {
+    font-size: 0.9em;
+  }
+}
+
+/* Extra small devices - additional language selector tweaks */
+@media (max-width: 360px) {
+  .language-selector {
+    min-width: 120px;
+  }
+  .language-selector-current {
+    padding: 8px 10px;
+  }
+  .language-name {
+    font-size: 0.9em;
+  }
+}
+
+/* ================================
+   ACCESSIBILITY IMPROVEMENTS
+   ================================
+   Purpose: Enhance accessibility with focus indicators and improved contrast */
+
+/* Focus indicators for keyboard navigation */
+button:focus,
+input:focus,
+select:focus,
+.tablink:focus {
+  outline: 2px solid #3a9cc6;
+  outline-offset: 2px;
+}
+
+/* Improved focus for close buttons */
+.close:focus {
+  outline: 2px solid #c6643a;
+  outline-offset: 2px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+
+/* Better contrast for disabled elements */
+input[type='radio'].disabled {
+  accent-color: #999;
+  opacity: 0.7;
+}
+
+/* Improved focus for tab links */
+.tablink:focus {
+  background-color: #5a6b7c;
+  color: white;
+  box-shadow: 0 0 0 2px #3a9cc6;
+}
+
+/* Focus indicator for popup content */
+.popup-content:focus-within {
+  outline: 2px solid #3a9cc6;
+  outline-offset: 2px;
+}
+
+/* ================================
+   BASE STYLES
+   ================================
+   Purpose: Define fundamental styling for the document body and basic elements */
 
 body {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*
-------------------------
------- HEADINGS --------
-------------------------
-*/
+/* ================================
+   TYPOGRAPHY
+   ================================
+   Purpose: Style headings and text elements */
 
 h1 {
   font-size: 1.5em;
@@ -29,64 +265,37 @@ h1 {
   text-align: center;
 }
 
-/*
-------------------------
------- BUTTONS ---------
-------------------------
-*/
+/* ================================
+   COLOR UTILITIES
+   ================================
+   Purpose: Define consistent color schemes used throughout the interface */
 
-button {
-  margin-top: 10px;
-  background-color: #d5dde5;
-  border-radius: 3px;
-  color: black;
-}
-
-/*
-------------------------
--------- LEGEND --------
-------------------------
-*/
-
-legend {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #5c936f;
-  text-align: center;
-}
-
-/*
-------------------------
------- COLOR CLASSES ----
-------------------------
-*/
-
+/* Utility class for gray text color */
 .gray-color {
   color: #6e7a8a;
 }
 
+/* Utility class for orange/brown text color */
 .orange-color {
   color: #c6643a;
 }
 
-.orange-color button {
-  color: white;
-}
-
+/* Utility class for blue text color */
 .blue-color {
   color: #3a9cc6;
 }
 
+/* Utility class for green text color */
 .green-color {
   color: #5c936f;
 }
 
-/*
-------------------------
------- FIELDSET --------
-------------------------
-*/
+/* ================================
+   LAYOUT CONTAINERS
+   ================================
+   Purpose: Style fieldset containers and content wrappers */
 
+/* Fieldset container for form sections */
 fieldset {
   display: flex;
   flex-wrap: wrap;
@@ -97,107 +306,238 @@ fieldset {
   text-align: center;
 }
 
-/*
-------------------------
--- REDDIT FORMAT BOX ----
-------------------------
-*/
-
-#reddit-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
+@media (max-width: 380px) {
+  fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    max-width: 480px;
+    margin: 5px -10px !important;
+    border: none;
+    text-align: center;
+  }
 }
 
-#reddit-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
--- IN-GAME FORMAT BOX ---
-------------------------
-*/
-
-#in-game-format-container {
-  margin: 10px auto;
-  padding: 20px;
-  border: 1px dotted #4a5768;
-  border-radius: 3px;
-  text-align: left;
-}
-
-#in-game-format {
-  font-size: 15px;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-/*
-------------------------
------ BOX WRAPPING -----
-------------------------
-*/
-
-pre {
-  white-space: pre-wrap;
-}
-
-/*
-------------------------
-------- CONTENT --------
-------------------------
-*/
-
+/* Main content wrapper for buttons and form elements */
 .content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   max-width: 480px;
-  height: 50px;
+  height: auto;
   margin: 0px auto;
   border-radius: 3px;
 }
 
+/* Smaller content wrapper variant */
 .smaller {
   max-width: 350px;
 }
 
-/*
-------------------------
------ BUTTON STYLES -----
-------------------------
-*/
+/* ================================
+   FORM ELEMENTS
+   ================================
+   Purpose: Style form legends, inputs, and form-related elements */
 
+/* Fieldset legend text styling */
+legend {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #5c936f;
+  text-align: center;
+}
+
+/* Container for input fields and labels */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 8px;
+}
+
+/* Label styling within input containers */
+.input-container label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* File name input field styling */
+#fileNameInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  font-size: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+#fileNameInput:focus {
+  outline: none;
+  border-color: #3a9cc6;
+  box-shadow: 0 0 0 3px rgba(58, 156, 198, 0.1);
+}
+
+/* File input styling */
+/* Hidden file input for load functionality */
+#loadInput {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  z-index: 9999;
+}
+
+/* Radio button styling */
+input[type='radio'] {
+  vertical-align: bottom;
+  margin: 6px 3px 0px 3px;
+}
+
+input[type='radio'].disabled {
+  accent-color: gray;
+}
+
+/* Color-coded radio buttons for card status */
+input[type='radio'][value='needed'] {
+  accent-color: #c6643a;
+}
+input[type='radio'][value='duplicate'] {
+  accent-color: #3a9cc6;
+}
+input[type='radio'][value='owned'] {
+  accent-color: #6c757d;
+}
+
+/* ================================
+   BUTTONS
+   ================================
+   Purpose: Style all button elements with consistent appearance */
+
+/* Base button styling for all buttons */
+button {
+  margin-top: 10px;
+  background-color: #d5dde5;
+  border-radius: 3px;
+  color: black;
+}
+
+/* Button styling within content containers */
 .content button {
   flex-grow: 0.3;
   flex-basis: 20%;
-  margin: 0 10px 0 10px;
   padding: 10px;
   border: none;
   font-size: 15px;
+  margin: 0 5px;
 }
 
+/* Reddit format button */
 #show-reddit-format.reddit {
   background-color: #c6643a;
   border-bottom: 2px solid #fe834d;
   color: white;
 }
 
+/* In-game format button */
 #show-in-game-format {
   background-color: #3a9cc6;
   border-bottom: 2px solid #cfd9db;
   color: white;
 }
 
-/*
-------------------------
---------- TABS ----------
-------------------------
-*/
+/* Save and confirm buttons */
+.content button#saveOptionsBtn,
+.content button#confirmSaveBtn {
+  flex-grow: 0.3;
+  flex-basis: 20%;
+  margin: 0 5px 0 5px;
+  padding: 10px;
+  border: none;
+  background-color: #2a7949d0;
+  border-bottom: 2px solid #437f58;
+  color: white;
+  font-size: 15px;
+}
+
+/* Load button */
+.content button#loadOptionsBtn {
+  flex-grow: 0.3;
+  flex-basis: 20%;
+  margin: 0 5px 0 5px;
+  padding: 10px;
+  border: none;
+  background-color: #fec324;
+  border-bottom: 2px solid #d4b35a;
+  font-size: 15px;
+}
+
+/* Reset button */
+.content button#resetAllBtn {
+  flex-grow: 0.3;
+  flex-basis: 20%;
+  margin: 0 5px 0 5px;
+  padding: 10px;
+  border: 2px solid #c6643a;
+  background-color: white;
+  color: #c6643a;
+  font-size: 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.content button#resetAllBtn:hover {
+  background-color: #c6643a;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Warning and validation buttons */
+.content button#closeWarningBtn,
+.content button#okFileNameValidationBtn {
+  background-color: #c6643a;
+  color: white;
+}
+
+/* Orange color button overrides */
+.orange-color button {
+  color: white;
+}
+
+/* Mobile responsive overrides for main buttons */
+@media (max-width: 360px) {
+  /* Main buttons - ultra compact */
+
+  .content button {
+    padding: 10px 6px;
+    font-size: 14px;
+    margin: 0 4px;
+  }
+
+  .content button#saveOptionsBtn,
+  .content button#loadOptionsBtn,
+  .content button#resetAllBtn {
+    flex-basis: 50%;
+    width: 100%;
+    margin: 2px;
+    font-size: 15px;
+  }
+
+  /* Format buttons - ultra compact */
+  #show-reddit-format,
+  #show-in-game-format {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+}
+
+/* ================================
+   TAB NAVIGATION
+   ================================
+   Purpose: Style the deck selection tabs and tab content */
 
 .tabs {
   display: grid;
@@ -226,6 +566,7 @@ pre {
   color: black;
   text-align: center;
   white-space: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tablink.active,
@@ -234,15 +575,17 @@ pre {
   color: white;
 }
 
-.tabs .tablink {
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 360px) {
+  .tabs .tablink {
+    font-size: 13px;
+    padding: 8px 8px;
+  }
 }
 
-/*
-------------------------
---- CARD CONTAINERS -----
-------------------------
-*/
+/* ================================
+   CARD DISPLAY
+   ================================
+   Purpose: Style individual card elements and their containers */
 
 .card-container {
   display: flex;
@@ -263,14 +606,40 @@ pre {
   text-align: center;
 }
 
+/* Gold (non-tradeable) card styling */
 .gold {
   background-color: #fffef7;
   border: 1px solid #fec324;
 }
 
+/* Mobile card padding override for very small screens */
+@media (max-width: 360px) {
+  .card-container {
+    gap: 2px; /* Reduce gap from 4px to 2px */
+    margin-top: 8px; /* Slightly reduce top margin */
+  }
+
+  .card {
+    flex-basis: 40%; /* Two columns per row */
+    min-width: 40%;
+  }
+
+  .cardName {
+    font-size: 13px; /* Reduce from 15px to 13px */
+    padding-bottom: 3px; /* Reduce from 5px to 3px */
+  }
+}
+
+/* Tab content - no padding for very small screens */
+@media (max-width: 360px) {
+  .tabcontent {
+    padding: 0;
+  }
+}
+
 .cardName {
   padding-bottom: 5px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   color: #6e7a8a;
 }
@@ -278,96 +647,67 @@ pre {
 .option {
   padding-top: 5px;
   border-top: 1px solid #4a5768;
-  font-size: 13px;
+  font-size: 14px;
   text-align: left;
 }
 
-/*
-------------------------
--- RADIO BUTTONS STYLE --
-------------------------
-*/
+/* ================================
+   FORMAT DISPLAY CONTAINERS
+   ================================
+   Purpose: Style the output containers for Reddit and in-game formats */
 
-input[type='radio'].disabled {
-  accent-color: gray;
+/* Reddit format display box */
+#reddit-format-container {
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px dotted #4a5768;
+  border-radius: 3px;
+  text-align: left;
 }
 
-input[type='radio'] {
-  vertical-align: bottom;
-  margin: 6px 3px 0px 3px;
+#reddit-format {
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace !important;
 }
 
-/*
-------------------------
------ MESSAGES ---------
-------------------------
-*/
+/* In-game format display box */
+#in-game-format-container {
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px dotted #4a5768;
+  border-radius: 3px;
+  text-align: left;
+}
+
+#in-game-format {
+  font-size: 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ================================
+   TEXT FORMATTING
+   ================================
+   Purpose: Style pre-formatted text elements */
+
+pre {
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+/* ================================
+   USER MESSAGES
+   ================================
+   Purpose: Style informational messages and user guidance text */
 
 #in-game-user-message,
 #user-message {
   padding-top: 20px;
 }
 
-/*
-------------------------
--- INPUT CONTAINER ------
-------------------------
-*/
-
-.input-container {
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-#fileNameInput {
-  margin: 0 10px 10px 10px;
-  padding: 5px;
-  font-size: 15px;
-  flex-grow: 0.5;
-}
-
-/*
-------------------------
--- SAVE & LOAD BUTTONS --
-------------------------
-*/
-
-.content button#saveOptionsBtn,
-.content button#confirmSaveBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #2a7949d0;
-  border-bottom: 2px solid #437f58;
-  color: white;
-  font-size: 15px;
-}
-
-.content button#loadOptionsBtn {
-  flex-grow: 0.3;
-  flex-basis: 20%;
-  margin: 0 10px 0 10px;
-  padding: 10px;
-  border: none;
-  background-color: #fec324;
-  border-bottom: 2px solid #d4b35a;
-  font-size: 15px;
-}
-
-.content button#closeWarningBtn,
-.content button#okFileNameValidationBtn {
-  background-color: #c6643a;
-  color: white;
-}
-
-/*
-------------------------
------- DIVIDERS --------
-------------------------
-*/
+/* ================================
+   VISUAL SEPARATORS
+   ================================
+   Purpose: Style dividers and spacing elements */
 
 .divider {
   border-top: 1px dotted #4a5768;
@@ -377,11 +717,10 @@ input[type='radio'] {
   margin-top: 10px;
 }
 
-/*
-------------------------
------ POPUP STYLES -----
-------------------------
-*/
+/* ================================
+   POPUP MODALS
+   ================================
+   Purpose: Style popup dialogs for warnings, file input, and validation */
 
 .popup {
   display: flex;
@@ -393,33 +732,31 @@ input[type='radio'] {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .popup-content {
   position: relative;
-  width: 300px;
-  padding: 20px;
+  width: 350px;
+  padding: 25px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   text-align: center;
+  z-index: 1001;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/*
-------------------------
---- POPUP CLOSE BTN -----
-------------------------
-*/
+/* ================================
+   POPUP ELEMENTS
+   ================================
+   Purpose: Style popup close buttons and button containers */
 
+/* Close button (hidden by default) */
 .close {
   display: none;
 }
 
-/*
-------------------------
----- POPUP BUTTONS -----
-------------------------
-*/
-
+/* Popup button containers */
 .popup-buttons {
   margin-top: 20px;
 }
@@ -428,11 +765,87 @@ input[type='radio'] {
   margin: 0 10px;
 }
 
-/*
-------------------------
------- CREDITS ---------
-------------------------
-*/
+/* Save popup specific button styling */
+#fileNamePopup .content button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#fileNamePopup .content button#confirmSaveBtn {
+  background-color: #2a7949d0;
+  color: white;
+  border-bottom: 2px solid #437f58;
+}
+
+#fileNamePopup .content button#confirmSaveBtn:hover {
+  background-color: #2a7949;
+  transform: translateY(-1px);
+}
+
+#fileNamePopup .content button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+  border-bottom: 2px solid #5a6268;
+}
+
+#fileNamePopup .content button#cancelBtn:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* Reset popup specific button styling */
+#resetConfirmationPopup .content button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#resetConfirmationPopup .content button#confirmResetBtn {
+  background-color: #c6643a;
+  color: white;
+  border: 2px solid #c6643a;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+#resetConfirmationPopup .content button#confirmResetBtn:hover {
+  background-color: #c6643a;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Style the warning text with the theme color */
+#resetConfirmationPopup #resetConfirmationWarning {
+  color: #c6643a;
+}
+
+#resetConfirmationPopup .content button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+  border-bottom: 2px solid #5a6268;
+  font-size: 15px;
+}
+
+#resetConfirmationPopup .content button#cancelBtn:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   FOOTER AND CREDITS
+   ================================
+   Purpose: Style the credits section and footer links */
 
 .credits {
   margin-top: 20px;
@@ -444,6 +857,7 @@ input[type='radio'] {
   text-align: center;
 }
 
+/* Credit link styling with hover effects */
 a.credit-link {
   transition: color 0.3s ease;
   color: #399cc6;
@@ -464,4 +878,381 @@ a.credit-link:active {
 
 a.credit-link:focus {
   color: #4a5768;
+}
+
+/* ================================ */
+/* COPY BUTTONS */
+/* ================================ */
+/* Purpose: Style the copy buttons for format containers */
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.copy-button:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: scale(1.05);
+}
+
+.copy-button:active {
+  transform: scale(0.95);
+}
+
+.copy-button svg {
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.copy-button:hover svg {
+  color: #495057;
+}
+
+/* Ensure format containers have relative positioning for absolute copy buttons */
+#reddit-format-container,
+#in-game-format-container {
+  position: relative;
+}
+
+/* ================================ */
+/* FORMAT TEXT STYLING */
+/* ================================ */
+/* Purpose: Consistent font styling across all format containers */
+
+#reddit-format,
+#in-game-format {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 360px) {
+  #show-reddit-format,
+  #show-in-game-format {
+    flex-basis: 50%;
+    width: 100%;
+    margin: 2px;
+  }
+}
+
+/* ================================ */
+/* FORMAT SECTIONS */
+/* ================================ */
+/* Purpose: Style the separate NEED and DUPLICATE sections */
+
+.format-section {
+  margin-bottom: 15px;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.section-title[data-translate='format.need'] {
+  color: #c6643a;
+}
+
+.section-title[data-translate='format.duplicate'] {
+  color: #3a9cc6;
+}
+
+.section-copy-button {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border: 1px solid #ced4da;
+}
+
+.section-copy-button:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.format-section-content {
+  margin: 0;
+  padding: 10px;
+  background: #fafbfc;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 300px;
+  overflow-y: auto;
+  color: #333;
+  letter-spacing: 0.2px;
+}
+
+#sections-separator {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #dee2e6, transparent);
+  margin: 30px 0;
+}
+
+/* Reddit language guidance message */
+.reddit-language-info {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 20px 0 15px 0;
+  color: #856404;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ================================ */
+/* AUTO-SAVE INDICATOR */
+/* ================================ */
+/* Purpose: Show users that auto-save is working */
+
+.auto-save-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: #6c757d;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  width: fit-content;
+}
+
+.auto-save-indicator:hover {
+  opacity: 1;
+}
+
+.auto-save-icon {
+  font-size: 15px;
+}
+
+.auto-save-text {
+  font-weight: 500;
+}
+
+.auto-save-indicator .auto-save-text {
+  font-size: 15px;
+  font-weight: normal;
+  color: #495057;
+  margin-left: 6px;
+}
+
+/* ================================ */
+/* BULK SELECTION SECTION */
+/* ================================ */
+/* Purpose: Style the bulk selection buttons for quick deck-wide actions */
+
+/* Container for bulk selection section with label and buttons */
+.bulk-selection-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Label text for bulk selection section */
+.bulk-selection-label {
+  font-size: 15px;
+  color: #6c936f;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Container for bulk action buttons */
+.bulk-selection-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* Individual bulk action button styling */
+.bulk-action-btn {
+  flex-grow: 0;
+  flex-basis: auto;
+  margin: 0;
+  padding: 12px 20px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: #6c757d;
+  font-size: 16px !important;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 80px;
+  font-weight: normal;
+}
+
+/* Compact variant of bulk action buttons */
+.bulk-action-btn.compact {
+  padding: 10px 16px;
+  font-size: 15px !important;
+  min-width: 75px;
+  font-weight: normal;
+}
+
+#bulk-selection-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#bulk-selection-section .bulk-action-btn.compact {
+  font-size: 15px !important;
+  font-weight: normal;
+  background-color: white;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+/* Force hover effects with higher specificity */
+#bulk-selection-section .bulk-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom hover for Needed button - Red theme */
+#bulk-selection-section .bulk-action-btn#selectAllNeededBtn:hover {
+  background-color: #ffebee !important;
+  border-color: #c6643a !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllNeededBtn:hover i {
+  color: #c6643a !important;
+}
+
+/* Custom hover for Duplicate button - Blue theme */
+#bulk-selection-section .bulk-action-btn#selectAllDuplicateBtn:hover {
+  background-color: #e3f2fd !important;
+  border-color: #3a9cc6 !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllDuplicateBtn:hover i {
+  color: #3a9cc6 !important;
+}
+
+/* Custom hover for Owned button - Gray theme */
+#bulk-selection-section .bulk-action-btn#selectAllOwnedBtn:hover {
+  background-color: #f5f5f5 !important;
+  border-color: #6c757d !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllOwnedBtn:hover i {
+  color: #6c757d !important;
+}
+
+.bulk-action-btn:active {
+  transform: translateY(0);
+}
+
+.bulk-action-btn i {
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.bulk-action-btn.compact i {
+  font-size: 15px;
+  color: #6c757d;
+}
+
+.bulk-action-btn:hover i {
+  color: #3a9cc6 !important;
+}
+
+@media (max-width: 360px) {
+  .bulk-action-btn,
+  #bulk-selection-section .bulk-action-btn {
+    flex-basis: 50%;
+    width: 100%;
+    margin: auto;
+    font-size: 15px;
+  }
+
+  .bulk-action-btn.compact,
+  #bulk-selection-section .bulk-action-btn.compact {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    min-width: 65px;
+  }
+}
+
+/* Bulk selection feedback message */
+.bulk-feedback {
+  text-align: center;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }

@@ -1,75 +1,65 @@
 // =========================================================================
-// seasons/hobbyCards.js - Card data with properties but no translated names
+// locales/collections/active/pt-BR.js - Portuguese active collection data
 // Collaboration by u/carloslaso
 // =========================================================================
-export const currentCollectionHobby = [
+
+export const activeCollection = [
     {
         "id": "music-studio",
-        "nameKey": "decks.music-studio",  // Fixed: was "hobbyDecks.music-studio"
-        "legendKey": "legends.music-studio",  // Fixed: was "hobbyLegends.music-studio"
-        "name": "Music Studio",
-        "legend": "Music Studio",
+        "name": "Estúdio de Música",
+        "legend": "Estúdio de Música",
         "cards": [
             {
                 "id": "tape-recorder",
-                "nameKey": "cards.tape-recorder",  // Fixed: was "hobbyCards.tape-recorder"
-                "name": "Tape Recorder",
+                "name": "Gravador",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "tuba",
-                "nameKey": "cards.tuba",
                 "name": "Tuba",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "xylophone",
-                "nameKey": "cards.xylophone",
-                "name": "Xylophone",
+                "name": "Xilofone",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "studio-foam",
-                "nameKey": "cards.studio-foam",
-                "name": "Studio Foam",
+                "name": "Espuma de Estúdio",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "guitar",
-                "nameKey": "cards.guitar",
-                "name": "Guitar",
+                "name": "Violão",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "turntable",
-                "nameKey": "cards.turntable",
-                "name": "Turntable",
+                "name": "Toca-discos",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "drums",
-                "nameKey": "cards.drums",
-                "name": "Drums",
+                "name": "Bateria",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "cymbal",
-                "nameKey": "cards.cymbal",
-                "name": "Cymbal",
+                "name": "Prato",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "violin",
-                "nameKey": "cards.violin",
-                "name": "Violin",
+                "name": "Violino",
                 "stars": 2,
                 "isGold": false
             }
@@ -77,71 +67,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "vehicles",
-        "nameKey": "decks.vehicles",
-        "legendKey": "legends.vehicles",
-        "name": "Vehicles",
-        "legend": "Vehicles",
+        "name": "Veículos",
+        "legend": "Veículos",
         "cards": [
             {
                 "id": "yacht",
-                "nameKey": "cards.yacht",
-                "name": "Yacht",
+                "name": "Iate",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "car",
-                "nameKey": "cards.car",
-                "name": "Car",
+                "name": "Carro",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "helmet",
-                "nameKey": "cards.helmet",
-                "name": "Helmet",
+                "name": "Capacete",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "wheel",
-                "nameKey": "cards.wheel",
-                "name": "Wheel",
+                "name": "Roda",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "lug-wrench",
-                "nameKey": "cards.lug-wrench",
-                "name": "Lug Wrench",
+                "name": "Chave de Roda",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "motorcycle",
-                "nameKey": "cards.motorcycle",
-                "name": "Motorcycle",
+                "name": "Motocicleta",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "bike",
-                "nameKey": "cards.bike",
-                "name": "Bike",
+                "name": "Bicicleta",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "air-balloon",
-                "nameKey": "cards.air-balloon",
-                "name": "Air Balloon",
+                "name": "Balão de Ar",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "train",
-                "nameKey": "cards.train",
-                "name": "Train",
+                "name": "Trem",
                 "stars": 2,
                 "isGold": false
             }
@@ -149,71 +128,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "factory",
-        "nameKey": "decks.factory",
-        "legendKey": "legends.factory",
-        "name": "Factory",
-        "legend": "Factory",
+        "name": "Fábrica",
+        "legend": "Fábrica",
         "cards": [
             {
                 "id": "panel-board",
-                "nameKey": "cards.panel-board",
-                "name": "Panel Board",
+                "name": "Painel de Controle",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "package",
-                "nameKey": "cards.package",
-                "name": "Package",
+                "name": "Pacote",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "forklift",
-                "nameKey": "cards.forklift",
-                "name": "Forklift",
+                "name": "Empilhadeira",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "conveyor-belt",
-                "nameKey": "cards.conveyor-belt",
-                "name": "Conveyor Belt",
+                "name": "Esteira",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "punch-card",
-                "nameKey": "cards.punch-card",
-                "name": "Punch Card",
+                "name": "Cartão Perfurado",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "ventilation",
-                "nameKey": "cards.ventilation",
-                "name": "Ventilation",
+                "name": "Ventilação",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "robot-arm",
-                "nameKey": "cards.robot-arm",
-                "name": "Robot Arm",
+                "name": "Braço Robótico",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "pallet",
-                "nameKey": "cards.pallet",
-                "name": "Pallet",
+                "name": "Palete",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "tool-kit",
-                "nameKey": "cards.tool-kit",
-                "name": "Tool Kit",
+                "name": "Kit de Ferramentas",
                 "stars": 3,
                 "isGold": false
             }
@@ -221,71 +189,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "jewelry",
-        "nameKey": "decks.jewelry",
-        "legendKey": "legends.jewelry",
-        "name": "Jewelry",
-        "legend": "Jewelry",
+        "name": "Joias",
+        "legend": "Joias",
         "cards": [
             {
                 "id": "emerald",
-                "nameKey": "cards.emerald",
-                "name": "Emerald",
+                "name": "Esmeralda",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "pearl",
-                "nameKey": "cards.pearl",
-                "name": "Pearl",
+                "name": "Pérola",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "ring-box",
-                "nameKey": "cards.ring-box",
-                "name": "Ring Box",
+                "name": "Caixa de Anel",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "sapphire",
-                "nameKey": "cards.sapphire",
-                "name": "Sapphire",
+                "name": "Safira",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "safe",
-                "nameKey": "cards.safe",
-                "name": "Safe",
+                "name": "Cofre",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "loupe",
-                "nameKey": "cards.loupe",
-                "name": "Loupe",
+                "name": "Lupa",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "ruby",
-                "nameKey": "cards.ruby",
-                "name": "Ruby",
+                "name": "Rubi",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "gold-bar",
-                "nameKey": "cards.gold-bar",
-                "name": "Gold Bar",
+                "name": "Barra de Ouro",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "bracelet",
-                "nameKey": "cards.bracelet",
-                "name": "Bracelet",
+                "name": "Pulseira",
                 "stars": 3,
                 "isGold": false
             }
@@ -293,71 +250,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "glass",
-        "nameKey": "decks.glass",
-        "legendKey": "legends.glass",
-        "name": "Glass",
-        "legend": "Glass",
+        "name": "Vidro",
+        "legend": "Vidro",
         "cards": [
             {
                 "id": "crystal-vase",
-                "nameKey": "cards.crystal-vase",
-                "name": "Crystal Vase",
+                "name": "Vaso de Cristal",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "artisan-glass",
-                "nameKey": "cards.artisan-glass",
-                "name": "Artisan Glass",
+                "name": "Vidro Artesanal",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "glass-orb",
-                "nameKey": "cards.glass-orb",
-                "name": "Glass Orb",
+                "name": "Orbe de Vidro",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "blow-torch",
-                "nameKey": "cards.blow-torch",
-                "name": "Blow Torch",
+                "name": "Maçarico",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "glass-bird",
-                "nameKey": "cards.glass-bird",
-                "name": "Glass Bird",
+                "name": "Pássaro de Vidro",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "perfume",
-                "nameKey": "cards.perfume",
                 "name": "Perfume",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "prism",
-                "nameKey": "cards.prism",
-                "name": "Prism",
+                "name": "Prisma",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "hourglass",
-                "nameKey": "cards.hourglass",
-                "name": "Hourglass",
+                "name": "Ampulheta",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "chandelier",
-                "nameKey": "cards.chandelier",
-                "name": "Chandelier",
+                "name": "Candelabro",
                 "stars": 4,
                 "isGold": false
             }
@@ -365,71 +311,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "street",
-        "nameKey": "decks.street",
-        "legendKey": "legends.street",
-        "name": "Street",
-        "legend": "Street",
+        "name": "Rua",
+        "legend": "Rua",
         "cards": [
             {
                 "id": "graffiti",
-                "nameKey": "cards.graffiti",
-                "name": "Graffiti",
+                "name": "Grafite",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "sneakers",
-                "nameKey": "cards.sneakers",
-                "name": "Sneakers",
+                "name": "Tênis",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "stickers",
-                "nameKey": "cards.stickers",
-                "name": "Stickers",
+                "name": "Adesivos",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "spray-can",
-                "nameKey": "cards.spray-can",
-                "name": "Spray Can",
+                "name": "Lata de Spray",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "tag-style",
-                "nameKey": "cards.tag-style",
-                "name": "Tag Style",
+                "name": "Estilo de Tag",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "boom-box",
-                "nameKey": "cards.boom-box",
-                "name": "Boom Box",
+                "name": "Caixa de Som",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "skate-art",
-                "nameKey": "cards.skate-art",
-                "name": "Skate Art",
+                "name": "Arte de Skate",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "hoodie",
-                "nameKey": "cards.hoodie",
-                "name": "Hoodie",
+                "name": "Moletom",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "backpack",
-                "nameKey": "cards.backpack",
-                "name": "Backpack",
+                "name": "Mochila",
                 "stars": 5,
                 "isGold": false
             }
@@ -437,71 +372,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "costumes",
-        "nameKey": "decks.costumes",
-        "legendKey": "legends.costumes",
-        "name": "Costumes",
-        "legend": "Costumes",
+        "name": "Fantasia",
+        "legend": "Fantasia",
         "cards": [
             {
                 "id": "princess",
-                "nameKey": "cards.princess",
-                "name": "Princess",
+                "name": "Princesa",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "witch",
-                "nameKey": "cards.witch",
-                "name": "Witch",
+                "name": "Bruxa",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "pirate",
-                "nameKey": "cards.pirate",
-                "name": "Pirate",
+                "name": "Pirata",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "ninja",
-                "nameKey": "cards.ninja",
                 "name": "Ninja",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "dragon",
-                "nameKey": "cards.dragon",
-                "name": "Dragon",
+                "name": "Dragão",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "clown",
-                "nameKey": "cards.clown",
-                "name": "Clown",
+                "name": "Palhaço",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "super-hero",
-                "nameKey": "cards.super-hero",
-                "name": "Super Hero",
+                "name": "Super Herói",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "bear",
-                "nameKey": "cards.bear",
-                "name": "Bear",
+                "name": "Urso",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "knight",
-                "nameKey": "cards.knight",
-                "name": "Knight",
+                "name": "Cavaleiro",
                 "stars": 5,
                 "isGold": true
             }
@@ -509,71 +433,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "paper-crafts",
-        "nameKey": "decks.paper-crafts",
-        "legendKey": "legends.paper-crafts",
-        "name": "Paper Crafts",
-        "legend": "Paper Crafts",
+        "name": "Artesanato de Papel",
+        "legend": "Artesanato de Papel",
         "cards": [
             {
                 "id": "lantern",
-                "nameKey": "cards.lantern",
-                "name": "Lantern",
+                "name": "Lanterna",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "pinwheel",
-                "nameKey": "cards.pinwheel",
-                "name": "Pinwheel",
+                "name": "Cata-vento",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "fortune-teller",
-                "nameKey": "cards.fortune-teller",
-                "name": "Fortune Teller",
+                "name": "Vidente",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "paper-plane",
-                "nameKey": "cards.paper-plane",
-                "name": "Paper Plane",
+                "name": "Avião de Papel",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "origami",
-                "nameKey": "cards.origami",
                 "name": "Origami",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "umbrella",
-                "nameKey": "cards.umbrella",
-                "name": "Umbrella",
+                "name": "Guarda-chuva",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "paper-boat",
-                "nameKey": "cards.paper-boat",
-                "name": "Paper Boat",
+                "name": "Barco de Papel",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "paper-cutout",
-                "nameKey": "cards.paper-cutout",
-                "name": "Paper Cutout",
+                "name": "Recorte de Papel",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "pop-up-card",
-                "nameKey": "cards.pop-up-card",
-                "name": "Pop-Up Card",
+                "name": "Cartão Pop-up",
                 "stars": 5,
                 "isGold": true
             }
@@ -581,71 +494,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "styles",
-        "nameKey": "decks.styles",
-        "legendKey": "legends.styles",
-        "name": "Styles",
-        "legend": "Styles",
+        "name": "Estilos",
+        "legend": "Estilos",
         "cards": [
             {
                 "id": "cubism",
-                "nameKey": "cards.cubism",
-                "name": "Cubism",
+                "name": "Cubismo",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "renaissance",
-                "nameKey": "cards.renaissance",
-                "name": "Renaissance",
+                "name": "Renascimento",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "comic",
-                "nameKey": "cards.comic",
-                "name": "Comic",
+                "name": "Quadrinhos",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "impression",
-                "nameKey": "cards.impression",
-                "name": "Impression",
+                "name": "Impressão",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "surreal",
-                "nameKey": "cards.surreal",
                 "name": "Surreal",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "pop-art",
-                "nameKey": "cards.pop-art",
-                "name": "Pop Art",
+                "name": "Arte Pop",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "ukiyo-e",
-                "nameKey": "cards.ukiyo-e",
                 "name": "Ukiyo-e",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "expression",
-                "nameKey": "cards.expression",
-                "name": "Expression",
+                "name": "Expressão",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "pixel-art",
-                "nameKey": "cards.pixel-art",
-                "name": "Pixel Art",
+                "name": "Arte Pixel",
                 "stars": 5,
                 "isGold": true
             }
@@ -653,71 +555,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "games",
-        "nameKey": "decks.games",
-        "legendKey": "legends.games",
-        "name": "Games",
-        "legend": "Games",
+        "name": "Jogos",
+        "legend": "Jogos",
         "cards": [
             {
                 "id": "game-board",
-                "nameKey": "cards.game-board",
-                "name": "Game Board",
+                "name": "Tabuleiro de Jogo",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "dice",
-                "nameKey": "cards.dice",
-                "name": "Dice",
+                "name": "Dados",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "tokens",
-                "nameKey": "cards.tokens",
-                "name": "Tokens",
+                "name": "Fichas",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "fussball",
-                "nameKey": "cards.fussball",
-                "name": "Fussball",
+                "name": "Futebol de Mesa",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "table-tennis",
-                "nameKey": "cards.table-tennis",
-                "name": "Table Tennis",
+                "name": "Tênis de Mesa",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "dart",
-                "nameKey": "cards.dart",
-                "name": "Dart",
+                "name": "Dardo",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "score-pad",
-                "nameKey": "cards.score-pad",
-                "name": "Score Pad",
+                "name": "Bloco de Pontuação",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "bottom-right",
-                "nameKey": "cards.bottom-right",
-                "name": "Bottom right!",
+                "name": "Canto direito!",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "wooden-tower",
-                "nameKey": "cards.wooden-tower",
-                "name": "Wooden Tower!",
+                "name": "Torre de Madeira!",
                 "stars": 5,
                 "isGold": true
             }
@@ -725,71 +616,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "sand-craft",
-        "nameKey": "decks.sand-craft",
-        "legendKey": "legends.sand-craft",
-        "name": "Sand Craft",
-        "legend": "Sand Craft",
+        "name": "Artesanato de Areia",
+        "legend": "Artesanato de Areia",
         "cards": [
             {
                 "id": "beach-bucket",
-                "nameKey": "cards.beach-bucket",
-                "name": "Beach Bucket",
+                "name": "Balde de Praia",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "sandcastle",
-                "nameKey": "cards.sandcastle",
-                "name": "Sandcastle",
+                "name": "Castelo de Areia",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "paw-mold",
-                "nameKey": "cards.paw-mold",
-                "name": "Paw Mold",
+                "name": "Molde de Pata",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "colored-sand",
-                "nameKey": "cards.colored-sand",
-                "name": "Colored Sand",
+                "name": "Areia Colorida",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "sand-stamp",
-                "nameKey": "cards.sand-stamp",
-                "name": "Sand Stamp",
+                "name": "Carimbo de Areia",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "sand-bottle",
-                "nameKey": "cards.sand-bottle",
-                "name": "Sand Bottle",
+                "name": "Garrafa de Areia",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "seashell-art",
-                "nameKey": "cards.seashell-art",
-                "name": "Seashell Art",
+                "name": "Arte de Conchas",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "sculpture",
-                "nameKey": "cards.sculpture",
-                "name": "Sculpture",
+                "name": "Escultura",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "sand-mosaic",
-                "nameKey": "cards.sand-mosaic",
-                "name": "Sand Mosaic",
+                "name": "Mosaico de Areia",
                 "stars": 5,
                 "isGold": true
             }
@@ -797,71 +677,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "baking",
-        "nameKey": "decks.baking",
-        "legendKey": "legends.baking",
-        "name": "Baking",
-        "legend": "Baking",
+        "name": "Culinária",
+        "legend": "Culinária",
         "cards": [
             {
                 "id": "muffin-pan",
-                "nameKey": "cards.muffin-pan",
-                "name": "Muffin Pan",
+                "name": "Forma de Muffin",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "cookie-cutter",
-                "nameKey": "cards.cookie-cutter",
-                "name": "Cookie Cutter",
+                "name": "Cortador de Biscoitos",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "oven-mitt",
-                "nameKey": "cards.oven-mitt",
-                "name": "Oven Mitt",
+                "name": "Luva de Forno",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "timer",
-                "nameKey": "cards.timer",
                 "name": "Timer",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "dough-mixer",
-                "nameKey": "cards.dough-mixer",
-                "name": "Dough Mixer",
+                "name": "Batedor de Massa",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "whisk",
-                "nameKey": "cards.whisk",
-                "name": "Whisk",
+                "name": "Batedor",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "macaron",
-                "nameKey": "cards.macaron",
                 "name": "Macaron",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "donut",
-                "nameKey": "cards.donut",
-                "name": "Donut",
+                "name": "Rosquinha",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "frosting",
-                "nameKey": "cards.frosting",
-                "name": "Frosting!",
+                "name": "Cobertura!",
                 "stars": 5,
                 "isGold": true
             }
@@ -869,71 +738,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "balloon-art",
-        "nameKey": "decks.balloon-art",
-        "legendKey": "legends.balloon-art",
-        "name": "Balloon Art",
-        "legend": "Balloon Art",
+        "name": "Arte de Balões",
+        "legend": "Arte de Balões",
         "cards": [
             {
                 "id": "balloon-pump",
-                "nameKey": "cards.balloon-pump",
-                "name": "Balloon Pump",
+                "name": "Bomba de Balões",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "balloon-sword",
-                "nameKey": "cards.balloon-sword",
-                "name": "Balloon Sword",
+                "name": "Espada de Balão",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "helium-tank",
-                "nameKey": "cards.helium-tank",
-                "name": "Helium Tank",
+                "name": "Tanque de Hélio",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "balloon-bee",
-                "nameKey": "cards.balloon-bee",
-                "name": "Balloon Bee",
+                "name": "Abelha de Balão",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "heart-balloon",
-                "nameKey": "cards.heart-balloon",
-                "name": "Heart Balloon",
+                "name": "Balão Coração",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "bubbles",
-                "nameKey": "cards.bubbles",
-                "name": "Bubbles",
+                "name": "Bolhas",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "coronation",
-                "nameKey": "cards.coronation",
-                "name": "Coronation!",
+                "name": "Coroação!",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "balloon-dog",
-                "nameKey": "cards.balloon-dog",
-                "name": "Balloon Dog",
+                "name": "Cachorro de Balão",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "hang-tight",
-                "nameKey": "cards.hang-tight",
-                "name": "Hang Tight!",
+                "name": "Aguente Firme!",
                 "stars": 5,
                 "isGold": true
             }
@@ -941,71 +799,60 @@ export const currentCollectionHobby = [
     },
     {
         "id": "toys",
-        "nameKey": "decks.toys",
-        "legendKey": "legends.toys",
-        "name": "Toys",
-        "legend": "Toys",
+        "name": "Brinquedos",
+        "legend": "Brinquedos",
         "cards": [
             {
                 "id": "action-figure",
-                "nameKey": "cards.action-figure",
-                "name": "Action Figure",
+                "name": "Boneco de Ação",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "rc-car",
-                "nameKey": "cards.rc-car",
-                "name": "RC Car",
+                "name": "Carro RC",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "water-gun",
-                "nameKey": "cards.water-gun",
-                "name": "Water Gun",
+                "name": "Pistola de Água",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "building-blocks",
-                "nameKey": "cards.building-blocks",
-                "name": "Building Blocks",
+                "name": "Blocos de Construção",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "drone",
-                "nameKey": "cards.drone",
                 "name": "Drone",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "unicorn",
-                "nameKey": "cards.unicorn",
-                "name": "Unicorn",
+                "name": "Unicórnio",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "propeller",
-                "nameKey": "cards.propeller",
-                "name": "Propeller",
+                "name": "Hélice",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "me-time",
-                "nameKey": "cards.me-time",
-                "name": "Me Time!",
+                "name": "Meu Tempo!",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "chasing",
-                "nameKey": "cards.chasing",
-                "name": "Chasing",
+                "name": "Perseguição",
                 "stars": 5,
                 "isGold": true
             }
@@ -1013,74 +860,63 @@ export const currentCollectionHobby = [
     },
     {
         "id": "renaissance",
-        "nameKey": "decks.renaissance",
-        "legendKey": "legends.renaissance",
-        "name": "Renaissance",
-        "legend": "Renaissance",
+        "name": "Renascimento",
+        "legend": "Renascimento",
         "cards": [
             {
                 "id": "sketchbook",
-                "nameKey": "cards.sketchbook",
-                "name": "Sketchbook",
+                "name": "Caderno de Esboços",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "wing-model",
-                "nameKey": "cards.wing-model",
-                "name": "Wing Model",
+                "name": "Modelo de Asa",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "gear-set",
-                "nameKey": "cards.gear-set",
-                "name": "Gear Set",
+                "name": "Conjunto de Engrenagens",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "bronze-casting",
-                "nameKey": "cards.bronze-casting",
-                "name": "Bronze Casting",
+                "name": "Fundição de Bronze",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "cipher-disc",
-                "nameKey": "cards.cipher-disc",
-                "name": "Cipher Disc",
+                "name": "Disco de Cifra",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "ship-model",
-                "nameKey": "cards.ship-model",
-                "name": "Ship Model",
+                "name": "Modelo de Navio",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "parachute",
-                "nameKey": "cards.parachute",
-                "name": "Parachute",
+                "name": "Paraquedas",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "ornithopter",
-                "nameKey": "cards.ornithopter",
-                "name": "Ornithopter",
+                "name": "Ornitóptero",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "clockwork",
-                "nameKey": "cards.clockwork",
-                "name": "Clockwork",
+                "name": "Mecanismo de Relógio",
                 "stars": 5,
                 "isGold": true
             }
         ]
     }
-]
+];

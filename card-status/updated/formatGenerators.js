@@ -10,6 +10,7 @@
 // Purpose: Import necessary functions and modules from other files
 
 import { translate } from './i18n.js';
+import { showRedditLanguageMessage, hideRedditLanguageMessage } from './formatView.js';
 
 // ================================
 // SHARED UTILITIES
@@ -80,6 +81,16 @@ export function generateRedditFormat() {
 
     const formatParts = [];
     let hasNeededCards = false;
+
+    // Add language guidance message if not in English
+    const currentLocale = localStorage.getItem('locale') || 'en';
+    if (currentLocale !== 'en') {
+        // Show the language message above the generated content
+        showRedditLanguageMessage();
+    } else {
+        // Hide the message if in English
+        hideRedditLanguageMessage();
+    }
 
     // Add needed cards section if any exist
     if (Object.keys(neededCards).length > 0) {

@@ -4,6 +4,8 @@
 // This file handles the display and visibility of different text format outputs.
 // It manages showing/hiding Reddit and in-game format containers and user messages.
 
+import { translate } from './i18n.js';
+
 // ================================
 // FORMAT DISPLAY FUNCTIONS
 // ================================
@@ -57,6 +59,53 @@ export function showInGameFormat() {
 // USER MESSAGE MANAGEMENT
 // ================================
 // Purpose: Control the visibility of user guidance messages
+
+/**
+ * Shows the Reddit language guidance message when not in English
+ * This function displays a helpful message above the Reddit format content
+ */
+export function showRedditLanguageMessage() {
+    try {
+        // Check if message element exists, if not create it
+        let messageElement = document.getElementById('reddit-language-message');
+        if (!messageElement) {
+            messageElement = document.createElement('div');
+            messageElement.id = 'reddit-language-message';
+            messageElement.className = 'reddit-language-info';
+
+            // Insert the message above the reddit-format element
+            const redditFormatElement = document.getElementById('reddit-format');
+            const redditContainer = document.getElementById('reddit-format-container');
+
+            if (redditFormatElement && redditContainer) {
+                redditContainer.insertBefore(messageElement, redditFormatElement);
+            }
+        }
+
+        // Always update the message text with current language
+        messageElement.textContent = translate("format.redditLanguageMessage");
+
+        // Show the message
+        messageElement.style.display = 'block';
+    } catch (error) {
+        console.error('Error showing Reddit language message:', error);
+    }
+}
+
+/**
+ * Hides the Reddit language guidance message
+ * This function removes the language guidance when not needed
+ */
+export function hideRedditLanguageMessage() {
+    try {
+        const messageElement = document.getElementById('reddit-language-message');
+        if (messageElement) {
+            messageElement.style.display = 'none';
+        }
+    } catch (error) {
+        console.warn('Could not hide Reddit language message:', error);
+    }
+}
 
 /**
  * Hides both user message displays

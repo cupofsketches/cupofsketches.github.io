@@ -62,7 +62,10 @@ export const translations = {
 
         // Generated text labels
         cardsNeeded: "Cartas Faltando:",
-        cardsDuplicated: "Cartas Duplicadas:"
+        cardsDuplicated: "Cartas Duplicadas:",
+
+        // Language guidance message
+        redditLanguageMessage: "Para postar no r/RoyalMatchGame, mude para inglês."
     },
 
     // ================================

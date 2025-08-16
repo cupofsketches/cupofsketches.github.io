@@ -225,6 +225,27 @@ function applyLabels() {
     } else {
         console.warn('⚠️ Auto-save header element not found');
     }
+
+    // ================================
+    // DATA-TRANSLATE ATTRIBUTES
+    // ================================
+    // Purpose: Translate all elements with data-translate attributes
+
+    const dataTranslateElements = document.querySelectorAll('[data-translate]');
+    console.log(`🌍 Found ${dataTranslateElements.length} elements with data-translate attributes`);
+
+    dataTranslateElements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (key) {
+            const translatedText = translate(key);
+            if (translatedText !== key) {
+                element.textContent = translatedText;
+                console.log(`✅ Translated ${key} to:`, translatedText);
+            } else {
+                console.warn(`⚠️ No translation found for key: ${key}`);
+            }
+        }
+    });
 }
 
 // ================================

@@ -1161,3 +1161,78 @@ a.credit-link:focus {
 
 /* ================================ */
 /* FOOTER AND CREDITS */
+
+/* ================================ */
+/* MOBILE RESPONSIVE IMPROVEMENTS */
+/* ================================ */
+/* Purpose: Optimize interface for small mobile devices while keeping desktop/tablet unchanged */
+
+@media (max-width: 480px) {
+  /* Bulk selection buttons - prevent truncation and improve touch targets */
+  .bulk-action-btn,
+  #bulk-selection-section .bulk-action-btn {
+    padding: 14px 20px !important;
+    font-size: 14px !important;
+    min-width: 80px;
+    gap: 4px;
+    margin: 0;
+  }
+
+  .bulk-action-btn.compact,
+  #bulk-selection-section .bulk-action-btn.compact {
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+    min-width: 75px;
+    margin: 0;
+  }
+
+  .bulk-selection-buttons {
+    gap: 6px;
+    justify-content: center;
+  }
+
+  /* Card options - keep radio buttons together */
+  .collection-form {
+    gap: 8px;
+  }
+
+  /* Ensure radio button groups stay together */
+  .card-options {
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 180px;
+    justify-content: space-between;
+  }
+
+  /* Radio button spacing for mobile */
+  input[type='radio'] {
+    margin: 6px 2px 0px 2px;
+  }
+
+  /* Language selector - better mobile sizing */
+  .language-selector {
+    min-width: 140px;
+  }
+
+  .language-selector-current {
+    padding: 10px 12px;
+  }
+
+  .language-name {
+    font-size: 1em;
+  }
+
+  /* Main buttons - prevent truncation */
+  .content button {
+    padding: 12px 8px;
+    font-size: 14px;
+    margin: 0 6px;
+  }
+
+  /* Format buttons - better mobile layout */
+  #show-reddit-format,
+  #show-in-game-format {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+}

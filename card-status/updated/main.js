@@ -219,24 +219,25 @@ function applyLabels() {
  * Loads the selected language and applies translated labels
  */
 async function bootI18n() {
-    // Get initial language from custom selector or default to English
-    const currentLanguageElement = document.getElementById("currentLanguage");
-    let initialLanguage = "en";
+    // Get saved language preference from localStorage or default to English
+    let initialLanguage = localStorage.getItem('locale') || "en";
 
-    if (currentLanguageElement) {
-        const currentLanguageName = currentLanguageElement.querySelector('.language-name').textContent;
-        if (currentLanguageName === 'Português') {
-            initialLanguage = "pt-BR";
-        } else if (currentLanguageName === 'Español') {
-            initialLanguage = "es";
-        }
+    // Validate the saved language is supported
+    const supportedLanguages = ['en', 'pt-BR', 'es'];
+    if (!supportedLanguages.includes(initialLanguage)) {
+        initialLanguage = "en";
     }
+
+    console.log('🌍 Loading saved language preference:', initialLanguage);
 
     // Load the language dictionary
     await setLocale(initialLanguage);
 
     // Apply translated labels to the UI
     applyLabels();
+
+    // Update the language selector display to show the saved preference
+    updateLanguageSelectorDisplay(initialLanguage);
 }
 
 /**
@@ -286,6 +287,10 @@ function initLanguageSelector() {
 
         // Change language and re-apply labels
         console.log('🔄 Language change started:', selectedValue);
+
+        // Save language preference to localStorage
+        localStorage.setItem('locale', selectedValue);
+        console.log('💾 Language preference saved to localStorage:', selectedValue);
 
         // Save current radio button states before switching languages
         console.log('💾 Saving current radio button states...');
@@ -381,6 +386,9 @@ function initLanguageSelector() {
         // Auto-save the current selections in the new language
         autoSaveToLocalStorage();
 
+        // Update the language selector display to show the new selected language
+        updateLanguageSelectorDisplay(selectedValue);
+
         // Restore radio button selections after re-rendering
         console.log('🔄 Restoring radio button selections...');
         restoreRadioButtonStates(savedSelections);
@@ -401,6 +409,41 @@ function initLanguageSelector() {
     } else if (currentLanguage === 'Português') {
         languageDropdown.querySelector('[data-value="pt-BR"]').classList.add('selected');
     } else if (currentLanguage === 'Español') {
+        languageDropdown.querySelector('[data-value="es"]').classList.add('selected');
+    }
+}
+
+/**
+ * Updates the language selector display to show the saved language preference.
+ * This function is called after bootI18n to set the initial selected state.
+ * @param {string} savedLanguage - The saved language preference (e.g., "en", "pt-BR", "es")
+ */
+function updateLanguageSelectorDisplay(savedLanguage) {
+    const languageSelector = document.getElementById('currentLanguage');
+    const languageDropdown = document.getElementById('languageDropdown');
+
+    if (!languageSelector || !languageDropdown) return;
+
+    // Update the current language display (flag and name)
+    const currentFlag = languageSelector.querySelector('.language-flag');
+    const currentName = languageSelector.querySelector('.language-name');
+
+    // Update selected state in dropdown
+    languageDropdown.querySelectorAll('.language-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+
+    if (savedLanguage === 'en') {
+        if (currentFlag) currentFlag.textContent = '🇺🇸';
+        if (currentName) currentName.textContent = 'English';
+        languageDropdown.querySelector('[data-value="en"]').classList.add('selected');
+    } else if (savedLanguage === 'pt-BR') {
+        if (currentFlag) currentFlag.textContent = '🇧🇷';
+        if (currentName) currentName.textContent = 'Português';
+        languageDropdown.querySelector('[data-value="pt-BR"]').classList.add('selected');
+    } else if (savedLanguage === 'es') {
+        if (currentFlag) currentFlag.textContent = '🇪🇸';
+        if (currentName) currentName.textContent = 'Español';
         languageDropdown.querySelector('[data-value="es"]').classList.add('selected');
     }
 }

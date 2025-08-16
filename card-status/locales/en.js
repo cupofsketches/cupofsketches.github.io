@@ -116,7 +116,7 @@ export const translations = {
     // ================================
     resetConfirmation: {
         title: "Reset All?",
-        message: "This will reset all your card selections to \"Owned\" and clear any auto-saved data. Manual saves are safe and will not be affected.",
+        message: "This will reset all cards to 'Owned' and clear auto-saves. Manual saves remain safe",
         warning: "This action cannot be undone.",
         confirmButton: "Confirm",
         cancelButton: "Cancel",

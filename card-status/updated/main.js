@@ -68,7 +68,7 @@ function applyLabels() {
         fileNameInput: document.getElementById("fileNameInput"),
 
         // Auto-save section header
-        autoSaveSectionHeader: document.querySelector('[data-translate="ids.autoSaveSectionHeader"]'),
+        autoSaveSectionHeader: document.querySelector('[data-translate="autoSave.sectionHeader"]'),
         // Reset button
         resetButton: document.getElementById('resetAllBtn')
     };

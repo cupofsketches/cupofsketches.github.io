@@ -186,7 +186,7 @@
   }
 
   .language-flag {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .language-name {
@@ -568,7 +568,7 @@ button {
 
 .cardName {
   padding-bottom: 5px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   color: #6e7a8a;
 }
@@ -699,7 +699,7 @@ pre {
   margin: 0 8px;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -733,17 +733,18 @@ pre {
   margin: 0 8px;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 #resetConfirmationPopup .content button#confirmResetBtn {
-  background-color: white;
-  color: #c6643a;
+  background-color: #c6643a;
+  color: white;
   border: 2px solid #c6643a;
   border-radius: 6px;
+  font-size: 15px;
 }
 
 #resetConfirmationPopup .content button#confirmResetBtn:hover {
@@ -752,10 +753,16 @@ pre {
   transform: translateY(-1px);
 }
 
+/* Style the warning text with the theme color */
+#resetConfirmationPopup #resetConfirmationWarning {
+  color: #c6643a;
+}
+
 #resetConfirmationPopup .content button#cancelBtn {
   background-color: #6c757d;
   color: white;
   border-bottom: 2px solid #5a6268;
+  font-size: 15px;
 }
 
 #resetConfirmationPopup .content button#cancelBtn:hover {
@@ -856,7 +863,7 @@ a.credit-link:focus {
 #reddit-format,
 #in-game-format {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   color: #333;
@@ -922,7 +929,7 @@ a.credit-link:focus {
   border: 1px solid #e9ecef;
   border-radius: 4px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   white-space: pre-wrap;
@@ -967,7 +974,7 @@ a.credit-link:focus {
 }
 
 .auto-save-icon {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .auto-save-text {
@@ -1011,7 +1018,7 @@ a.credit-link:focus {
   flex-grow: 0;
   flex-basis: auto;
   margin: 0;
-  padding: 8px 14px;
+  padding: 8px 15px;
   border: 1px solid #dee2e6;
   background-color: white;
   color: #6c757d;
@@ -1097,7 +1104,7 @@ a.credit-link:focus {
 }
 
 .bulk-action-btn.compact i {
-  font-size: 14px;
+  font-size: 15px;
   color: #6c757d;
 }
 
@@ -1114,7 +1121,7 @@ a.credit-link:focus {
   color: #155724;
   border: 1px solid #c3e6cb;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   animation: fadeInOut 3s ease-in-out;
 }

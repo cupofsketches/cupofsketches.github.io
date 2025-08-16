@@ -116,7 +116,7 @@ export const translations = {
     // ================================
     resetConfirmation: {
         title: "Limpar Tudo?",
-        message: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho\" e limpar quaisquer dados salvos automaticamente. Salvamentos manuais estão seguros e não serão afetados.",
+        message: "Isso irá redefinir todas as cartas para 'Tenho' e limpar auto-salvamentos. Salvamentos manuais permanecem seguros",
         warning: "Esta ação não pode ser desfeita.",
         confirmButton: "Confirmar",
         cancelButton: "Cancelar",

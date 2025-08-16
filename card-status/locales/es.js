@@ -116,7 +116,7 @@ export const translations = {
     // ================================
     resetConfirmation: {
         title: "¿Limpiar Todo?",
-        message: "Esto restablecerá todas tus selecciones de cartas a \"Tengo\" y limpiará cualquier dato guardado automáticamente. Los guardados manuales están seguros y no se verán afectados.",
+        message: "Esto restablecerá todas las cartas a 'Tengo' y limpiará auto-guardados. Los guardados manuales permanecen seguros",
         warning: "Esta acción no se puede deshacer.",
         confirmButton: "Confirmar",
         cancelButton: "Cancelar",

@@ -11,6 +11,7 @@ export const translations = {
         // Primary action buttons
         saveOptionsBtn: "Guardar",
         loadOptionsBtn: "Cargar",
+        resetAllBtn: "Empezar de Nuevo",
 
         // Format generation buttons
         "show-reddit-format": "Mostrar Formato<br>de Reddit",
@@ -32,7 +33,15 @@ export const translations = {
         okFileNameValidationBtn: "OK",
 
         // Auto-save section header
-        autoSaveSectionHeader: "Estado del Auto-Guardado"
+        autoSaveSectionHeader: "Estado del Auto-Guardado",
+
+        // Reset confirmation popup
+        resetConfirmationTitle: "¿Empezar de Nuevo?",
+        resetConfirmationMessage: "Esto restablecerá todas tus selecciones de cartas a \"Poseo esta carta\" y borrará cualquier dato auto-guardado.",
+        resetConfirmationWarning: "Esta acción no se puede deshacer.",
+        resetConfirmBtn: "Sí, Empezar de Nuevo",
+        resetCancelBtn: "Cancelar",
+        resetSuccessMessage: "✅ ¡Todas las selecciones han sido restablecidas! Puedes empezar de nuevo ahora."
     },
 
     // ================================

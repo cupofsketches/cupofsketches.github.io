@@ -102,6 +102,97 @@ export function hideFileNameValidationPopup() {
 }
 
 // ================================
+// RESET CONFIRMATION POPUP
+// ================================
+// Purpose: Show a confirmation popup when the user wants to reset all selections.
+// The popup asks for confirmation before proceeding with the reset action.
+
+export function showResetConfirmationPopup(onConfirm) {
+  const resetConfirmationPopup = document.getElementById('resetConfirmationPopup');
+  const resetConfirmationTitle = document.getElementById('resetConfirmationTitle');
+  const resetConfirmationMessage = document.getElementById('resetConfirmationMessage');
+  const resetConfirmationWarning = document.getElementById('resetConfirmationWarning');
+  const confirmButton = document.getElementById('confirmResetBtn');
+  const cancelButton = document.getElementById('cancelResetBtn');
+
+  // Dismiss popup when clicking outside of it
+  const handleOutsideClick = (event) => {
+    if (event.target === resetConfirmationPopup) {
+      resetConfirmationPopup.style.display = 'none';
+      // Remove the event listener after popup is closed
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  };
+
+  // Handle keyboard navigation
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      resetConfirmationPopup.style.display = 'none';
+      document.removeEventListener('click', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  };
+
+  // Add event listeners
+  document.addEventListener('click', handleOutsideClick);
+  document.addEventListener('keydown', handleKeyDown);
+
+  // Set translated content
+  if (resetConfirmationTitle) {
+    resetConfirmationTitle.textContent = translate("ids.resetConfirmationTitle");
+  }
+  if (resetConfirmationMessage) {
+    resetConfirmationMessage.textContent = translate("ids.resetConfirmationMessage");
+  }
+  if (resetConfirmationWarning) {
+    resetConfirmationWarning.textContent = translate("ids.resetConfirmationWarning");
+  }
+  if (confirmButton) {
+    confirmButton.textContent = translate("ids.resetConfirmBtn");
+  }
+  if (cancelButton) {
+    cancelButton.textContent = translate("ids.resetCancelBtn");
+  }
+
+  // Show the popup
+  resetConfirmationPopup.style.display = 'flex';
+
+  // Focus the confirm button for keyboard navigation
+  if (confirmButton) {
+    confirmButton.focus();
+  }
+
+  // Add event listeners for buttons
+  const handleConfirm = () => {
+    resetConfirmationPopup.style.display = 'none';
+    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('keydown', handleKeyDown);
+    onConfirm();
+  };
+
+  const handleCancel = () => {
+    resetConfirmationPopup.style.display = 'none';
+    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('keydown', handleKeyDown);
+  };
+
+  if (confirmButton) {
+    confirmButton.addEventListener('click', handleConfirm);
+  }
+  if (cancelButton) {
+    cancelButton.addEventListener('click', handleCancel);
+  }
+}
+
+// Hide the reset confirmation popup
+export function hideResetConfirmationPopup() {
+  const resetConfirmationPopup = document.getElementById('resetConfirmationPopup');
+  if (resetConfirmationPopup) {
+    resetConfirmationPopup.style.display = 'none';
+  }
+}
+
+// ================================
 // FILE NAME INPUT POPUP
 // ================================
 // Purpose: Prompt the user to enter a file name before saving.

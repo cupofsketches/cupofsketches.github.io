@@ -52,9 +52,11 @@
         <legend class="gray-color" id="saveLoadSection">Save & Load Card Status</legend>
     </fieldset>
 
-    <div class="content smaller">
-        <button id="saveOptionsBtn" aria-label="Save current card status selections to a file">Save</button>
-        <button id="loadOptionsBtn" aria-label="Load previously saved card status from a file">Load</button>
+    <div class="content">
+        <button id="saveOptionsBtn" class="save" aria-label="Save card status selections to file">Save</button>
+        <button id="loadOptionsBtn" class="load" aria-label="Load previously saved card status">Load</button>
+        <button id="resetAllBtn" class="reset" aria-label="Reset all selections and start fresh"
+            data-translate="ids.resetAllBtn">Start Fresh</button>
         <input type="file" id="loadInput" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"
             accept=".json" aria-label="Select JSON file to load">
     </div>
@@ -129,6 +131,25 @@
             <p id="invalidFileMessage">Please select a valid .json file!</p>
             <div class="content">
                 <button id="closeInvalidFileBtn" aria-label="Close invalid file message">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset confirmation popup for starting fresh -->
+    <div id="resetConfirmationPopup" class="popup" style="display: none;" role="dialog"
+        aria-labelledby="resetConfirmationTitle" aria-describedby="resetConfirmationMessage">
+        <div class="popup-content">
+            <span id="closeResetConfirmationPopup" class="close" role="button" tabindex="0"
+                aria-label="Close reset confirmation popup">&times;</span>
+            <fieldset class="divider">
+                <legend class="orange-color" id="resetConfirmationTitle">Start Fresh?</legend>
+            </fieldset>
+            <p id="resetConfirmationMessage">This will reset all your card selections to "I have this card" and clear
+                any auto-saved data.</p>
+            <p><strong id="resetConfirmationWarning">This action cannot be undone.</strong></p>
+            <div class="content">
+                <button id="confirmResetBtn" class="confirm-btn">Yes, Start Fresh</button>
+                <button id="cancelResetBtn" class="cancel-btn">Cancel</button>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@ import { loadCollection, reloadCollection } from './cardsData.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
-import { hideWarningPopup, hideFileNameValidationPopup } from './popupHandler.js';
+import { hideWarningPopup, hideFileNameValidationPopup, showResetConfirmationPopup } from './popupHandler.js';
 import { saveOptions, loadOptions } from './fileOperations.js';
 
 // ================================
@@ -67,7 +67,9 @@ function applyLabels() {
         fileNameInput: document.getElementById("fileNameInput"),
 
         // Auto-save section header
-        autoSaveSectionHeader: document.querySelector('[data-translate="ids.autoSaveSectionHeader"]')
+        autoSaveSectionHeader: document.querySelector('[data-translate="ids.autoSaveSectionHeader"]'),
+        // Reset button
+        resetButton: document.getElementById('resetAllBtn')
     };
 
     // ================================
@@ -149,6 +151,11 @@ function applyLabels() {
     // Load button
     if (domElements.loadButton) {
         domElements.loadButton.textContent = translate("ids.loadOptionsBtn");
+    }
+
+    // Reset button
+    if (domElements.resetButton) {
+        domElements.resetButton.textContent = translate("ids.resetAllBtn");
     }
 
     // ================================
@@ -879,6 +886,50 @@ function resetAllCopyButtons() {
     }
 }
 
+/**
+ * Resets all card selections to default "owned" state
+ * This allows users to start fresh with their selections
+ */
+function resetAllSelections() {
+    try {
+        // Show confirmation popup before resetting
+        showResetConfirmationPopup(() => {
+            console.log('🔄 Resetting all selections...');
+
+            // Get all radio buttons across all tabs
+            const allTabs = document.querySelectorAll('.tabcontent');
+            let resetCount = 0;
+
+            allTabs.forEach(tab => {
+                const radioButtons = tab.querySelectorAll('input[type="radio"]:not(.disabled)');
+                radioButtons.forEach(radio => {
+                    if (radio.value === 'owned') {
+                        radio.checked = true;
+                        resetCount++;
+                    } else {
+                        radio.checked = false;
+                    }
+                });
+            });
+
+            console.log(`✅ Reset ${resetCount} selections to default "owned" state`);
+
+            // Regenerate formats to show empty state
+            generateRedditFormat();
+            generateInGameFormat();
+
+            // Clear auto-save data since we're starting fresh
+            localStorage.removeItem('autoSaveData');
+            console.log('🗑️ Cleared auto-save data');
+
+            // Show brief success confirmation
+            console.log('✅ Reset completed successfully');
+        });
+    } catch (error) {
+        console.error('Error resetting selections:', error);
+    }
+}
+
 // ================================
 // AUTO-SAVE FUNCTIONALITY
 // ================================
@@ -1060,7 +1111,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             // Load functionality
             loadButton: document.getElementById('loadOptionsBtn'),
-            loadInput: document.getElementById('loadInput')
+            loadInput: document.getElementById('loadInput'),
+
+            // Reset functionality
+            resetButton: document.getElementById('resetAllBtn')
         };
 
         // ================================
@@ -1167,6 +1221,22 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Add event listener for file name validation popup OK button
             if (domElements.okFileNameValidationButton) {
                 domElements.okFileNameValidationButton.addEventListener('click', hideFileNameValidationPopup);
+            }
+
+            // Add event listener for reset button
+            if (domElements.resetButton) {
+                domElements.resetButton.addEventListener('click', resetAllSelections);
+            }
+
+            // Add event listener for reset popup close button
+            const closeResetPopupBtn = document.getElementById('closeResetConfirmationPopup');
+            if (closeResetPopupBtn) {
+                closeResetPopupBtn.addEventListener('click', () => {
+                    const resetPopup = document.getElementById('resetConfirmationPopup');
+                    if (resetPopup) {
+                        resetPopup.style.display = 'none';
+                    }
+                });
             }
         } catch (error) {
             console.error('Error setting up save functionality:', error);

@@ -391,6 +391,17 @@ input[type='radio'].disabled {
   accent-color: gray;
 }
 
+/* Color-coded radio buttons for card status */
+input[type='radio'][value='needed'] {
+  accent-color: #c6643a;
+}
+input[type='radio'][value='duplicate'] {
+  accent-color: #3a9cc6;
+}
+input[type='radio'][value='owned'] {
+  accent-color: #6c757d;
+}
+
 /* ================================
    BUTTONS
    ================================

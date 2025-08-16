@@ -101,6 +101,12 @@ function applyLabels() {
         characterLimitDescription.textContent = translate("format.characterLimitDescription");
     }
 
+    // Auto-save status
+    const autoSaveText = document.querySelector('[data-translate="autoSave.enabled"]');
+    if (autoSaveText) {
+        autoSaveText.textContent = translate("autoSave.enabled");
+    }
+
     // Collection subtitle
     const subtitleElement = document.querySelector('h1 span.subtitle');
     if (subtitleElement) {
@@ -171,7 +177,7 @@ function applyLabels() {
         domElements.closeWarningButton.textContent = translate("ids.closeWarningBtn");
     }
 
-    // File name popup buttons
+  // File name popup buttons
     if (domElements.confirmSaveButton) {
         domElements.confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
     }
@@ -230,7 +236,7 @@ async function bootI18n() {
     await setLocale(initialLanguage);
 
     // Apply translated labels to the UI
-    applyLabels();
+  applyLabels();
 }
 
 /**
@@ -288,7 +294,7 @@ function initLanguageSelector() {
 
         await setLocale(selectedValue);
         console.log('✅ setLocale completed');
-        applyLabels();
+    applyLabels();
         console.log('✅ applyLabels completed');
 
         // Reload collection data with new language
@@ -371,6 +377,9 @@ function initLanguageSelector() {
         console.log('🔧 Re-attaching event listeners...');
         setupEventListeners();
         console.log('✅ Event listeners re-attached!');
+
+        // Auto-save the current selections in the new language
+        autoSaveToLocalStorage();
 
         // Restore radio button selections after re-rendering
         console.log('🔄 Restoring radio button selections...');
@@ -526,6 +535,9 @@ function handleCardStatusChange() {
         hideUserMessage();
         generateRedditFormat();
         generateInGameFormat();
+
+        // Auto-save the new selection
+        autoSaveToLocalStorage();
     } catch (error) {
         console.error('❌ Error generating formats:', error);
     }
@@ -776,6 +788,100 @@ function showCopySuccess(formatId) {
 }
 
 // ================================
+// AUTO-SAVE FUNCTIONALITY
+// ================================
+// Purpose: Automatically save user selections to localStorage for data persistence
+
+/**
+ * Automatically saves the current radio button states to localStorage
+ * This function is called whenever card selections change
+ */
+function autoSaveToLocalStorage() {
+    try {
+        const selections = saveRadioButtonStates();
+        if (selections && selections.length > 0) {
+            const autoSaveData = {
+                timestamp: Date.now(),
+                language: localStorage.getItem('locale') || 'en',
+                selections: selections,
+                version: '1.0'
+            };
+
+            localStorage.setItem('autoSaveData', JSON.stringify(autoSaveData));
+            console.log('💾 Auto-saved', selections.length, 'selections to localStorage');
+
+            // Show auto-save status indicator
+            showAutoSaveStatus();
+        }
+    } catch (error) {
+        console.warn('Auto-save failed:', error);
+    }
+}
+
+/**
+ * Shows the auto-save status indicator to let users know their work is being saved
+ */
+function showAutoSaveStatus() {
+    const statusIndicator = document.getElementById('auto-save-status');
+    const statusText = statusIndicator?.querySelector('.auto-save-text');
+
+    if (statusIndicator && statusText) {
+        // Show "Saving..." first
+        statusText.textContent = translate("autoSave.saving");
+        statusIndicator.style.display = 'inline-flex';
+        statusIndicator.style.opacity = '1';
+
+        // After a short delay, show "Saved automatically"
+        setTimeout(() => {
+            if (statusText) {
+                statusText.textContent = translate("autoSave.saved");
+            }
+        }, 500);
+
+        // Fade out after 3 seconds
+        setTimeout(() => {
+            if (statusIndicator) {
+                statusIndicator.style.opacity = '0.3';
+            }
+        }, 3000);
+    }
+}
+
+/**
+ * Automatically restores user selections from localStorage on page load
+ * This function is called during initialization
+ */
+function autoRestoreFromLocalStorage() {
+    try {
+        const autoSaveData = localStorage.getItem('autoSaveData');
+        if (autoSaveData) {
+            const data = JSON.parse(autoSaveData);
+
+            // Check if data is from current language or can be migrated
+            if (data.language === (localStorage.getItem('locale') || 'en') || data.selections) {
+                console.log('🔄 Auto-restoring', data.selections.length, 'selections from localStorage');
+
+                // Apply the saved selections
+                restoreRadioButtonStates(data.selections);
+
+                // Regenerate formats to show restored data
+                generateRedditFormat();
+                generateInGameFormat();
+
+                console.log('✅ Auto-restore completed successfully');
+
+                // Show auto-save status to indicate data was restored
+                showAutoSaveStatus();
+            }
+        }
+    } catch (error) {
+        console.warn('Auto-restore failed:', error);
+        // Clear corrupted data
+        localStorage.removeItem('autoSaveData');
+    }
+}
+
+// ================================
 // DOM CONTENT LOADED EVENT
 // ================================
 // Purpose: Initialize the application when the DOM is fully loaded
@@ -791,8 +897,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         // ================================
         // Purpose: Initialize internationalization first
 
-        await bootI18n();
-        initLanguageSelector();
+  await bootI18n();
+  initLanguageSelector();
+        autoRestoreFromLocalStorage(); // Auto-restore on page load
 
         // ================================
         // HTML GENERATION
@@ -875,7 +982,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 domElements.firstTabLink.classList.add('active');
             }
 
-            // Add event listeners for collection tabs
+  // Add event listeners for collection tabs
             if (domElements.deckTabButtons && domElements.deckTabButtons.length > 0) {
                 domElements.deckTabButtons.forEach((deckTabButton) => {
                     deckTabButton.addEventListener('click', function () {
@@ -887,8 +994,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } catch (error) {
                             console.error('Error opening collection:', error);
                         }
-                    });
-                });
+    });
+  });
             }
         } catch (error) {
             console.error('Error setting up tab functionality:', error);
@@ -1008,8 +1115,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         try {
             // Generate formats initially to show default state
-            generateRedditFormat();
-            generateInGameFormat();
+  generateRedditFormat();
+  generateInGameFormat();
         } catch (error) {
             console.error('Error generating initial formats:', error);
         }

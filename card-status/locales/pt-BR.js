@@ -81,5 +81,16 @@ export const translations = {
         duplicate: "Duplicado",
         owned: "Tenho",
         nonTrade: "Não Negociável"
+    },
+
+    // ================================
+    // AUTO-SAVE STATUS
+    // ================================
+    // Purpose: Translate auto-save status messages
+
+    autoSave: {
+        enabled: "Auto-salvamento ativado",
+        saving: "Salvando...",
+        saved: "Salvo automaticamente"
     }
 };

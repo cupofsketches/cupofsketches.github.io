@@ -1,39 +1,85 @@
 # Royal Match Card Status Tool
 
-Royal Match Card Status is a tool designed to simplify sharing the status of card collections on Reddit, other social platforms, and in-game chat. Users can easily select whether each card is needed or a duplicate using radio buttons and generate formatted output accordingly. Copy the generated text and paste it wherever you need.
+> **Simplify sharing your card collection status on Reddit, social media, and in-game chat with this intuitive tool.**
 
-**Note:** Gold cards cannot be shared, so no options are available for them. Owned cards are also not applicable for this purpose.
+Royal Match Card Status is a web-based tool designed to help players easily share the status of their card collections. Whether you're looking for trades, showing off your duplicates, or organizing your collection, this tool generates perfectly formatted text for any platform.
 
 ## Features
 
-- Save card status selections and load from an existing file.
-- Select card status (needed/duplicate) for each card using intuitive radio buttons.
-- Generate formatted output for Reddit and in-game chat formats with a click of a button.
-- Copy and paste the generated text directly into Reddit posts or in-game chats.
+### Core Functionality
 
-**Note:** In-game chat has a limit of 500 characters and does not allow paragraphs.
+- **Card Status Selection**: Use intuitive radio buttons to mark cards as needed, duplicate, or owned
+- **Format Generation**: Create Reddit and in-game chat formats with one click
+- **Save & Load**: Persist your selections and load from existing files
+- **Copy & Paste**: Direct copying of generated text for easy sharing
 
-## Usage
+### New Functionalities
 
-1. **Select Packs & Card Status**:
-   - Use the radio buttons next to each card to indicate whether it is needed or a duplicate.
+- **Bulk Selection Buttons**: Set all cards in a deck to "Needed," "Duplicate," or "Owned" instantly
+- **Reset All Button**: Clear all selections and start fresh with one click
+- **Auto-Save Indicator**: Real-time feedback when your selections are saved
+- **Responsive Mobile Design**: Optimized for all screen sizes with touch-friendly controls
+- **Multi-Language Support**: Available in English, Portuguese (BR), and Spanish
+- **Smart Copy Buttons**: One-click copying for Reddit and in-game formats
+- **Accessibility Features**: Enhanced keyboard navigation, hover effects, and visual feedback
 
-2. **Generate Format**:
-   - Click the "Generate Reddit Format" or "Generate In-Game Format" button to create the formatted text.
+## Quick Start
 
-3. **Copy and Paste**:
-   - Copy the generated text and paste it into the desired platform (Reddit, in-game chat, etc.).
+### 1. **Select Packs & Card Status**
 
-### Feedback
+- Navigate through different card packs
+- Use radio buttons to mark each card's status:
+  - **Needed**: Cards you're looking for
+  - **Duplicate**: Cards you have extras of
+  - **Owned**: Cards in your collection
+  - **Gold Cards**: Cannot be shared (no options available)
 
-If you have any feedback or questions, please feel free to reach out to us at cupofsketches@gmail.com. We'd love to hear from you!
+### 2. **Generate Format**
+
+- Click "Generate Reddit Format" for social media posts
+- Click "Generate In-Game Format" for chat messages
+- Use bulk selection buttons for quick setup
+
+### 3. **Copy and Share**
+
+- Copy the generated text with one click
+- Paste directly into Reddit, Discord, or in-game chat
+
+## Language Support
+
+- **English** (Default)
+- **Portuguese (BR)**
+- **Spanish**
+
+> **Want another language?** Message [u/Potential_Save](https://www.reddit.com/user/Potential_Save) on Reddit!
+
+## Tips & Best Practices
+
+- **Use bulk selection** for quick initial setup
+- **Save your work** - it's automatic, but you can also save manually
+- **Reset all** if you want to start over
+- **Mobile users**: The interface adapts perfectly to small screens
+- **Gold cards** cannot be traded or shared
+
+## Feedback & Support
+
+We'd love to hear from you! Reach out to us at:
+
+- **Reddit**: [u/Potential_Save](https://www.reddit.com/user/Potential_Save)
 
 ## Credits
 
-- Card Status Tool by [u/Potential_Save](https://www.reddit.com/user/Potential_Save/)
-- Royal Match Card Status by Fenix - ID:2N96AFNK
-- Visit our subreddits: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch) & [r/RoyalMatchGame](https://www.reddit.com/r/RoyalMatchGame)
+- **Card Status Tool** by [u/Potential_Save](https://www.reddit.com/user/Potential_Save/)
+- **Community**: [r/RoyalMatch](https://www.reddit.com/r/RoyalMatch) & [r/RoyalMatchGame](https://www.reddit.com/r/RoyalMatchGame)
 
 ## Disclaimer
 
-- We are not affiliated with Dream Games!
+> **We are not affiliated with Dream Games!** This is a community-created tool for Royal Match players.
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the Royal Match community**
+
+</div>

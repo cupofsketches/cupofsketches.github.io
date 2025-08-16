@@ -432,6 +432,7 @@ button {
   padding: 10px;
   border: none;
   font-size: 15px;
+  margin: 0 5px;
 }
 
 /* Reddit format button */
@@ -453,7 +454,7 @@ button {
 .content button#confirmSaveBtn {
   flex-grow: 0.3;
   flex-basis: 20%;
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
   padding: 10px;
   border: none;
   background-color: #2a7949d0;
@@ -466,7 +467,7 @@ button {
 .content button#loadOptionsBtn {
   flex-grow: 0.3;
   flex-basis: 20%;
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
   padding: 10px;
   border: none;
   background-color: #fec324;
@@ -478,7 +479,7 @@ button {
 .content button#resetAllBtn {
   flex-grow: 0.3;
   flex-basis: 20%;
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
   padding: 10px;
   border: 2px solid #c6643a;
   background-color: white;
@@ -941,6 +942,15 @@ a.credit-link:focus {
   letter-spacing: 0.2px;
 }
 
+@media (max-width: 360px) {
+  #show-reddit-format,
+  #show-in-game-format {
+    flex-basis: 50%;
+    width: 100%;
+    margin: 2px;
+  }
+}
+
 /* ================================ */
 /* FORMAT SECTIONS */
 /* ================================ */
@@ -1246,6 +1256,3 @@ a.credit-link:focus {
     transform: translateY(-10px);
   }
 }
-
-/* ================================ */
-/* FOOTER AND CREDITS */

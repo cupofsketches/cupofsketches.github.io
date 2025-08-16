@@ -1,100 +1,81 @@
 export const translations = {
     // ================================
-    // SECTION HEADERS
+    // CARD MANAGEMENT SECTION
     // ================================
-    ids: {
-        // Main application sections
-        saveLoadSection: "Gerenciamento de Cartas",
-        chooseDecksSection: "Escolher Baralhos:",
-        generateTextSection: "Gerar Texto",
+    cardManagement: {
+        // Main section header
+        sectionHeader: "Gerenciamento de Cartas",
 
         // Primary action buttons
-        saveOptionsBtn: "Salvar",
-        loadOptionsBtn: "Carregar",
-        resetAllBtn: "Limpar",
+        save: "Salvar",
+        load: "Carregar",
+        reset: "Limpar",
 
-        // Format generation buttons (two-line labels use <br>)
-        "show-reddit-format": "Mostrar Formato<br>Reddit",
-        "show-in-game-format": "Mostrar Formato<br>do Jogo",
+        // File name input
+        fileNamePlaceholder: "Nomeie seu arquivo aqui",
 
-        // Warning and error messages
-        warningMessage: "Selecione pelo menos uma opção \"faltando\" ou \"duplicado\" antes de salvar",
-        closeWarningBtn: "OK",
-        invalidFileMessage: "Por favor, selecione um arquivo .json válido!",
+        // Popup titles and messages
+        savePopupTitle: "Salvar Status do Card",
+        fileNameMissingTitle: "Nome do Arquivo Ausente",
+        fileNameMissingMessage: "Por favor, digite um nome para salvar seu arquivo",
 
-        // File name input popup
-        fileNamePopupTitle: "Salvar Status do Card",
-        confirmSaveBtn: "Salvar",
-        cancelBtn: "Cancelar",
+        // Popup buttons
+        confirmSave: "Salvar",
+        confirmReset: "Confirmar",
+        cancel: "Cancelar",
+        ok: "OK"
+    },
 
-        // File name validation popup
-        fileNameValidationTitle: "Nome do Arquivo Ausente",
-        fileNameValidationMessage: "Por favor, digite um nome para salvar seu arquivo",
-        okFileNameValidationBtn: "OK",
+    // ================================
+    // DECK SELECTION SECTION
+    // ================================
+    deckSelection: {
+        sectionHeader: "Escolher Baralhos:"
+    },
 
-        // Auto-save section header
-        autoSaveSectionHeader: "Status do Auto-Salvamento",
-
-        // Bulk selection section
-        bulkSelectionSection: "Selecionar Todos Como:",
+    // ================================
+    // BULK SELECTION SECTION
+    // ================================
+    bulkSelection: {
+        sectionHeader: "Selecionar Todos Como:",
         needed: "Faltando",
         duplicate: "Duplicado",
         owned: "Tenho",
-        bulkSelectionFeedback: "cartas definidas como",
-
-        // Reset confirmation popup
-        resetConfirmationTitle: "Limpar Tudo?",
-        resetConfirmationMessage: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho\" e limpar quaisquer dados salvos automaticamente. Salvamentos manuais estão seguros e não serão afetados.",
-        resetConfirmationWarning: "Esta ação não pode ser desfeita.",
-        resetConfirmBtn: "Confirmar",
-        resetCancelBtn: "Cancelar",
-        resetSuccessMessage: "✅ Todas as seleções foram limpas! Você pode começar de novo agora."
+        feedbackMessage: "cartas definidas como"
     },
 
     // ================================
-    // INPUT PLACEHOLDERS
+    // FORMAT GENERATION SECTION
     // ================================
-    placeholders: {
-        fileNameInput: "Nomeie seu arquivo aqui"
-    },
-
-    // ================================
-    // USER GUIDANCE MESSAGES
-    // ================================
-    messages: {
-        redditUserMessage: "Comece selecionando o status das suas cartas...",
-        inGameUserMessage: "Comece selecionando o status das suas cartas...\nTexto será dividido após 500 caracteres"
-    },
-
-    // ================================
-    // FORMAT OUTPUT
-    // ================================
-    // Purpose: Translate text that appears in the generated format output
-
     format: {
-        cardsNeeded: "Cartas Faltando:",
-        cardsDuplicated: "Cartas Duplicadas:",
+        // Section headers
+        sectionHeader: "Gerar Texto",
+        redditFormatTitle: "Formato Reddit",
+        inGameFormatTitle: "Formato do Jogo",
+
+        // Format labels
         need: "FALTANDO:",
         duplicate: "DUPLICADO:",
-        redditFormatTitle: "Formato Reddit",
-        inGameFormatTitle: "Formato In-Game",
-        characterLimitDescription: "(1 parágrafo, limite de 500 caracteres)"
+
+        // Format descriptions
+        characterLimitDescription: "(1 parágrafo, limite de 500 caracteres)",
+
+        // Generated text labels
+        cardsNeeded: "Cartas Faltando:",
+        cardsDuplicated: "Cartas Duplicadas:"
     },
 
     // ================================
-    // COLLECTION DISPLAY
+    // FORMAT BUTTONS
     // ================================
-    // Purpose: Translate collection-related display text
-
-    collection: {
-        subtitle: "Coleção Hobby"
+    formatButtons: {
+        showRedditFormat: "Mostrar Formato<br>Reddit",
+        showInGameFormat: "Mostrar Formato<br>do Jogo"
     },
 
     // ================================
     // CARD OPTIONS
     // ================================
-    // Purpose: Translate the radio button labels for card status
-
     cardOptions: {
         needed: "Faltando",
         duplicate: "Duplicado",
@@ -103,15 +84,42 @@ export const translations = {
     },
 
     // ================================
-    // AUTO-SAVE STATUS
+    // USER MESSAGES
     // ================================
-    // Purpose: Translate auto-save status messages
+    messages: {
+        redditUserMessage: "Comece selecionando o status das suas cartas...",
+        inGameUserMessage: "Comece selecionando o status das suas cartas..."
+    },
 
+    // ================================
+    // WARNING & ERROR MESSAGES
+    // ================================
+    warnings: {
+        noSelectionWarning: "Selecione pelo menos uma opção \"faltando\" ou \"duplicado\" antes de salvar",
+        invalidFileMessage: "Por favor, selecione um arquivo .json válido!"
+    },
+
+    // ================================
+    // AUTO-SAVE SECTION
+    // ================================
     autoSave: {
-        enabled: "Auto-salvamento ativado",
+        sectionHeader: "Status do Auto-Salvamento",
+        enabled: "Auto-salvamento habilitado",
         saving: "Salvando...",
         saved: "Salvo automaticamente",
         savingLoaded: "Salvando seleções carregadas...",
         loadedSaved: "Seleções carregadas salvas automaticamente"
+    },
+
+    // ================================
+    // RESET CONFIRMATION POPUP
+    // ================================
+    resetConfirmation: {
+        title: "Limpar Tudo?",
+        message: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho\" e limpar quaisquer dados salvos automaticamente. Salvamentos manuais estão seguros e não serão afetados.",
+        warning: "Esta ação não pode ser desfeita.",
+        confirmButton: "Confirmar",
+        cancelButton: "Cancelar",
+        successMessage: "✅ Todas as seleções foram limpas! Você pode começar de novo agora."
     }
 };

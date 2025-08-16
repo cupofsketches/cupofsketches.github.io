@@ -158,6 +158,23 @@ function applyLabels() {
         domElements.resetButton.textContent = translate("ids.resetAllBtn");
     }
 
+    // Bulk selection buttons
+    const selectAllNeededBtn = document.getElementById('selectAllNeededBtn');
+    const selectAllDuplicateBtn = document.getElementById('selectAllDuplicateBtn');
+    const selectAllOwnedBtn = document.getElementById('selectAllOwnedBtn');
+
+    if (selectAllNeededBtn) {
+        selectAllNeededBtn.querySelector('span').textContent = translate("ids.needed");
+    }
+
+    if (selectAllDuplicateBtn) {
+        selectAllDuplicateBtn.querySelector('span').textContent = translate("ids.duplicate");
+    }
+
+    if (selectAllOwnedBtn) {
+        selectAllOwnedBtn.querySelector('span').textContent = translate("ids.owned");
+    }
+
     // ================================
     // FORMAT BUTTONS (WITH <br>)
     // ================================
@@ -362,6 +379,13 @@ function initLanguageSelector() {
             if (firstTabContent) {
                 firstTabContent.style.display = 'block';
                 console.log('✅ First tab shown:', firstCollectionId);
+
+                // Show bulk selection section when first deck is displayed
+                const bulkSelectionSection = document.getElementById('bulk-selection-section');
+                if (bulkSelectionSection) {
+                    bulkSelectionSection.style.display = 'block';
+                    console.log('✅ Bulk selection section shown for first deck');
+                }
             } else {
                 console.log('❌ First tab not found:', firstCollectionId);
             }
@@ -603,11 +627,209 @@ function setupEventListeners() {
         }
 
         console.log('✅ Event listeners setup completed');
+
+        // Set up bulk selection event listeners
+        setupBulkSelectionEventListeners();
+
     } catch (error) {
         console.error('❌ Error setting up event listeners:', error);
     }
 }
 
+// ================================
+// BULK SELECTION EVENT HANDLERS
+// ================================
+// Purpose: Set up event handlers for bulk selection buttons
+
+function setupBulkSelectionEventListeners() {
+    try {
+        console.log('🔧 Setting up bulk selection event listeners...');
+
+        const selectAllNeededBtn = document.getElementById('selectAllNeededBtn');
+        const selectAllDuplicateBtn = document.getElementById('selectAllDuplicateBtn');
+        const selectAllOwnedBtn = document.getElementById('selectAllOwnedBtn');
+
+        if (selectAllNeededBtn) {
+            selectAllNeededBtn.addEventListener('click', selectAllCardsAsNeeded);
+            console.log('✅ Select all needed button listener added');
+        }
+
+        if (selectAllDuplicateBtn) {
+            selectAllDuplicateBtn.addEventListener('click', selectAllCardsAsDuplicate);
+            console.log('✅ Select all duplicate button listener added');
+        }
+
+        if (selectAllOwnedBtn) {
+            selectAllOwnedBtn.addEventListener('click', selectAllCardsAsOwned);
+            console.log('✅ Select all owned button listener added');
+        }
+
+        console.log('✅ Bulk selection event listeners setup completed');
+    } catch (error) {
+        console.error('❌ Error setting up bulk selection event listeners:', error);
+    }
+}
+
+// ================================
+// BULK SELECTION FUNCTIONS
+// ================================
+// Purpose: Handle bulk selection of all cards in the current deck
+
+/**
+ * Selects all cards in the currently visible deck as "needed"
+ */
+function selectAllCardsAsNeeded() {
+    try {
+        console.log('🔄 Selecting all cards as needed...');
+
+        // Find the currently visible tab content
+        const visibleTab = document.querySelector('.tabcontent[style*="block"]');
+        if (!visibleTab) {
+            console.log('❌ No visible tab found');
+            return;
+        }
+
+        const deckName = visibleTab.id;
+        console.log('🎯 Target deck:', deckName);
+
+        // Get all radio buttons in the visible tab
+        const radioButtons = visibleTab.querySelectorAll('input[type="radio"]:not(.disabled)');
+        console.log('📻 Found', radioButtons.length, 'radio buttons');
+
+        let updatedCount = 0;
+        radioButtons.forEach(radio => {
+            if (radio.value === 'needed') {
+                radio.checked = true;
+                updatedCount++;
+            }
+        });
+
+        console.log(`✅ Updated ${updatedCount} cards to "needed" status`);
+
+        // Regenerate formats and auto-save
+        generateRedditFormat();
+        generateInGameFormat();
+        autoSaveToLocalStorage();
+
+        // Show brief success feedback
+        showBulkSelectionFeedback('needed', updatedCount);
+
+    } catch (error) {
+        console.error('❌ Error selecting all cards as needed:', error);
+    }
+}
+
+/**
+ * Selects all cards in the currently visible deck as "duplicate"
+ */
+function selectAllCardsAsDuplicate() {
+    try {
+        console.log('🔄 Selecting all cards as duplicate...');
+
+        // Find the currently visible tab content
+        const visibleTab = document.querySelector('.tabcontent[style*="block"]');
+        if (!visibleTab) {
+            console.log('❌ No visible tab found');
+            return;
+        }
+
+        const deckName = visibleTab.id;
+        console.log('🎯 Target deck:', deckName);
+
+        // Get all radio buttons in the visible tab
+        const radioButtons = visibleTab.querySelectorAll('input[type="radio"]:not(.disabled)');
+        console.log('📻 Found', radioButtons.length, 'radio buttons');
+
+        let updatedCount = 0;
+        radioButtons.forEach(radio => {
+            if (radio.value === 'duplicate') {
+                radio.checked = true;
+                updatedCount++;
+            }
+        });
+
+        console.log(`✅ Updated ${updatedCount} cards to "duplicate" status`);
+
+        // Regenerate formats and auto-save
+        generateRedditFormat();
+        generateInGameFormat();
+        autoSaveToLocalStorage();
+
+        // Show brief success feedback
+        showBulkSelectionFeedback('duplicate', updatedCount);
+
+    } catch (error) {
+        console.error('❌ Error selecting all cards as duplicate:', error);
+    }
+}
+
+/**
+ * Selects all cards in the currently visible deck as "owned"
+ */
+function selectAllCardsAsOwned() {
+    try {
+        console.log('🔄 Selecting all cards as owned...');
+
+        // Find the currently visible tab content
+        const visibleTab = document.querySelector('.tabcontent[style*="block"]');
+        if (!visibleTab) {
+            console.log('❌ No visible tab found');
+            return;
+        }
+
+        const deckName = visibleTab.id;
+        console.log('🎯 Target deck:', deckName);
+
+        // Get all radio buttons in the visible tab
+        const radioButtons = visibleTab.querySelectorAll('input[type="radio"]:not(.disabled)');
+        console.log('📻 Found', radioButtons.length, 'radio buttons');
+
+        let updatedCount = 0;
+        radioButtons.forEach(radio => {
+            if (radio.value === 'owned') {
+                radio.checked = true;
+                updatedCount++;
+            }
+        });
+
+        console.log(`✅ Updated ${updatedCount} cards to "owned" status`);
+
+        // Regenerate formats and auto-save
+        generateRedditFormat();
+        generateInGameFormat();
+        autoSaveToLocalStorage();
+
+        // Show brief success feedback
+        showBulkSelectionFeedback('owned', updatedCount);
+
+    } catch (error) {
+        console.error('❌ Error selecting all cards as owned:', error);
+    }
+}
+
+/**
+ * Shows brief feedback for bulk selection actions
+ */
+function showBulkSelectionFeedback(action, count) {
+    try {
+        const feedbackElement = document.getElementById('bulk-selection-feedback');
+        if (feedbackElement) {
+            feedbackElement.textContent = `✅ ${count} cards set as ${action}`;
+            feedbackElement.style.display = 'block';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                feedbackElement.style.display = 'none';
+            }, 3000);
+        }
+    } catch (error) {
+        console.error('❌ Error showing bulk selection feedback:', error);
+    }
+}
+
+// ================================
+// CARD STATUS CHANGE HANDLER
+// ================================
 /**
  * Handle card status changes (radio button selections)
  */
@@ -656,6 +878,13 @@ function openCollection(collectionDeck) {
         if (currentTabContent) {
             currentTabContent.style.display = 'block';
             console.log('✅ Tab content shown:', collectionDeck);
+
+            // Show bulk selection section when a deck is opened
+            const bulkSelectionSection = document.getElementById('bulk-selection-section');
+            if (bulkSelectionSection) {
+                bulkSelectionSection.style.display = 'block';
+                console.log('✅ Bulk selection section shown');
+            }
         } else {
             console.log('❌ Tab content not found:', collectionDeck);
         }
@@ -1332,6 +1561,16 @@ document.addEventListener('DOMContentLoaded', async function () {
         setTimeout(() => {
             console.log('🔄 Starting auto-restore with delay to ensure DOM is ready...');
             autoRestoreFromLocalStorage();
+
+            // Show bulk selection section for the first deck on initial load
+            const firstTabContent = document.querySelector('.tabcontent[style*="block"]');
+            if (firstTabContent) {
+                const bulkSelectionSection = document.getElementById('bulk-selection-section');
+                if (bulkSelectionSection) {
+                    bulkSelectionSection.style.display = 'block';
+                    console.log('✅ Bulk selection section shown for initial deck display');
+                }
+            }
         }, 100); // Small delay to ensure DOM is fully ready
 
     } catch (error) {

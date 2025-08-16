@@ -35,6 +35,12 @@ export const translations = {
         // Auto-save section header
         autoSaveSectionHeader: "Auto-Save Status",
 
+        // Bulk selection section
+        bulkSelectionSection: "Select All As:",
+        needed: "Needed",
+        duplicate: "Duplicate",
+        owned: "Owned",
+
         // Reset confirmation popup
         resetConfirmationTitle: "Reset All?",
         resetConfirmationMessage: "This will reset all your card selections to \"Owned\" and clear any auto-saved data. Manual saves are safe and will not be affected.",

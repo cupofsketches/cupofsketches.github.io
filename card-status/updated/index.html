@@ -162,6 +162,37 @@
     <div id="cards-container"></div>
 
     <!-- ================================ -->
+    <!-- BULK SELECTION SECTION -->
+    <!-- ================================ -->
+    <!-- Purpose: Provide quick bulk selection options for all cards in the current deck -->
+    <fieldset class="divider" id="bulk-selection-section" style="display: none;">
+        <legend class="gray-color" data-translate="ids.bulkSelectionSection">Select All As:</legend>
+        <div class="content">
+            <div class="bulk-selection-container">
+                <div class="bulk-selection-buttons">
+                    <button id="selectAllNeededBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as needed">
+                        <i class="fa-solid fa-handshake"></i>
+                        <span data-translate="ids.needed">Needed</span>
+                    </button>
+                    <button id="selectAllDuplicateBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as duplicate">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <span data-translate="ids.duplicate">Duplicate</span>
+                    </button>
+                    <button id="selectAllOwnedBtn" class="bulk-action-btn compact"
+                        aria-label="Select all cards in current deck as owned">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span data-translate="ids.owned">Owned</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Feedback message for bulk actions -->
+        <div id="bulk-selection-feedback" class="bulk-feedback" style="display: none;"></div>
+    </fieldset>
+
+    <!-- ================================ -->
     <!-- DECKS SELECTION -->
     <!-- ================================ -->
     <!-- Purpose: Allow users to choose which card decks to display -->

@@ -35,6 +35,12 @@ export const translations = {
         // Auto-save section header
         autoSaveSectionHeader: "Status do Auto-Salvamento",
 
+        // Bulk selection section
+        bulkSelectionSection: "Selecionar Todos Como:",
+        needed: "Faltando",
+        duplicate: "Duplicado",
+        owned: "Tenho",
+
         // Reset confirmation popup
         resetConfirmationTitle: "Limpar Tudo?",
         resetConfirmationMessage: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho\" e limpar quaisquer dados salvos automaticamente. Salvamentos manuais estão seguros e não serão afetados.",

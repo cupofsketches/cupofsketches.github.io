@@ -34,9 +34,22 @@
   border: 2px solid #e9ecef;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* Transition only the properties that animate */
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   user-select: none;
+}
+
+/* Keyboard focus: visible ring for accessibility */
+.language-selector-current:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(58, 156, 198, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #3a9cc6;
 }
 
 /* Hover: slightly lift and accent the button to indicate interactivity */
@@ -70,7 +83,10 @@
 .language-arrow {
   font-size: 10px;
   color: #6c757d;
-  transition: transform 0.3s ease;
+  /* Transition arrow rotation smoothly */
+  transition:
+    transform 0.3s ease,
+    color 0.2s ease;
   margin-left: auto;
 }
 
@@ -93,7 +109,10 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  /* Transition only opacity and transform for performance */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   z-index: 1000;
   overflow: hidden;
 }
@@ -112,7 +131,10 @@
   gap: 6px;
   padding: 8px 14px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  /* Transition background and subtle slide only */
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
   border-bottom: 1px solid #f1f3f4;
 }
 
@@ -153,38 +175,46 @@
    Purpose: Ensure language selector works well on all devices */
 
 @media (max-width: 768px) {
+  /* Narrower container spacing on tablets */
   .language-selector-container {
     margin: 12px auto;
     padding: 0 15px;
   }
 
+  /* Slightly reduce selector width for medium screens */
   .language-selector {
     min-width: 150px;
   }
 
+  /* Compact button spacing on medium screens */
   .language-selector-current {
     padding: 7px 12px;
     gap: 5px;
   }
 
+  /* Scale flag size down */
   .language-flag {
     font-size: 16px;
   }
 
+  /* Adjust language label sizing */
   .language-name {
     font-size: 1em;
     font-weight: 500;
   }
 
+  /* Slightly smaller arrow icon */
   .language-arrow {
     font-size: 9px;
   }
 
+  /* Tighter option spacing */
   .language-option {
     padding: 7px 12px;
     gap: 5px;
   }
 
+  /* Adjust option label size */
   .language-option .language-name {
     font-size: 1em;
     font-weight: 500;
@@ -193,33 +223,40 @@
 
 @media (max-width: 480px) {
   /* Language selector - mobile optimization */
+  /* Reduce selector width for small phones */
   .language-selector {
     min-width: 140px;
   }
 
+  /* Compact button spacing on small phones */
   .language-selector-current {
     padding: 10px 12px;
     gap: 4px;
   }
 
+  /* Smaller flag size for compact layout */
   .language-flag {
     font-size: 15px;
   }
 
+  /* Keep label readable but compact */
   .language-name {
     font-size: 1em;
     font-weight: 500;
   }
 
+  /* Smaller arrow for tighter UI */
   .language-arrow {
     font-size: 8px;
   }
 
+  /* Tighter option spacing on mobile */
   .language-option {
     padding: 6px 10px;
     gap: 4px;
   }
 
+  /* Slightly smaller option label on mobile */
   .language-option .language-name {
     font-size: 0.9em;
     font-weight: 500;
@@ -257,9 +294,18 @@
     font-size: 14px;
   }
 
-  /* Tab links - smaller font for mobile */
-  .tablink {
+  /* Tab links - smaller font for mobile (increase specificity to beat base rule later in file) */
+  .tabs .tablink {
     font-size: 14px;
+  }
+}
+
+/* Extra small devices (e.g., Galaxy S8) */
+@media (max-width: 360px) {
+  /* Tab links - ultra compact to prevent wrapping */
+  .tabs .tablink {
+    font-size: 13px;
+    padding: 8px 8px;
   }
 }
 

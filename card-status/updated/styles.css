@@ -954,7 +954,7 @@ a.credit-link:focus {
   border: 1px solid #ffeaa7;
   border-radius: 6px;
   padding: 12px 16px;
-  margin-bottom: 15px;
+  margin: 20px 0 15px 0;
   color: #856404;
   font-size: 14px;
   font-weight: 500;

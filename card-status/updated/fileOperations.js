@@ -96,15 +96,21 @@ export function saveOptions() {
 
           const formData = new FormData(form);
           formData.forEach((value, key) => {
-            if (value === 'needed') {
-              if (!neededCards[collectionName]) neededCards[collectionName] = [];
-              neededCards[collectionName].push(key);
-            } else if (value === 'duplicate') {
-              if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
-              duplicateCards[collectionName].push(key);
-            } else if (value === 'owned') {
-              if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
-              ownedCards[collectionName].push(key);
+            // Find the radio button to get the card ID
+            const radioButton = form.querySelector(`input[name="${key}"][value="${value}"]`);
+            if (radioButton) {
+              const cardId = radioButton.getAttribute('data-card-id');
+
+              if (value === 'needed') {
+                if (!neededCards[collectionName]) neededCards[collectionName] = [];
+                neededCards[collectionName].push(cardId || key); // Use card ID if available, fallback to key
+              } else if (value === 'duplicate') {
+                if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
+                duplicateCards[collectionName].push(cardId || key); // Use card ID if available, fallback to key
+              } else if (value === 'owned') {
+                if (!ownedCards[collectionName]) ownedCards[collectionName] = [];
+                ownedCards[collectionName].push(cardId || key); // Use card ID if available, fallback to key
+              }
             }
           });
         }
@@ -295,7 +301,12 @@ export function loadOptions(event) {
             if (optionsData.neededCards && optionsData.neededCards[collectionName]) {
               optionsData.neededCards[collectionName].forEach((card) => {
                 if (card && typeof card === 'string') {
-                  const input = form.querySelector(`input[name="${card}"][value="needed"]`);
+                  // Try to find by card ID first, then fallback to name
+                  let input = form.querySelector(`input[data-card-id="${card}"][value="needed"]`);
+                  if (!input) {
+                    // Fallback: try to find by name (for backward compatibility)
+                    input = form.querySelector(`input[name="${card}"][value="needed"]`);
+                  }
                   if (input) input.checked = true;
                 }
               });
@@ -305,7 +316,12 @@ export function loadOptions(event) {
             if (optionsData.duplicateCards && optionsData.duplicateCards[collectionName]) {
               optionsData.duplicateCards[collectionName].forEach((card) => {
                 if (card && typeof card === 'string') {
-                  const input = form.querySelector(`input[name="${card}"][value="duplicate"]`);
+                  // Try to find by card ID first, then fallback to name
+                  let input = form.querySelector(`input[data-card-id="${card}"][value="duplicate"]`);
+                  if (!input) {
+                    // Fallback: try to find by name (for backward compatibility)
+                    input = form.querySelector(`input[name="${card}"][value="duplicate"]`);
+                  }
                   if (input) input.checked = true;
                 }
               });
@@ -315,7 +331,12 @@ export function loadOptions(event) {
             if (optionsData.ownedCards && optionsData.ownedCards[collectionName]) {
               optionsData.ownedCards[collectionName].forEach((card) => {
                 if (card && typeof card === 'string') {
-                  const input = form.querySelector(`input[name="${card}"][value="owned"]`);
+                  // Try to find by card ID first, then fallback to name
+                  let input = form.querySelector(`input[data-card-id="${card}"][value="owned"]`);
+                  if (!input) {
+                    // Fallback: try to find by name (for backward compatibility)
+                    input = form.querySelector(`input[name="${card}"][value="owned"]`);
+                  }
                   if (input) input.checked = true;
                 }
               });

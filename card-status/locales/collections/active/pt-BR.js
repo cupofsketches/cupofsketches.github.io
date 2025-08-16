@@ -6,8 +6,8 @@
 export const activeCollection = [
     {
         "id": "music-studio",
-        "name": "Estúdio de Música",
-        "legend": "Estúdio de Música",
+        "name": "Oficina Musical",
+        "legend": "Oficina Musical",
         "cards": [
             {
                 "id": "tape-recorder",
@@ -29,7 +29,7 @@ export const activeCollection = [
             },
             {
                 "id": "studio-foam",
-                "name": "Espuma de Estúdio",
+                "name": "Espuma Acústica",
                 "stars": 1,
                 "isGold": false
             },
@@ -53,7 +53,7 @@ export const activeCollection = [
             },
             {
                 "id": "cymbal",
-                "name": "Prato",
+                "name": "Címbalo",
                 "stars": 1,
                 "isGold": false
             },
@@ -90,7 +90,7 @@ export const activeCollection = [
             },
             {
                 "id": "wheel",
-                "name": "Roda",
+                "name": "Volante",
                 "stars": 1,
                 "isGold": false
             },
@@ -133,13 +133,13 @@ export const activeCollection = [
         "cards": [
             {
                 "id": "panel-board",
-                "name": "Painel de Controle",
+                "name": "Painel",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "package",
-                "name": "Pacote",
+                "name": "Embalagem",
                 "stars": 1,
                 "isGold": false
             },
@@ -151,13 +151,13 @@ export const activeCollection = [
             },
             {
                 "id": "conveyor-belt",
-                "name": "Esteira",
+                "name": "Esteira Motora",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "punch-card",
-                "name": "Cartão Perfurado",
+                "name": "Folha de Ponto",
                 "stars": 1,
                 "isGold": false
             },
@@ -175,13 +175,13 @@ export const activeCollection = [
             },
             {
                 "id": "pallet",
-                "name": "Palete",
+                "name": "Paleteira",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "tool-kit",
-                "name": "Kit de Ferramentas",
+                "name": "Ferramentas",
                 "stars": 3,
                 "isGold": false
             }
@@ -189,8 +189,8 @@ export const activeCollection = [
     },
     {
         "id": "jewelry",
-        "name": "Joias",
-        "legend": "Joias",
+        "name": "Joalheria",
+        "legend": "Joalheria",
         "cards": [
             {
                 "id": "emerald",
@@ -224,7 +224,7 @@ export const activeCollection = [
             },
             {
                 "id": "loupe",
-                "name": "Lupa",
+                "name": "Óculos de Joias",
                 "stars": 2,
                 "isGold": false
             },
@@ -242,7 +242,7 @@ export const activeCollection = [
             },
             {
                 "id": "bracelet",
-                "name": "Pulseira",
+                "name": "Bracelete",
                 "stars": 3,
                 "isGold": false
             }
@@ -261,13 +261,13 @@ export const activeCollection = [
             },
             {
                 "id": "artisan-glass",
-                "name": "Vidro Artesanal",
+                "name": "Taça Artesanal",
                 "stars": 1,
                 "isGold": false
             },
             {
                 "id": "glass-orb",
-                "name": "Orbe de Vidro",
+                "name": "Bola de Vidro",
                 "stars": 1,
                 "isGold": false
             },
@@ -279,7 +279,7 @@ export const activeCollection = [
             },
             {
                 "id": "glass-bird",
-                "name": "Pássaro de Vidro",
+                "name": "Pássaro Frágil",
                 "stars": 2,
                 "isGold": false
             },
@@ -303,7 +303,7 @@ export const activeCollection = [
             },
             {
                 "id": "chandelier",
-                "name": "Candelabro",
+                "name": "Lustre",
                 "stars": 4,
                 "isGold": false
             }
@@ -340,25 +340,25 @@ export const activeCollection = [
             },
             {
                 "id": "tag-style",
-                "name": "Estilo de Tag",
+                "name": "Estilo de Marca",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "boom-box",
-                "name": "Caixa de Som",
+                "name": "Rádio Portátil",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "skate-art",
-                "name": "Arte de Skate",
+                "name": "Arte no Skate",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "hoodie",
-                "name": "Moletom",
+                "name": "Agasalho",
                 "stars": 4,
                 "isGold": false
             },
@@ -372,8 +372,8 @@ export const activeCollection = [
     },
     {
         "id": "costumes",
-        "name": "Fantasia",
-        "legend": "Fantasia",
+        "name": "Fantasias",
+        "legend": "Fantasias",
         "cards": [
             {
                 "id": "princess",
@@ -433,8 +433,8 @@ export const activeCollection = [
     },
     {
         "id": "paper-crafts",
-        "name": "Artesanato de Papel",
-        "legend": "Artesanato de Papel",
+        "name": "Arte em Papel",
+        "legend": "Arte em Papel",
         "cards": [
             {
                 "id": "lantern",
@@ -450,13 +450,13 @@ export const activeCollection = [
             },
             {
                 "id": "fortune-teller",
-                "name": "Vidente",
+                "name": "Jogo da Sorte",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "paper-plane",
-                "name": "Avião de Papel",
+                "name": "Aviãozinho",
                 "stars": 2,
                 "isGold": false
             },
@@ -480,7 +480,7 @@ export const activeCollection = [
             },
             {
                 "id": "paper-cutout",
-                "name": "Recorte de Papel",
+                "name": "Modelo de Papel",
                 "stars": 5,
                 "isGold": false
             },
@@ -499,13 +499,13 @@ export const activeCollection = [
         "cards": [
             {
                 "id": "cubism",
-                "name": "Cubismo",
+                "name": "Cubista",
                 "stars": 2,
                 "isGold": false
             },
             {
                 "id": "renaissance",
-                "name": "Renascimento",
+                "name": "Renascentista",
                 "stars": 2,
                 "isGold": false
             },
@@ -517,13 +517,13 @@ export const activeCollection = [
             },
             {
                 "id": "impression",
-                "name": "Impressão",
+                "name": "Impressionista",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "surreal",
-                "name": "Surreal",
+                "name": "Surrealista",
                 "stars": 3,
                 "isGold": false
             },
@@ -541,13 +541,13 @@ export const activeCollection = [
             },
             {
                 "id": "expression",
-                "name": "Expressão",
+                "name": "Expressionista",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "pixel-art",
-                "name": "Arte Pixel",
+                "name": "Arte em Pixel",
                 "stars": 5,
                 "isGold": true
             }
@@ -560,7 +560,7 @@ export const activeCollection = [
         "cards": [
             {
                 "id": "game-board",
-                "name": "Tabuleiro de Jogo",
+                "name": "Tabuleiro",
                 "stars": 2,
                 "isGold": false
             },
@@ -572,13 +572,13 @@ export const activeCollection = [
             },
             {
                 "id": "tokens",
-                "name": "Fichas",
+                "name": "Peões de Jogo",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "fussball",
-                "name": "Futebol de Mesa",
+                "name": "Totó",
                 "stars": 3,
                 "isGold": false
             },
@@ -590,25 +590,25 @@ export const activeCollection = [
             },
             {
                 "id": "dart",
-                "name": "Dardo",
+                "name": "Dardos",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "score-pad",
-                "name": "Bloco de Pontuação",
+                "name": "Bloco de Pontos",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "bottom-right",
-                "name": "Canto direito!",
+                "name": "Direita, baixo!",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "wooden-tower",
-                "name": "Torre de Madeira!",
+                "name": "Torre Rústica!",
                 "stars": 5,
                 "isGold": true
             }
@@ -616,8 +616,8 @@ export const activeCollection = [
     },
     {
         "id": "sand-craft",
-        "name": "Artesanato de Areia",
-        "legend": "Artesanato de Areia",
+        "name": "Arte de Areia",
+        "legend": "Arte de Areia",
         "cards": [
             {
                 "id": "beach-bucket",
@@ -627,7 +627,7 @@ export const activeCollection = [
             },
             {
                 "id": "sandcastle",
-                "name": "Castelo de Areia",
+                "name": "Castelinho",
                 "stars": 3,
                 "isGold": false
             },
@@ -645,31 +645,31 @@ export const activeCollection = [
             },
             {
                 "id": "sand-stamp",
-                "name": "Carimbo de Areia",
+                "name": "Marca na Areia",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "sand-bottle",
-                "name": "Garrafa de Areia",
+                "name": "Frasco de Areia",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "seashell-art",
-                "name": "Arte de Conchas",
+                "name": "Arte com Concha",
                 "stars": 5,
                 "isGold": false
             },
             {
                 "id": "sculpture",
-                "name": "Escultura",
+                "name": "Areia Esculpida",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "sand-mosaic",
-                "name": "Mosaico de Areia",
+                "name": "Mosaico Arenoso",
                 "stars": 5,
                 "isGold": true
             }
@@ -677,8 +677,8 @@ export const activeCollection = [
     },
     {
         "id": "baking",
-        "name": "Culinária",
-        "legend": "Culinária",
+        "name": "Confeitaria",
+        "legend": "Confeitaria",
         "cards": [
             {
                 "id": "muffin-pan",
@@ -688,31 +688,31 @@ export const activeCollection = [
             },
             {
                 "id": "cookie-cutter",
-                "name": "Cortador de Biscoitos",
+                "name": "Cortadores",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "oven-mitt",
-                "name": "Luva de Forno",
+                "name": "Luva de Cozinha",
                 "stars": 3,
                 "isGold": false
             },
             {
                 "id": "timer",
-                "name": "Timer",
+                "name": "Temporizador",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "dough-mixer",
-                "name": "Batedor de Massa",
+                "name": "Batedeira",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "whisk",
-                "name": "Batedor",
+                "name": "Batedor Manual",
                 "stars": 5,
                 "isGold": false
             },
@@ -730,7 +730,7 @@ export const activeCollection = [
             },
             {
                 "id": "frosting",
-                "name": "Cobertura!",
+                "name": "Decoração!",
                 "stars": 5,
                 "isGold": true
             }
@@ -738,12 +738,12 @@ export const activeCollection = [
     },
     {
         "id": "balloon-art",
-        "name": "Arte de Balões",
-        "legend": "Arte de Balões",
+        "name": "Arte com Balões",
+        "legend": "Arte com Balões",
         "cards": [
             {
                 "id": "balloon-pump",
-                "name": "Bomba de Balões",
+                "name": "Bomba de Balão",
                 "stars": 3,
                 "isGold": false
             },
@@ -767,13 +767,13 @@ export const activeCollection = [
             },
             {
                 "id": "heart-balloon",
-                "name": "Balão Coração",
+                "name": "Balão Amoroso",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "bubbles",
-                "name": "Bolhas",
+                "name": "Bolha de Balões",
                 "stars": 5,
                 "isGold": false
             },
@@ -785,13 +785,13 @@ export const activeCollection = [
             },
             {
                 "id": "balloon-dog",
-                "name": "Cachorro de Balão",
+                "name": "Cão de Balão",
                 "stars": 5,
                 "isGold": true
             },
             {
                 "id": "hang-tight",
-                "name": "Aguente Firme!",
+                "name": "Segura Firme!",
                 "stars": 5,
                 "isGold": true
             }
@@ -810,7 +810,7 @@ export const activeCollection = [
             },
             {
                 "id": "rc-car",
-                "name": "Carro RC",
+                "name": "Carrinho",
                 "stars": 3,
                 "isGold": false
             },
@@ -822,7 +822,7 @@ export const activeCollection = [
             },
             {
                 "id": "building-blocks",
-                "name": "Blocos de Construção",
+                "name": "Peças de Montar",
                 "stars": 4,
                 "isGold": false
             },
@@ -846,7 +846,7 @@ export const activeCollection = [
             },
             {
                 "id": "me-time",
-                "name": "Meu Tempo!",
+                "name": "Meu Momento!",
                 "stars": 5,
                 "isGold": true
             },
@@ -865,25 +865,25 @@ export const activeCollection = [
         "cards": [
             {
                 "id": "sketchbook",
-                "name": "Caderno de Esboços",
+                "name": "Esboços",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "wing-model",
-                "name": "Modelo de Asa",
+                "name": "Aeromodelo",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "gear-set",
-                "name": "Conjunto de Engrenagens",
+                "name": "Engrenagens",
                 "stars": 4,
                 "isGold": false
             },
             {
                 "id": "bronze-casting",
-                "name": "Fundição de Bronze",
+                "name": "Busto em Bronze",
                 "stars": 4,
                 "isGold": false
             },
@@ -895,7 +895,7 @@ export const activeCollection = [
             },
             {
                 "id": "ship-model",
-                "name": "Modelo de Navio",
+                "name": "Modelo de Barco",
                 "stars": 5,
                 "isGold": false
             },
@@ -913,7 +913,7 @@ export const activeCollection = [
             },
             {
                 "id": "clockwork",
-                "name": "Mecanismo de Relógio",
+                "name": "Ave Mecânica",
                 "stars": 5,
                 "isGold": true
             }

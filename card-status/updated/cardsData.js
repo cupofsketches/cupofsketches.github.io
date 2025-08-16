@@ -20,6 +20,7 @@
 // Import active collections from new structure
 import { activeCollection as activeCollectionEn } from '../locales/collections/active/en.js';
 import { activeCollection as activeCollectionPtBR } from '../locales/collections/active/pt-BR.js';
+import { activeCollection as activeCollectionEs } from '../locales/collections/active/es.js';
 
 // ================================
 // GLOBAL VARIABLES
@@ -32,7 +33,8 @@ let currentCollection;
 // Map of all available language collections
 const activeCollections = {
     'en': activeCollectionEn,
-    'pt-BR': activeCollectionPtBR
+    'pt-BR': activeCollectionPtBR,
+    'es': activeCollectionEs
 };
 
 // ================================

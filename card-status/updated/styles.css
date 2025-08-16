@@ -749,10 +749,10 @@ a.credit-link:focus {
 /* Purpose: Style the separate NEED and DUPLICATE sections */
 
 .format-section {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   border: 1px solid #e9ecef;
   border-radius: 4px;
-  padding: 20px;
+  padding: 12px;
   background: #ffffff;
 }
 
@@ -760,8 +760,8 @@ a.credit-link:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #e9ecef;
 }
 
@@ -797,7 +797,7 @@ a.credit-link:focus {
 
 .format-section-content {
   margin: 0;
-  padding: 15px;
+  padding: 10px;
   background: #fafbfc;
   border: 1px solid #e9ecef;
   border-radius: 4px;

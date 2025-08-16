@@ -587,6 +587,7 @@ function handleCardStatusChange() {
     try {
         console.log('📻 Card status changed:', this.name, this.value);
         hideUserMessage();
+
         generateRedditFormat();
         generateInGameFormat();
 
@@ -850,6 +851,31 @@ function showCopySuccess(formatId) {
         }
     } catch (error) {
         console.error('Error showing copy success feedback:', error);
+    }
+}
+
+/**
+ * Resets all copy buttons to their original copy icon state
+ * This should be called whenever formats are regenerated
+ */
+function resetAllCopyButtons() {
+    try {
+        const copyButtons = document.querySelectorAll('.copy-button');
+        copyButtons.forEach(button => {
+            // Reset to original copy icon
+            button.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+            `;
+            // Reset to original styles
+            button.style.background = '#f8f9fa';
+            button.style.borderColor = '#dee2e6';
+            button.style.color = '#6c757d';
+        });
+        console.log('🔄 All copy buttons reset to copy icon state');
+    } catch (error) {
+        console.error('Error resetting copy buttons:', error);
     }
 }
 

@@ -974,6 +974,13 @@ a.credit-link:focus {
   font-weight: 500;
 }
 
+.auto-save-indicator .auto-save-text {
+  font-size: 15px;
+  font-weight: normal;
+  color: #495057;
+  margin-left: 6px;
+}
+
 /* ================================ */
 /* BULK SELECTION SECTION */
 /* ================================ */

@@ -11,37 +11,37 @@ export const translations = {
         // Primary action buttons
         saveOptionsBtn: "Guardar",
         loadOptionsBtn: "Cargar",
-        resetAllBtn: "Empezar de Nuevo",
+        resetAllBtn: "Limpiar",
 
-        // Format generation buttons
-        "show-reddit-format": "Mostrar Formato<br>de Reddit",
-        "show-in-game-format": "Mostrar Formato<br>en el Juego",
+        // Format generation buttons (two-line labels use <br>)
+        "show-reddit-format": "Mostrar Formato<br>Reddit",
+        "show-in-game-format": "Mostrar Formato<br>del Juego",
 
         // Warning and error messages
-        warningMessage: "Selecciona al menos una opción \"faltante\" o \"duplicada\" antes de guardar",
+        warningMessage: "Selecciona al menos una opción \"necesaria\" o \"duplicada\" antes de guardar",
         closeWarningBtn: "OK",
-        invalidFileMessage: "El archivo seleccionado no es compatible!",
+        invalidFileMessage: "¡Por favor, selecciona un archivo .json válido!",
 
         // File name input popup
-        fileNamePopupTitle: "Guardar Estado de Cartas",
+        fileNamePopupTitle: "Guardar Estado de las Cartas",
         confirmSaveBtn: "Guardar",
         cancelBtn: "Cancelar",
 
         // File name validation popup
-        fileNameValidationTitle: "Falta el Nombre del Archivo",
-        fileNameValidationMessage: "Por favor, introduce un nombre para guardar el archivo",
+        fileNameValidationTitle: "Nombre de Archivo Faltante",
+        fileNameValidationMessage: "Por favor, ingresa un nombre para guardar tu archivo",
         okFileNameValidationBtn: "OK",
 
         // Auto-save section header
-        autoSaveSectionHeader: "Estado del Auto-Guardado",
+        autoSaveSectionHeader: "Estado de Auto-Guardado",
 
         // Reset confirmation popup
-        resetConfirmationTitle: "¿Empezar de Nuevo?",
-        resetConfirmationMessage: "Esto restablecerá todas tus selecciones de cartas a \"Poseo esta carta\" y borrará cualquier dato auto-guardado.",
+        resetConfirmationTitle: "¿Limpiar Todo?",
+        resetConfirmationMessage: "Esto restablecerá todas tus selecciones de cartas a \"Tengo\" y limpiará cualquier dato guardado automáticamente. Los guardados manuales están seguros y no se verán afectados.",
         resetConfirmationWarning: "Esta acción no se puede deshacer.",
-        resetConfirmBtn: "Sí, Empezar de Nuevo",
+        resetConfirmBtn: "Confirmar",
         resetCancelBtn: "Cancelar",
-        resetSuccessMessage: "✅ ¡Todas las selecciones han sido restablecidas! Puedes empezar de nuevo ahora."
+        resetSuccessMessage: "✅ ¡Todas las selecciones han sido limpiadas! Puedes comenzar de nuevo ahora."
     },
 
     // ================================
@@ -91,7 +91,7 @@ export const translations = {
     cardOptions: {
         needed: "Necesito",
         duplicate: "Duplicado",
-        owned: "Poseído",
+        owned: "Tengo",
         nonTrade: "No Negociable"
     },
 

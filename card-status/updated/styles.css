@@ -344,15 +344,33 @@ legend {
 
 .input-container {
   display: flex;
-  justify-content: center;
-  padding-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 8px;
+}
+
+.input-container label {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 #fileNameInput {
-  margin: 0 10px 10px 10px;
-  padding: 5px;
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
   font-size: 15px;
-  flex-grow: 0.5;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+#fileNameInput:focus {
+  outline: none;
+  border-color: #3a9cc6;
+  box-shadow: 0 0 0 3px rgba(58, 156, 198, 0.1);
 }
 
 /* File input styling */
@@ -440,11 +458,18 @@ button {
   flex-basis: 20%;
   margin: 0 10px 0 10px;
   padding: 10px;
-  border: none;
-  background-color: #6c757d;
-  border-bottom: 2px solid #5a6268;
-  color: white;
+  border: 2px solid #dc3545;
+  background-color: white;
+  color: #dc3545;
   font-size: 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.content button#resetAllBtn:hover {
+  background-color: #dc3545;
+  color: white;
+  transform: translateY(-1px);
 }
 
 /* Warning and validation buttons */
@@ -629,12 +654,13 @@ pre {
 
 .popup-content {
   position: relative;
-  width: 300px;
-  padding: 20px;
+  width: 350px;
+  padding: 25px;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 8px;
   text-align: center;
   z-index: 1001;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* ================================
@@ -654,6 +680,76 @@ pre {
 
 .popup-buttons button {
   margin: 0 10px;
+}
+
+/* Save popup specific button styling */
+#fileNamePopup .content button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#fileNamePopup .content button#confirmSaveBtn {
+  background-color: #2a7949d0;
+  color: white;
+  border-bottom: 2px solid #437f58;
+}
+
+#fileNamePopup .content button#confirmSaveBtn:hover {
+  background-color: #2a7949;
+  transform: translateY(-1px);
+}
+
+#fileNamePopup .content button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+  border-bottom: 2px solid #5a6268;
+}
+
+#fileNamePopup .content button#cancelBtn:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* Reset popup specific button styling */
+#resetConfirmationPopup .content button {
+  padding: 10px 20px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#resetConfirmationPopup .content button#confirmResetBtn {
+  background-color: white;
+  color: #dc3545;
+  border: 2px solid #dc3545;
+  border-radius: 6px;
+}
+
+#resetConfirmationPopup .content button#confirmResetBtn:hover {
+  background-color: #dc3545;
+  color: white;
+  transform: translateY(-1px);
+}
+
+#resetConfirmationPopup .content button#cancelBtn {
+  background-color: #6c757d;
+  color: white;
+  border-bottom: 2px solid #5a6268;
+}
+
+#resetConfirmationPopup .content button#cancelBtn:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
 }
 
 /* ================================

@@ -11,7 +11,7 @@ export const translations = {
         // Primary action buttons
         saveOptionsBtn: "Save",
         loadOptionsBtn: "Load",
-        resetAllBtn: "Start Fresh",
+        resetAllBtn: "Reset",
 
         // Format generation buttons (two-line labels use <br>)
         "show-reddit-format": "Show Reddit<br>Format",
@@ -36,12 +36,12 @@ export const translations = {
         autoSaveSectionHeader: "Auto-Save Status",
 
         // Reset confirmation popup
-        resetConfirmationTitle: "Start Fresh?",
-        resetConfirmationMessage: "This will reset all your card selections to \"I have this card\" and clear any auto-saved data.",
+        resetConfirmationTitle: "Reset All?",
+        resetConfirmationMessage: "This will reset all your card selections to \"Owned\" and clear any auto-saved data. Manual saves are safe and will not be affected.",
         resetConfirmationWarning: "This action cannot be undone.",
-        resetConfirmBtn: "Yes, Start Fresh",
+        resetConfirmBtn: "Confirm",
         resetCancelBtn: "Cancel",
-        resetSuccessMessage: "✅ All selections reset! You can now start fresh."
+        resetSuccessMessage: "✅ All selections cleared! You can now start fresh."
     },
 
     // ================================

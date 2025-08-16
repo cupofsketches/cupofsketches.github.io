@@ -11,37 +11,37 @@ export const translations = {
         // Primary action buttons
         saveOptionsBtn: "Salvar",
         loadOptionsBtn: "Carregar",
-        resetAllBtn: "Começar de Novo",
+        resetAllBtn: "Limpar",
 
-        // Format generation buttons
-        "show-reddit-format": "Mostrar Formato<br>do Reddit",
+        // Format generation buttons (two-line labels use <br>)
+        "show-reddit-format": "Mostrar Formato<br>Reddit",
         "show-in-game-format": "Mostrar Formato<br>do Jogo",
 
         // Warning and error messages
-        warningMessage: "Selecione pelo menos uma opção \"faltando\" ou \"duplicada\" antes de salvar",
+        warningMessage: "Selecione pelo menos uma opção \"faltando\" ou \"duplicado\" antes de salvar",
         closeWarningBtn: "OK",
-        invalidFileMessage: "O arquivo selecionado não é compatível",
+        invalidFileMessage: "Por favor, selecione um arquivo .json válido!",
 
         // File name input popup
-        fileNamePopupTitle: "Salvar Status das Cartas",
+        fileNamePopupTitle: "Salvar Status do Card",
         confirmSaveBtn: "Salvar",
         cancelBtn: "Cancelar",
 
         // File name validation popup
         fileNameValidationTitle: "Nome do Arquivo Ausente",
-        fileNameValidationMessage: "Por favor, insira um nome para salvar o arquivo",
+        fileNameValidationMessage: "Por favor, digite um nome para salvar seu arquivo",
         okFileNameValidationBtn: "OK",
 
         // Auto-save section header
         autoSaveSectionHeader: "Status do Auto-Salvamento",
 
         // Reset confirmation popup
-        resetConfirmationTitle: "Começar de Novo?",
-        resetConfirmationMessage: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho esta carta\" e limpar quaisquer dados auto-salvos.",
+        resetConfirmationTitle: "Limpar Tudo?",
+        resetConfirmationMessage: "Isso irá redefinir todas as suas seleções de cartas para \"Tenho\" e limpar quaisquer dados salvos automaticamente. Salvamentos manuais estão seguros e não serão afetados.",
         resetConfirmationWarning: "Esta ação não pode ser desfeita.",
-        resetConfirmBtn: "Sim, Começar de Novo",
+        resetConfirmBtn: "Confirmar",
         resetCancelBtn: "Cancelar",
-        resetSuccessMessage: "✅ Todas as seleções foram redefinidas! Você pode começar de novo agora."
+        resetSuccessMessage: "✅ Todas as seleções foram limpas! Você pode começar de novo agora."
     },
 
     // ================================

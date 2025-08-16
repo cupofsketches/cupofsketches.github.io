@@ -13,9 +13,16 @@ Easily copy and paste card status for Royal Match collections with the Card Stat
 ### Features:
 
 - **Save and Load:** Save your card status selections to a .json file and load from an existing file.
+- **Reset All Button:** Clear all selections and start fresh with one click
 - **Intuitive Interface:** Select card status (needed/duplicate) for each card using intuitive radio buttons.
 - **Formatted Output:** Generate formatted text for Reddit and in-game chat formats with a click of a button.
-- **Direct Copy-Paste:** Copy and paste the generated text directly into Reddit posts or in-game chats.
+- **Smart Copy Buttons:** One-click copying for Reddit and in-game formats
+- **Bulk Selection Buttons:** Set all cards in a deck to "Needed," "Duplicate," or "Owned" instantly
+- **Auto-Save Indicator:** Real-time feedback when your selections are saved
+- **Responsive Mobile Design:** Optimized for all screen sizes with touch-friendly controls
+- **Multi-Language Support:** Available in English, Portuguese (BR), and Spanish
+- **Smart Copy Buttons:** One-click copying for Reddit and in-game formats
+- **Accessibility Features:** Enhanced keyboard navigation, hover effects, and visual feedback
 
 ## Card Tracker Tool
 

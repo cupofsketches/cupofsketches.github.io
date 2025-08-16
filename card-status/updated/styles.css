@@ -985,7 +985,7 @@ a.credit-link:focus {
 
 .bulk-selection-buttons {
   display: flex;
-  gap: 12px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
@@ -993,50 +993,98 @@ a.credit-link:focus {
   flex-grow: 0;
   flex-basis: auto;
   margin: 0;
-  padding: 8px 12px;
-  border: 2px solid #dee2e6;
-  background-color: #f8f9fa;
-  color: #495057;
-  font-size: 13px;
+  padding: 8px 14px;
+  border: 1px solid #dee2e6;
+  background-color: white;
+  color: #6c757d;
+  font-size: 16px !important;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   min-width: 80px;
+  font-weight: normal;
 }
 
 .bulk-action-btn.compact {
-  padding: 6px 10px;
-  font-size: 12px;
-  min-width: 70px;
+  padding: 6px 12px;
+  font-size: 15px !important;
+  min-width: 75px;
+  font-weight: normal;
 }
 
-.bulk-action-btn:hover {
-  background-color: #e9ecef;
-  border-color: #adb5bd;
+/* Ensure buttons are properly styled */
+#bulk-selection-section .bulk-action-btn {
+  font-size: 16px !important;
+  font-weight: normal;
+  background-color: white;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+#bulk-selection-section .bulk-action-btn.compact {
+  font-size: 15px !important;
+  font-weight: normal;
+  background-color: white;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+/* Force hover effects with higher specificity */
+#bulk-selection-section .bulk-action-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Custom hover for Needed button - Red theme */
+#bulk-selection-section .bulk-action-btn#selectAllNeededBtn:hover {
+  background-color: #ffebee !important;
+  border-color: #c6643a !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllNeededBtn:hover i {
+  color: #c6643a !important;
+}
+
+/* Custom hover for Duplicate button - Blue theme */
+#bulk-selection-section .bulk-action-btn#selectAllDuplicateBtn:hover {
+  background-color: #e3f2fd !important;
+  border-color: #3a9cc6 !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllDuplicateBtn:hover i {
+  color: #3a9cc6 !important;
+}
+
+/* Custom hover for Owned button - Gray theme */
+#bulk-selection-section .bulk-action-btn#selectAllOwnedBtn:hover {
+  background-color: #f5f5f5 !important;
+  border-color: #6c757d !important;
+}
+
+#bulk-selection-section .bulk-action-btn#selectAllOwnedBtn:hover i {
+  color: #6c757d !important;
+}
+
 .bulk-action-btn:active {
   transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .bulk-action-btn i {
-  font-size: 14px;
-  color: #495057;
+  font-size: 16px;
+  color: #6c757d;
 }
 
 .bulk-action-btn.compact i {
-  font-size: 12px;
+  font-size: 14px;
+  color: #6c757d;
 }
 
 .bulk-action-btn:hover i {
-  color: #212529;
+  color: #3a9cc6 !important;
 }
 
 /* Bulk selection feedback message */

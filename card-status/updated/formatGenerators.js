@@ -101,6 +101,15 @@ export function generateRedditFormat() {
     // Cache DOM element and update the Reddit format display area
     const redditFormatElement = document.getElementById('reddit-format');
     if (redditFormatElement) {
+        // Check if there's actual content to display
+        const hasContent = Object.keys(neededCards).length > 0 || Object.keys(duplicateCards).length > 0;
+
+        // Hide the user message only if we have content to show
+        const redditUserMessage = document.getElementById('reddit-format-description');
+        if (redditUserMessage) {
+            redditUserMessage.style.display = hasContent ? 'none' : 'block';
+        }
+
         redditFormatElement.textContent = formatParts.join('\n');
     }
 }
@@ -183,6 +192,15 @@ export function generateInGameFormat() {
         console.log('📋 Need parts:', neededParts);
         console.log('📋 Duplicate parts:', duplicateParts);
 
+        // Check if there's actual content to display
+        const hasContent = neededParts.length > 0 || duplicateParts.length > 0;
+
+        // Hide the user message only if we have content to show
+        const inGameUserMessage = document.getElementById('in-game-format-description');
+        if (inGameUserMessage) {
+            inGameUserMessage.style.display = hasContent ? 'none' : 'block';
+        }
+
         // Show/hide sections based on content
         if (neededParts.length > 0) {
             needSectionContainer.style.display = 'block';
@@ -225,6 +243,15 @@ export function generateInGameFormat() {
         });
         // Fallback to legacy display if new elements not found
         if (inGameFormatElement) {
+            // Check if there's actual content to display
+            const hasContent = neededParts.length > 0 || duplicateParts.length > 0;
+
+            // Hide the user message only if we have content to show
+            const inGameUserMessage = document.getElementById('in-game-format-description');
+            if (inGameUserMessage) {
+                inGameUserMessage.style.display = hasContent ? 'none' : 'block';
+            }
+
             // Build the complete format with proper section separation
             let finalFormat = '';
 

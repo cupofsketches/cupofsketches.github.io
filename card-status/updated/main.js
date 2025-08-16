@@ -488,6 +488,8 @@ function setupEventListeners() {
         // Add event listeners for copy buttons
         const copyRedditButton = document.getElementById('copy-reddit-format');
         const copyInGameButton = document.getElementById('copy-in-game-format');
+        const copyNeedButton = document.getElementById('copy-need-section');
+        const copyDuplicateButton = document.getElementById('copy-duplicate-section');
 
         if (copyRedditButton) {
             copyRedditButton.removeEventListener('click', () => copyToClipboard('reddit-format'));
@@ -497,6 +499,16 @@ function setupEventListeners() {
         if (copyInGameButton) {
             copyInGameButton.removeEventListener('click', () => copyToClipboard('in-game-format'));
             copyInGameButton.addEventListener('click', () => copyToClipboard('in-game-format'));
+        }
+
+        if (copyNeedButton) {
+            copyNeedButton.removeEventListener('click', () => copyToClipboard('need-section'));
+            copyNeedButton.addEventListener('click', () => copyToClipboard('need-section'));
+        }
+
+        if (copyDuplicateButton) {
+            copyDuplicateButton.removeEventListener('click', () => copyToClipboard('duplicate-section'));
+            copyDuplicateButton.addEventListener('click', () => copyToClipboard('duplicate-section'));
         }
 
         console.log('✅ Event listeners setup completed');
@@ -903,6 +915,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Add event listeners for copy buttons
             const copyRedditButton = document.getElementById('copy-reddit-format');
             const copyInGameButton = document.getElementById('copy-in-game-format');
+            const copyNeedButton = document.getElementById('copy-need-section');
+            const copyDuplicateButton = document.getElementById('copy-duplicate-section');
 
             if (copyRedditButton) {
                 copyRedditButton.addEventListener('click', () => copyToClipboard('reddit-format'));
@@ -910,6 +924,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             if (copyInGameButton) {
                 copyInGameButton.addEventListener('click', () => copyToClipboard('in-game-format'));
+            }
+
+            if (copyNeedButton) {
+                copyNeedButton.addEventListener('click', () => copyToClipboard('need-section'));
+            }
+
+            if (copyDuplicateButton) {
+                copyDuplicateButton.addEventListener('click', () => copyToClipboard('duplicate-section'));
             }
         } catch (error) {
             console.error('Error setting up format generation:', error);

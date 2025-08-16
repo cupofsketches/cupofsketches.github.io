@@ -192,20 +192,49 @@
             aria-describedby="inGameFormatDescription">
             <legend class="blue-color" id="inGameFormatTitle" data-translate="format.inGameFormatTitle">In-Game Chat
                 Format</legend>
-            <button class="copy-button" id="copy-in-game-format" aria-label="Copy in-game format to clipboard"
-                title="Copy to clipboard">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
-                </svg>
-            </button>
             <div class="subtitle" style="color: #666; font-size: 0.9em; margin-bottom: 10px;"
                 data-translate="format.characterLimitDescription">(1 paragraph,
                 500-character limit)</div>
             <div id="in-game-format-description" style="display: block; color: gray;"
-                data-translate="messages.inGameUserMessage">Start selecting your card
-                status...<br>Splitting text after 500 characters</div>
-            <pre id="in-game-format" role="textbox" aria-label="In-game chat format text"
+                data-translate="messages.inGameUserMessage"></div>
+
+            <!-- NEED section with copy button -->
+            <div class="format-section" id="need-section-container" style="display: none;">
+                <div class="section-header">
+                    <span class="section-title" data-translate="format.need">NEED:</span>
+                    <button class="copy-button section-copy-button" id="copy-need-section"
+                        aria-label="Copy need section to clipboard" title="Copy need section">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                        </svg>
+                    </button>
+                </div>
+                <pre id="need-section" class="format-section-content" role="textbox"
+                    aria-label="Need section text"></pre>
+            </div>
+
+            <!-- HR separator -->
+            <hr id="sections-separator" style="display: none; margin: 20px 0;">
+
+            <!-- DUPLICATE section with copy button -->
+            <div class="format-section" id="duplicate-section-container" style="display: none;">
+                <div class="section-header">
+                    <span class="section-title" data-translate="format.duplicate">DUPLICATE:</span>
+                    <button class="copy-button section-copy-button" id="copy-duplicate-section"
+                        aria-label="Copy duplicate section to clipboard" title="Copy duplicate section">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                        </svg>
+                    </button>
+                </div>
+                <pre id="duplicate-section" class="format-section-content" role="textbox"
+                    aria-label="Duplicate section text"></pre>
+            </div>
+
+            <!-- Legacy container for backward compatibility -->
+            <pre id="in-game-format" role="textbox" aria-label="In-game chat format text" style="display: none;"
                 aria-describedby="inGameFormatDescription"></pre>
         </div>
     </fieldset>

@@ -172,53 +172,106 @@ export function generateInGameFormat() {
 
     // Cache DOM element and update the in-game format display area
     const inGameFormatElement = document.getElementById('in-game-format');
-    if (inGameFormatElement) {
-        // Build the complete format with proper section separation
-        let finalFormat = '';
+    const needSectionContainer = document.getElementById('need-section-container');
+    const duplicateSectionContainer = document.getElementById('duplicate-section-container');
+    const needSection = document.getElementById('need-section');
+    const duplicateSection = document.getElementById('duplicate-section');
+    const sectionsSeparator = document.getElementById('sections-separator');
 
-        // Process NEED section separately
+    if (inGameFormatElement && needSectionContainer && duplicateSectionContainer && needSection && duplicateSection) {
+        console.log('🎯 Using new section-based display');
+        console.log('📋 Need parts:', neededParts);
+        console.log('📋 Duplicate parts:', duplicateParts);
+
+        // Show/hide sections based on content
         if (neededParts.length > 0) {
-            let neededFormat = neededParts.join('');
-            if (neededFormat.length > 500) {
-                const neededChunks = splitIntoChunks(neededFormat, 500);
-                const formattedNeededChunks = neededChunks.map((chunk, index) => {
-                    if (index === 0) {
-                        return chunk;
-                    } else {
-                        return `\n\n${chunk}`;
-                    }
-                });
-                finalFormat += formattedNeededChunks.join('');
-            } else {
-                finalFormat += neededFormat;
-            }
+            needSectionContainer.style.display = 'block';
+            needSection.textContent = neededParts.join('');
+            console.log('✅ Need section displayed with content:', neededParts.join(''));
+        } else {
+            needSectionContainer.style.display = 'none';
+            console.log('❌ Need section hidden (no content)');
         }
 
-        // Add clear separator between sections if both exist
-        if (neededParts.length > 0 && duplicateParts.length > 0) {
-            finalFormat += '\n\n<hr>\n\n';
-        }
-
-        // Process DUPLICATE section separately
         if (duplicateParts.length > 0) {
-            let duplicateFormat = duplicateParts.join('');
-            if (duplicateFormat.length > 500) {
-                const duplicateChunks = splitIntoChunks(duplicateFormat, 500);
-                const formattedDuplicateChunks = duplicateChunks.map((chunk, index) => {
-                    if (index === 0) {
-                        return chunk;
-                    } else {
-                        return `\n\n${chunk}`;
-                    }
-                });
-                finalFormat += formattedDuplicateChunks.join('');
-            } else {
-                finalFormat += duplicateFormat;
-            }
+            duplicateSectionContainer.style.display = 'block';
+            duplicateSection.textContent = duplicateParts.join('');
+            console.log('✅ Duplicate section displayed with content:', duplicateParts.join(''));
+        } else {
+            duplicateSectionContainer.style.display = 'none';
+            console.log('❌ Duplicate section hidden (no content)');
         }
 
-        // Display the final format
-        inGameFormatElement.innerHTML = finalFormat;
+        // Show separator only if both sections exist
+        if (neededParts.length > 0 && duplicateParts.length > 0) {
+            sectionsSeparator.style.display = 'block';
+            console.log('✅ Separator displayed');
+        } else {
+            sectionsSeparator.style.display = 'none';
+            console.log('❌ Separator hidden');
+        }
+
+        // Hide the legacy container
+        inGameFormatElement.style.display = 'none';
+        console.log('✅ Legacy container hidden');
+    } else {
+        console.log('⚠️ New section elements not found, using legacy display');
+        console.log('Elements found:', {
+            inGameFormatElement: !!inGameFormatElement,
+            needSectionContainer: !!needSectionContainer,
+            duplicateSectionContainer: !!duplicateSectionContainer,
+            needSection: !!needSection,
+            duplicateSection: !!duplicateSection
+        });
+        // Fallback to legacy display if new elements not found
+        if (inGameFormatElement) {
+            // Build the complete format with proper section separation
+            let finalFormat = '';
+
+            // Process NEED section separately
+            if (neededParts.length > 0) {
+                let neededFormat = neededParts.join('');
+                if (neededFormat.length > 500) {
+                    const neededChunks = splitIntoChunks(neededFormat, 500);
+                    const formattedNeededChunks = neededChunks.map((chunk, index) => {
+                        if (index === 0) {
+                            return chunk;
+                        } else {
+                            return `\n\n${chunk}`;
+                        }
+                    });
+                    finalFormat += formattedNeededChunks.join('');
+                } else {
+                    finalFormat += neededFormat;
+                }
+            }
+
+            // Add clear separator between sections if both exist
+            if (neededParts.length > 0 && duplicateParts.length > 0) {
+                finalFormat += '\n\n<hr>\n\n';
+            }
+
+            // Process DUPLICATE section separately
+            if (duplicateParts.length > 0) {
+                let duplicateFormat = duplicateParts.join('');
+                if (duplicateFormat.length > 500) {
+                    const duplicateChunks = splitIntoChunks(duplicateFormat, 500);
+                    const formattedDuplicateChunks = duplicateChunks.map((chunk, index) => {
+                        if (index === 0) {
+                            return chunk;
+                        } else {
+                            return `\n\n${chunk}`;
+                        }
+                    });
+                    finalFormat += formattedDuplicateChunks.join('');
+                } else {
+                    finalFormat += duplicateFormat;
+                }
+            }
+
+            // Display the final format
+            inGameFormatElement.innerHTML = finalFormat;
+        }
     }
 }
 

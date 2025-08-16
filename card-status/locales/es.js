@@ -4,8 +4,8 @@ export const translations = {
     // ================================
     ids: {
         // Main application sections
-        saveLoadSection: "Guardar y Cargar Estado",
-        chooseDecksSection: "Elegir Barajas:",
+        saveLoadSection: "Gestión de Cartas",
+        chooseDecksSection: "Elegir Mazos:",
         generateTextSection: "Generar Texto",
 
         // Primary action buttons

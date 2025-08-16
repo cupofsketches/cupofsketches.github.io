@@ -4,7 +4,7 @@ export const translations = {
     // ================================
     ids: {
         // Main application sections
-        saveLoadSection: "Save & Load Card Status",
+        saveLoadSection: "Card Management",
         chooseDecksSection: "Choose Decks:",
         generateTextSection: "Generate Text",
 

@@ -177,7 +177,7 @@ function applyLabels() {
         domElements.closeWarningButton.textContent = translate("ids.closeWarningBtn");
     }
 
-  // File name popup buttons
+    // File name popup buttons
     if (domElements.confirmSaveButton) {
         domElements.confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
     }
@@ -236,7 +236,7 @@ async function bootI18n() {
     await setLocale(initialLanguage);
 
     // Apply translated labels to the UI
-  applyLabels();
+    applyLabels();
 }
 
 /**
@@ -294,7 +294,7 @@ function initLanguageSelector() {
 
         await setLocale(selectedValue);
         console.log('✅ setLocale completed');
-    applyLabels();
+        applyLabels();
         console.log('✅ applyLabels completed');
 
         // Reload collection data with new language
@@ -897,8 +897,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         // ================================
         // Purpose: Initialize internationalization first
 
-  await bootI18n();
-  initLanguageSelector();
+        await bootI18n();
+        initLanguageSelector();
         autoRestoreFromLocalStorage(); // Auto-restore on page load
 
         // ================================
@@ -982,7 +982,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 domElements.firstTabLink.classList.add('active');
             }
 
-  // Add event listeners for collection tabs
+            // Add event listeners for collection tabs
             if (domElements.deckTabButtons && domElements.deckTabButtons.length > 0) {
                 domElements.deckTabButtons.forEach((deckTabButton) => {
                     deckTabButton.addEventListener('click', function () {
@@ -994,8 +994,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         } catch (error) {
                             console.error('Error opening collection:', error);
                         }
-    });
-  });
+                    });
+                });
             }
         } catch (error) {
             console.error('Error setting up tab functionality:', error);
@@ -1115,8 +1115,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         try {
             // Generate formats initially to show default state
-  generateRedditFormat();
-  generateInGameFormat();
+            generateRedditFormat();
+            generateInGameFormat();
         } catch (error) {
             console.error('Error generating initial formats:', error);
         }

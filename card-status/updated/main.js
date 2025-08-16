@@ -814,7 +814,28 @@ function showBulkSelectionFeedback(action, count) {
     try {
         const feedbackElement = document.getElementById('bulk-selection-feedback');
         if (feedbackElement) {
-            feedbackElement.textContent = `✅ ${count} cards set as ${action}`;
+            // Get translated status name with proper capitalization
+            let statusName = '';
+            switch (action) {
+                case 'needed':
+                    statusName = translate("ids.needed");
+                    break;
+                case 'duplicate':
+                    statusName = statusName = translate("ids.duplicate");
+                    break;
+                case 'owned':
+                    statusName = translate("ids.owned");
+                    break;
+                default:
+                    statusName = action;
+            }
+
+            // Capitalize first letter and make bold
+            const capitalizedStatus = statusName.charAt(0).toUpperCase() + statusName.slice(1);
+            const boldStatus = `<strong>${capitalizedStatus}</strong>`;
+
+            const feedbackText = translate("ids.bulkSelectionFeedback");
+            feedbackElement.innerHTML = `✅ ${count} ${feedbackText} ${boldStatus}`;
             feedbackElement.style.display = 'block';
 
             // Hide after 3 seconds

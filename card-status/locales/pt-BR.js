@@ -40,6 +40,7 @@ export const translations = {
         needed: "Faltando",
         duplicate: "Duplicado",
         owned: "Tenho",
+        bulkSelectionFeedback: "cartas definidas como",
 
         // Reset confirmation popup
         resetConfirmationTitle: "Limpar Tudo?",

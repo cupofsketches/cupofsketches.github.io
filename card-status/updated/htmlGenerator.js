@@ -81,7 +81,7 @@ export function generateCardsHTML(collection) {
                 <div class="card gold">
                     <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
-                        <input type="radio" id="${ownedId}" name="${card.name}" value="owned">
+                        <input type="radio" id="${ownedId}" name="${card.name}" value="owned" checked>
                         <span style="color:rgb(179, 179, 179)"> ${translate("cardOptions.nonTrade")} </span>
                     </div>
                 </div>

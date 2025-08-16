@@ -40,6 +40,7 @@ export const translations = {
         needed: "Needed",
         duplicate: "Duplicate",
         owned: "Owned",
+        bulkSelectionFeedback: "cards set as",
 
         // Reset confirmation popup
         resetConfirmationTitle: "Reset All?",

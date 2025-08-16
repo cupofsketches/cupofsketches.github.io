@@ -217,29 +217,6 @@
     font-weight: 500;
   }
 
-  /* Bulk selection buttons - prevent truncation and improve touch targets */
-  .bulk-action-btn,
-  #bulk-selection-section .bulk-action-btn {
-    padding: 14px 20px !important;
-    font-size: 14px !important;
-    min-width: 80px;
-    gap: 4px;
-    margin: 0;
-  }
-
-  .bulk-action-btn.compact,
-  #bulk-selection-section .bulk-action-btn.compact {
-    padding: 12px 18px !important;
-    font-size: 13px !important;
-    min-width: 75px;
-    margin: 0;
-  }
-
-  .bulk-selection-buttons {
-    gap: 6px;
-    justify-content: center;
-  }
-
   /* Card options - keep radio buttons together */
   .collection-form {
     gap: 8px;
@@ -647,6 +624,13 @@ button {
 .gold {
   background-color: #fffef7;
   border: 1px solid #fec324;
+}
+
+/* Mobile card padding override for very small screens */
+@media (max-width: 360px) {
+  .card {
+    padding: 6px;
+  }
 }
 
 .cardName {
@@ -1214,6 +1198,47 @@ a.credit-link:focus {
   color: #3a9cc6 !important;
 }
 
+/* Mobile responsive overrides for bulk buttons */
+@media (max-width: 480px) {
+  .bulk-action-btn,
+  #bulk-selection-section .bulk-action-btn {
+    padding: 14px 20px !important;
+    font-size: 14px !important;
+    min-width: 80px;
+    gap: 4px;
+    margin: 0;
+  }
+
+  .bulk-action-btn.compact,
+  #bulk-selection-section .bulk-action-btn.compact {
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+    min-width: 75px;
+    margin: 0;
+  }
+
+  .bulk-selection-buttons {
+    gap: 6px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .bulk-action-btn,
+  #bulk-selection-section .bulk-action-btn {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    min-width: 70px;
+  }
+
+  .bulk-action-btn.compact,
+  #bulk-selection-section .bulk-action-btn.compact {
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+    min-width: 65px;
+  }
+}
+
 /* Bulk selection feedback message */
 .bulk-feedback {
   text-align: center;
@@ -1257,32 +1282,6 @@ a.credit-link:focus {
 
 /* Extra small devices (Galaxy S8 and similar) */
 @media (max-width: 360px) {
-  /* Bulk selection buttons - even more compact for tiny screens */
-  .bulk-action-btn,
-  #bulk-selection-section .bulk-action-btn {
-    padding: 12px 16px !important;
-    font-size: 14px !important;
-    min-width: 70px;
-  }
-
-  .bulk-action-btn.compact,
-  #bulk-selection-section .bulk-action-btn.compact {
-    padding: 10px 14px !important;
-    font-size: 14px !important;
-    min-width: 65px;
-  }
-
-  /* Force override for all bulk buttons on very small screens */
-  #bulk-selection-section .bulk-action-btn,
-  #bulk-selection-section .bulk-action-btn.compact {
-    font-size: 14px !important;
-  }
-
-  /* Card padding for very small screens */
-  .card {
-    padding: 6px;
-  }
-
   /* Language selector - ultra compact */
   .language-selector {
     min-width: 120px;

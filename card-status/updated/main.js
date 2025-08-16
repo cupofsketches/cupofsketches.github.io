@@ -485,6 +485,20 @@ function setupEventListeners() {
             deckTabButton.addEventListener('click', handleTabClick);
         });
 
+        // Add event listeners for copy buttons
+        const copyRedditButton = document.getElementById('copy-reddit-format');
+        const copyInGameButton = document.getElementById('copy-in-game-format');
+
+        if (copyRedditButton) {
+            copyRedditButton.removeEventListener('click', () => copyToClipboard('reddit-format'));
+            copyRedditButton.addEventListener('click', () => copyToClipboard('reddit-format'));
+        }
+
+        if (copyInGameButton) {
+            copyInGameButton.removeEventListener('click', () => copyToClipboard('in-game-format'));
+            copyInGameButton.addEventListener('click', () => copyToClipboard('in-game-format'));
+        }
+
         console.log('✅ Event listeners setup completed');
     } catch (error) {
         console.error('❌ Error setting up event listeners:', error);
@@ -649,6 +663,111 @@ function handleTabClick() {
     }
 }
 
+// ================================
+// COPY TO CLIPBOARD FUNCTIONALITY
+// ================================
+// Purpose: Handle copying format text to clipboard
+
+/**
+ * Copies the content of a format element to the clipboard
+ * @param {string} formatId - The ID of the format element to copy
+ */
+function copyToClipboard(formatId) {
+    try {
+        const formatElement = document.getElementById(formatId);
+        if (!formatElement || !formatElement.textContent) {
+            console.warn('No content to copy from:', formatId);
+            return;
+        }
+
+        const textToCopy = formatElement.textContent.trim();
+        if (!textToCopy) {
+            console.warn('Empty content to copy from:', formatId);
+            return;
+        }
+
+        // Use the modern Clipboard API if available
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showCopySuccess(formatId);
+            }).catch((err) => {
+                console.error('Failed to copy using Clipboard API:', err);
+                fallbackCopyTextToClipboard(textToCopy, formatId);
+            });
+        } else {
+            // Fallback for older browsers or non-secure contexts
+            fallbackCopyTextToClipboard(textToCopy, formatId);
+        }
+    } catch (error) {
+        console.error('Error copying to clipboard:', error);
+    }
+}
+
+/**
+ * Fallback method for copying text to clipboard using document.execCommand
+ * @param {string} text - The text to copy
+ * @param {string} formatId - The ID of the format element for visual feedback
+ */
+function fallbackCopyTextToClipboard(text, formatId) {
+    try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        if (successful) {
+            showCopySuccess(formatId);
+        } else {
+            console.warn('Fallback copy command failed');
+        }
+    } catch (error) {
+        console.error('Error in fallback copy method:', error);
+    }
+}
+
+/**
+ * Shows visual feedback when copy is successful
+ * @param {string} formatId - The ID of the format element to show feedback for
+ */
+function showCopySuccess(formatId) {
+    try {
+        const copyButton = document.querySelector(`#copy-${formatId.replace('-', '-')}`);
+        if (copyButton) {
+            const originalText = copyButton.innerHTML;
+            copyButton.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                </svg>
+            `;
+            copyButton.style.background = '#d4edda';
+            copyButton.style.borderColor = '#c3e6cb';
+            copyButton.style.color = '#155724';
+
+            // Reset button after 2 seconds
+            setTimeout(() => {
+                copyButton.innerHTML = originalText;
+                copyButton.style.background = '#f8f9fa';
+                copyButton.style.borderColor = '#dee2e6';
+                copyButton.style.color = '#6c757d';
+            }, 2000);
+        }
+    } catch (error) {
+        console.error('Error showing copy success feedback:', error);
+    }
+}
+
+// ================================
+// DOM CONTENT LOADED EVENT
+// ================================
+// Purpose: Initialize the application when the DOM is fully loaded
+
 /**
  * Main initialization function that runs when the DOM is loaded
  * Sets up all event listeners and initializes the application
@@ -779,6 +898,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             if (domElements.inGameFormatButton) {
                 domElements.inGameFormatButton.addEventListener('click', showInGameFormat);
+            }
+
+            // Add event listeners for copy buttons
+            const copyRedditButton = document.getElementById('copy-reddit-format');
+            const copyInGameButton = document.getElementById('copy-in-game-format');
+
+            if (copyRedditButton) {
+                copyRedditButton.addEventListener('click', () => copyToClipboard('reddit-format'));
+            }
+
+            if (copyInGameButton) {
+                copyInGameButton.addEventListener('click', () => copyToClipboard('in-game-format'));
             }
         } catch (error) {
             console.error('Error setting up format generation:', error);

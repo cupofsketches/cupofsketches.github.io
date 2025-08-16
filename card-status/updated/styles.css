@@ -2,7 +2,6 @@
    ---------- STYLES.CSS -----------
    ---------------------------------
    This file contains all the CSS styling for the Royal Match Card Status Tool.
-   It provides a clean, organized design with consistent spacing, colors, and layout.
 */
 
 /* ================================
@@ -40,12 +39,14 @@
   user-select: none;
 }
 
+/* Hover: slightly lift and accent the button to indicate interactivity */
 .language-selector-current:hover {
   border-color: #3a9cc6;
   box-shadow: 0 4px 12px rgba(58, 156, 198, 0.2);
   transform: translateY(-1px);
 }
 
+/* Active (pressed) state: return to resting position */
 .language-selector-current:active {
   transform: translateY(0);
 }
@@ -73,6 +74,7 @@
   margin-left: auto;
 }
 
+/* When selector is open, rotate the arrow upwards */
 .language-selector.active .language-arrow {
   transform: rotate(180deg);
 }
@@ -96,6 +98,7 @@
   overflow: hidden;
 }
 
+/* Reveal dropdown when the selector is active/open */
 .language-selector.active .language-selector-dropdown {
   opacity: 1;
   visibility: visible;
@@ -113,20 +116,24 @@
   border-bottom: 1px solid #f1f3f4;
 }
 
+/* No divider line after the final option */
 .language-option:last-child {
   border-bottom: none;
 }
 
+/* Subtle hover effect to indicate clickable option */
 .language-option:hover {
   background-color: #f8f9fa;
   transform: translateX(4px);
 }
 
+/* Visual state for the selected/active option */
 .language-option.selected {
   background-color: #e3f2fd;
   color: #1976d2;
 }
 
+/* Typography for language name within each option */
 .language-option .language-name {
   font-size: 1.1em;
   font-weight: 500;
@@ -134,6 +141,7 @@
   text-align: center;
 }
 
+/* Stronger emphasis for the selected option's language name */
 .language-option.selected .language-name {
   color: #1976d2;
   font-weight: 700;

@@ -29,25 +29,16 @@ function processFormData(form, collectionName, neededCards, duplicateCards) {
     // Get all radio buttons in this form
     const radioButtons = form.querySelectorAll('input[type="radio"]:checked');
 
-    console.log(`🔍 Processing form for collection: ${collectionName}`);
-    console.log(`🔍 Found ${radioButtons.length} checked radio buttons`);
-
     radioButtons.forEach(radio => {
         const cardName = radio.name; // This is the card name
         const status = radio.value;  // This is the current status
 
-        console.log(`🔍 Card: ${cardName}, Status: ${status}`);
-
         if (status === 'needed') {
             if (!neededCards[collectionName]) neededCards[collectionName] = [];
             neededCards[collectionName].push(cardName);
-            console.log(`✅ Added ${cardName} to needed cards for ${collectionName}`);
         } else if (status === 'duplicate') {
             if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
             duplicateCards[collectionName].push(cardName);
-            console.log(`✅ Added ${cardName} to duplicate cards for ${collectionName}`);
-        } else {
-            console.log(`⏭️ Skipping ${cardName} with status '${status}' (not included in format output)`);
         }
         // Note: 'owned' and 'nonTrade' cards are intentionally excluded from format output
     });
@@ -239,9 +230,6 @@ export function generateInGameFormat() {
     const sectionsSeparator = document.getElementById('sections-separator');
 
     if (inGameFormatElement && needSectionContainer && duplicateSectionContainer && needSection && duplicateSection) {
-        console.log('🎯 Using new section-based display');
-        console.log('📋 Need parts:', neededParts);
-        console.log('📋 Duplicate parts:', duplicateParts);
 
         // Check if there's actual content to display
         const hasContent = neededParts.length > 0 || duplicateParts.length > 0;
@@ -259,10 +247,8 @@ export function generateInGameFormat() {
             needSection.textContent = neededParts.join('');
             // Store the full text with prefix for copying
             needSection.setAttribute('data-copy-text', neededPartsForCopy.join(''));
-            console.log('✅ Need section displayed with content:', neededParts.join(''));
         } else {
             needSectionContainer.style.display = 'none';
-            console.log('❌ Need section hidden (no content)');
         }
 
         if (duplicateParts.length > 0) {
@@ -271,10 +257,8 @@ export function generateInGameFormat() {
             duplicateSection.textContent = duplicateParts.join('');
             // Store the full text with prefix for copying
             duplicateSection.setAttribute('data-copy-text', duplicatePartsForCopy.join(''));
-            console.log('✅ Duplicate section displayed with content:', duplicateParts.join(''));
         } else {
             duplicateSectionContainer.style.display = 'none';
-            console.log('❌ Duplicate section hidden (no content)');
         }
 
         // Show/hide copy buttons based on section content
@@ -292,24 +276,13 @@ export function generateInGameFormat() {
         // Show separator only if both sections exist
         if (neededParts.length > 0 && duplicateParts.length > 0) {
             sectionsSeparator.style.display = 'block';
-            console.log('✅ Separator displayed');
         } else {
             sectionsSeparator.style.display = 'none';
-            console.log('❌ Separator hidden');
         }
 
         // Hide the legacy container
         inGameFormatElement.style.display = 'none';
-        console.log('✅ Legacy container hidden');
     } else {
-        console.log('⚠️ New section elements not found, using legacy display');
-        console.log('Elements found:', {
-            inGameFormatElement: !!inGameFormatElement,
-            needSectionContainer: !!needSectionContainer,
-            duplicateSectionContainer: !!duplicateSectionContainer,
-            needSection: !!needSection,
-            duplicateSection: !!duplicateSection
-        });
         // Fallback to legacy display if new elements not found
         if (inGameFormatElement) {
             // Check if there's actual content to display

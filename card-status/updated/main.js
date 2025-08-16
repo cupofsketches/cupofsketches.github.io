@@ -285,7 +285,7 @@ async function bootI18n() {
         initialLanguage = "en";
     }
 
-    console.log('🌍 Loading saved language preference:', initialLanguage);
+
 
     // Load the language dictionary
     await setLocale(initialLanguage);
@@ -343,56 +343,38 @@ function initLanguageSelector() {
         languageSelector.parentElement.classList.remove('active');
 
         // Change language and re-apply labels
-        console.log('🔄 Language change started:', selectedValue);
 
         // Save language preference to localStorage
         localStorage.setItem('locale', selectedValue);
-        console.log('💾 Language preference saved to localStorage:', selectedValue);
 
         // Save current radio button states before switching languages
-        console.log('💾 Saving current radio button states...');
         const savedSelections = saveRadioButtonStates();
-        console.log('💾 Saved selections:', savedSelections.length, 'cards');
 
         await setLocale(selectedValue);
-        console.log('✅ setLocale completed');
         applyLabels();
-        console.log('✅ applyLabels completed');
 
         // Reload collection data with new language
-        console.log('🔄 Reloading collection...');
         const newCollection = reloadCollection();
-        console.log('📦 New collection loaded:', newCollection ? newCollection.length : 'undefined', 'collections');
 
         // Re-render cards and decks with new language
-        console.log('🎨 Re-rendering cards...');
         renderCards(newCollection);
-        console.log('🎨 Re-rendering decks...');
         renderDecks(newCollection);
-        console.log('✅ Re-rendering completed');
 
         // Show the first tab after re-rendering
-        console.log('🔄 Managing tabs...');
         if (newCollection && newCollection.length > 0) {
             const firstCollectionId = newCollection[0].id;
-            console.log('🎯 First collection ID:', firstCollectionId);
             const firstTabContent = document.getElementById(firstCollectionId);
             if (firstTabContent) {
                 firstTabContent.style.display = 'block';
-                console.log('✅ First tab shown:', firstCollectionId);
 
                 // Show bulk selection section when first deck is displayed
                 const bulkSelectionSection = document.getElementById('bulk-selection-section');
                 if (bulkSelectionSection) {
                     bulkSelectionSection.style.display = 'block';
-                    console.log('✅ Bulk selection section shown for first deck');
                 }
-            } else {
-                console.log('❌ First tab not found:', firstCollectionId);
             }
             // Hide all other tabs
             const allTabs = document.querySelectorAll('.tabcontent');
-            console.log('📋 Total tabs found:', allTabs.length);
             allTabs.forEach(tab => {
                 if (tab.id !== firstCollectionId) {
                     tab.style.display = 'none';
@@ -401,41 +383,30 @@ function initLanguageSelector() {
 
             // Update tab button states
             const allTabLinks = document.querySelectorAll('.tablink');
-            console.log('🔗 Total tab links found:', allTabLinks.length);
             allTabLinks.forEach(tabLink => {
                 if (tabLink.getAttribute('data-collection') === firstCollectionId) {
                     tabLink.classList.add('active');
-                    console.log('✅ Active tab set:', firstCollectionId);
                 } else {
                     tabLink.classList.remove('active');
                 }
             });
-        } else {
-            console.log('❌ No collection data for tab management');
         }
 
         // Regenerate format text with new language
-        console.log('🔄 Generating format text...');
         try {
             generateRedditFormat();
-            console.log('✅ Reddit format generated');
         } catch (error) {
             console.error('❌ Error generating Reddit format:', error);
         }
 
         try {
             generateInGameFormat();
-            console.log('✅ In-game format generated');
         } catch (error) {
             console.error('❌ Error generating in-game format:', error);
         }
 
-        console.log('🎉 Language change process completed!');
-
         // Debug: Check if event listeners are working
-        console.log('🔍 Checking event listeners after re-render...');
         const radioButtons = document.querySelectorAll('input[type="radio"]:not(.disabled)');
-        console.log('📻 Radio buttons found:', radioButtons.length);
 
         const deckButtons = document.querySelectorAll('.tablink');
         console.log('🔗 Deck buttons found:', deckButtons.length);
@@ -447,9 +418,6 @@ function initLanguageSelector() {
         setupEventListeners();
         console.log('✅ Event listeners re-attached!');
 
-        // Auto-save the current selections in the new language
-        autoSaveToLocalStorage();
-
         // Update the language selector display to show the new selected language
         updateLanguageSelectorDisplay(selectedValue);
 
@@ -457,6 +425,11 @@ function initLanguageSelector() {
         console.log('🔄 Restoring radio button selections...');
         restoreRadioButtonStates(savedSelections);
         console.log('✅ Radio button selections restored!');
+
+        // Re-save the restored selections in the new language context
+        console.log('💾 Re-saving restored selections in new language...');
+        autoSaveToLocalStorage();
+        console.log('✅ Selections re-saved in new language context');
     });
 
     // Close dropdown when clicking outside
@@ -627,8 +600,6 @@ function setupEventListeners() {
             copyDuplicateButton.addEventListener('click', () => copyToClipboard('duplicate-section'));
         }
 
-        console.log('✅ Event listeners setup completed');
-
         // Set up bulk selection event listeners
         setupBulkSelectionEventListeners();
 
@@ -644,28 +615,21 @@ function setupEventListeners() {
 
 function setupBulkSelectionEventListeners() {
     try {
-        console.log('🔧 Setting up bulk selection event listeners...');
-
         const selectAllNeededBtn = document.getElementById('selectAllNeededBtn');
         const selectAllDuplicateBtn = document.getElementById('selectAllDuplicateBtn');
         const selectAllOwnedBtn = document.getElementById('selectAllOwnedBtn');
 
         if (selectAllNeededBtn) {
             selectAllNeededBtn.addEventListener('click', selectAllCardsAsNeeded);
-            console.log('✅ Select all needed button listener added');
         }
 
         if (selectAllDuplicateBtn) {
             selectAllDuplicateBtn.addEventListener('click', selectAllCardsAsDuplicate);
-            console.log('✅ Select all duplicate button listener added');
         }
 
         if (selectAllOwnedBtn) {
             selectAllOwnedBtn.addEventListener('click', selectAllCardsAsOwned);
-            console.log('✅ Select all owned button listener added');
         }
-
-        console.log('✅ Bulk selection event listeners setup completed');
     } catch (error) {
         console.error('❌ Error setting up bulk selection event listeners:', error);
     }
@@ -681,21 +645,16 @@ function setupBulkSelectionEventListeners() {
  */
 function selectAllCardsAsNeeded() {
     try {
-        console.log('🔄 Selecting all cards as needed...');
-
         // Find the currently visible tab content
         const visibleTab = document.querySelector('.tabcontent[style*="block"]');
         if (!visibleTab) {
-            console.log('❌ No visible tab found');
             return;
         }
 
         const deckName = visibleTab.id;
-        console.log('🎯 Target deck:', deckName);
 
         // Get all radio buttons in the visible tab
         const radioButtons = visibleTab.querySelectorAll('input[type="radio"]:not(.disabled)');
-        console.log('📻 Found', radioButtons.length, 'radio buttons');
 
         let updatedCount = 0;
         radioButtons.forEach(radio => {
@@ -705,7 +664,7 @@ function selectAllCardsAsNeeded() {
             }
         });
 
-        console.log(`✅ Updated ${updatedCount} cards to "needed" status`);
+
 
         // Regenerate formats and auto-save
         generateRedditFormat();
@@ -857,7 +816,7 @@ function showBulkSelectionFeedback(action, count) {
  */
 function handleCardStatusChange() {
     try {
-        console.log('📻 Card status changed:', this.name, this.value);
+
         hideUserMessage();
 
         generateRedditFormat();
@@ -958,7 +917,7 @@ function saveRadioButtonStates() {
             });
         });
 
-        console.log('💾 Saved', selections.length, 'radio button selections from all tabs');
+
         return selections;
     } catch (error) {
         console.error('❌ Error saving radio button states:', error);
@@ -971,6 +930,7 @@ function saveRadioButtonStates() {
  * @param {Array} savedSelections - Array of saved selection objects
  */
 function restoreRadioButtonStates(savedSelections) {
+    console.log('🚀 restoreRadioButtonStates function called with:', savedSelections);
     try {
         if (!savedSelections || savedSelections.length === 0) {
             console.log('💾 No saved selections to restore');
@@ -981,6 +941,12 @@ function restoreRadioButtonStates(savedSelections) {
         let restoredCount = 0;
 
         savedSelections.forEach(selection => {
+            console.log('🔍 Looking for radio button:', {
+                cardId: selection.cardId,
+                collectionId: selection.collectionId,
+                value: selection.value
+            });
+
             // Find the radio button using data attributes that don't change between languages
             const radioButton = document.querySelector(`input[data-card-id="${selection.cardId}"][data-collection-id="${selection.collectionId}"][value="${selection.value}"]`);
 
@@ -990,6 +956,25 @@ function restoreRadioButtonStates(savedSelections) {
                 console.log('✅ Restored:', selection.cardId, 'in', selection.collectionId, '=', selection.value);
             } else {
                 console.log('❌ Could not find radio button for:', selection.cardId, 'in', selection.collectionId, '=', selection.value);
+
+                // Debug: Let's see what radio buttons actually exist
+                const allRadioButtons = document.querySelectorAll('input[type="radio"]');
+                console.log('🔍 Available radio buttons in DOM:', allRadioButtons.length);
+
+                // Check if any radio buttons have the card ID we're looking for
+                const matchingCardButtons = document.querySelectorAll(`input[data-card-id="${selection.cardId}"]`);
+                console.log('🔍 Radio buttons with matching card ID:', matchingCardButtons.length);
+
+                if (matchingCardButtons.length > 0) {
+                    console.log('🔍 Found buttons with matching card ID, checking their attributes:');
+                    matchingCardButtons.forEach((btn, index) => {
+                        console.log(`  Button ${index}:`, {
+                            cardId: btn.getAttribute('data-card-id'),
+                            collectionId: btn.getAttribute('data-collection-id'),
+                            value: btn.value
+                        });
+                    });
+                }
             }
         });
 
@@ -1012,7 +997,7 @@ function restoreRadioButtonStates(savedSelections) {
 function handleTabClick() {
     try {
         const collectionName = this.getAttribute('data-collection');
-        console.log('🔗 Tab clicked:', collectionName);
+
         if (collectionName) {
             openCollection(collectionName);
         }
@@ -1274,19 +1259,33 @@ function showAutoSaveStatus() {
 function autoRestoreFromLocalStorage() {
     try {
         console.log('🔄 Auto-restore started...');
+
+        // Check if radio buttons exist in the DOM
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        console.log('🔄 Found', radioButtons.length, 'radio buttons in DOM');
+
+        if (radioButtons.length === 0) {
+            console.warn('⚠️ No radio buttons found in DOM, cannot restore selections');
+            return;
+        }
+
         const autoSaveData = localStorage.getItem('autoSaveData');
         console.log('🔄 Raw auto-save data from localStorage:', autoSaveData);
 
         if (autoSaveData) {
             const data = JSON.parse(autoSaveData);
             console.log('🔄 Parsed auto-save data:', data);
+            console.log('🔄 Sample selection data:', data.selections ? data.selections[0] : 'No selections');
 
-            // Check if data is from current language or can be migrated
-            if (data.language === (localStorage.getItem('locale') || 'en') || data.selections) {
+            // Check if data has selections (language check removed since card IDs are language-independent)
+            if (data.selections && data.selections.length > 0) {
                 console.log('🔄 Auto-restoring', data.selections.length, 'selections from localStorage');
+                console.log('🔄 Saved language was:', data.language, 'current language is:', localStorage.getItem('locale') || 'en');
 
                 // Apply the saved selections
-                restoreRadioButtonStates(data.selections);
+                console.log('🔄 About to call restoreRadioButtonStates with', data.selections.length, 'selections');
+                const restoreResult = restoreRadioButtonStates(data.selections);
+                console.log('🔄 restoreRadioButtonStates returned:', restoreResult);
 
                 // Regenerate formats to show restored data
                 generateRedditFormat();
@@ -1297,7 +1296,7 @@ function autoRestoreFromLocalStorage() {
                 // Show auto-save status to indicate data was restored
                 showAutoSaveStatus();
             } else {
-                console.log('🔄 Language mismatch or no selections in data');
+                console.log('🔄 No selections found in auto-save data');
             }
         } else {
             console.log('🔄 No auto-save data found in localStorage');
@@ -1582,7 +1581,25 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Auto-restore from localStorage after HTML is generated
         setTimeout(() => {
             console.log('🔄 Starting auto-restore with delay to ensure DOM is ready...');
-            autoRestoreFromLocalStorage();
+
+            // Check if radio buttons exist before attempting restore
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            if (radioButtons.length > 0) {
+                console.log('✅ Found', radioButtons.length, 'radio buttons, proceeding with auto-restore...');
+                autoRestoreFromLocalStorage();
+            } else {
+                console.log('⚠️ No radio buttons found yet, waiting longer...');
+                // Wait a bit more and try again
+                setTimeout(() => {
+                    const radioButtonsRetry = document.querySelectorAll('input[type="radio"]');
+                    if (radioButtonsRetry.length > 0) {
+                        console.log('✅ Found', radioButtonsRetry.length, 'radio buttons on retry, proceeding with auto-restore...');
+                        autoRestoreFromLocalStorage();
+                    } else {
+                        console.warn('❌ Still no radio buttons found after retry');
+                    }
+                }, 500);
+            }
 
             // Show bulk selection section for the first deck on initial load
             const firstTabContent = document.querySelector('.tabcontent[style*="block"]');
@@ -1593,7 +1610,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     console.log('✅ Bulk selection section shown for initial deck display');
                 }
             }
-        }, 100); // Small delay to ensure DOM is fully ready
+        }, 300); // Increased delay to ensure DOM is fully ready
 
     } catch (error) {
         console.error('Critical error during application initialization:', error);

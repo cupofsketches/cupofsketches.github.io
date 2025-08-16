@@ -11,6 +11,7 @@
 
 import { translate, setLocale } from "./i18n.js";
 import { loadCollection, reloadCollection } from './cardsData.js';
+import { collectionMetadata } from '../locales/collections/active/en.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
@@ -115,7 +116,7 @@ function applyLabels() {
     // Collection subtitle
     const subtitleElement = document.querySelector('h1 span.subtitle');
     if (subtitleElement) {
-        subtitleElement.textContent = `- ${translate("collection.subtitle")} -`;
+        subtitleElement.textContent = `- ${collectionMetadata.subtitle} -`;
     }
 
     // ================================
@@ -123,19 +124,19 @@ function applyLabels() {
     // ================================
     // Purpose: Update main section titles with translated text
 
-    // "Save & Load Card Status" section
+    // "Card Management" section
     if (domElements.saveLoadSection) {
-        domElements.saveLoadSection.textContent = translate("ids.saveLoadSection");
+        domElements.saveLoadSection.textContent = translate("cardManagement.sectionHeader");
     }
 
     // "Choose Decks:" section
     if (domElements.chooseDecksSection) {
-        domElements.chooseDecksSection.textContent = translate("ids.chooseDecksSection");
+        domElements.chooseDecksSection.textContent = translate("deckSelection.sectionHeader");
     }
 
     // "Generate Text" section
     if (domElements.generateTextSection) {
-        domElements.generateTextSection.textContent = translate("ids.generateTextSection");
+        domElements.generateTextSection.textContent = translate("format.sectionHeader");
     }
 
     // ================================
@@ -145,17 +146,17 @@ function applyLabels() {
 
     // Save button
     if (domElements.saveButton) {
-        domElements.saveButton.textContent = translate("ids.saveOptionsBtn");
+        domElements.saveButton.textContent = translate("cardManagement.save");
     }
 
     // Load button
     if (domElements.loadButton) {
-        domElements.loadButton.textContent = translate("ids.loadOptionsBtn");
+        domElements.loadButton.textContent = translate("cardManagement.load");
     }
 
     // Reset button
     if (domElements.resetButton) {
-        domElements.resetButton.textContent = translate("ids.resetAllBtn");
+        domElements.resetButton.textContent = translate("cardManagement.reset");
     }
 
     // Bulk selection buttons
@@ -164,15 +165,15 @@ function applyLabels() {
     const selectAllOwnedBtn = document.getElementById('selectAllOwnedBtn');
 
     if (selectAllNeededBtn) {
-        selectAllNeededBtn.querySelector('span').textContent = translate("ids.needed");
+        selectAllNeededBtn.querySelector('span').textContent = translate("bulkSelection.needed");
     }
 
     if (selectAllDuplicateBtn) {
-        selectAllDuplicateBtn.querySelector('span').textContent = translate("ids.duplicate");
+        selectAllDuplicateBtn.querySelector('span').textContent = translate("bulkSelection.duplicate");
     }
 
     if (selectAllOwnedBtn) {
-        selectAllOwnedBtn.querySelector('span').textContent = translate("ids.owned");
+        selectAllOwnedBtn.querySelector('span').textContent = translate("bulkSelection.owned");
     }
 
     // ================================
@@ -182,12 +183,12 @@ function applyLabels() {
 
     // "Show Reddit<br>Format" button
     if (domElements.redditButton) {
-        domElements.redditButton.innerHTML = translate("ids.show-reddit-format");
+        domElements.redditButton.innerHTML = translate("formatButtons.showRedditFormat");
     }
 
     // "Show In-Game<br>Format" button
     if (domElements.inGameButton) {
-        domElements.inGameButton.innerHTML = translate("ids.show-in-game-format");
+        domElements.inGameButton.innerHTML = translate("formatButtons.showInGameFormat");
     }
 
     // ================================
@@ -197,33 +198,33 @@ function applyLabels() {
 
     // Warning popup elements
     if (domElements.warningMessage) {
-        domElements.warningMessage.textContent = translate("ids.warningMessage");
+        domElements.warningMessage.textContent = translate("warnings.noSelectionWarning");
     }
 
     if (domElements.closeWarningButton) {
-        domElements.closeWarningButton.textContent = translate("ids.closeWarningBtn");
+        domElements.closeWarningButton.textContent = translate("cardManagement.ok");
     }
 
     // File name popup buttons
     if (domElements.confirmSaveButton) {
-        domElements.confirmSaveButton.textContent = translate("ids.confirmSaveBtn");
+        domElements.confirmSaveButton.textContent = translate("cardManagement.confirmSave");
     }
 
     if (domElements.cancelButton) {
-        domElements.cancelButton.textContent = translate("ids.cancelBtn");
+        domElements.cancelButton.textContent = translate("cardManagement.cancel");
     }
 
     // File name validation popup elements
     if (domElements.fileNameValidationTitle) {
-        domElements.fileNameValidationTitle.textContent = translate("ids.fileNameValidationTitle");
+        domElements.fileNameValidationTitle.textContent = translate("cardManagement.fileNameMissingTitle");
     }
 
     if (domElements.fileNameValidationMessage) {
-        domElements.fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
+        domElements.fileNameValidationMessage.textContent = translate("cardManagement.fileNameMissingMessage");
     }
 
     if (domElements.okFileNameValidationButton) {
-        domElements.okFileNameValidationButton.textContent = translate("ids.okFileNameValidationBtn");
+        domElements.okFileNameValidationButton.textContent = translate("cardManagement.ok");
     }
 
     // ================================
@@ -232,13 +233,13 @@ function applyLabels() {
     // Purpose: Update input field placeholders with translated text
 
     if (domElements.fileNameInput) {
-        domElements.fileNameInput.placeholder = translate("placeholders.fileNameInput");
+        domElements.fileNameInput.placeholder = translate("cardManagement.fileNamePlaceholder");
     }
 
     // Auto-save section header
     if (domElements.autoSaveSectionHeader) {
-        console.log('🌍 Translating auto-save header to:', translate("ids.autoSaveSectionHeader"));
-        domElements.autoSaveSectionHeader.textContent = translate("ids.autoSaveSectionHeader");
+        console.log('🌍 Translating auto-save header to:', translate("autoSave.sectionHeader"));
+        domElements.autoSaveSectionHeader.textContent = translate("autoSave.sectionHeader");
     } else {
         console.warn('⚠️ Auto-save header element not found');
     }
@@ -818,13 +819,13 @@ function showBulkSelectionFeedback(action, count) {
             let statusName = '';
             switch (action) {
                 case 'needed':
-                    statusName = translate("ids.needed");
+                    statusName = translate("bulkSelection.needed");
                     break;
                 case 'duplicate':
-                    statusName = statusName = translate("ids.duplicate");
+                    statusName = translate("bulkSelection.duplicate");
                     break;
                 case 'owned':
-                    statusName = translate("ids.owned");
+                    statusName = translate("bulkSelection.owned");
                     break;
                 default:
                     statusName = action;
@@ -834,7 +835,7 @@ function showBulkSelectionFeedback(action, count) {
             const capitalizedStatus = statusName.charAt(0).toUpperCase() + statusName.slice(1);
             const boldStatus = `<strong>${capitalizedStatus}</strong>`;
 
-            const feedbackText = translate("ids.bulkSelectionFeedback");
+            const feedbackText = translate("bulkSelection.feedbackMessage");
             feedbackElement.innerHTML = `✅ ${count} ${feedbackText} ${boldStatus}`;
             feedbackElement.style.display = 'block';
 
@@ -1336,7 +1337,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
             const subtitleElement = document.querySelector('h1 span.subtitle');
             if (subtitleElement) {
-                subtitleElement.textContent = `- ${translate("collection.subtitle")} -`;
+                subtitleElement.textContent = `- ${collectionMetadata.subtitle} -`;
             }
         } catch (error) {
             console.warn('Could not update subtitle:', error);

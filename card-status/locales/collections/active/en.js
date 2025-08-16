@@ -3,6 +3,11 @@
 // Collaboration by u/carloslaso
 // =========================================================================
 
+// Collection metadata
+export const collectionMetadata = {
+    subtitle: "Hobby Collection"
+};
+
 export const activeCollection = [
     {
         "id": "music-studio",

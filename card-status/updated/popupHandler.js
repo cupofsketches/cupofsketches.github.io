@@ -41,7 +41,7 @@ export function showWarningPopup() {
   document.addEventListener('keydown', handleKeyDown);
 
   if (warningMessage) {
-    warningMessage.textContent = translate("ids.warningMessage");
+    warningMessage.textContent = translate("warnings.noSelectionWarning");
   }
 
   warningPopup.style.display = 'flex';
@@ -88,7 +88,7 @@ export function showFileNameValidationPopup() {
   document.addEventListener('click', handleOutsideClick);
 
   if (fileNameValidationMessage) {
-    fileNameValidationMessage.textContent = translate("ids.fileNameValidationMessage");
+    fileNameValidationMessage.textContent = translate("cardManagement.fileNameMissingMessage");
   }
   fileNameValidationPopup.style.display = 'flex';
 }
@@ -139,19 +139,19 @@ export function showResetConfirmationPopup(onConfirm) {
 
   // Set translated content
   if (resetConfirmationTitle) {
-    resetConfirmationTitle.textContent = translate("ids.resetConfirmationTitle");
+    resetConfirmationTitle.textContent = translate("resetConfirmation.title");
   }
   if (resetConfirmationMessage) {
-    resetConfirmationMessage.textContent = translate("ids.resetConfirmationMessage");
+    resetConfirmationMessage.textContent = translate("resetConfirmation.message");
   }
   if (resetConfirmationWarning) {
-    resetConfirmationWarning.textContent = translate("ids.resetConfirmationWarning");
+    resetConfirmationWarning.textContent = translate("resetConfirmation.warning");
   }
   if (confirmButton) {
-    confirmButton.textContent = translate("ids.resetConfirmBtn");
+    confirmButton.textContent = translate("resetConfirmation.confirmButton");
   }
   if (cancelButton) {
-    cancelButton.textContent = translate("ids.resetCancelBtn");
+    cancelButton.textContent = translate("resetConfirmation.cancelButton");
   }
 
   // Show the popup
@@ -282,10 +282,10 @@ export function showInvalidFilePopup() {
 
   // Apply translation
   if (message) {
-    message.textContent = translate('ids.invalidFileMessage');
+    message.textContent = translate('warnings.invalidFileMessage');
   }
   if (closeButton) {
-    closeButton.textContent = translate('ids.closeWarningBtn'); // Reuse close label
+    closeButton.textContent = translate('cardManagement.ok'); // Reuse close label
   }
 
   popup.style.display = 'flex';

@@ -50,7 +50,7 @@ export function saveOptions() {
 
     // Show warning if no valid options are selected
     if (!optionsSelected) {
-      showWarningPopup(translate("ids.warningMessage"));
+      showWarningPopup(translate("warnings.noSelectionWarning"));
       return;
     }
 
@@ -154,13 +154,13 @@ export function saveOptions() {
       } catch (error) {
         console.error('Error during save operation:', error);
         // Show user-friendly error message
-        showInvalidFilePopup(translate("ids.invalidFileMessage"));
+        showInvalidFilePopup(translate("warnings.invalidFileMessage"));
       }
     });
 
   } catch (error) {
     console.error('Error in saveOptions:', error);
-    showInvalidFilePopup(translate("ids.invalidFileMessage"));
+    showInvalidFilePopup(translate("warnings.invalidFileMessage"));
   }
 }
 
@@ -239,7 +239,7 @@ export function loadOptions(event) {
         throw new Error('Error reading file');
       } catch (error) {
         console.error('FileReader error:', error);
-        showInvalidFilePopup(translate("ids.invalidFileMessage"));
+        showInvalidFilePopup(translate("warnings.invalidFileMessage"));
       }
     };
 
@@ -367,7 +367,7 @@ export function loadOptions(event) {
       } catch (error) {
         // Handle JSON parsing errors
         console.error('Error processing loaded file:', error);
-        showInvalidFilePopup(translate("ids.invalidFileMessage"));
+        showInvalidFilePopup(translate("warnings.invalidFileMessage"));
       }
     };
 
@@ -377,7 +377,7 @@ export function loadOptions(event) {
   } catch (error) {
     console.error('Error in loadOptions:', error);
     // Show user-friendly error message
-    showInvalidFilePopup(translate("ids.invalidFileMessage"));
+    showInvalidFilePopup(translate("warnings.invalidFileMessage"));
   } finally {
     // ================================
     // CLEANUP

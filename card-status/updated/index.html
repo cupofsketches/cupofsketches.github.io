@@ -57,7 +57,7 @@
         <button id="saveOptionsBtn" class="save" aria-label="Save card status selections to file">Save</button>
         <button id="loadOptionsBtn" class="load" aria-label="Load previously saved card status">Load</button>
         <button id="resetAllBtn" class="reset" aria-label="Reset all selections and start fresh"
-            data-translate="ids.resetAllBtn">Start Fresh</button>
+            data-translate="cardManagement.reset">Start Fresh</button>
         <input type="file" id="loadInput" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"
             accept=".json" aria-label="Select JSON file to load">
     </div>
@@ -143,14 +143,19 @@
             <span id="closeResetConfirmationPopup" class="close" role="button" tabindex="0"
                 aria-label="Close reset confirmation popup">&times;</span>
             <fieldset class="divider">
-                <legend class="orange-color" id="resetConfirmationTitle">Start Fresh?</legend>
+                <legend class="orange-color" id="resetConfirmationTitle" data-translate="resetConfirmation.title">Start
+                    Fresh?</legend>
             </fieldset>
-            <p id="resetConfirmationMessage">This will reset all your card selections to "I have this card" and clear
-                any auto-saved data.</p>
-            <p><strong id="resetConfirmationWarning">This action cannot be undone.</strong></p>
+            <p id="resetConfirmationMessage" data-translate="resetConfirmation.message">This will reset all your card
+                selections to "Owned" and clear
+                any auto-saved data. Manual saves are safe and will not be affected.</p>
+            <p><strong id="resetConfirmationWarning" data-translate="resetConfirmation.warning">This action cannot be
+                    undone.</strong></p>
             <div class="content">
-                <button id="confirmResetBtn" class="confirm-btn">Yes, Start Fresh</button>
-                <button id="cancelResetBtn" class="cancel-btn">Cancel</button>
+                <button id="confirmResetBtn" class="confirm-btn"
+                    data-translate="resetConfirmation.confirmButton">Confirm</button>
+                <button id="cancelResetBtn" class="cancel-btn"
+                    data-translate="resetConfirmation.cancelButton">Cancel</button>
             </div>
         </div>
     </div>
@@ -167,24 +172,24 @@
     <!-- ================================ -->
     <!-- Purpose: Provide quick bulk selection options for all cards in the current deck -->
     <fieldset class="divider" id="bulk-selection-section" style="display: none;">
-        <legend class="gray-color" data-translate="ids.bulkSelectionSection">Select All As:</legend>
+        <legend class="gray-color" data-translate="bulkSelection.sectionHeader">Select All As:</legend>
         <div class="content">
             <div class="bulk-selection-container">
                 <div class="bulk-selection-buttons">
                     <button id="selectAllNeededBtn" class="bulk-action-btn compact"
                         aria-label="Select all cards in current deck as needed">
                         <i class="fa-solid fa-handshake"></i>
-                        <span data-translate="ids.needed">Needed</span>
+                        <span data-translate="bulkSelection.needed">Needed</span>
                     </button>
                     <button id="selectAllDuplicateBtn" class="bulk-action-btn compact"
                         aria-label="Select all cards in current deck as duplicate">
                         <i class="fa-solid fa-square-plus"></i>
-                        <span data-translate="ids.duplicate">Duplicate</span>
+                        <span data-translate="bulkSelection.duplicate">Duplicate</span>
                     </button>
                     <button id="selectAllOwnedBtn" class="bulk-action-btn compact"
                         aria-label="Select all cards in current deck as owned">
                         <i class="fa-solid fa-check-circle"></i>
-                        <span data-translate="ids.owned">Owned</span>
+                        <span data-translate="bulkSelection.owned">Owned</span>
                     </button>
                 </div>
             </div>
@@ -300,7 +305,7 @@
     <!-- ================================ -->
     <!-- Purpose: Display auto-save status and confirmation -->
     <fieldset class="divider">
-        <legend class="gray-color" data-translate="ids.autoSaveSectionHeader">Auto-Save Status</legend>
+        <legend class="gray-color" data-translate="autoSave.sectionHeader">Auto-Save Status</legend>
     </fieldset>
 
     <div class="content">

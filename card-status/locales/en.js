@@ -1,100 +1,81 @@
 export const translations = {
     // ================================
-    // SECTION HEADERS
+    // CARD MANAGEMENT SECTION
     // ================================
-    ids: {
-        // Main application sections
-        saveLoadSection: "Card Management",
-        chooseDecksSection: "Choose Decks:",
-        generateTextSection: "Generate Text",
+    cardManagement: {
+        // Main section header
+        sectionHeader: "Card Management",
 
         // Primary action buttons
-        saveOptionsBtn: "Save",
-        loadOptionsBtn: "Load",
-        resetAllBtn: "Reset",
+        save: "Save",
+        load: "Load",
+        reset: "Reset",
 
-        // Format generation buttons (two-line labels use <br>)
-        "show-reddit-format": "Show Reddit<br>Format",
-        "show-in-game-format": "Show In-Game<br>Format",
+        // File name input
+        fileNamePlaceholder: "Name Your File Here",
 
-        // Warning and error messages
-        warningMessage: "Select at least one \"needed\" or \"duplicate\" option before saving",
-        closeWarningBtn: "OK",
-        invalidFileMessage: "Please select a valid .json file!",
+        // Popup titles and messages
+        savePopupTitle: "Save Card Status",
+        fileNameMissingTitle: "Missing File Name",
+        fileNameMissingMessage: "Please enter a file name to save your file",
 
-        // File name input popup
-        fileNamePopupTitle: "Save Card Status",
-        confirmSaveBtn: "Save",
-        cancelBtn: "Cancel",
+        // Popup buttons
+        confirmSave: "Save",
+        confirmReset: "Confirm",
+        cancel: "Cancel",
+        ok: "OK"
+    },
 
-        // File name validation popup
-        fileNameValidationTitle: "Missing File Name",
-        fileNameValidationMessage: "Please enter a file name to save your file",
-        okFileNameValidationBtn: "OK",
+    // ================================
+    // DECK SELECTION SECTION
+    // ================================
+    deckSelection: {
+        sectionHeader: "Choose Decks:"
+    },
 
-        // Auto-save section header
-        autoSaveSectionHeader: "Auto-Save Status",
-
-        // Bulk selection section
-        bulkSelectionSection: "Select All As:",
+    // ================================
+    // BULK SELECTION SECTION
+    // ================================
+    bulkSelection: {
+        sectionHeader: "Select All As:",
         needed: "Needed",
         duplicate: "Duplicate",
         owned: "Owned",
-        bulkSelectionFeedback: "cards set as",
-
-        // Reset confirmation popup
-        resetConfirmationTitle: "Reset All?",
-        resetConfirmationMessage: "This will reset all your card selections to \"Owned\" and clear any auto-saved data. Manual saves are safe and will not be affected.",
-        resetConfirmationWarning: "This action cannot be undone.",
-        resetConfirmBtn: "Confirm",
-        resetCancelBtn: "Cancel",
-        resetSuccessMessage: "✅ All selections cleared! You can now start fresh."
+        feedbackMessage: "cards set as"
     },
 
     // ================================
-    // INPUT PLACEHOLDERS
+    // FORMAT GENERATION SECTION
     // ================================
-    placeholders: {
-        fileNameInput: "Name Your File Here"
-    },
-
-    // ================================
-    // USER GUIDANCE MESSAGES
-    // ================================
-    messages: {
-        redditUserMessage: "Start selecting your card status...",
-        inGameUserMessage: "Start selecting your card status...\nSplitting text after 500 characters"
-    },
-
-    // ================================
-    // FORMAT OUTPUT
-    // ================================
-    // Purpose: Translate text that appears in the generated format output
-
     format: {
-        cardsNeeded: "Cards Needed:",
-        cardsDuplicated: "Cards Duplicated:",
+        // Section headers
+        sectionHeader: "Generate Text",
+        redditFormatTitle: "Reddit Format",
+        inGameFormatTitle: "In-Game Chat",
+
+        // Format labels
         need: "NEED:",
         duplicate: "DUPLICATE:",
-        redditFormatTitle: "Reddit Format",
-        inGameFormatTitle: "In-Game Format",
-        characterLimitDescription: "(1 paragraph, 500-character limit)"
+
+        // Format descriptions
+        characterLimitDescription: "(1 paragraph, 500-character limit)",
+
+        // Generated text labels
+        cardsNeeded: "Cards Needed:",
+        cardsDuplicated: "Cards Duplicated:"
     },
 
     // ================================
-    // COLLECTION DISPLAY
+    // FORMAT BUTTONS
     // ================================
-    // Purpose: Translate collection-related display text
-
-    collection: {
-        subtitle: "Hobby Collection"
+    formatButtons: {
+        showRedditFormat: "Show Reddit<br>Format",
+        showInGameFormat: "Show In-Game<br>Format"
     },
 
     // ================================
     // CARD OPTIONS
     // ================================
-    // Purpose: Translate the radio button labels for card status
-
     cardOptions: {
         needed: "Needed",
         duplicate: "Duplicate",
@@ -103,15 +84,43 @@ export const translations = {
     },
 
     // ================================
-    // AUTO-SAVE STATUS
+    // USER MESSAGES
     // ================================
-    // Purpose: Translate auto-save status messages
+    messages: {
+        redditUserMessage: "Start selecting your card status...",
+        inGameUserMessage: "Start selecting your card status..."
+    },
 
+    // ================================
+    // WARNING & ERROR MESSAGES
+    // ================================
+    warnings: {
+        noSelectionWarning: "Select at least one \"needed\" or \"duplicate\" option before saving",
+        invalidFileMessage: "Please select a valid .json file!"
+    },
+
+    // ================================
+    // AUTO-SAVE SECTION
+    // ================================
     autoSave: {
+        sectionHeader: "Auto-Save Status",
         enabled: "Auto-save enabled",
         saving: "Saving...",
         saved: "Saved automatically",
         savingLoaded: "Saving loaded selections...",
         loadedSaved: "Loaded selections saved automatically"
-    }
+    },
+
+    // ================================
+    // RESET CONFIRMATION POPUP
+    // ================================
+    resetConfirmation: {
+        title: "Reset All?",
+        message: "This will reset all your card selections to \"Owned\" and clear any auto-saved data. Manual saves are safe and will not be affected.",
+        warning: "This action cannot be undone.",
+        confirmButton: "Confirm",
+        cancelButton: "Cancel",
+        successMessage: "✅ All selections cleared! You can now start fresh."
+    },
+
 };

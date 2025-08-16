@@ -169,143 +169,29 @@
   font-weight: 700;
 }
 
-/* ================================
-   RESPONSIVE DESIGN
-   ================================
-   Purpose: Ensure language selector works well on all devices */
-
-@media (max-width: 768px) {
-  /* Narrower container spacing on tablets */
-  .language-selector-container {
-    margin: 12px auto;
-    padding: 0 15px;
-  }
-
-  /* Slightly reduce selector width for medium screens */
-  .language-selector {
-    min-width: 150px;
-  }
-
-  /* Compact button spacing on medium screens */
-  .language-selector-current {
-    padding: 7px 12px;
-    gap: 5px;
-  }
-
-  /* Scale flag size down */
-  .language-flag {
-    font-size: 16px;
-  }
-
-  /* Adjust language label sizing */
-  .language-name {
-    font-size: 1em;
-    font-weight: 500;
-  }
-
-  /* Slightly smaller arrow icon */
-  .language-arrow {
-    font-size: 9px;
-  }
-
-  /* Tighter option spacing */
-  .language-option {
-    padding: 7px 12px;
-    gap: 5px;
-  }
-
-  /* Adjust option label size */
-  .language-option .language-name {
-    font-size: 1em;
-    font-weight: 500;
-  }
-}
-
-@media (max-width: 480px) {
-  /* Language selector - mobile optimization */
-  /* Reduce selector width for small phones */
-  .language-selector {
-    min-width: 140px;
-  }
-
-  /* Compact button spacing on small phones */
-  .language-selector-current {
-    padding: 10px 12px;
-    gap: 4px;
-  }
-
-  /* Smaller flag size for compact layout */
-  .language-flag {
-    font-size: 15px;
-  }
-
-  /* Keep label readable but compact */
-  .language-name {
-    font-size: 1em;
-    font-weight: 500;
-  }
-
-  /* Smaller arrow for tighter UI */
-  .language-arrow {
-    font-size: 8px;
-  }
-
-  /* Tighter option spacing on mobile */
-  .language-option {
-    padding: 6px 10px;
-    gap: 4px;
-  }
-
-  /* Slightly smaller option label on mobile */
-  .language-option .language-name {
-    font-size: 0.9em;
-    font-weight: 500;
-  }
-
-  /* Card options - keep radio buttons together */
-  .collection-form {
-    gap: 8px;
-  }
-
-  /* Ensure radio button groups stay together */
-  .card-options {
-    display: flex;
-    flex-wrap: nowrap;
-    min-width: 180px;
-    justify-content: space-between;
-  }
-
-  /* Radio button spacing for mobile */
-  input[type='radio'] {
-    margin: 6px 2px 0px 2px;
-  }
-
-  /* Main buttons - prevent truncation */
-  .content button {
-    padding: 12px 8px;
-    font-size: 14px;
-    margin: 0 6px;
-  }
-
-  /* Format buttons - better mobile layout */
-  #show-reddit-format,
-  #show-in-game-format {
-    padding: 12px 8px;
-    font-size: 14px;
-  }
-
-  /* Tab links - smaller font for mobile (increase specificity to beat base rule later in file) */
-  .tabs .tablink {
-    font-size: 14px;
-  }
-}
-
-/* Extra small devices (e.g., Galaxy S8) */
+/* Extra small devices (e.g., Galaxy S8) - language selector tweaks */
 @media (max-width: 360px) {
-  /* Tab links - ultra compact to prevent wrapping */
-  .tabs .tablink {
-    font-size: 13px;
-    padding: 8px 8px;
+  .language-selector {
+    min-width: 120px;
+  }
+  .language-selector-current {
+    padding: 8px 10px;
+  }
+  .language-name {
+    font-size: 0.9em;
+  }
+}
+
+/* Extra small devices - additional language selector tweaks */
+@media (max-width: 360px) {
+  .language-selector {
+    min-width: 120px;
+  }
+  .language-selector-current {
+    padding: 8px 10px;
+  }
+  .language-name {
+    font-size: 0.9em;
   }
 }
 
@@ -609,6 +495,23 @@ button {
   color: white;
 }
 
+/* Mobile responsive overrides for main buttons */
+@media (max-width: 360px) {
+  /* Main buttons - ultra compact */
+  .content button {
+    padding: 10px 6px;
+    font-size: 13px;
+    margin: 0 4px;
+  }
+
+  /* Format buttons - ultra compact */
+  #show-reddit-format,
+  #show-in-game-format {
+    padding: 10px 6px;
+    font-size: 14px;
+  }
+}
+
 /* ================================
    TAB NAVIGATION
    ================================
@@ -650,6 +553,13 @@ button {
   color: white;
 }
 
+@media (max-width: 360px) {
+  .tabs .tablink {
+    font-size: 13px;
+    padding: 8px 8px;
+  }
+}
+
 /* ================================
    CARD DISPLAY
    ================================
@@ -687,6 +597,13 @@ button {
   }
 }
 
+/* Tab content - no padding for very small screens */
+@media (max-width: 360px) {
+  .tabcontent {
+    padding: 0;
+  }
+}
+
 .cardName {
   padding-bottom: 5px;
   font-size: 15px;
@@ -697,7 +614,7 @@ button {
 .option {
   padding-top: 5px;
   border-top: 1px solid #4a5768;
-  font-size: 13px;
+  font-size: 14px;
   text-align: left;
 }
 
@@ -1252,31 +1169,6 @@ a.credit-link:focus {
   color: #3a9cc6 !important;
 }
 
-/* Mobile responsive overrides for bulk buttons */
-@media (max-width: 480px) {
-  .bulk-action-btn,
-  #bulk-selection-section .bulk-action-btn {
-    padding: 14px 20px !important;
-    font-size: 14px !important;
-    min-width: 80px;
-    gap: 4px;
-    margin: 0;
-  }
-
-  .bulk-action-btn.compact,
-  #bulk-selection-section .bulk-action-btn.compact {
-    padding: 12px 18px !important;
-    font-size: 13px !important;
-    min-width: 75px;
-    margin: 0;
-  }
-
-  .bulk-selection-buttons {
-    gap: 6px;
-    justify-content: center;
-  }
-}
-
 @media (max-width: 360px) {
   .bulk-action-btn,
   #bulk-selection-section .bulk-action-btn {
@@ -1328,43 +1220,3 @@ a.credit-link:focus {
 
 /* ================================ */
 /* FOOTER AND CREDITS */
-
-/* ================================ */
-/* MOBILE RESPONSIVE IMPROVEMENTS */
-/* ================================ */
-/* Purpose: Optimize interface for small mobile devices while keeping desktop/tablet unchanged */
-
-/* Extra small devices (Galaxy S8 and similar) */
-@media (max-width: 360px) {
-  /* Language selector - ultra compact */
-  .language-selector {
-    min-width: 120px;
-  }
-
-  .language-selector-current {
-    padding: 8px 10px;
-  }
-
-  .language-name {
-    font-size: 0.9em;
-  }
-
-  /* Main buttons - ultra compact */
-  .content button {
-    padding: 10px 6px;
-    font-size: 13px;
-    margin: 0 4px;
-  }
-
-  /* Format buttons - ultra compact */
-  #show-reddit-format,
-  #show-in-game-format {
-    padding: 10px 6px;
-    font-size: 14px;
-  }
-
-  /* Tab content - no padding for very small screens */
-  .tabcontent {
-    padding: 0;
-  }
-}

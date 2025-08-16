@@ -125,6 +125,12 @@ export function generateRedditFormat() {
             redditUserMessage.style.display = hasContent ? 'none' : 'block';
         }
 
+        // Show/hide the copy button based on content availability
+        const redditCopyButton = document.getElementById('copy-reddit-format');
+        if (redditCopyButton) {
+            redditCopyButton.style.display = hasContent ? 'inline-flex' : 'none';
+        }
+
         redditFormatElement.textContent = formatParts.join('\n');
     }
 }
@@ -233,6 +239,18 @@ export function generateInGameFormat() {
         } else {
             duplicateSectionContainer.style.display = 'none';
             console.log('❌ Duplicate section hidden (no content)');
+        }
+
+        // Show/hide copy buttons based on section content
+        const needCopyButton = document.getElementById('copy-need-section');
+        const duplicateCopyButton = document.getElementById('copy-duplicate-section');
+
+        if (needCopyButton) {
+            needCopyButton.style.display = neededParts.length > 0 ? 'inline-flex' : 'none';
+        }
+
+        if (duplicateCopyButton) {
+            duplicateCopyButton.style.display = duplicateParts.length > 0 ? 'inline-flex' : 'none';
         }
 
         // Show separator only if both sections exist

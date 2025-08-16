@@ -174,15 +174,18 @@
             aria-describedby="redditFormatDescription">
             <legend class="orange-color" id="redditFormatTitle" data-translate="format.redditFormatTitle">Reddit Format
             </legend>
-            <button class="copy-button" id="copy-reddit-format" aria-label="Copy Reddit format to clipboard"
-                title="Copy to clipboard">
+            <div id="reddit-format-description" style="display: block; color: gray;"
+                data-translate="messages.redditUserMessage">Start selecting your card status...</div>
+
+            <!-- Copy button - only visible when there's content -->
+            <button class="copy-button" id="copy-reddit-format" style="display: none;"
+                aria-label="Copy Reddit format to clipboard" title="Copy to clipboard">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
                 </svg>
             </button>
-            <div id="reddit-format-description" style="display: block; color: gray;"
-                data-translate="messages.redditUserMessage">Start selecting your card status...</div>
+
             <pre id="reddit-format" role="textbox" aria-label="Reddit format text for sharing"
                 aria-describedby="redditFormatDescription"></pre>
         </div>

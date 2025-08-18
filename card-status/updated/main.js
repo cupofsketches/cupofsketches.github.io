@@ -657,22 +657,26 @@ function selectAllCardsAsNeeded() {
         const radioButtons = visibleTab.querySelectorAll('input[type="radio"]:not(.disabled)');
 
         let updatedCount = 0;
+        let nonGoldUpdatedCount = 0;
         radioButtons.forEach(radio => {
             if (radio.value === 'needed') {
                 radio.checked = true;
                 updatedCount++;
+                // Check if this is not a gold card (gold cards only have one radio button)
+                const cardContainer = radio.closest('.card');
+                if (cardContainer && !cardContainer.classList.contains('gold')) {
+                    nonGoldUpdatedCount++;
+                }
             }
         });
-
-
 
         // Regenerate formats and auto-save
         generateRedditFormat();
         generateInGameFormat();
         autoSaveToLocalStorage();
 
-        // Show brief success feedback
-        showBulkSelectionFeedback('needed', updatedCount);
+        // Show brief success feedback with non-gold card count
+        showBulkSelectionFeedback('needed', nonGoldUpdatedCount);
 
     } catch (error) {
         console.error('❌ Error selecting all cards as needed:', error);
@@ -701,10 +705,16 @@ function selectAllCardsAsDuplicate() {
         console.log('📻 Found', radioButtons.length, 'radio buttons');
 
         let updatedCount = 0;
+        let nonGoldUpdatedCount = 0;
         radioButtons.forEach(radio => {
             if (radio.value === 'duplicate') {
                 radio.checked = true;
                 updatedCount++;
+                // Check if this is not a gold card (gold cards only have one radio button)
+                const cardContainer = radio.closest('.card');
+                if (cardContainer && !cardContainer.classList.contains('gold')) {
+                    nonGoldUpdatedCount++;
+                }
             }
         });
 
@@ -715,8 +725,8 @@ function selectAllCardsAsDuplicate() {
         generateInGameFormat();
         autoSaveToLocalStorage();
 
-        // Show brief success feedback
-        showBulkSelectionFeedback('duplicate', updatedCount);
+        // Show brief success feedback with non-gold card count
+        showBulkSelectionFeedback('duplicate', nonGoldUpdatedCount);
 
     } catch (error) {
         console.error('❌ Error selecting all cards as duplicate:', error);
@@ -745,10 +755,16 @@ function selectAllCardsAsOwned() {
         console.log('📻 Found', radioButtons.length, 'radio buttons');
 
         let updatedCount = 0;
+        let nonGoldUpdatedCount = 0;
         radioButtons.forEach(radio => {
             if (radio.value === 'owned') {
                 radio.checked = true;
                 updatedCount++;
+                // Check if this is not a gold card (gold cards only have one radio button)
+                const cardContainer = radio.closest('.card');
+                if (cardContainer && !cardContainer.classList.contains('gold')) {
+                    nonGoldUpdatedCount++;
+                }
             }
         });
 
@@ -759,8 +775,8 @@ function selectAllCardsAsOwned() {
         generateInGameFormat();
         autoSaveToLocalStorage();
 
-        // Show brief success feedback
-        showBulkSelectionFeedback('owned', updatedCount);
+        // Show brief success feedback with non-gold card count
+        showBulkSelectionFeedback('owned', nonGoldUpdatedCount);
 
     } catch (error) {
         console.error('❌ Error selecting all cards as owned:', error);

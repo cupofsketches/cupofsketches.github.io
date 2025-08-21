@@ -61,8 +61,8 @@ export const translations = {
         characterLimitDescription: "(1 paragraph, 500-character limit)",
 
         // Generated text labels
-        cardsNeeded: "Cards Needed:",
-        cardsDuplicated: "Cards Duplicated:",
+        cardsNeeded: "Needed Cards:",
+        cardsDuplicated: "Duplicated Cards:",
 
         // Language guidance message
         redditLanguageMessage: "To post in r/RoyalMatchGame, please switch to English."

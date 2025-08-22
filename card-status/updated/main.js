@@ -280,7 +280,7 @@ async function bootI18n() {
     let initialLanguage = localStorage.getItem('locale') || "en";
 
     // Validate the saved language is supported
-    const supportedLanguages = ['en', 'pt-BR', 'es'];
+    const supportedLanguages = ['en', 'pt-BR', 'es', 'de'];
     if (!supportedLanguages.includes(initialLanguage)) {
         initialLanguage = "en";
     }
@@ -447,6 +447,8 @@ function initLanguageSelector() {
         languageDropdown.querySelector('[data-value="pt-BR"]').classList.add('selected');
     } else if (currentLanguage === 'Español') {
         languageDropdown.querySelector('[data-value="es"]').classList.add('selected');
+    } else if (currentLanguage === 'Deutsch') {
+        languageDropdown.querySelector('[data-value="de"]').classList.add('selected');
     }
 }
 
@@ -482,6 +484,10 @@ function updateLanguageSelectorDisplay(savedLanguage) {
         if (currentFlag) currentFlag.textContent = '🇪🇸';
         if (currentName) currentName.textContent = 'Español';
         languageDropdown.querySelector('[data-value="es"]').classList.add('selected');
+    } else if (savedLanguage === 'de') {
+        if (currentFlag) currentFlag.textContent = '🇩🇪';
+        if (currentName) currentName.textContent = 'Deutsch';
+        languageDropdown.querySelector('[data-value="de"]').classList.add('selected');
     }
 }
 

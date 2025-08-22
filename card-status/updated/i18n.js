@@ -59,7 +59,7 @@ export function translate(key) {
 /**
  * Loads translations for the given locale code and saves the selection.
  * Dynamically imports the appropriate language file and updates the current translations.
- * @param {string} localeCode - The locale code to load (e.g., "en", "pt-BR", "es")
+ * @param {string} localeCode - The locale code to load (e.g., "en", "pt-BR", "es", "de")
  * @returns {Promise<void>} Promise that resolves when the locale is loaded
  * @example
  * await setLocale("es") // Loads Spanish translations

@@ -79,6 +79,9 @@ export function generateCardsHTML(collection) {
             if (card.isGold) {
                 return `
                 <div class="card gold">
+                    <div class="star-rating">
+                        ${'★'.repeat(card.stars)}
+                    </div>
                     <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
                         <input type="radio" id="${ownedId}" name="${card.name}" value="owned" checked>
@@ -90,6 +93,9 @@ export function generateCardsHTML(collection) {
                 // Regular cards with full status options
                 return `
             <div class="card" data-card-id="${card.id}" data-collection-id="${collection.id}">
+                <div class="star-rating">
+                    ${'★'.repeat(card.stars)}
+                </div>
                 <label class="cardName" for="${neededId}">${card.name}</label><br>
                 <div class="option">
                     <input type="radio" id="${neededId}" name="${card.name}" value="needed" data-card-id="${card.id}" data-collection-id="${collection.id}"> 

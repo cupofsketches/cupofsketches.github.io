@@ -11,6 +11,7 @@
 
 import { translate } from './i18n.js';
 import { showRedditLanguageMessage, hideRedditLanguageMessage } from './formatView.js';
+import { loadCollection } from './cardsData.js';
 
 // ================================
 // SHARED UTILITIES
@@ -26,7 +27,7 @@ import { showRedditLanguageMessage, hideRedditLanguageMessage } from './formatVi
  * @param {Object} neededCards - Object to store needed cards
  * @param {Object} duplicateCards - Object to store duplicate cards
  */
-function processFormData(form, collectionName, neededCards, duplicateCards) {
+function processFormData(form, collectionName, neededCards, duplicateCards, includeStars = true) {
     // Get all radio buttons in this form
     const radioButtons = form.querySelectorAll('input[type="radio"]:checked');
 
@@ -34,12 +35,28 @@ function processFormData(form, collectionName, neededCards, duplicateCards) {
         const cardName = radio.name; // This is the card name
         const status = radio.value;  // This is the current status
 
+        // Get star information from the card data attribute
+        const cardId = radio.getAttribute('data-card-id');
+        const collectionId = radio.getAttribute('data-collection-id');
+        let starInfo = '';
+
+        if (includeStars && cardId && collectionId) {
+            // Find the collection and card data to get star information
+            const collection = loadCollection().find(col => col.id === collectionId);
+            if (collection) {
+                const card = collection.cards.find(c => c.id === cardId);
+                if (card && card.stars) {
+                    starInfo = ` (${card.stars}☆)`;
+                }
+            }
+        }
+
         if (status === 'needed') {
             if (!neededCards[collectionName]) neededCards[collectionName] = [];
-            neededCards[collectionName].push(cardName);
+            neededCards[collectionName].push(cardName + starInfo);
         } else if (status === 'duplicate') {
             if (!duplicateCards[collectionName]) duplicateCards[collectionName] = [];
-            duplicateCards[collectionName].push(cardName);
+            duplicateCards[collectionName].push(cardName + starInfo);
         }
         // Note: 'owned' and 'nonTrade' cards are intentionally excluded from format output
     });
@@ -71,7 +88,7 @@ export function generateRedditFormat() {
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
         const collectionName = form.getAttribute('data-collection-name');
-        processFormData(form, collectionName, neededCards, duplicateCards);
+        processFormData(form, collectionName, neededCards, duplicateCards, true); // true = include stars
     });
 
     // ================================
@@ -166,7 +183,7 @@ export function generateInGameFormat() {
     const forms = document.querySelectorAll('.collection-form');
     forms.forEach((form) => {
         const collectionName = form.getAttribute('data-collection-name');
-        processFormData(form, collectionName, neededCards, duplicateCards);
+        processFormData(form, collectionName, neededCards, duplicateCards, false); // false = no stars
     });
 
     // ================================

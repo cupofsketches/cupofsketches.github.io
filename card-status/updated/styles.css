@@ -612,6 +612,10 @@ button {
   border: 1px solid #fec324;
 }
 
+.star-rating {
+  color: #fec324;
+}
+
 /* Mobile card padding override for very small screens */
 @media (max-width: 360px) {
   .card-container {

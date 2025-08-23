@@ -17,13 +17,13 @@ export const translations = {
         // Popup titles and messages
         savePopupTitle: "Kartenstatus speichern",
         fileNameMissingTitle: "Dateiname fehlt",
-        fileNameMissingMessage: "Bitte gib einen Dateinamen ein, um deine Datei zu speichern",
+        fileNameMissingMessage: "Bitte gib einen Dateinamen ein, um die Datei zu speichern",
 
         // Popup buttons
         confirmSave: "Speichern",
         confirmReset: "Bestätigen",
         cancel: "Abbrechen",
-        ok: "OK",
+        ok: "OK"
     },
 
     // ================================
@@ -41,7 +41,7 @@ export const translations = {
         needed: "Benötigt",
         duplicate: "Doppelt",
         owned: "Besitzt",
-        feedbackMessage: "Karten festgelegt als"
+        feedbackMessage: "Karten als festgelegt"
     },
 
     // ================================
@@ -58,14 +58,14 @@ export const translations = {
         duplicate: "DOPPELT:",
 
         // Format descriptions
-        characterLimitDescription: "(1 Absatz, 500 Zeichen Limit)",
+        characterLimitDescription: "(1 Absatz, Limit: 500 Zeichen)",
 
         // Generated text labels
         cardsNeeded: "Benötigte Karten:",
         cardsDuplicated: "Doppelte Karten:",
 
         // Language guidance message
-        redditLanguageMessage: "Zum Posten in r/RoyalMatchGame bitte auf Englisch wechseln."
+        redditLanguageMessage: "Zum Posten in r/RoyalMatchGame bitte auf Englisch umschalten."
     },
 
     // ================================
@@ -110,7 +110,7 @@ export const translations = {
         enabled: "Auto-Speichern aktiviert",
         saving: "Speichern...",
         saved: "Automatisch gespeichert",
-        savingLoaded: "Geladene Auswahl wird gespeichert...",
+        savingLoaded: "Geladene Auswahl wird gespeichert…",
         loadedSaved: "Geladene Auswahl automatisch gespeichert"
     },
 
@@ -123,6 +123,6 @@ export const translations = {
         warning: "Diese Aktion kann nicht rückgängig gemacht werden.",
         confirmButton: "Bestätigen",
         cancelButton: "Abbrechen",
-        successMessage: "✅ Alle Auswahl wurde zurückgesetzt! Du kannst nun neu beginnen."
+        successMessage: "✅ Alle Auswahlen wurden zurückgesetzt! Du kannst nun neu beginnen."
     }
 };

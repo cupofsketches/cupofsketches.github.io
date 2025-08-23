@@ -58,6 +58,7 @@ Royal Match Card Status is a web-based tool designed to help players easily shar
 - **English** (Default)
 - **Portuguese (BR)**
 - **Spanish**
+- **German**
 
 > **Want another language?** Message [u/Potential_Save](https://www.reddit.com/user/Potential_Save) on Reddit!
 

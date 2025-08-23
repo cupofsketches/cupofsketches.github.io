@@ -21,6 +21,7 @@
 import { activeCollection as activeCollectionEn } from '../locales/collections/active/en.js';
 import { activeCollection as activeCollectionPtBR } from '../locales/collections/active/pt-BR.js';
 import { activeCollection as activeCollectionEs } from '../locales/collections/active/es.js';
+import { activeCollection as activeCollectionDe } from '../locales/collections/active/de.js';
 
 // ================================
 // GLOBAL VARIABLES
@@ -34,7 +35,8 @@ let currentCollection;
 const activeCollections = {
     'en': activeCollectionEn,
     'pt-BR': activeCollectionPtBR,
-    'es': activeCollectionEs
+    'es': activeCollectionEs,
+    'de': activeCollectionDe
 };
 
 // ================================

@@ -78,13 +78,13 @@ export function generateCardsHTML(collection) {
             // Handle gold (non-tradeable) cards differently
             if (card.isGold) {
                 return `
-                <div class="card gold">
+                <div class="card gold" data-card-id="${card.id}" data-collection-id="${collection.id}">
                     <div class="star-rating">
                         ${'★'.repeat(card.stars)}
                     </div>
                     <label class="cardName" for="${ownedId}">${card.name}</label><br>
                     <div class="option">
-                        <input type="radio" id="${ownedId}" name="${card.name}" value="owned" checked>
+                        <input type="radio" id="${ownedId}" name="${card.name}" value="owned" checked data-card-id="${card.id}" data-collection-id="${collection.id}">
                         <span style="color:rgb(179, 179, 179)"> ${translate("cardOptions.nonTrade")} </span>
                     </div>
                 </div>

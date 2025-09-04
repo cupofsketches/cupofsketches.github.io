@@ -38,10 +38,10 @@ export const translations = {
     // ================================
     bulkSelection: {
         sectionHeader: "Alle auswählen als:",
-        needed: "Benötigt",
-        duplicate: "Doppelt",
-        owned: "Besitzt",
-        feedbackMessage: "Karten als festgelegt"
+        needed: "Suche",
+        duplicate: "Biete",
+        owned: "Habe",
+        feedbackMessage: "Karten festgelegt als"
     },
 
     // ================================
@@ -54,8 +54,8 @@ export const translations = {
         inGameFormatTitle: "In-Game-Format",
 
         // Format labels
-        need: "BENÖTIGT:",
-        duplicate: "DOPPELT:",
+        need: "SUCHE:",
+        duplicate: "BIETE:",
 
         // Format descriptions
         characterLimitDescription: "(1 Absatz, Limit: 500 Zeichen)",
@@ -80,9 +80,9 @@ export const translations = {
     // CARD OPTIONS
     // ================================
     cardOptions: {
-        needed: "Benötigt",
-        duplicate: "Doppelt",
-        owned: "Besitzt",
+        needed: "Suche",
+        duplicate: "Biete",
+        owned: "Habe",
         nonTrade: "Nicht tauschbar"
     },
 
@@ -98,7 +98,7 @@ export const translations = {
     // WARNING & ERROR MESSAGES
     // ================================
     warnings: {
-        noSelectionWarning: "Bitte wähle mindestens eine Option 'benötigt' oder 'doppelt' aus, bevor du speicherst",
+        noSelectionWarning: "Bitte wähle mindestens eine Option 'Biete' oder 'Habe' aus, bevor du speicherst",
         invalidFileMessage: "Bitte wähle eine gültige .json-Datei aus!"
     },
 
@@ -110,7 +110,7 @@ export const translations = {
         enabled: "Auto-Speichern aktiviert",
         saving: "Speichern...",
         saved: "Automatisch gespeichert",
-        savingLoaded: "Geladene Auswahl wird gespeichert…",
+        savingLoaded: "Geladene Auswahl wird gespeichert...",
         loadedSaved: "Geladene Auswahl automatisch gespeichert"
     },
 
@@ -119,7 +119,7 @@ export const translations = {
     // ================================
     resetConfirmation: {
         title: "Alles zurücksetzen?",
-        message: "Dadurch werden alle Karten auf 'Besitzt' zurückgesetzt und Auto-Speicher gelöscht. Manuelle Speicherungen bleiben erhalten",
+        message: "Dadurch werden alle Karten auf 'Habe' zurückgesetzt und Auto-Speicher gelöscht. Manuelle Speicherungen bleiben erhalten.",
         warning: "Diese Aktion kann nicht rückgängig gemacht werden.",
         confirmButton: "Bestätigen",
         cancelButton: "Abbrechen",

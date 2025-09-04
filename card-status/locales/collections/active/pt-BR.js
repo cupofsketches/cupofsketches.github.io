@@ -1,5 +1,5 @@
 // ==================================================
-// locales/seasons/sports/pt.js - Portuguese translations
+// locales/collections/active/pt-BR.js - Portuguese translations
 // ==================================================
 
 export const activeCollection = {

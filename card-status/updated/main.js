@@ -1358,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
             const subtitleElement = document.querySelector('h1 span.subtitle');
             if (subtitleElement) {
-                subtitleElement.textContent = `- ${collectionMetadata.subtitle} -`;
+                subtitleElement.textContent = `- ${getCollectionName()} -`;
             }
         } catch (error) {
             console.warn('Could not update subtitle:', error);

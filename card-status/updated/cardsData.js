@@ -14,9 +14,9 @@ import { activeCollectionData } from '../locales/collections/active/activeData.j
 
 // Import translations for each language
 import { activeCollection as activeCollectionEn } from '../locales/collections/active/en.js';
-//import { activeCollection as activeCollectionPtBR } from '../locales/collections/active/pt-BR.js';
-//import { activeCollection as activeCollectionEs } from '../locales/collections/active/es.js';
-//import { activeCollection as activeCollectionDe } from '../locales/collections/active/de.js';
+import { activeCollection as activeCollectionPtBR } from '../locales/collections/active/pt-BR.js';
+import { activeCollection as activeCollectionEs } from '../locales/collections/active/es.js';
+import { activeCollection as activeCollectionDe } from '../locales/collections/active/de.js';
 
 // ================================
 // UTILITY FUNCTIONS
@@ -53,17 +53,17 @@ let currentCollection;
 // Map of all available language collections (pre-combined data + translations)
 const activeCollections = {
     'en': createActiveCollection(activeCollectionEn),
-    // 'pt-BR': createActiveCollection(activeCollectionPtBR),
-    // 'es': createActiveCollection(activeCollectionEs),
-    // 'de': createActiveCollection(activeCollectionDe)
+    'pt-BR': createActiveCollection(activeCollectionPtBR),
+    'es': createActiveCollection(activeCollectionEs),
+    'de': createActiveCollection(activeCollectionDe)
 };
 
 // Map of translation objects for getting collection names
 const translationObjects = {
     'en': activeCollectionEn,
-    // 'pt-BR': activeCollectionPtBR,
-    // 'es': activeCollectionEs,
-    // 'de': activeCollectionDe
+    'pt-BR': activeCollectionPtBR,
+    'es': activeCollectionEs,
+    'de': activeCollectionDe
 };
 
 // ================================

@@ -1,5 +1,5 @@
 // ==================================================
-// active-data.js - Raw active collection data (language-independent)
+// activeData.js - Raw active collection data (language-independent)
 // ==================================================
 export const activeCollectionData = [
     {

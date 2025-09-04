@@ -11,7 +11,7 @@
 
 import { translate, setLocale } from "./i18n.js";
 import { loadCollection, reloadCollection } from './cardsData.js';
-import { collectionMetadata } from '../locales/collections/active/en.js';
+import { getCollectionName } from './cardsData.js';
 import { renderCards, renderDecks } from './htmlGenerator.js';
 import { generateRedditFormat, generateInGameFormat } from './formatGenerators.js';
 import { showRedditFormat, showInGameFormat, hideUserMessage } from './formatView.js';
@@ -116,7 +116,7 @@ function applyLabels() {
     // Collection subtitle
     const subtitleElement = document.querySelector('h1 span.subtitle');
     if (subtitleElement) {
-        subtitleElement.textContent = `- ${collectionMetadata.subtitle} -`;
+        subtitleElement.textContent = `- ${getCollectionName()} -`;
     }
 
     // ================================
@@ -1358,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         try {
             const subtitleElement = document.querySelector('h1 span.subtitle');
             if (subtitleElement) {
-                subtitleElement.textContent = `- ${collectionMetadata.subtitle} -`;
+                subtitleElement.textContent = `- ${getCollectionName()} -`;
             }
         } catch (error) {
             console.warn('Could not update subtitle:', error);

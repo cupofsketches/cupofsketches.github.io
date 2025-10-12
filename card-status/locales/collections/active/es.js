@@ -173,7 +173,7 @@ export const activeCollection = {
         "chair": "Silla gaming",
         "energy-drink": "Bebida energ.",
         "rgb-light": "Luz RGB",
-        "vr-headset": "Casco de RV",
+        "vr-headset": "Joystick",
         "choose-one": "¡Elige uno!",
         "join-lobby": "Unirse al lobby",
 

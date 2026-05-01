@@ -3,213 +3,213 @@
 // ==================================================
 export const activeCollectionData = [
     {
-        "id": "stone-age",
+        "id": "movie-set",
         "cards": [
-            { "id": "dinosaur", "stars": 1, "isGold": false },
-            { "id": "horn", "stars": 1, "isGold": false },
-            { "id": "old-wheel", "stars": 1, "isGold": false },
-            { "id": "arrow", "stars": 1, "isGold": false },
-            { "id": "bone-necklace", "stars": 1, "isGold": false },
-            { "id": "stone-axe", "stars": 1, "isGold": false },
-            { "id": "cave-art", "stars": 1, "isGold": false },
-            { "id": "fossil", "stars": 1, "isGold": false },
-            { "id": "slingshot", "stars": 2, "isGold": false }
+            {"id": "clapperboard", "stars": 1, "isGold": false},
+            {"id": "directors-chair", "stars": 1, "isGold": false},
+            {"id": "megaphone", "stars": 1, "isGold": false},
+            {"id": "makeup-desk", "stars": 1, "isGold": false},
+            {"id": "camera-lens", "stars": 1, "isGold": false},
+            {"id": "movie-glasses", "stars": 1, "isGold": false},
+            {"id": "script-pages", "stars": 1, "isGold": false},
+            {"id": "monitor", "stars": 1, "isGold": false},
+            {"id": "toolbox", "stars": 2, "isGold": false}
         ]
     },
     {
-        "id": "underwater",
+        "id": "equipments",
         "cards": [
-            { "id": "ancient-ship", "stars": 1, "isGold": false },
-            { "id": "periscope", "stars": 1, "isGold": false },
-            { "id": "message-bottle", "stars": 1, "isGold": false },
-            { "id": "sailor-hat", "stars": 1, "isGold": false },
-            { "id": "sea-mine", "stars": 1, "isGold": false },
-            { "id": "aquatic-fossil", "stars": 1, "isGold": false },
-            { "id": "ship-bell", "stars": 1, "isGold": false },
-            { "id": "old-map", "stars": 2, "isGold": false },
-            { "id": "ship-ensign", "stars": 2, "isGold": false }
+            {"id": "camera", "stars": 1, "isGold": false},
+            {"id": "boom-stand", "stars": 1, "isGold": false},
+            {"id": "green-screen", "stars": 1, "isGold": false},
+            {"id": "walkie-talkie", "stars": 1, "isGold": false},
+            {"id": "set-lights", "stars": 1, "isGold": false},
+            {"id": "fog-machine", "stars": 1, "isGold": false},
+            {"id": "console", "stars": 1, "isGold": false},
+            {"id": "camera-rail", "stars": 2, "isGold": false},
+            {"id": "light-reflector", "stars": 2, "isGold": false}
         ]
     },
     {
-        "id": "ancient",
+        "id": "magic",
         "cards": [
-            { "id": "pyramids", "stars": 1, "isGold": false },
-            { "id": "sphinx", "stars": 1, "isGold": false },
-            { "id": "brooch", "stars": 1, "isGold": false },
-            { "id": "feather-fan", "stars": 1, "isGold": false },
-            { "id": "treasure-map", "stars": 1, "isGold": false },
-            { "id": "obelisk", "stars": 1, "isGold": false },
-            { "id": "hieroglyphics", "stars": 1, "isGold": false },
-            { "id": "magic-lamp", "stars": 2, "isGold": false },
-            { "id": "crook-and-flail", "stars": 3, "isGold": false }
+            {"id": "wand", "stars": 1, "isGold": false},
+            {"id": "spell-book", "stars": 1, "isGold": false},
+            {"id": "wizard-hat", "stars": 1, "isGold": false},
+            {"id": "crystal-orb", "stars": 1, "isGold": false},
+            {"id": "magic-broom", "stars": 1, "isGold": false},
+            {"id": "potion-bottle", "stars": 1, "isGold": false},
+            {"id": "wizard-cloak", "stars": 1, "isGold": false},
+            {"id": "cauldron", "stars": 2, "isGold": false},
+            {"id": "herbs", "stars": 3, "isGold": false}
         ]
     },
     {
-        "id": "drill",
+        "id": "sci-fi",
         "cards": [
-            { "id": "shield-wall", "stars": 1, "isGold": false },
-            { "id": "halberd", "stars": 1, "isGold": false },
-            { "id": "lance", "stars": 1, "isGold": false },
-            { "id": "quiver", "stars": 1, "isGold": false },
-            { "id": "barricade", "stars": 1, "isGold": false },
-            { "id": "bow", "stars": 2, "isGold": false },
-            { "id": "pennant", "stars": 2, "isGold": false },
-            { "id": "obstacles", "stars": 2, "isGold": false },
-            { "id": "sandbag", "stars": 3, "isGold": false }
+            {"id": "space-helmet", "stars": 1, "isGold": false},
+            {"id": "hologram", "stars": 1, "isGold": false},
+            {"id": "panel-board", "stars": 1, "isGold": false},
+            {"id": "jetpack", "stars": 1, "isGold": false},
+            {"id": "teleporter", "stars": 1, "isGold": false},
+            {"id": "time-machine", "stars": 2, "isGold": false},
+            {"id": "assistant", "stars": 2, "isGold": false},
+            {"id": "flying-car", "stars": 2, "isGold": false},
+            {"id": "smart-glasses", "stars": 3, "isGold": false}
         ]
     },
     {
-        "id": "library",
+        "id": "travel",
         "cards": [
-            { "id": "quill", "stars": 1, "isGold": false },
-            { "id": "books", "stars": 1, "isGold": false },
-            { "id": "typewriter", "stars": 1, "isGold": false },
-            { "id": "magnifier", "stars": 2, "isGold": false },
-            { "id": "desk-lamp", "stars": 2, "isGold": false },
-            { "id": "glasses", "stars": 2, "isGold": false },
-            { "id": "pen", "stars": 2, "isGold": false },
-            { "id": "ladder", "stars": 3, "isGold": false },
-            { "id": "parchment", "stars": 4, "isGold": false }
+            {"id": "caravan", "stars": 1, "isGold": false},
+            {"id": "passport", "stars": 1, "isGold": false},
+            {"id": "suitcase", "stars": 1, "isGold": false},
+            {"id": "snorkel", "stars": 2, "isGold": false},
+            {"id": "hiking-boots", "stars": 2, "isGold": false},
+            {"id": "camping-tent", "stars": 2, "isGold": false},
+            {"id": "magnet", "stars": 2, "isGold": false},
+            {"id": "paddle-board", "stars": 3, "isGold": false},
+            {"id": "tour-bus", "stars": 4, "isGold": false}
         ]
     },
     {
-        "id": "agriculture",
+        "id": "western",
         "cards": [
-            { "id": "rake", "stars": 1, "isGold": false },
-            { "id": "shovel", "stars": 1, "isGold": false },
-            { "id": "stone-mill", "stars": 2, "isGold": false },
-            { "id": "hay", "stars": 2, "isGold": false },
-            { "id": "fence", "stars": 2, "isGold": false },
-            { "id": "pitchfork", "stars": 2, "isGold": false },
-            { "id": "wind-mill", "stars": 3, "isGold": false },
-            { "id": "grain-silo", "stars": 4, "isGold": false },
-            { "id": "seed-bag", "stars": 5, "isGold": false }
+            {"id": "hat", "stars": 1, "isGold": false},
+            {"id": "saddle", "stars": 1, "isGold": false},
+            {"id": "cactus", "stars": 2, "isGold": false},
+            {"id": "sheriff-badge", "stars": 2, "isGold": false},
+            {"id": "stagecoach", "stars": 2, "isGold": false},
+            {"id": "lasso", "stars": 2, "isGold": false},
+            {"id": "cowboy-belt", "stars": 4, "isGold": false},
+            {"id": "old-vest", "stars": 4, "isGold": false},
+            {"id": "silk-scarf", "stars": 5, "isGold": false}
         ]
     },
     {
-        "id": "ruins",
+        "id": "romance",
         "cards": [
-            { "id": "coin", "stars": 1, "isGold": false },
-            { "id": "arch", "stars": 2, "isGold": false },
-            { "id": "pedestal", "stars": 2, "isGold": false },
-            { "id": "torch", "stars": 2, "isGold": false },
-            { "id": "mosaic", "stars": 3, "isGold": false },
-            { "id": "bust", "stars": 3, "isGold": false },
-            { "id": "urn", "stars": 4, "isGold": false },
-            { "id": "oil-lamp", "stars": 5, "isGold": false },
-            { "id": "treasure", "stars": 5, "isGold": true }
+            {"id": "rose", "stars": 1, "isGold": false},
+            {"id": "heart-balloon", "stars": 2, "isGold": false},
+            {"id": "wedding-ring", "stars": 2, "isGold": false},
+            {"id": "candlestick", "stars": 2, "isGold": false},
+            {"id": "fireworks", "stars": 3, "isGold": false},
+            {"id": "perfume", "stars": 3, "isGold": false},
+            {"id": "necklace", "stars": 4, "isGold": false},
+            {"id": "gift-box", "stars": 5, "isGold": false},
+            {"id": "special-gift", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "music",
+        "id": "boxing",
         "cards": [
-            { "id": "harp", "stars": 2, "isGold": false },
-            { "id": "gramophone", "stars": 2, "isGold": false },
-            { "id": "water-organ", "stars": 2, "isGold": false },
-            { "id": "flute", "stars": 2, "isGold": false },
-            { "id": "piano", "stars": 3, "isGold": false },
-            { "id": "gong", "stars": 3, "isGold": false },
-            { "id": "panpipe", "stars": 4, "isGold": false },
-            { "id": "crumhorn", "stars": 5, "isGold": false },
-            { "id": "jazz", "stars": 5, "isGold": true }
+            {"id": "bench", "stars": 2, "isGold": false},
+            {"id": "punching-bag", "stars": 2, "isGold": false},
+            {"id": "boxing-gloves", "stars": 2, "isGold": false},
+            {"id": "champion-belt", "stars": 2, "isGold": false},
+            {"id": "helmet", "stars": 3, "isGold": false},
+            {"id": "corner-towel", "stars": 3, "isGold": false},
+            {"id": "flask", "stars": 4, "isGold": false},
+            {"id": "boxing-ring", "stars": 5, "isGold": false},
+            {"id": "champion", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "blacksmith",
+        "id": "space",
         "cards": [
-            { "id": "forge", "stars": 2, "isGold": false },
-            { "id": "anvil", "stars": 2, "isGold": false },
-            { "id": "caliper", "stars": 2, "isGold": false },
-            { "id": "ore", "stars": 3, "isGold": false },
-            { "id": "quenching-tank", "stars": 3, "isGold": false },
-            { "id": "chisel", "stars": 4, "isGold": false },
-            { "id": "sword-mold", "stars": 5, "isGold": false },
-            { "id": "grindstone", "stars": 5, "isGold": false },
-            { "id": "mold-casting", "stars": 5, "isGold": true }
+            {"id": "spaceship", "stars": 2, "isGold": false},
+            {"id": "rover", "stars": 2, "isGold": false},
+            {"id": "plant-pod", "stars": 2, "isGold": false},
+            {"id": "crew-patch", "stars": 3, "isGold": false},
+            {"id": "space-suit", "stars": 3, "isGold": false},
+            {"id": "star-map", "stars": 4, "isGold": false},
+            {"id": "planet-model", "stars": 5, "isGold": false},
+            {"id": "capsule", "stars": 5, "isGold": false},
+            {"id": "stellar-find", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "olympics",
+        "id": "awards",
         "cards": [
-            { "id": "laurel-wreath", "stars": 2, "isGold": false },
-            { "id": "olympic-flame", "stars": 2, "isGold": false },
-            { "id": "chariot", "stars": 3, "isGold": false },
-            { "id": "palaestra", "stars": 3, "isGold": false },
-            { "id": "ancient-discus", "stars": 4, "isGold": false },
-            { "id": "clay-trumpet", "stars": 4, "isGold": false },
-            { "id": "javelin", "stars": 5, "isGold": false },
-            { "id": "photo-finish", "stars": 5, "isGold": true },
-            { "id": "medal-throw", "stars": 5, "isGold": true }
+            {"id": "red-carpet", "stars": 2, "isGold": false},
+            {"id": "trophy", "stars": 2, "isGold": false},
+            {"id": "speech-note", "stars": 3, "isGold": false},
+            {"id": "microphone", "stars": 3, "isGold": false},
+            {"id": "velvet-rope", "stars": 4, "isGold": false},
+            {"id": "camera-flash", "stars": 4, "isGold": false},
+            {"id": "lights", "stars": 5, "isGold": false},
+            {"id": "speech", "stars": 5, "isGold": true},
+            {"id": "photoshoot", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "clothes",
+        "id": "treasure",
         "cards": [
-            { "id": "cloak", "stars": 2, "isGold": false },
-            { "id": "crown", "stars": 3, "isGold": false },
-            { "id": "greaves", "stars": 3, "isGold": false },
-            { "id": "top-hat", "stars": 3, "isGold": false },
-            { "id": "hand-fan", "stars": 4, "isGold": false },
-            { "id": "galea", "stars": 5, "isGold": false },
-            { "id": "tailcoat", "stars": 5, "isGold": false },
-            { "id": "get-ready", "stars": 5, "isGold": true },
-            { "id": "ball-room", "stars": 5, "isGold": true }
+            {"id": "backpack", "stars": 2, "isGold": false},
+            {"id": "compass", "stars": 3, "isGold": false},
+            {"id": "pickaxe", "stars": 3, "isGold": false},
+            {"id": "treasure-map", "stars": 4, "isGold": false},
+            {"id": "torch", "stars": 4, "isGold": false},
+            {"id": "ancient-tablet", "stars": 5, "isGold": false},
+            {"id": "gem", "stars": 5, "isGold": false},
+            {"id": "tracking", "stars": 5, "isGold": true},
+            {"id": "treasure-room", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "alchemy",
+        "id": "musical",
         "cards": [
-            { "id": "elixir", "stars": 3, "isGold": false },
-            { "id": "porcelain-mortar", "stars": 3, "isGold": false },
-            { "id": "scale", "stars": 3, "isGold": false },
-            { "id": "furnace", "stars": 4, "isGold": false },
-            { "id": "alembic", "stars": 4, "isGold": false },
-            { "id": "dried-herb", "stars": 5, "isGold": false },
-            { "id": "glass-jars", "stars": 5, "isGold": false },
-            { "id": "prepare-mix", "stars": 5, "isGold": true },
-            { "id": "perfect", "stars": 5, "isGold": true }
+            {"id": "wig", "stars": 3, "isGold": false},
+            {"id": "tap-shoes", "stars": 3, "isGold": false},
+            {"id": "spotlight", "stars": 3, "isGold": false},
+            {"id": "dance-cane", "stars": 4, "isGold": false},
+            {"id": "tuxedo", "stars": 4, "isGold": false},
+            {"id": "music-sheet", "stars": 5, "isGold": false},
+            {"id": "prep", "stars": 5, "isGold": false},
+            {"id": "performance", "stars": 5, "isGold": true},
+            {"id": "backstage", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "astronomy",
+        "id": "detective",
         "cards": [
-            { "id": "telescope", "stars": 3, "isGold": false },
-            { "id": "gnomon", "stars": 3, "isGold": false },
-            { "id": "armillary", "stars": 3, "isGold": false },
-            { "id": "quadrant", "stars": 4, "isGold": false },
-            { "id": "observatory", "stars": 4, "isGold": false },
-            { "id": "water-clock", "stars": 5, "isGold": false },
-            { "id": "star-map", "stars": 5, "isGold": true },
-            { "id": "track-sun", "stars": 5, "isGold": true },
-            { "id": "discovery", "stars": 5, "isGold": true }
+            {"id": "magnifier", "stars": 3, "isGold": false},
+            {"id": "board", "stars": 3, "isGold": false},
+            {"id": "lantern", "stars": 3, "isGold": false},
+            {"id": "trench-coat", "stars": 4, "isGold": false},
+            {"id": "briefcase", "stars": 4, "isGold": false},
+            {"id": "fedora-hat", "stars": 5, "isGold": false},
+            {"id": "evidence", "stars": 5, "isGold": true},
+            {"id": "clue", "stars": 5, "isGold": true},
+            {"id": "investigate", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "enlightenment",
+        "id": "classics",
         "cards": [
-            { "id": "barometer", "stars": 3, "isGold": false },
-            { "id": "flying-machine", "stars": 3, "isGold": false },
-            { "id": "microscope", "stars": 4, "isGold": false },
-            { "id": "painting", "stars": 4, "isGold": false },
-            { "id": "sculpture", "stars": 5, "isGold": false },
-            { "id": "printing-press", "stars": 5, "isGold": false },
-            { "id": "time-to-fly", "stars": 5, "isGold": true },
-            { "id": "literature", "stars": 5, "isGold": true },
-            { "id": "marble-duke", "stars": 5, "isGold": true }
+            {"id": "filmstrip", "stars": 3, "isGold": false},
+            {"id": "gobo", "stars": 3, "isGold": false},
+            {"id": "old-camera", "stars": 4, "isGold": false},
+            {"id": "red-curtain", "stars": 4, "isGold": false},
+            {"id": "reel-cart", "stars": 5, "isGold": false},
+            {"id": "saxophone", "stars": 5, "isGold": false},
+            {"id": "black-white", "stars": 5, "isGold": true},
+            {"id": "action", "stars": 5, "isGold": true},
+            {"id": "tangled", "stars": 5, "isGold": true}
         ]
     },
     {
-        "id": "riding",
+        "id": "theater",
         "cards": [
-            { "id": "cowboy-hat", "stars": 4, "isGold": false },
-            { "id": "stirrup", "stars": 4, "isGold": false },
-            { "id": "whip", "stars": 4, "isGold": false },
-            { "id": "riding-boots", "stars": 4, "isGold": false },
-            { "id": "horseshoe", "stars": 5, "isGold": false },
-            { "id": "stable", "stars": 5, "isGold": false },
-            { "id": "take-a-tour", "stars": 5, "isGold": true },
-            { "id": "all-clean", "stars": 5, "isGold": true },
-            { "id": "cowboy", "stars": 5, "isGold": true }
+            {"id": "ticket", "stars": 4, "isGold": false},
+            {"id": "movie-screen", "stars": 4, "isGold": false},
+            {"id": "nachos", "stars": 4, "isGold": false},
+            {"id": "box-office", "stars": 4, "isGold": false},
+            {"id": "projector", "stars": 5, "isGold": false},
+            {"id": "seat", "stars": 5, "isGold": false},
+            {"id": "cinema", "stars": 5, "isGold": true},
+            {"id": "now-showing", "stars": 5, "isGold": true},
+            {"id": "loading", "stars": 5, "isGold": true}
         ]
     }
 ];

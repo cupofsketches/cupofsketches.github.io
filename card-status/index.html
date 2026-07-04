@@ -21,14 +21,12 @@
 
     <script>
         // Example condition: check if a maintenance flag is set
-        const underConstruction = true; // Change this value as needed
+        const underConstruction = false; // Change this value as needed
 
         window.onload = function () {
             if (underConstruction) {
                 // Redirect to "under construction" page
-                //window.location.href = 'under-construction/index.html';
-                // Redirect to "Redirect" page
-                window.location.href = 'redirect/index.html';
+                window.location.href = 'under-construction/index.html';
             } else {
                 // Redirect to the "card status tool" page
                 window.location.href = 'updated/index.html';

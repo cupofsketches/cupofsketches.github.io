@@ -3,213 +3,213 @@
 // ==================================================
 export const activeCollectionData = [
     {
-        "id": "stone-age",
+        "id": "dimensions",
         "cards": [
-            { "id": "dinosaur", "stars": 1, "isGold": false },
-            { "id": "horn", "stars": 1, "isGold": false },
-            { "id": "old-wheel", "stars": 1, "isGold": false },
-            { "id": "arrow", "stars": 1, "isGold": false },
-            { "id": "bone-necklace", "stars": 1, "isGold": false },
-            { "id": "stone-axe", "stars": 1, "isGold": false },
-            { "id": "cave-art", "stars": 1, "isGold": false },
-            { "id": "fossil", "stars": 1, "isGold": false },
-            { "id": "slingshot", "stars": 2, "isGold": false }
+            { "id": "ruler", "stars": 1, "isGold": false },
+            { "id": "protractor", "stars": 1, "isGold": false },
+            { "id": "shapes", "stars": 1, "isGold": false },
+            { "id": "calipers", "stars": 1, "isGold": false },
+            { "id": "glass-cylinder", "stars": 1, "isGold": false },
+            { "id": "grid-mat", "stars": 1, "isGold": false },
+            { "id": "tape-measure", "stars": 1, "isGold": false },
+            { "id": "blueprint-sheet", "stars": 1, "isGold": false },
+            { "id": "cube-model", "stars": 2, "isGold": false }
         ]
     },
     {
-        "id": "underwater",
+        "id": "memory",
         "cards": [
-            { "id": "ancient-ship", "stars": 1, "isGold": false },
-            { "id": "periscope", "stars": 1, "isGold": false },
-            { "id": "message-bottle", "stars": 1, "isGold": false },
-            { "id": "sailor-hat", "stars": 1, "isGold": false },
-            { "id": "sea-mine", "stars": 1, "isGold": false },
-            { "id": "aquatic-fossil", "stars": 1, "isGold": false },
-            { "id": "ship-bell", "stars": 1, "isGold": false },
-            { "id": "old-map", "stars": 2, "isGold": false },
-            { "id": "ship-ensign", "stars": 2, "isGold": false }
+            { "id": "memory-card", "stars": 1, "isGold": false },
+            { "id": "pattern-blocks", "stars": 1, "isGold": false },
+            { "id": "reactions", "stars": 1, "isGold": false },
+            { "id": "science-book", "stars": 1, "isGold": false },
+            { "id": "magic-cube", "stars": 1, "isGold": false },
+            { "id": "matching-game", "stars": 1, "isGold": false },
+            { "id": "puzzle", "stars": 1, "isGold": false },
+            { "id": "timer", "stars": 2, "isGold": false },
+            { "id": "abacus", "stars": 2, "isGold": false }
         ]
     },
     {
-        "id": "ancient",
+        "id": "optics",
         "cards": [
-            { "id": "pyramids", "stars": 1, "isGold": false },
-            { "id": "sphinx", "stars": 1, "isGold": false },
-            { "id": "brooch", "stars": 1, "isGold": false },
-            { "id": "feather-fan", "stars": 1, "isGold": false },
-            { "id": "treasure-map", "stars": 1, "isGold": false },
-            { "id": "obelisk", "stars": 1, "isGold": false },
-            { "id": "hieroglyphics", "stars": 1, "isGold": false },
-            { "id": "magic-lamp", "stars": 2, "isGold": false },
-            { "id": "crook-and-flail", "stars": 3, "isGold": false }
+            { "id": "prism", "stars": 1, "isGold": false },
+            { "id": "convex-lens", "stars": 1, "isGold": false },
+            { "id": "mirror", "stars": 1, "isGold": false },
+            { "id": "light-sensor", "stars": 1, "isGold": false },
+            { "id": "color-filter", "stars": 1, "isGold": false },
+            { "id": "projector", "stars": 1, "isGold": false },
+            { "id": "optical-glass", "stars": 1, "isGold": false },
+            { "id": "beamstop", "stars": 2, "isGold": false },
+            { "id": "focus-gear", "stars": 3, "isGold": false }
         ]
     },
     {
-        "id": "drill",
+        "id": "earth",
         "cards": [
-            { "id": "shield-wall", "stars": 1, "isGold": false },
-            { "id": "halberd", "stars": 1, "isGold": false },
-            { "id": "lance", "stars": 1, "isGold": false },
-            { "id": "quiver", "stars": 1, "isGold": false },
-            { "id": "barricade", "stars": 1, "isGold": false },
-            { "id": "bow", "stars": 2, "isGold": false },
-            { "id": "pennant", "stars": 2, "isGold": false },
-            { "id": "obstacles", "stars": 2, "isGold": false },
-            { "id": "sandbag", "stars": 3, "isGold": false }
+            { "id": "crystal", "stars": 1, "isGold": false },
+            { "id": "rocks", "stars": 1, "isGold": false },
+            { "id": "river-delta", "stars": 1, "isGold": false },
+            { "id": "sediment-chart", "stars": 1, "isGold": false },
+            { "id": "plateau", "stars": 1, "isGold": false },
+            { "id": "basalt-column", "stars": 2, "isGold": false },
+            { "id": "sand-dune", "stars": 2, "isGold": false },
+            { "id": "canyon", "stars": 2, "isGold": false },
+            { "id": "strata-diagram", "stars": 3, "isGold": false }
         ]
     },
     {
-        "id": "library",
+        "id": "exploration",
         "cards": [
-            { "id": "quill", "stars": 1, "isGold": false },
-            { "id": "books", "stars": 1, "isGold": false },
-            { "id": "typewriter", "stars": 1, "isGold": false },
-            { "id": "magnifier", "stars": 2, "isGold": false },
-            { "id": "desk-lamp", "stars": 2, "isGold": false },
-            { "id": "glasses", "stars": 2, "isGold": false },
-            { "id": "pen", "stars": 2, "isGold": false },
-            { "id": "ladder", "stars": 3, "isGold": false },
-            { "id": "parchment", "stars": 4, "isGold": false }
+            { "id": "globe", "stars": 1, "isGold": false },
+            { "id": "magnifier", "stars": 1, "isGold": false },
+            { "id": "chisel", "stars": 1, "isGold": false },
+            { "id": "camera", "stars": 2, "isGold": false },
+            { "id": "fossil-map", "stars": 2, "isGold": false },
+            { "id": "brush", "stars": 2, "isGold": false },
+            { "id": "dinasour-egg", "stars": 2, "isGold": false },
+            { "id": "journal", "stars": 3, "isGold": false },
+            { "id": "t-rex-fossil", "stars": 4, "isGold": false }
         ]
     },
     {
-        "id": "agriculture",
+        "id": "meteorology",
         "cards": [
-            { "id": "rake", "stars": 1, "isGold": false },
-            { "id": "shovel", "stars": 1, "isGold": false },
-            { "id": "stone-mill", "stars": 2, "isGold": false },
-            { "id": "hay", "stars": 2, "isGold": false },
-            { "id": "fence", "stars": 2, "isGold": false },
-            { "id": "pitchfork", "stars": 2, "isGold": false },
-            { "id": "wind-mill", "stars": 3, "isGold": false },
-            { "id": "grain-silo", "stars": 4, "isGold": false },
-            { "id": "seed-bag", "stars": 5, "isGold": false }
+            { "id": "weather-balloon", "stars": 1, "isGold": false },
+            { "id": "clouds", "stars": 1, "isGold": false },
+            { "id": "rain-gauge", "stars": 2, "isGold": false },
+            { "id": "barometer", "stars": 2, "isGold": false },
+            { "id": "wind-vane", "stars": 2, "isGold": false },
+            { "id": "atmosphere", "stars": 2, "isGold": false },
+            { "id": "thermometer", "stars": 3, "isGold": false },
+            { "id": "solar-panel", "stars": 4, "isGold": false },
+            { "id": "wind-turbine", "stars": 5, "isGold": false }
         ]
     },
     {
-        "id": "ruins",
+        "id": "experiment",
         "cards": [
-            { "id": "coin", "stars": 1, "isGold": false },
-            { "id": "arch", "stars": 2, "isGold": false },
-            { "id": "pedestal", "stars": 2, "isGold": false },
-            { "id": "torch", "stars": 2, "isGold": false },
-            { "id": "mosaic", "stars": 3, "isGold": false },
-            { "id": "bust", "stars": 3, "isGold": false },
-            { "id": "urn", "stars": 4, "isGold": false },
-            { "id": "oil-lamp", "stars": 5, "isGold": false },
-            { "id": "treasure", "stars": 5, "isGold": true }
+            { "id": "test-tubes", "stars": 1, "isGold": false },
+            { "id": "dropper", "stars": 2, "isGold": false },
+            { "id": "scale", "stars": 2, "isGold": false },
+            { "id": "lab-coat", "stars": 2, "isGold": false },
+            { "id": "microscope", "stars": 3, "isGold": false },
+            { "id": "workbench", "stars": 3, "isGold": false },
+            { "id": "beaker", "stars": 4, "isGold": false },
+            { "id": "pipettes", "stars": 5, "isGold": false },
+            { "id": "mix", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "music",
+        "id": "botany",
         "cards": [
-            { "id": "harp", "stars": 2, "isGold": false },
-            { "id": "gramophone", "stars": 2, "isGold": false },
-            { "id": "water-organ", "stars": 2, "isGold": false },
-            { "id": "flute", "stars": 2, "isGold": false },
-            { "id": "piano", "stars": 3, "isGold": false },
-            { "id": "gong", "stars": 3, "isGold": false },
-            { "id": "panpipe", "stars": 4, "isGold": false },
-            { "id": "crumhorn", "stars": 5, "isGold": false },
-            { "id": "jazz", "stars": 5, "isGold": true }
+            { "id": "plant-pod", "stars": 2, "isGold": false },
+            { "id": "watering-can", "stars": 2, "isGold": false },
+            { "id": "seeds", "stars": 2, "isGold": false },
+            { "id": "plant-tags", "stars": 2, "isGold": false },
+            { "id": "grass-man", "stars": 3, "isGold": false },
+            { "id": "tree-rings", "stars": 3, "isGold": false },
+            { "id": "seed-tray", "stars": 4, "isGold": false },
+            { "id": "leaf-sample", "stars": 5, "isGold": false },
+            { "id": "gardening", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "blacksmith",
+        "id": "computer",
         "cards": [
-            { "id": "forge", "stars": 2, "isGold": false },
-            { "id": "anvil", "stars": 2, "isGold": false },
-            { "id": "caliper", "stars": 2, "isGold": false },
-            { "id": "ore", "stars": 3, "isGold": false },
-            { "id": "quenching-tank", "stars": 3, "isGold": false },
-            { "id": "chisel", "stars": 4, "isGold": false },
-            { "id": "sword-mold", "stars": 5, "isGold": false },
-            { "id": "grindstone", "stars": 5, "isGold": false },
-            { "id": "mold-casting", "stars": 5, "isGold": true }
+            { "id": "monitor", "stars": 2, "isGold": false },
+            { "id": "cpu-chip", "stars": 2, "isGold": false },
+            { "id": "computer-tower", "stars": 2, "isGold": false },
+            { "id": "cable", "stars": 3, "isGold": false },
+            { "id": "cooling-fan", "stars": 3, "isGold": false },
+            { "id": "usb", "stars": 4, "isGold": false },
+            { "id": "hard-disk", "stars": 5, "isGold": false },
+            { "id": "keyboard", "stars": 5, "isGold": false },
+            { "id": "cyber-duke", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "olympics",
+        "id": "mechanics",
         "cards": [
-            { "id": "laurel-wreath", "stars": 2, "isGold": false },
-            { "id": "olympic-flame", "stars": 2, "isGold": false },
-            { "id": "chariot", "stars": 3, "isGold": false },
-            { "id": "palaestra", "stars": 3, "isGold": false },
-            { "id": "ancient-discus", "stars": 4, "isGold": false },
-            { "id": "clay-trumpet", "stars": 4, "isGold": false },
-            { "id": "javelin", "stars": 5, "isGold": false },
-            { "id": "photo-finish", "stars": 5, "isGold": true },
-            { "id": "medal-throw", "stars": 5, "isGold": true }
+            { "id": "locomotive", "stars": 2, "isGold": false },
+            { "id": "autogyro", "stars": 2, "isGold": false },
+            { "id": "airship", "stars": 3, "isGold": false },
+            { "id": "steam-boat", "stars": 3, "isGold": false },
+            { "id": "submarine", "stars": 4, "isGold": false },
+            { "id": "airplane", "stars": 4, "isGold": false },
+            { "id": "motor-car", "stars": 5, "isGold": false },
+            { "id": "speedy", "stars": 5, "isGold": true },
+            { "id": "fly", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "clothes",
+        "id": "research",
         "cards": [
-            { "id": "cloak", "stars": 2, "isGold": false },
-            { "id": "crown", "stars": 3, "isGold": false },
-            { "id": "greaves", "stars": 3, "isGold": false },
-            { "id": "top-hat", "stars": 3, "isGold": false },
-            { "id": "hand-fan", "stars": 4, "isGold": false },
-            { "id": "galea", "stars": 5, "isGold": false },
-            { "id": "tailcoat", "stars": 5, "isGold": false },
-            { "id": "get-ready", "stars": 5, "isGold": true },
-            { "id": "ball-room", "stars": 5, "isGold": true }
+            { "id": "ice-axe", "stars": 2, "isGold": false },
+            { "id": "icebreaker", "stars": 3, "isGold": false },
+            { "id": "snowmobile", "stars": 3, "isGold": false },
+            { "id": "data-logger", "stars": 3, "isGold": false },
+            { "id": "ice-drill", "stars": 4, "isGold": false },
+            { "id": "walkie-talkie", "stars": 5, "isGold": false },
+            { "id": "polar-station", "stars": 5, "isGold": false },
+            { "id": "arctic-work", "stars": 5, "isGold": true },
+            { "id": "aurora", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "alchemy",
+        "id": "quantum",
         "cards": [
-            { "id": "elixir", "stars": 3, "isGold": false },
-            { "id": "porcelain-mortar", "stars": 3, "isGold": false },
-            { "id": "scale", "stars": 3, "isGold": false },
-            { "id": "furnace", "stars": 4, "isGold": false },
-            { "id": "alembic", "stars": 4, "isGold": false },
-            { "id": "dried-herb", "stars": 5, "isGold": false },
-            { "id": "glass-jars", "stars": 5, "isGold": false },
-            { "id": "prepare-mix", "stars": 5, "isGold": true },
-            { "id": "perfect", "stars": 5, "isGold": true }
+            { "id": "wave-diagram", "stars": 3, "isGold": false },
+            { "id": "particle-model", "stars": 3, "isGold": false },
+            { "id": "pointer", "stars": 3, "isGold": false },
+            { "id": "atom", "stars": 4, "isGold": false },
+            { "id": "quantum-chip", "stars": 4, "isGold": false },
+            { "id": "wormhole", "stars": 5, "isGold": false },
+            { "id": "energy-field", "stars": 5, "isGold": false },
+            { "id": "portal", "stars": 5, "isGold": true },
+            { "id": "floating", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "astronomy",
+        "id": "momentum",
         "cards": [
-            { "id": "telescope", "stars": 3, "isGold": false },
-            { "id": "gnomon", "stars": 3, "isGold": false },
-            { "id": "armillary", "stars": 3, "isGold": false },
-            { "id": "quadrant", "stars": 4, "isGold": false },
-            { "id": "observatory", "stars": 4, "isGold": false },
-            { "id": "water-clock", "stars": 5, "isGold": false },
-            { "id": "star-map", "stars": 5, "isGold": true },
-            { "id": "track-sun", "stars": 5, "isGold": true },
-            { "id": "discovery", "stars": 5, "isGold": true }
+            { "id": "ramp", "stars": 3, "isGold": false },
+            { "id": "barrier", "stars": 3, "isGold": false },
+            { "id": "pendulum", "stars": 3, "isGold": false },
+            { "id": "gyroscope", "stars": 4, "isGold": false },
+            { "id": "metal-spheres", "stars": 4, "isGold": false },
+            { "id": "speed-meter", "stars": 5, "isGold": false },
+            { "id": "falling", "stars": 5, "isGold": true },
+            { "id": "going-down", "stars": 5, "isGold": true },
+            { "id": "throw", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "enlightenment",
+        "id": "robotics",
         "cards": [
-            { "id": "barometer", "stars": 3, "isGold": false },
-            { "id": "flying-machine", "stars": 3, "isGold": false },
-            { "id": "microscope", "stars": 4, "isGold": false },
-            { "id": "painting", "stars": 4, "isGold": false },
-            { "id": "sculpture", "stars": 5, "isGold": false },
-            { "id": "printing-press", "stars": 5, "isGold": false },
-            { "id": "time-to-fly", "stars": 5, "isGold": true },
-            { "id": "literature", "stars": 5, "isGold": true },
-            { "id": "marble-duke", "stars": 5, "isGold": true }
+            { "id": "battery", "stars": 3, "isGold": false },
+            { "id": "robot-tank", "stars": 3, "isGold": false },
+            { "id": "robotic-arm", "stars": 4, "isGold": false },
+            { "id": "panel", "stars": 4, "isGold": false },
+            { "id": "drone", "stars": 5, "isGold": false },
+            { "id": "robot", "stars": 5, "isGold": false },
+            { "id": "vacuum", "stars": 5, "isGold": true },
+            { "id": "final-touch", "stars": 5, "isGold": true },
+            { "id": "game-time", "stars": 5, "isGold": true }
         ]
     },
     {
-        "id": "riding",
+        "id": "cosmos",
         "cards": [
-            { "id": "cowboy-hat", "stars": 4, "isGold": false },
-            { "id": "stirrup", "stars": 4, "isGold": false },
-            { "id": "whip", "stars": 4, "isGold": false },
-            { "id": "riding-boots", "stars": 4, "isGold": false },
-            { "id": "horseshoe", "stars": 5, "isGold": false },
-            { "id": "stable", "stars": 5, "isGold": false },
-            { "id": "take-a-tour", "stars": 5, "isGold": true },
-            { "id": "all-clean", "stars": 5, "isGold": true },
-            { "id": "cowboy", "stars": 5, "isGold": true }
+            { "id": "nebula", "stars": 4, "isGold": false },
+            { "id": "orbit", "stars": 4, "isGold": false },
+            { "id": "satellite", "stars": 4, "isGold": false },
+            { "id": "space-station", "stars": 4, "isGold": false },
+            { "id": "galaxy", "stars": 5, "isGold": false },
+            { "id": "eclipse", "stars": 5, "isGold": false },
+            { "id": "catch", "stars": 5, "isGold": true },
+            { "id": "stargazing", "stars": 5, "isGold": true },
+            { "id": "moon-walk", "stars": 5, "isGold": true }
         ]
     }
 ];
